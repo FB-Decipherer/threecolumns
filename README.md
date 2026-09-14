@@ -1,8 +1,13 @@
 # Three Columns
 
-A website format built on three columns: **plain answers**, **previewed sources**,
-and **full technical detail** — so three different visitors each get what they
-came for on one page, without wading through the other two.
+A website format built on three depths: **plain answers**, **previewed sources**,
+and **full technical detail** — so three different visitors each get what they came
+for, without any of them wading through the other two.
+
+On a wide screen the three sit side by side as columns. On a phone they become three
+buttons. In print they become one document. And where one depth is too large for a
+column — an entire municipal code, say — it becomes its own page instead, as at
+worland-dog-law.online.
 
 Live: **https://threecolumns.online**
 
