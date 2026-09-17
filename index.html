@@ -236,7 +236,7 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   <details open><summary>What is Three Columns?</summary><div class="body">
     <p>A way of building a single-topic website so that one topic serves two readers at once: the newcomer who knows nothing about it, and the reader who already knows the subject well. Neither is watered down for the other, and neither has to wade through the other.</p>
     <p>Its second idea is about footnotes. Instead of being buried at the foot of a page, tucked behind a link, or scattered wherever they fall, every reference is gathered into one column of its own &mdash; centered in the layout, given the same visual weight as the writing, and always in the same place.</p>
-    <p>They are three columns wherever they will fit as three columns. On a wide screen you see all three at once. On a phone they stack, and you read one at a time. Printed, they become one document. And where one column holds more than any column can &mdash; an entire municipal code, say &mdash; it is given its own page, as at <a href="https://worland-dog-law.online">worland-dog-law.online</a>. Stacked, paged or side by side, it is the same three. Usually it is a single file — no system to log into, no monthly bill, nothing that can be switched off.</p>
+    <p>They are three columns wherever they will fit as three columns. On a wide screen you see all three at once. On a phone they stack, and you read one at a time. Printed, they become one document. And where one column holds more than any column can &mdash; an entire municipal code, say &mdash; it is given its own page, as at <a href="https://worland-dog-law.online">worland-dog-law.online</a><span class="fn" data-ref="r6">6</span>. Stacked, paged or side by side, it is the same three. Usually it is a single file — no system to log into, no monthly bill, nothing that can be switched off.</p>
   </div></details>
 
   <details><summary>Who is it for?</summary><div class="body">
@@ -311,7 +311,7 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
 
   <details><summary>Can I publish a running series rather than one page?</summary><div class="body">
     <p>Yes, and this is where the format earns its keep for some trades. Each issue is dated, published the day it is written, and <em>never revised afterwards</em> — superseded by a later issue if it turns out to be wrong, but never quietly edited.</p>
-    <p>A builder documenting a renovation, an inspector logging visits, a restorer recording a treatment, a researcher recording a day's tests. What you end up with is not marketing. It is a dated, public, source-cited record of what was done and when, which is a materially different thing to own if anyone later disputes it.</p>
+    <p>A builder documenting a renovation, an inspector logging visits, a restorer recording a treatment, a researcher recording a day's tests<span class="fn" data-ref="r5">5</span>. What you end up with is not marketing. It is a dated, public, source-cited record of what was done and when, which is a materially different thing to own if anyone later disputes it.</p>
     <p><b>Worth saying plainly:</b> if that record matters to you legally, ask a lawyer how it would actually be treated. The format gives you the record; it cannot tell you what it is worth in a dispute.</p>
   </div></details>
 
@@ -355,7 +355,7 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
     <div class="rtitle">Let's Encrypt</div>
     <div class="rmeta">Internet Security Research Group · free automated certificates · non-profit</div>
     <div class="rprev">Issues the certificate that puts the padlock in the address bar, automatically and at no cost, and renews it without being asked. On this arrangement you never touch it: it appears a few minutes after the domain resolves.</div>
-    <div class="rwhy"><b>Why it is cited:</b> it is the second half of the dollar-a-year figure in column A. Neither the hosting nor the encryption is a cost.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is the second half of the dollar-a-month figure in column A. Neither the hosting nor the encryption is a cost.</div>
     <a class="rlink" href="https://letsencrypt.org/">letsencrypt.org</a>
   </article>
 
@@ -372,9 +372,9 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
     <span class="rnum">6</span><span class="rkind">Example · in use</span>
     <div class="rtitle">A municipal ordinance audit</div>
     <div class="rmeta">Worland, Wyoming · a citizen reading a town's animal-control law against its sources</div>
-    <div class="rprev">The same format with no research content and no daily rhythm at all — a standing page rather than a series. Its middle column is almost entirely primary documents: the ordinances themselves, linked to the town's own copies.</div>
+    <div class="rprev">The same format with no research content and no daily rhythm at all — a standing site rather than a series, and the page-form variant: its middle column, the ordinance text, holds more than a column can, so it is given a page of its own. That column is almost entirely primary documents, linked to the town's own copies.</div>
     <div class="rwhy"><b>Why it is cited:</b> to show the format is not about science and not about daily publishing. Most sites built this way will be single standing pages.</div>
-    <a class="rlink" href="https://gorhambury.org/">gorhambury.org</a>
+    <a class="rlink" href="https://worland-dog-law.online/">worland-dog-law.online</a>
   </article>
 
   <article class="ref" id="r7">
@@ -447,7 +447,8 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   "dead":   { "r4": "2026-08-02" },
   "note":   "one source unreachable since 2 August 2026" }</pre>
   <p>The page fetches that file — same origin, so the status <em>is</em> readable — and for anything listed dead it disables the link, strikes it through, and writes the dated note at the foot of column B. If the file is missing or unreadable the page does nothing: no file means no claim, never a false alarm.</p>
-  <div class="note"><strong>The principle, which generalises.</strong> A feature that fails silently toward a false positive is worse than an absent feature. This page would rather say nothing about a link than say something untrue about it.</div>
+  <p><b>On this site, by hand.</b> No scheduler is wired up here yet, so <span class="mono">links.json</span> carries the date somebody last checked the sources themselves. The page behaves the same either way: it repeats a date a person stands behind, or it says nothing at all.</p>
+  <div class="note"><strong>The principle, which generalizes.</strong> A feature that fails silently toward a false positive is worse than an absent feature. This page would rather say nothing about a link than say something untrue about it.</div>
 
   <h2>Security: why there is nothing to attack</h2>
   <p>The usual pitch is that the host has good security people. True, and beside the point. The reason this is hard to compromise is that the attack surface is close to empty:</p>

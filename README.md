@@ -1,8 +1,13 @@
 # Three Columns
 
-A website format built on three depths: **plain answers**, **previewed sources**,
-and **full technical detail** — so three different visitors each get what they came
-for, without any of them wading through the other two.
+A website format for one topic at a time, built on three depths: **plain answers**,
+**previewed sources**, and **full technical detail** — so one topic serves two readers
+at once, the newcomer who knows nothing about it and the reader who already knows the
+subject well, without either of them wading through the other.
+
+Its second idea is about footnotes. Instead of being buried at the foot of a page,
+tucked behind a link, or scattered wherever they fall, every reference is gathered into
+one column of its own — centered in the layout and always in the same place.
 
 They are three columns wherever they will fit as three columns. On a wide screen they sit
 side by side. On a phone they stack and you read one at a time. In print they become one
@@ -41,7 +46,7 @@ so nothing in it can become an old version.
 | `index.html` | the public page — columns A, B, C |
 | `setup.html` | page D — the setup sheet. Unlinked, noindex. Not an admin panel: a form that produces text you paste into a file. |
 | `domain.html` | page E — standing up a domain, step by step. Unlinked, noindex. |
-| `links.json` | link-health status, written by a scheduled check. If absent, the page says nothing about link health — no file, no claim. |
+| `links.json` | link-health status: the date of the last check and any dead links. Written by whoever ran the check — by hand on this site, since no scheduler is wired up yet. If absent, the page says nothing about link health — no file, no claim. |
 | `favicon.svg` `robots.txt` `sitemap.xml` | the usual furniture |
 
 ## Publishing
