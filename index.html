@@ -95,6 +95,9 @@ main{display:grid;gap:0 34px;padding:30px 0 10px;
   display:inline-block;border:1px solid var(--rule);border-radius:6px;
   padding:2px 7px;margin-right:.5em;line-height:1.25;}
 .col.dim{opacity:.42;}
+.col{transition:opacity .15s;}
+.col.dim:hover{opacity:.62;}
+@media (prefers-reduced-motion:reduce){.col{transition:none;}}
 h2{font-size:22px;font-weight:600;margin:30px 0 6px;letter-spacing:-.006em;}
 h2:first-of-type{margin-top:0;}
 h3{font-size:15.5px;font-weight:600;margin:24px 0 4px;
@@ -472,13 +475,13 @@ no analytics         no third party in the page</pre>
   <p>One caveat specific to this design: content hidden inside collapsed answers is in the markup and therefore indexable, but a reader arriving from a search lands on a closed accordion. Put the sentence that matters in the summary line, not only inside it.</p>
 
   <h2>Devices</h2>
-  <p>A single breakpoint. Above it, three columns with the unselected two dimmed rather than hidden, so the whole page is scannable. Below it, one column at a time with the buttons acting as tabs. Nothing is a separate mobile site, so nothing can fall out of step.</p>
+  <p>A single breakpoint. Above it, three columns with the unselected two dimmed rather than hidden, so the whole page is scannable; a click anywhere in a dimmed column selects it, as its button would. Below it, one column at a time with the buttons acting as tabs. Nothing is a separate mobile site, so nothing can fall out of step.</p>
 
   <h2>Typography</h2>
   <p>Body text at 17&nbsp;px, line height 1.62, measure capped near 62 characters. Figure captions are set at <b>22&nbsp;px</b> — larger than body text, deliberately, because a caption is often the only thing a scanning reader reads. Three accent colors only: green for structure, gold for the column keys, red for citations and for anything broken. Dark mode redefines eight custom properties and nothing else.</p>
 
   <h2>Print and PDF</h2>
-  <p>The button calls the browser's own print dialogue. Print rules unhide all three columns, expand every collapsed answer, drop the navigation, and start each column on a fresh page — so a printed copy is a linear document in the order A, B, C, and its reader is missing nothing.</p>
+  <p>The button calls the browser's own print dialog. Print rules unhide all three columns, expand every collapsed answer, drop the navigation, and start each column on a fresh page — so a printed copy is a linear document in the order A, B, C, and its reader is missing nothing.</p>
 
   <h2>Accessibility</h2>
   <p>The buttons are a real tab set: <span class="mono">role="tablist"</span>, <span class="mono">aria-selected</span>, panels labeled by their button, arrow-key navigation<span class="fn" data-ref="r8">8</span>. Answers are native <span class="mono">&lt;details&gt;</span> elements, so the browser's own find searches inside them. With JavaScript disabled entirely the page still reads: all three columns render, all answers open, nothing lost but the switching.</p>
@@ -593,12 +596,22 @@ no analytics         no third party in the page</pre>
   });
   select('tA');
 
+  // A column is its own button: a click in a dimmed column (or tabbing into it) makes it the
+  // active one, exactly as its A/B/C button would. Capture phase, so a marker or card that
+  // sends the reader to another column still has the last word.
+  Object.keys(cols).forEach(function(tid){
+    var c = document.getElementById(cols[tid]);
+    var take = function(){ if (!c.classList.contains('active')) select(tid); };
+    c.addEventListener('click', take, true);
+    c.addEventListener('focusin', take);
+  });
+
   // footnote markers -> reference card
   document.querySelectorAll('.fn').forEach(function(f){
     f.addEventListener('click', function(){
       var el = document.getElementById(f.dataset.ref);
       if (!el) return;
-      if (!wide()) select('tB');
+      select('tB');
       el.scrollIntoView({behavior:'smooth', block:'center'});
       el.classList.add('flash');
       setTimeout(function(){ el.classList.remove('flash'); }, 1600);
