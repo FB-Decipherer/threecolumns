@@ -232,6 +232,7 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   <button role="tab" id="tB" aria-controls="cB" aria-selected="false"><span class="key">B</span>Sources</button>
   <button role="tab" id="tC" aria-controls="cC" aria-selected="false"><span class="key">C</span>How it works</button>
   <span class="spacer"></span>
+  <button class="util" id="phoneview" type="button">Phone view</button>
   <button class="util" id="pdf">Save as PDF</button>
   <button class="util" id="theme">Dark</button>
 </nav>
@@ -484,7 +485,7 @@ no analytics         no third party in the page</pre>
   <p>One caveat specific to this design: content hidden inside collapsed answers is in the markup and therefore indexable, but a reader arriving from a search lands on a closed accordion. Put the sentence that matters in the summary line, not only inside it.</p>
 
   <h2>Devices</h2>
-  <p>A single breakpoint. Above it, three columns with the unselected two dimmed rather than hidden, so the whole page is scannable; a click anywhere in a dimmed column selects it, as its button would. Below it, one column at a time with the buttons acting as tabs. Nothing is a separate mobile site, so nothing can fall out of step.</p>
+  <p>A single breakpoint. Above it, three columns with the unselected two dimmed rather than hidden, so the whole page is scannable; a click anywhere in a dimmed column selects it, as its button would. Below it, one column at a time with the buttons acting as tabs. Nothing is a separate mobile site, so nothing can fall out of step. <b>Phone view</b>, beside Save as PDF, shows the page inside a phone-sized frame at the real widths of common phones and a small tablet, so the phone layout can be checked from a desktop.</p>
 
   <h2>Typography</h2>
   <p>Body text at 17&nbsp;px, line height 1.62, measure capped near 62 characters. Figure captions are set at <b>22&nbsp;px</b> — larger than body text, deliberately, because a caption is often the only thing a scanning reader reads. Three accent colors only: green for structure, gold for the column keys, red for citations and for anything broken. Dark mode redefines eight custom properties and nothing else.</p>
@@ -665,5 +666,6 @@ no analytics         no third party in the page</pre>
   }).catch(function(){ /* no status file: say nothing */ });
 })();
 </script>
+<script src="phone-view.js" defer></script>
 </body>
 </html>
