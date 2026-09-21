@@ -75,7 +75,7 @@ footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--rule);
 <header>
   <div class="eyebrow">Page E · for you only · not linked, not indexed</div>
   <h1>Standing up a domain</h1>
-  <p class="sub">Every step, in order, with your own values filled in. Tick things off as you go — this page remembers your ticks in this browser, which is the one place in the whole project that stores anything. Do exactly what is here and nothing else; the optional-looking extras on these sites are where the afternoon goes.</p>
+  <p class="sub">Every step, in order, with your own values filled in. Check things off as you go — this page remembers your check marks in this browser. Do exactly what is here and nothing else; the optional-looking extras on these sites are where the afternoon goes.</p>
 </header>
 
 <div class="ok" id="SUPERSEDED-BANNER" style="border-left-color:#4C7A4E;margin-bottom:6px">
@@ -115,7 +115,7 @@ footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--rule);
 
 <h2><span class="n">E2</span>Make the repository</h2>
 <ol class="steps">
-  <li><input type="checkbox" class="tick">On github.com: <b>New repository</b>. Name it <span id="r1"></span>. Tick <b>Public</b>. Do not add a README, a license, or a .gitignore — an empty repository is easier.</li>
+  <li><input type="checkbox" class="tick">On github.com: <b>New repository</b>. Name it <span id="r1"></span>. Check <b>Public</b>. Do not add a README, a license, or a .gitignore — an empty repository is easier.</li>
   <li><input type="checkbox" class="tick">Open <b>GitHub Desktop</b> → <b>File</b> → <b>Clone repository</b> → pick <span id="r2"></span> → choose where it sits on your machine.</li>
   <li><input type="checkbox" class="tick">Copy <val>index.html</val>, <val>setup.html</val>, <val>domain.html</val> and <val>links.json</val> into that folder.</li>
   <li><input type="checkbox" class="tick">In GitHub Desktop: type a Summary line, <b>Commit to main</b>, then <b>Push origin</b>.</li>
@@ -138,7 +138,7 @@ footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--rule);
   <tr><td class="m">AAAA</td><td class="m">@</td><td class="m"><val>2606:50c0:8003::153</val></td><td class="m">Automatic</td></tr>
   <tr><td class="m">CNAME</td><td class="m">www</td><td class="m"><span id="cn"></span></td><td class="m">Automatic</td></tr>
 </table>
-<div class="warn"><b>The CNAME value ends in a dot.</b> <span id="cn2"></span> — trailing dot included. Namecheap will usually add it for you, but check afterwards; a missing dot is the commonest silent failure here. Note also it is your <em>username</em>, not the repository name.</div>
+<div class="warn"><b>The CNAME value ends in a dot.</b> <span id="cn2"></span> — trailing dot included. Namecheap will usually add it for you, but check afterward; a missing dot is the most common silent failure here. Note also it is your <em>username</em>, not the repository name.</div>
 <p>The four AAAA records are new since we last did this and are worth adding — they serve visitors on IPv6 connections, which is most phones on mobile data.</p>
 <div class="wait">then wait — usually 10 to 30 minutes, occasionally much longer</div>
 <ol class="steps">
@@ -151,13 +151,13 @@ footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--rule);
 <ol class="steps">
   <li><input type="checkbox" class="tick">In the new repository: <b>Settings</b> → <b>Pages</b> → <b>Custom domain</b>. Enter <span id="d4"></span> — no <val>www</val>, no <val>https://</val>. Save.</li>
   <li><input type="checkbox" class="tick">GitHub writes a <val>CNAME</val> file into the repository itself. You do not create it by hand. In GitHub Desktop, <b>Fetch origin</b> so your local folder picks it up, or your next push will conflict.</li>
-  <li><input type="checkbox" class="tick">Watch for the green tick beside the domain. If you see <span class="err">DNS check unsuccessful</span>, press <b>Check again</b> every few minutes. It clears itself once the records have propagated.</li>
+  <li><input type="checkbox" class="tick">Watch for the green check mark beside the domain. If you see <span class="err">DNS check unsuccessful</span>, press <b>Check again</b> every few minutes. It clears itself once the records have propagated.</li>
 </ol>
 
 <h2><span class="n">E5</span>The padlock</h2>
 <ol class="steps">
   <li><input type="checkbox" class="tick">Leave it alone. A certificate is requested automatically once the DNS check passes.</li>
-  <li><input type="checkbox" class="tick">When <b>Enforce HTTPS</b> becomes tickable, tick it.</li>
+  <li><input type="checkbox" class="tick">When <b>Enforce HTTPS</b> can be checked, check it.</li>
 </ol>
 <div class="wait">often 15 minutes — GitHub documents it as up to 24 hours</div>
 <p class="hint">Our old note said "a few minutes," which is usually true and occasionally very wrong. If the box is grayed out with a message about the certificate still being provisioned, that is normal and there is nothing to do. Come back tomorrow before assuming anything is broken.</p>
@@ -185,17 +185,17 @@ footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--rule);
 <p>The certificate has not been issued yet. Nothing to do but wait, up to a day.</p>
 <div class="warn"><b>The rule for this whole page.</b> If something is not working, wait fifteen minutes before changing anything. Nearly every wasted hour in this kind of work is spent breaking a setup that was merely still propagating.</div>
 
-<h2><span class="n">E8</span>Afterwards</h2>
+<h2><span class="n">E8</span>Afterward</h2>
 <ol class="steps">
   <li><input type="checkbox" class="tick">Two-factor authentication on <b>both</b> the GitHub account and the Namecheap account. These are the only two things that can actually be taken from you.</li>
   <li><input type="checkbox" class="tick">Put a note in your calendar a month before the domain renews. Registrars send reminders; reminders go to spam.</li>
   <li><input type="checkbox" class="tick">Record the date you did this at the foot of the site's technical column, so the next person — including you in two years — knows how old the arrangement is.</li>
 </ol>
-<button class="rst" id="rst">Clear all ticks</button>
+<button class="rst" id="rst">Clear all check marks</button>
 
 <footer>
   Page E · Three Columns · values verified against GitHub Pages documentation, 10 September 2026<br>
-  This page stores your ticks in this browser only. The published pages store nothing.
+  This page stores your check marks in this browser only. The published pages store nothing for their readers.
 </footer>
 </div>
 

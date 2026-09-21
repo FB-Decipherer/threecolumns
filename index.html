@@ -30,6 +30,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<noscript><style>
+/* No JavaScript: nothing can switch columns, so show all three, undimmed, on every screen. */
+.col{display:block!important;opacity:1!important}
+</style></noscript>
 <style>
 :root{
   --paper:#FCFAF5; --card:#F5F1E8; --ink:#1E1B16; --ink-mid:#4A443A;
@@ -159,6 +163,23 @@ details .body{padding:0 0 14px 1.5em;}
 #deadnote{margin-top:22px;padding:13px 15px;border:1px dashed var(--rule);border-radius:7px;
   font-size:14px;color:var(--ink-mid);}
 
+/* ---- Column B links block: Internal links (most recent content change), then External links.
+        Same headings and captions on every Three Columns site, so a reader knows where to look. ---- */
+.colbsh{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-mid);margin:26px 0 0;}
+.colbsh:first-of-type{margin-top:18px;}
+.colbcap{font-size:15.5px;color:var(--ink-mid);margin:4px 0 12px;}
+.bcard{display:block;text-decoration:none;color:inherit;background:var(--card);
+  border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:9px;
+  padding:13px 15px;margin-bottom:15px;}
+.bcard:hover{border-color:var(--accent);}
+.bcard:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.bcard .t{display:block;font-weight:600;font-size:16px;line-height:1.3;}
+.bcard .d{display:block;font-size:14.5px;color:var(--ink-mid);margin-top:6px;}
+details[id],h2[id]{scroll-margin-top:100px;}
+details.flash > summary{color:var(--accentb);}
+h2.flash{color:var(--accentb);}
+
 /* ---------- footer ---------- */
 footer{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
   background:var(--card);padding:28px 26px 32px;margin-top:54px;
@@ -189,16 +210,20 @@ footer strong{color:var(--ink);letter-spacing:.04em;}
 
 .egline{display:inline-block;margin-top:.35rem;font-size:.95em;opacity:.9}
 
-/* ---- masthead picture: the slot every instance inherits ---- */
+/* ---- masthead picture: the slot every instance inherits. The picture sits in a <figure> so it
+        can carry a caption, set at 22 px like every caption in the format. ---- */
 header{display:flex; gap:1.6rem; align-items:flex-start; flex-wrap:wrap}
 .masthead-text{flex:1 1 24rem; min-width:0}
-a.masthead-img{flex:0 0 auto; width:clamp(15rem,27vw,22rem); display:block; line-height:0;
-  border:1px solid var(--rule); border-radius:.5rem; overflow:hidden; align-self:center}
+.masthead-fig{flex:0 0 auto; width:clamp(15rem,27vw,22rem); margin:0; align-self:center}
+.masthead-fig figcaption{font-size:22px; line-height:1.3; color:var(--ink-mid);
+  margin-top:.55rem; text-align:center; text-wrap:balance}
+a.masthead-img{display:block; width:100%; line-height:0;
+  border:1px solid var(--rule); border-radius:.5rem; overflow:hidden}
 a.masthead-img img{width:100%; height:auto; display:block}
 a.masthead-img:hover{outline:2px solid var(--accent); outline-offset:3px}
 a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
-@media (max-width:640px){a.masthead-img{width:100%; margin-top:.4rem}}
-@media print{a.masthead-img{display:none !important} header{display:block}}
+@media (max-width:640px){.masthead-fig{width:100%; margin-top:.4rem}}
+@media print{.masthead-fig{display:none !important} header{display:block}}
 </style>
 </head>
 <body>
@@ -221,10 +246,13 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   <div class="asof">free to host &middot; nothing to hack &middot; works on any device &middot; you own it outright</div>
     </div>
 
-    <a class="masthead-img" href="masthead-sitemap.svg" target="_blank" rel="noopener" title="Open the full-size diagram">
-      <img src="masthead-sitemap.svg" width="680" height="440" loading="eager" decoding="async"
-           alt="Map of the Three Columns site family: one class at the top, three instances below, two of them linked in only one direction.">
-    </a>
+    <figure class="masthead-fig">
+      <a class="masthead-img" href="masthead-sitemap.svg" target="_blank" rel="noopener" title="Open the full-size diagram">
+        <img src="masthead-sitemap.svg" width="680" height="440" loading="eager" decoding="async"
+             alt="Map of the Three Columns family: threecolumns.online, the class, at the top; baconian-ciphers.online and washakie-ai.online below it; worland-dog-law.online at the bottom. Arrows show which way the links point between the pages each site lists: the class and washakie-ai.online link to each other, as do washakie-ai.online and worland-dog-law.online; the class also links to the other two, and washakie-ai.online to baconian-ciphers.online.">
+      </a>
+      <figcaption>The family, and which way its links point.</figcaption>
+    </figure>
   </header>
 
 <nav role="tablist" aria-label="Columns">
@@ -249,7 +277,7 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   <details><summary>What is Three Columns?</summary><div class="body">
     <p>A way of building a single-topic website so that one topic serves two readers at once: the newcomer who knows nothing about it, and the reader who already knows the subject well. Neither is watered down for the other, and neither has to wade through the other.</p>
     <p>Its second idea is about footnotes. Instead of being buried at the foot of a page, tucked behind a link, or scattered wherever they fall, every reference is gathered into one column of its own &mdash; centered in the layout, given the same visual weight as the writing, and always in the same place.</p>
-    <p>They are three columns wherever they will fit as three columns. On a wide screen you see all three at once. On a phone they stack, and you read one at a time. Printed, they become one document. And where one column holds more than any column can &mdash; an entire municipal code, say &mdash; it is given its own page, as at <a href="https://worland-dog-law.online">worland-dog-law.online</a><span class="fn" data-ref="r6">6</span>. Stacked, paged or side by side, it is the same three. Usually it is a single file — no system to log into, no monthly bill, nothing that can be switched off.</p>
+    <p>They are three columns wherever they will fit as three columns. On a wide screen you see all three at once. On a phone they stack, and you read one at a time. Printed, they become one document. And where one column holds more than any column can &mdash; an entire municipal code, say &mdash; it is given its own page, as at <a href="https://worland-dog-law.online">worland-dog-law.online</a><span class="fn" data-ref="r6">6</span>. Stacked, paged or side by side, it is the same three. Usually it is a single page — no system to log into, no monthly bill, nothing that can be switched off.</p>
   </div></details>
 
   <details><summary>Who is it for?</summary><div class="body">
@@ -276,6 +304,7 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   <details><summary>What is the middle column for?</summary><div class="body">
     <p>Every source, previewed. When column A or C cites something, the citation<span class="fn" data-ref="r1">1</span> is a small numbered marker; clicking it moves you to a card in the middle that tells you what the source is, who made it, what you would find there, and what it is doing in this page.</p>
     <p>For a business this column <em>is</em> the sales pitch. Not "we are licensed" but a card naming the license, the issuing authority, and a link to the register where anyone can check it in ten seconds. That is a different order of credibility from a badge image.</p>
+    <p>At the top of the column, before any source, one card names the most recent change to the page, so a returning reader sees at once what is new. And when a numeral has brought you to a card, a Back button at its foot takes you to the exact spot you left.</p>
   </div></details>
 
   <details><summary>Why is the link the last thing in each card?</summary><div class="body">
@@ -309,7 +338,8 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
 
   <details><summary>Does it work on a phone?</summary><div class="body">
     <p>It is built for the phone first. Below a certain width the three columns become three buttons and you read one at a time; above it, all three sit side by side. Same file, no separate mobile site, nothing to keep in step.</p>
-    <p>It also prints properly, which almost nothing does any more: all three columns unfold into one document in order, with every collapsed answer opened.</p>
+    <p>On a long page, once you have scrolled down, a round button with an up arrow appears at the bottom right. It takes you straight back to the top.</p>
+    <p>It also prints properly, which almost nothing does anymore: all three columns unfold into one document in order, with every collapsed answer opened.</p>
   </div></details>
 
   <details><summary>I have never used GitHub. Can I still publish one?</summary><div class="body">
@@ -323,7 +353,7 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   </div></details>
 
   <details><summary>Can I publish a running series rather than one page?</summary><div class="body">
-    <p>Yes, and this is where the format earns its keep for some trades. Each issue is dated, published the day it is written, and <em>never revised afterwards</em> — superseded by a later issue if it turns out to be wrong, but never quietly edited.</p>
+    <p>Yes, and this is where the format earns its keep for some trades. Each issue is dated, published the day it is written, and <em>never revised afterward</em> — superseded by a later issue if it turns out to be wrong, but never quietly edited.</p>
     <p>A builder documenting a renovation, an inspector logging visits, a restorer recording a treatment, a researcher recording a day's tests<span class="fn" data-ref="r5">5</span>. What you end up with is not marketing. It is a dated, public, source-cited record of what was done and when, which is a materially different thing to own if anyone later disputes it.</p>
     <p><b>Worth saying plainly:</b> if that record matters to you legally, ask a lawyer how it would actually be treated. The format gives you the record; it cannot tell you what it is worth in a dispute.</p>
   </div></details>
@@ -335,6 +365,16 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
 <section class="col dim" id="cB" role="tabpanel" aria-labelledby="tB">
   <div class="colhead"><b>B</b> &nbsp;Sources</div>
   <p class="lede" style="font-size:15.5px">Everything cited in A or C, previewed. The link is always the last line — read the card first and decide whether you need the original at all.</p>
+
+  <h3 class="colbsh" id="colbint">Internal links</h3>
+  <p class="colbcap">Most recent content change.</p>
+  <a class="bcard" href="#getting-around" data-open="getting-around">
+    <span class="t">21 September 2026 &mdash; column C now explains the buttons that come and go</span>
+    <span class="d">Top, Back and the developer&rsquo;s Phone view, the one-level-up card that links a family of sites, and this links block are now written up in column C.</span>
+  </a>
+
+  <h3 class="colbsh" id="colbext">External links</h3>
+  <p class="colbcap">Every reference to some other website.</p>
 
   <article class="ref" id="r1">
     <span class="rnum">1</span><span class="rkind">Standard · typography</span>
@@ -426,6 +466,15 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
     <a class="rlink" href="https://developers.google.com/search/docs/essentials">developers.google.com/search/docs/essentials</a>
   </article>
 
+  <article class="ref" id="r11">
+    <span class="rnum">11</span><span class="rkind">Example · in use</span>
+    <div class="rtitle">A grant proposal, written in the format it proposes</div>
+    <div class="rmeta">Worland, Wyoming · a $10,000 proposal for grass-roots AI in Washakie County</div>
+    <div class="rprev">A standing page in column form. Its middle column opens with the two links blocks; a numeral in A or C puts a Back button on the card it opens; a round button returns to the top; and the last thing on the page is a card pointing one level up, to threecolumns.online.</div>
+    <div class="rwhy"><b>Why it is cited:</b> most of what column C describes as recent &mdash; the Top and Back buttons, the rule keeping numerals out of the header, the one-level-up card &mdash; was first asked for there, and then written into the format.</div>
+    <a class="rlink" href="https://washakie-ai.online/">washakie-ai.online</a>
+  </article>
+
   <div id="deadnote" hidden></div>
 </section>
 
@@ -435,15 +484,20 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   <p class="lede">Concepts first, mechanics last. A reader who stops a third of the way down should still have learned something whole.</p>
 
   <h2>The shape</h2>
-  <p>One HTML file. No framework, no build step, no dependencies except two web fonts, and those fall back to system faces if they fail to load. A typical page is 35&ndash;60&nbsp;KB and has finished rendering before a loading spinner would have appeared.</p>
+  <p>One HTML file and three small scripts. No framework, no build step, no dependencies except two web fonts, and those fall back to system faces if they fail to load. A typical page is 35&ndash;100&nbsp;KB and has finished rendering before a loading spinner would have appeared. Draft the words in plain text first &mdash; CommonMark, the precisely specified form of Markdown<span class="fn" data-ref="r7">7</span> &mdash; so they outlive whatever tool made them.</p>
+  <p>The scripts are <span class="mono">phone-view.js</span>, <span class="mono">top-button.js</span> and <span class="mono">back-link.js</span>. Each adds one button and what that button needs, nothing more, so a page missing one of them loses that button and still works. Wherever a site carries one, it is the identical file &mdash; changed once, in the template new sites are made from, and then copied out &mdash; so no copy drifts from the others.</p>
   <p>Three columns wide, three buttons narrow, one document printed. The same markup serves all three — nothing is duplicated, because duplicated content is content that will drift.</p>
 
   <h2>Why the sources sit in the middle</h2>
   <p>Position carries meaning. A source column on the far right reads as an appendix; at the foot of the page it reads as an afterthought and goes unread. Between the plain answers and the technical detail it reads as what it is: the common evidence both other columns rest on.</p>
   <p>It also means that whichever column you are in, a citation is one glance away rather than one long scroll.</p>
 
+  <h2 id="links-block">Two blocks, always in the same place</h2>
+  <p>Column B opens with two blocks built exactly alike: a heading, a caption line, then the content. <b>Internal links</b>, captioned <i>Most recent content change.</i>, holds one card &mdash; the date and what changed, linked to the place on the page where it changed. <b>External links</b>, captioned <i>Every reference to some other website.</i>, holds the source cards, one for every other site the page mentions.</p>
+  <p>The headings and captions are word for word the same on every site that carries them, and External always sits below Internal, in one column. A reader who has used one Three Columns site already knows where to look on the next. On a site in page form they head the page that is column B, as on worland-dog-law.online&rsquo;s Ordinance Text page<span class="fn" data-ref="r6">6</span>, where External links is a plain list.</p>
+
   <h2>The anatomy of a source card</h2>
-  <p>Fixed order, every time, so a reader learns the shape once<span class="fn" data-ref="r7">7</span>:</p>
+  <p>Fixed order, every time, so a reader learns the shape once:</p>
 <pre>1  number and kind      what sort of thing this is
 2  title                what it is called
 3  provenance           who made it, when, under what license
@@ -451,6 +505,8 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
 5  why it is cited      what it is doing in THIS page
 6  the link             last, and only last</pre>
   <p>Items 4 and 5 do the work, and are the two a bare footnote never supplies. Item 5 is the honest one: it forces the writer to say what the source actually supports, which is where padded citation lists fall apart.</p>
+  <p>Numerals belong in columns A and C, never in the header. A name in the header may still be a plain link.</p>
+  <p>Arriving at a card from a numeral adds one control at its foot, below the link: a <b>Back</b> button, pointing the way you came &mdash; <span class="mono">&larr; Back</span> to column A, <span class="mono">Back &rarr;</span> to column C. It returns you to the very numeral you clicked, outlines it in gold for a moment so the eye finds it, and then goes away. It is a way back, not something the card says; the link is still the last thing the card tells you.</p>
 
   <h2>Link health, done honestly</h2>
   <p>The obvious implementation is wrong. A browser cannot read the status of a cross-origin request: with <span class="mono">mode:'no-cors'</span> the response is opaque and <span class="mono">status</span> is 0 whether the page is healthy, missing or on fire<span class="fn" data-ref="r2">2</span>. An in-page checker built that way reports false deaths, which is worse than not checking at all.</p>
@@ -480,28 +536,33 @@ no analytics         no third party in the page</pre>
   <p>The protection against lock-in is structural rather than contractual: there is no database to export, no proprietary format to convert, no theme to rebuild. Copy the folder to any other static host, repoint the domain, and the site is identical. All internal links are relative, so a change of address touches one file.</p>
 
   <h2>Search: the half that is automatic</h2>
-  <p>Everything a search engine asks of a page's construction<span class="fn" data-ref="r10">10</span> is satisfied here without effort — one small file, no render-blocking scripts, mobile layout first, real headings, real landmarks, descriptive title and meta description, clean relative URLs, no interstitials.</p>
+  <p>Everything a search engine asks of a page's construction<span class="fn" data-ref="r10">10</span> is satisfied here without effort — one small page, no render-blocking scripts, mobile layout first, real headings, real landmarks, descriptive title and meta description, clean relative URLs, no interstitials.</p>
   <p>What no format supplies is content worth finding and other sites linking to you. Any claim beyond the technical half should be treated as sales.</p>
   <p>One caveat specific to this design: content hidden inside collapsed answers is in the markup and therefore indexable, but a reader arriving from a search lands on a closed accordion. Put the sentence that matters in the summary line, not only inside it.</p>
 
   <h2>Devices</h2>
-  <p>A single breakpoint. Above it, three columns with the unselected two dimmed rather than hidden, so the whole page is scannable; a click anywhere in a dimmed column selects it, as its button would. Below it, one column at a time with the buttons acting as tabs. Nothing is a separate mobile site, so nothing can fall out of step. <b>Phone view</b>, beside Save as PDF, shows the page inside a phone-sized frame at the real widths of common phones and a small tablet, so the phone layout can be checked from a desktop.</p>
+  <p>A single breakpoint. Above it, three columns with the unselected two dimmed rather than hidden, so the whole page is scannable; a click anywhere in a dimmed column selects it, as its button would. Below it, one column at a time with the buttons acting as tabs. Nothing is a separate mobile site, so nothing can fall out of step. <b>Phone view</b> is for whoever builds the page, not whoever reads it. Its button stays hidden unless the address carries <span class="mono">?dev</span>, and never shows on a screen that is already phone-sized; then it sits beside Save as PDF and shows the page inside a phone-sized frame at the real widths of common phones and a small tablet, so the phone layout can be checked from a desktop. It stays on for the rest of that browser tab &mdash; the one thing the page ever stores, and only in the browser of whoever asked for it; <span class="mono">?dev=0</span> turns it off.</p>
+
+  <h2 id="getting-around">Getting around: the buttons that come and go</h2>
+  <p>Two buttons appear only when they are useful, and neither is printed. Scroll about a screen down and a round button with an up arrow appears at the bottom right. It takes you back to the top &mdash; smoothly, or at once if your system asks for reduced motion &mdash; and hands the keyboard to the page title, so the next Tab starts from the top. The page ends with a little blank space, so the last line of the footer can scroll clear of the button on a phone.</p>
+  <p>The other is the Back button on a source card, described above: it appears when a numeral sends you to column B, and goes away once it has brought you back. Both were first asked for on washakie-ai.online<span class="fn" data-ref="r11">11</span> and then written into the format, so every new site starts with them.</p>
 
   <h2>Typography</h2>
-  <p>Body text at 17&nbsp;px, line height 1.62, measure capped near 62 characters. Figure captions are set at <b>22&nbsp;px</b> — larger than body text, deliberately, because a caption is often the only thing a scanning reader reads. Three accent colors only: green for structure, gold for the column keys, red for citations and for anything broken. Dark mode redefines eight custom properties and nothing else.</p>
+  <p>Body text at 17&nbsp;px, line height 1.62; on a wide screen each column holds about sixty characters to the line. Figure captions are set at <b>22&nbsp;px</b> — larger than body text, deliberately, because a caption is often the only thing a scanning reader reads; the caption under the picture at the head of this page is one. Three accent colors only: green for structure, gold for the column keys and for marking where you are, red for citations and for whatever a click has just brought you to. A link that has died turns gray and is struck through. Dark mode redefines the nine color properties, and one label color set outside them; the numerals keep their red on a white disc in both themes.</p>
 
   <h2>Print and PDF</h2>
-  <p>The button calls the browser's own print dialog. Print rules unhide all three columns, expand every collapsed answer, drop the navigation, and start each column on a fresh page — so a printed copy is a linear document in the order A, B, C, and its reader is missing nothing.</p>
+  <p>The button calls the browser's own print dialog. Print rules unhide all three columns, drop the navigation, the floating buttons and the picture at the head of the page, and start each column on a fresh page; just before printing, a script opens every folded answer, and folds them again after — so a printed copy is a linear document in the order A, B, C, and its reader is missing nothing.</p>
 
   <h2>Accessibility</h2>
-  <p>The buttons are a real tab set: <span class="mono">role="tablist"</span>, <span class="mono">aria-selected</span>, panels labeled by their button, arrow-key navigation<span class="fn" data-ref="r8">8</span>. Answers are native <span class="mono">&lt;details&gt;</span> elements, so the browser's own find searches inside them. With JavaScript disabled entirely the page still reads: all three columns render, all answers open, nothing lost but the switching.</p>
+  <p>The buttons are a real tab set: <span class="mono">role="tablist"</span>, <span class="mono">aria-selected</span>, panels labeled by their button, arrow-key navigation<span class="fn" data-ref="r8">8</span>. Answers are native <span class="mono">&lt;details&gt;</span> elements, so the browser's own find searches inside them. With JavaScript disabled entirely the page still reads: all three columns render, on a phone as on a desktop, and every answer still opens with a click. What is lost is whatever moves you around &mdash; the switching, the jump from a numeral to its card, the buttons, the striking-through of dead links &mdash; and printing then leaves the answers folded.</p>
+  <p>The Top and Back buttons carry spoken labels, since neither shows much text: <i>Back to the top of the page</i>, and <i>Back to where this source is cited, in column A</i> (or C).</p>
 
   <h2>Publishing, for someone who has used neither GitHub nor GitHub Desktop</h2>
   <p>Written for a reader who has never done any of it. No command line at any point.</p>
   <h3>Once, at the start — about twenty minutes</h3>
 <pre>1  Make a free GitHub account.
 
-2  Make a new repository, named for the site. Tick "Public".
+2  Make a new repository, named for the site. Check "Public".
    A repository is a folder on their servers that keeps
    every version of everything in it.
 
@@ -531,7 +592,7 @@ no analytics         no third party in the page</pre>
 
 7  Wait for the padlock. A few minutes after the domain
    resolves a certificate is issued automatically and a
-   tickbox appears: "Enforce HTTPS". Tick it.
+   checkbox appears: "Enforce HTTPS". Check it.
 
 8  Turn on two-factor authentication on both the GitHub
    account and the registrar account. These are the only
@@ -551,9 +612,14 @@ no analytics         no third party in the page</pre>
   <h2>A running record</h2>
   <p>Optional, and not what most sites will do. Each issue is dated, published the day it is written, and superseded rather than edited — a later issue may correct an earlier one, but the earlier one stays exactly as published.</p>
   <p>Files go <span class="mono">/index.html</span> for the current issue and <span class="mono">/YYYY-MM-DD/index.html</span> for the permanent dated copy, so a link sent today still resolves next year. The version history underneath is a second, independent record of when each word was written.</p>
+  <p>A site with more than one series gives each a folder of its own, as baconian-ciphers.online does with <span class="mono">/biliteral/</span> and <span class="mono">/word-cipher/</span><span class="fn" data-ref="r5">5</span>. The dated copies are never touched again &mdash; not even to add a button the current copy has since gained.</p>
+
+  <h2 id="family">A family of sites</h2>
+  <p>Sites built this way can form a family, wired upward. On an instance that sits under another site in this family, the last thing on the page, below the footer, is a card headed <b>&uarr; One level up</b>: the name of the site above it, and one line saying what that site is, in that site&rsquo;s own words. worland-dog-law.online points to washakie-ai.online<span class="fn" data-ref="r11">11</span>, and washakie-ai.online points here. This site is the class at the top, so it carries no such card; baconian-ciphers.online carries none either, because it links upward to a site outside this family. The map at the head of the page shows the four sites and which way their links point.</p>
+  <p>An instance adds what its own subject needs. worland-dog-law.online, three pages long, puts a search box on each page, covering its index and the ordinance text<span class="fn" data-ref="r6">6</span>; baconian-ciphers.online, a running record in two series, lists every issue of both on its front page<span class="fn" data-ref="r5">5</span>. What proves itself on one instance is written back into the format &mdash; here, and in the template new sites are made from &mdash; so the next site starts with it.</p>
 
   <h2>Page D — the setup sheet nobody sees</h2>
-  <p>A fourth page exists, unlinked and marked not to be indexed. It is the setup sheet: the title, the standfirst, which image heads the page, the source cards, and the last link-check result. It writes the values the page reads.</p>
+  <p>A fourth page exists, unlinked and marked not to be indexed. It is the setup sheet: the header, the picture at the head of the page, the most-recent-change card, the source cards, the one-level-up card, and the last link-check result. Its header knows the two kinds of page &mdash; a standing page and a running series &mdash; and each block is written out as text to paste into the file.</p>
   <p>It is not an admin panel and has no login, because there is nothing behind it to protect. It is a form that produces text you paste into a file. It is kept out of the navigation because it is furniture, not content.</p>
 
   <h2>Failures recorded in building this</h2>
@@ -563,6 +629,10 @@ no analytics         no third party in the page</pre>
     <li><b>The sources column was first placed on the right.</b> It read as an appendix and got ignored in testing. Moving it to the middle changed nothing but position, and that fixed it.</li>
     <li><b>The link was originally the first line of each card.</b> Readers clicked it immediately and never read the preview, defeating the entire column. Putting it last was the single most important decision in the design.</li>
     <li><b>The format was originally named for a daily report.</b> The first real site built this way had no daily rhythm at all, so the name described a habit rather than the thing. Renamed for the structure, which is what does not change.</li>
+    <li><b>Phone view was first offered to every reader.</b> It is a tool for checking the layout, which readers have no reason to do. It now appears only for whoever builds the page.</li>
+    <li><b>The family links first went in as a line of footer text</b>, on worland-dog-law.online and washakie-ai.online. They did not read as a way up to the next site. They are now a card of their own below the footer, headed &uarr; One level up.</li>
+    <li><b>This page said it read fully without JavaScript, and on a phone it did not.</b> Only column A showed; the other two waited for a script that never ran. A rule that applies only when scripts are off now shows all three.</li>
+    <li><b>Printing left every answer folded.</b> The print rules unhid all three columns but could not open a closed answer, so paper carried the questions without their answers. The page now opens every answer just before printing, and folds them again after.</li>
   </ul>
 </section>
 
@@ -572,7 +642,7 @@ no analytics         no third party in the page</pre>
 <footer>
   Three Columns · A Universal Format for Single-Topic Websites, Generated by AI<br>
   Walter Wilkinson · Worland · Washakie County · Wyoming · <strong>5Ws</strong><br>
-  No analytics, no trackers, no cookies. This page sets nothing and stores nothing.
+  No analytics, no trackers, no cookies. This page sets nothing and stores nothing for its readers.
 </footer>
 <div class="endmark">·</div>
 
@@ -628,7 +698,39 @@ no analytics         no third party in the page</pre>
     });
   });
 
+  // internal link cards -> open the passage they point at, in its own column
+  function openPassage(id){
+    var d = document.getElementById(id);
+    if (!d) return false;
+    var col = d.closest('.col');
+    if (col) {
+      var tab = tabs.filter(function(t){ return cols[t.id] === col.id; })[0];
+      if (tab) select(tab.id);
+    }
+    if (d.tagName === 'DETAILS') d.open = true;
+    d.scrollIntoView({behavior:'smooth', block:'start'});
+    d.classList.add('flash');
+    setTimeout(function(){ d.classList.remove('flash'); }, 1600);
+    return true;
+  }
+  document.querySelectorAll('.bcard[data-open]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if (openPassage(a.dataset.open)) e.preventDefault();
+    });
+  });
+
   document.getElementById('pdf').addEventListener('click', function(){ window.print(); });
+  // print: open every folded answer first, and fold them again after, so paper misses nothing
+  var unfolded = [];
+  window.addEventListener('beforeprint', function(){
+    var closed = [].filter.call(document.querySelectorAll('details'), function(d){ return !d.open; });
+    closed.forEach(function(d){ d.open = true; });
+    unfolded = unfolded.concat(closed);
+  });
+  window.addEventListener('afterprint', function(){
+    unfolded.forEach(function(d){ d.open = false; });
+    unfolded = [];
+  });
   var th = document.getElementById('theme');
   th.addEventListener('click', function(){
     var dark = document.documentElement.getAttribute('data-theme') === 'dark';
