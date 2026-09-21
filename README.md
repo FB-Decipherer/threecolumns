@@ -52,7 +52,7 @@ so nothing in it can become an old version.
 | `back-link.js` | the Back button on a source card, returning to the numeral that opened it |
 | `masthead-sitemap.svg` | the picture at the head of the page: the map of the site family, with which way each link points |
 | `social.png` `apple-touch-icon.png` | the share card and the home-screen icon |
-| `sites/` | sample sites in the format, one folder each, not indexed. `sites/farm/` is a sample page for an invented Washakie County farm, made for washakie-ai.online |
+| `sites/` | sample sites in the format, one folder each, not indexed. `sites/east-bench-farm/` is a sample page for an invented Washakie County farm, made for washakie-ai.online |
 | `favicon.svg` `robots.txt` `sitemap.xml` `404.html` | the usual furniture |
 
 The browser checks behind column C's *Quality assurance* are kept in
