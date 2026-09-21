@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>East Bench Pivot Farm · Hay and Beef, East of Worland (a demonstration)</title>
+<meta name="description" content="A demonstration of the Three Columns format for a Washakie County farm: the farm is invented; the county, the crops, the water and the rules are real, and sourced.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#FCFAF5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15130F" media="(prefers-color-scheme: dark)">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<noscript><style>
+/* No JavaScript: nothing can switch columns, so show all three, undimmed, on every screen. */
+.col{display:block!important;opacity:1!important}
+</style></noscript>
+<style>
+:root{
+  --paper:#FCFAF5; --card:#F5F1E8; --ink:#1E1B16; --ink-mid:#4A443A;
+  --rule:#DCD5C6; --accent:#4C7A4E; --accentb:#B4372C; --gold:#C8992F;
+  --dead:#8A8177;
+}
+:root[data-theme="dark"]{
+  --paper:#15130F; --card:#1E1B16; --ink:#F2EDE3; --ink-mid:#B7AF9F;
+  --rule:#38332A; --accent:#7FA981; --accentb:#D2695C; --gold:#D9B45C;
+  --dead:#6B655B;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.62;}
+.wrap{max-width:1560px;margin:0 auto;padding:0 26px;}
+a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);}
+a:hover{border-bottom-color:var(--accent);}
+
+/* ---------- header ---------- */
+header{padding:38px 0 4px;}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mid);
+  display:flex;align-items:center;gap:.4em;}
+.eyebrow .sep{opacity:.55;font-family:"Source Serif 4",serif;font-size:1.5em;line-height:0;}
+.mark{width:22px;height:22px;flex:none;}
+h1{font-size:clamp(30px,4.4vw,48px);line-height:1.12;font-weight:600;margin:14px 0 0;
+  letter-spacing:-.012em;}
+h1 .sep{color:var(--accent);font-weight:400;padding:0 .18em;}
+h1 .seg{display:inline-block;}
+.claimlabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:#2E5A33;margin-top:20px;}
+:root[data-theme="dark"] .claimlabel{color:#8FBE91;}
+.standfirst{font-size:20px;line-height:1.5;color:var(--ink-mid);margin:8px 0 0;max-width:62ch;}
+.standfirst strong{display:inline-block;margin-top:10px;font-weight:600;color:var(--ink);}
+.asof{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-mid);
+  border:1px solid var(--rule);border-radius:999px;padding:5px 13px;display:inline-block;margin-top:20px;}
+
+/* ---------- nav ---------- */
+nav{display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  margin-top:26px;padding:11px 0;position:sticky;top:0;background:var(--paper);z-index:20;}
+button{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.06em;
+  background:none;border:1px solid var(--rule);color:var(--ink-mid);
+  padding:8px 15px;border-radius:6px;cursor:pointer;}
+button:hover{border-color:var(--accent);color:var(--ink);}
+button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+button .key{color:var(--gold);font-weight:500;margin-right:.55em;}
+button[aria-selected="true"] .key{color:var(--gold);}
+nav .spacer{flex:1;}
+.util{font-size:11.5px;padding:7px 12px;}
+
+/* ---------- the three columns ---------- */
+main{display:grid;gap:0 34px;padding:30px 0 10px;
+  grid-template-columns:1fr minmax(280px,.82fr) 1fr;}
+.col{min-width:0;}
+.col + .col{border-left:1px solid var(--rule);padding-left:34px;}
+.colhead{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-mid);padding-bottom:9px;
+  border-bottom:2px solid var(--ink);margin-bottom:20px;
+  position:sticky;top:52px;background:var(--paper);}
+.colhead b{color:var(--gold);font-weight:700;
+  display:inline-block;border:1px solid var(--rule);border-radius:6px;
+  padding:2px 7px;margin-right:.5em;line-height:1.25;}
+.col.dim{opacity:.42;}
+.col{transition:opacity .15s;}
+.col.dim:hover{opacity:.62;}
+@media (prefers-reduced-motion:reduce){.col{transition:none;}}
+h2{font-size:22px;font-weight:600;margin:30px 0 6px;letter-spacing:-.006em;}
+h2:first-of-type{margin-top:0;}
+h3{font-size:15.5px;font-weight:600;margin:24px 0 4px;
+  font-family:"IBM Plex Mono",monospace;letter-spacing:.02em;color:var(--accent);}
+p{margin:9px 0 0;}
+.lede{font-size:18px;color:var(--ink-mid);}
+ul,ol{margin:9px 0 0;padding-left:20px;}
+li{margin:5px 0;}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.9em;}
+pre{font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.5;
+  background:var(--card);border:1px solid var(--rule);border-radius:7px;
+  padding:13px 15px;overflow-x:auto;margin:12px 0 0;}
+.note{margin-top:18px;padding:14px 16px;background:var(--card);
+  border-left:3px solid var(--accent);border-radius:0 7px 7px 0;}
+
+details{border-top:1px solid var(--rule);}
+details:last-of-type{border-bottom:1px solid var(--rule);}
+summary{cursor:pointer;padding:12px 0;font-weight:600;list-style:none;
+  display:flex;gap:.6em;align-items:baseline;}
+summary::-webkit-details-marker{display:none;}
+summary::before{content:"+";font-family:"IBM Plex Mono",monospace;color:var(--accent);flex:none;}
+details[open] summary::before{content:"−";}
+details .body{padding:0 0 14px 1.5em;}
+
+/* footnote markers */
+/* reference numerals, in the text and on the cards alike: a white disc with a thin rule-colored
+   border. The numeral keeps the light-theme red in both themes, because the disc stays white. */
+.fn{font-family:"IBM Plex Mono",monospace;font-size:.66em;font-weight:500;line-height:1;
+  color:#B4372C;cursor:pointer;vertical-align:.42em;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:1.8em;height:1.8em;padding:0;margin:0 .08em;
+  background:#FFFFFF;border:1px solid var(--rule);border-radius:999px;}
+.fn:hover{border-color:var(--accentb);}
+
+/* ---------- reference blocks (column B) ---------- */
+.ref{border:1px solid var(--rule);border-radius:9px;padding:15px 16px;margin-bottom:15px;
+  background:var(--card);scroll-margin-top:100px;}
+.ref.flash{border-color:var(--accentb);box-shadow:0 0 0 3px rgba(180,55,44,.14);}
+.rnum{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;line-height:1;
+  color:#B4372C;vertical-align:middle;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;padding:0;
+  background:#FFFFFF;border:1px solid var(--rule);border-radius:999px;}
+.rkind{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-mid);display:inline;margin-left:.7em;}
+.rtitle{font-size:17px;font-weight:600;margin-top:7px;line-height:1.3;}
+.rmeta{font-size:13.5px;color:var(--ink-mid);margin-top:4px;font-style:italic;}
+.rprev{font-size:14.5px;margin-top:9px;}
+.rwhy{font-size:14.5px;margin-top:7px;color:var(--ink-mid);}
+.rwhy b{color:var(--ink);font-weight:600;}
+.rlink{display:block;margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+  padding:8px 11px;border:1px solid var(--rule);border-radius:6px;
+  background:var(--paper);word-break:break-all;border-bottom:1px solid var(--rule);}
+.rlink:hover{border-color:var(--accent);}
+.rlink::before{content:"→ ";color:var(--accent);}
+.rlink.broken{color:var(--dead);border-style:dashed;cursor:not-allowed;
+  text-decoration:line-through;pointer-events:none;}
+.rlink.broken::before{content:"× ";color:var(--dead);}
+#deadnote{margin-top:22px;padding:13px 15px;border:1px dashed var(--rule);border-radius:7px;
+  font-size:14px;color:var(--ink-mid);}
+
+/* ---- Column B links block: Internal links (most recent content change), then External links.
+        Same headings and captions on every Three Columns site, so a reader knows where to look. ---- */
+.colbsh{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-mid);margin:26px 0 0;}
+.colbsh:first-of-type{margin-top:18px;}
+.colbcap{font-size:15.5px;color:var(--ink-mid);margin:4px 0 12px;}
+.bcard{display:block;text-decoration:none;color:inherit;background:var(--card);
+  border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:9px;
+  padding:13px 15px;margin-bottom:15px;}
+.bcard:hover{border-color:var(--accent);}
+.bcard:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.bcard .t{display:block;font-weight:600;font-size:16px;line-height:1.3;}
+.bcard .d{display:block;font-size:14.5px;color:var(--ink-mid);margin-top:6px;}
+details[id],h2[id]{scroll-margin-top:100px;}
+details.flash > summary{color:var(--accentb);}
+h2.flash{color:var(--accentb);}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  background:var(--card);padding:28px 26px 32px;margin-top:54px;
+  font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.9;color:var(--ink-mid);
+  text-align:center;}
+footer strong{color:var(--ink);letter-spacing:.04em;}
+.endmark{text-align:center;padding:26px 0 58px;color:var(--ink-mid);}
+/* one level up: the last thing on the page, a card naming the site one level above this one */
+/* a <nav>, so undo the page's own nav bar rules (sticky, flex, rules above and below) */
+.uplevel{display:block;position:static;border:0;background:none;z-index:auto;
+  max-width:62rem;margin:26px auto 0;padding:0 16px;text-align:center;}
+.uplevel a{display:inline-block;max-width:34rem;background:var(--card);border:1px solid var(--rule);
+  border-radius:8px;padding:12px 18px;color:inherit;text-decoration:none;}
+.uplevel a:hover{border-color:var(--accent);}
+.uplevel .uplabel{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mid);}
+.uplevel .upname{display:block;font-weight:600;font-size:16px;margin-top:5px;
+  text-decoration:underline;text-underline-offset:3px;}
+.uplevel a:hover .upname{color:var(--accent);}
+.uplevel .upcap{display:block;font-size:14px;color:var(--ink-mid);line-height:1.4;margin-top:3px;}
+@media print{.uplevel{display:none;}}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  main{grid-template-columns:1fr;gap:0;}
+  .col + .col{border-left:0;padding-left:0;border-top:1px solid var(--rule);
+    margin-top:34px;padding-top:26px;}
+  .col{display:none;}
+  .col.active{display:block;}
+  .col.dim{opacity:1;}
+  .colhead{position:static;}
+}
+@media print{
+  nav,.endmark{display:none;}
+  .col{display:block!important;opacity:1!important;}
+  main{grid-template-columns:1fr;}
+  .col + .col{border-left:0;padding-left:0;page-break-before:always;}
+  details{border:0;} details .body{display:block!important;padding-left:0;}
+  summary::before{content:"";}
+  body{background:#fff;color:#000;font-size:11pt;}
+}
+
+/* ---- masthead picture: the slot every instance inherits. The picture sits in a <figure> so it
+        can carry a caption, set at 22 px like every caption in the format. ---- */
+header{display:flex; gap:1.6rem; align-items:flex-start; flex-wrap:wrap}
+.masthead-text{flex:1 1 24rem; min-width:0}
+.masthead-fig{flex:0 0 auto; width:clamp(15rem,27vw,22rem); margin:0; align-self:center}
+.masthead-fig figcaption{font-size:22px; line-height:1.3; color:var(--ink-mid);
+  margin-top:.55rem; text-align:center; text-wrap:balance}
+a.masthead-img{display:block; width:100%; line-height:0;
+  border:1px solid var(--rule); border-radius:.5rem; overflow:hidden}
+a.masthead-img img{width:100%; height:auto; display:block}
+a.masthead-img:hover{outline:2px solid var(--accent); outline-offset:3px}
+a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+@media (max-width:640px){.masthead-fig{width:100%; margin-top:.4rem}}
+@media print{.masthead-fig{display:none !important} header{display:block}}
+
+/* ---- the demonstration notice: this farm is invented ---- */
+.demo{margin:14px 0 0;max-width:62ch;padding:10px 14px;border:1px dashed var(--accentb);border-radius:8px;
+  background:var(--card);font-size:16px;line-height:1.5;color:var(--ink);}
+.demo b{color:var(--accentb);}
+.phone{white-space:nowrap;}
+/* ---- SAMPLE, stenciled across the top of the page, like paint on a crate ---- */
+header{position:relative;}
+.stencil{position:absolute;top:44px;left:50%;width:min(560px,74vw);height:auto;
+  transform:translateX(-50%) rotate(-12deg);color:var(--accentb);opacity:.3;
+  pointer-events:none;z-index:6;}
+@media (max-width:640px){.stencil{top:34px;width:78vw;}}
+@media print{.stencil{opacity:.25;}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <!-- the faux stencil: this page is a sample -->
+  <svg class="stencil" viewBox="-18 -12 702 174" aria-hidden="true" focusable="false"><defs><filter id="spray" x="-4%" y="-8%" width="108%" height="116%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/></filter></defs><g fill="currentColor" filter="url(#spray)"><rect x="0" y="0" width="88" height="24" rx="1.5"/><rect x="0" y="31" width="24" height="25" rx="1.5"/><rect x="0" y="63" width="88" height="24" rx="1.5"/><rect x="64" y="94" width="24" height="25" rx="1.5"/><rect x="0" y="126" width="88" height="24" rx="1.5"/><rect x="108" y="0" width="24" height="150" rx="1.5"/><rect x="172" y="0" width="24" height="150" rx="1.5"/><rect x="139" y="0" width="26" height="24" rx="1.5"/><rect x="139" y="72" width="26" height="24" rx="1.5"/><rect x="216" y="0" width="24" height="150" rx="1.5"/><rect x="332" y="0" width="24" height="150" rx="1.5"/><polygon points="247,0 271,0 282.5,100 262.5,100"/><polygon points="325,0 301,0 289.5,100 309.5,100"/><rect x="376" y="0" width="24" height="150" rx="1.5"/><rect x="407" y="0" width="55" height="24" rx="1.5"/><rect x="438" y="31" width="24" height="56" rx="1.5"/><rect x="407" y="63" width="24" height="24" rx="1.5"/><rect x="482" y="0" width="24" height="119" rx="1.5"/><rect x="482" y="126" width="80" height="24" rx="1.5"/><rect x="582" y="0" width="24" height="150" rx="1.5"/><rect x="613" y="0" width="53" height="24" rx="1.5"/><rect x="613" y="63" width="39" height="24" rx="1.5"/><rect x="613" y="126" width="53" height="24" rx="1.5"/></g></svg>
+    <div class="masthead-text">
+  <div class="eyebrow">
+    <span>East Bench Pivot Farm</span><span class="sep">·</span><span>Washakie County, Wyoming</span>
+  </div>
+  <h1><span class="seg">East Bench Pivot Farm</span> <span class="sep">·</span> <span class="seg">Hay and Beef, East of Worland</span></h1>
+  <p class="demo"><b>A demonstration.</b> This farm is invented, to show a Washakie County farm what a page of its own could look like. The county, the crops, the water and the rules are real, and every fact about them is sourced in the middle column.</p>
+  <div class="claimlabel">What this is</div>
+  <p class="standfirst">A family farm on irrigated ground east of Worland, watered by a center pivot with the Bighorns in view. Alfalfa hay by the bale or the ton, certified weed-free for the mountains, and beef by the quarter, half or whole. Our sugar beets and malt barley go under contract to buyers in Worland.</p>
+  <div class="asof">hay &middot; beef by the share &middot; by appointment &middot; call or text <span class="phone">(307) 555-0142</span></div>
+    </div>
+
+    <figure class="masthead-fig">
+      <a class="masthead-img" href="masthead-pivot.svg" target="_blank" rel="noopener" title="Open the full-size picture">
+        <img src="masthead-pivot.svg" width="680" height="440" loading="eager" decoding="async"
+             alt="An illustration: a center-pivot irrigation system watering a green alfalfa field, with the snow-capped Bighorn Mountains behind it in morning light.">
+      </a>
+      <figcaption>An illustration: the pivot on the east bench, the Bighorns behind.</figcaption>
+    </figure>
+  </header>
+
+<nav role="tablist" aria-label="Columns">
+  <button role="tab" id="tA" aria-controls="cA" aria-selected="true"><span class="key">A</span>Plain answers</button>
+  <button role="tab" id="tB" aria-controls="cB" aria-selected="false"><span class="key">B</span>Sources</button>
+  <button role="tab" id="tC" aria-controls="cC" aria-selected="false"><span class="key">C</span>How it works</button>
+  <span class="spacer"></span>
+  <button class="util" id="phoneview" type="button" hidden>Phone view</button>
+  <button class="util" id="pdf">Save as PDF</button>
+  <button class="util" id="theme">Dark</button>
+</nav>
+</div>
+
+<div class="wrap">
+<main>
+
+<!-- ================= A ================= -->
+<section class="col active" id="cA" role="tabpanel" aria-labelledby="tA">
+  <div class="colhead"><b>A</b> &nbsp;Plain answers</div>
+
+  <details id="sell"><summary>What do you sell?</summary><div class="body">
+    <p>Alfalfa hay, and beef by the share. That is all we sell to the public.</p>
+    <ul>
+      <li><b>Hay</b> &mdash; alfalfa, in small squares you can lift by hand, and in 3x4 large squares by the ton. Certified weed-free when you ask for it.</li>
+      <li><b>Beef</b> &mdash; a quarter, a half or a whole steer, once a year in the fall. You buy a share of the live animal, and the processor cuts it to your order.</li>
+    </ul>
+    <p>Our sugar beets and malt barley are grown under contract and go to buyers in Worland<span class="fn" data-ref="r9">9</span><span class="fn" data-ref="r10">10</span>. They are not for sale here.</p>
+  </div></details>
+
+  <details id="hayprice"><summary>What does hay cost?</summary><div class="body">
+    <p>By the ton for large squares, by the bale for small ones. This season&rsquo;s price for good alfalfa in 3x4 large squares is <b>$285 a ton</b> at the stack &mdash; a sample figure for this demonstration, set inside the range in the state&rsquo;s own hay report: $270 to $300 a ton on 3 September 2026<span class="fn" data-ref="r2">2</span>.</p>
+    <p>Small squares are priced by the bale. Delivery is extra; ask when you call.</p>
+  </div></details>
+
+  <details id="weedfree"><summary>Is your hay certified weed-free? Why does it matter?</summary><div class="body">
+    <p>Yes, when you ask for it. On the Bighorn National Forest, and every national forest in the region, you may not bring hay, straw or grain onto the forest unless it is certified weed-free and every bale carries the tag or twine that proves it<span class="fn" data-ref="r3">3</span>. Hunters, outfitters and anyone packing horses into the mountains need it.</p>
+    <p>Certified means the county Weed and Pest district inspected the field<span class="fn" data-ref="r4">4</span>. The paperwork comes with the hay; keep it with the bales.</p>
+  </div></details>
+
+  <details id="beef"><summary>How does buying a quarter of beef work?</summary><div class="body">
+    <ol>
+      <li>You reserve a quarter, a half or a whole steer before it goes to the processor. You are buying a share of the live animal<span class="fn" data-ref="r7">7</span>.</li>
+      <li>We haul it to a custom-exempt processor in the Basin, and you tell the processor how you want it cut and wrapped.</li>
+      <li>You pay us by the pound of hanging weight &mdash; the carcass as it hangs after slaughter &mdash; and you pay the processor for the cutting and wrapping.</li>
+      <li>You pick up your beef at the processor, frozen and wrapped. The packages are stamped &ldquo;Not for Sale&rdquo;: they are for your household<span class="fn" data-ref="r6">6</span>.</li>
+    </ol>
+    <p>You bring home less than the hanging weight, because of bone and trim. The processor can tell you what to expect from the way you ask for it to be cut.</p>
+  </div></details>
+
+  <details id="steak"><summary>Why can&rsquo;t I just buy a steak from you?</summary><div class="body">
+    <p>Because Wyoming law does not allow it from a farm like ours. Meat from a custom-exempt plant may not be sold to stores or to anyone else; packaged cuts for sale have to come from an inspected plant<span class="fn" data-ref="r5">5</span>. What the law does allow is selling a share of the animal before it is butchered<span class="fn" data-ref="r7">7</span>, which is why we do it that way.</p>
+  </div></details>
+
+  <details id="where"><summary>Where are you, and when can I come?</summary><div class="body">
+    <p>East of Worland, on the bench above the river, by appointment. Call or text first and we will send directions; we are often in the field.</p>
+    <p>Call or text <b class="phone">(307) 555-0142</b>. (A made-up number, from the 555-0100 to 555-0199 range set aside for examples like this one.)</p>
+  </div></details>
+
+  <details id="deliver"><summary>Do you deliver?</summary><div class="body">
+    <p>Hay, yes: large squares by the truckload, anywhere in Washakie County. Small squares are loaded at the farm. Beef is picked up at the processor.</p>
+  </div></details>
+
+  <details id="facebook"><summary>Why a website, and not just Facebook?</summary><div class="body">
+    <p>We are on Facebook too. This page is the one that is always here and always right: no login to read it, nothing to scroll past, this season&rsquo;s price and what is available in one place. And it belongs to the farm, the way the pivot does. Column C has the detail.</p>
+  </div></details>
+
+  <details id="who"><summary>Who are you?</summary><div class="body">
+    <p>A family farm: two generations on the same irrigated ground east of Worland. Hay, beef, beets and barley, one pivot, and a good many years of ditch work before it.</p>
+  </div></details>
+</section>
+
+<!-- ================= B ================= -->
+<section class="col dim" id="cB" role="tabpanel" aria-labelledby="tB">
+  <div class="colhead"><b>B</b> &nbsp;Sources</div>
+  <p class="lede" style="font-size:15.5px">Everything cited in A or C, previewed. The link is always the last line &mdash; read the card first and decide whether you need the original at all.</p>
+
+  <h3 class="colbsh" id="colbint">Internal links</h3>
+  <p class="colbcap">Most recent content change.</p>
+  <a class="bcard" href="#weedfree" data-open="weedfree">
+    <span class="t">21 September 2026 &mdash; third cutting is in; certified weed-free squares for hunting season</span>
+    <span class="d">Small squares and 3x4 large squares, inspected, with the paperwork. What certified means, and why the mountains ask for it, is in column A.</span>
+  </a>
+
+  <h3 class="colbsh" id="colbext">External links</h3>
+  <p class="colbcap">Every reference to some other website.</p>
+
+  <article class="ref" id="r1">
+    <span class="rnum">1</span><span class="rkind">Statistics · county agriculture</span>
+    <div class="rtitle">2022 Census of Agriculture: Washakie County profile</div>
+    <div class="rmeta">USDA National Agricultural Statistics Service · released 2024 · public domain</div>
+    <div class="rprev">206 farms on 368,504 acres, 38,025 of them irrigated. Hay and forage is the largest crop by acreage (20,022 acres), then barley (6,329) and sugar beets (5,298). The county runs 35,968 cattle and 28,744 sheep, and livestock brings in 55 percent of its $60.6 million in farm sales.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is the county this farm is invented to fit: irrigated hay, contract beets and barley, and cattle. Every crop on this page is among the county&rsquo;s largest.</div>
+    <a class="rlink" href="https://www.nass.usda.gov/Publications/AgCensus/2022/Online_Resources/County_Profiles/Wyoming/cp56043.pdf">nass.usda.gov · 2022 county profile, Washakie County (PDF)</a>
+  </article>
+
+  <article class="ref" id="r2">
+    <span class="rnum">2</span><span class="rkind">Market report · hay prices</span>
+    <div class="rtitle">Wyoming Direct Hay Report</div>
+    <div class="rmeta">USDA Agricultural Marketing Service · Torrington, Wyoming · weekly or every two weeks</div>
+    <div class="rprev">Prices paid for hay sold straight from Wyoming farms, by kind, grade and bale size. The issue of 3 September 2026 put good-grade alfalfa in 3x4 large squares at $270 to $300 a ton, with demand very good.</div>
+    <div class="rwhy"><b>Why it is cited:</b> the farm&rsquo;s hay price is set against it, so a buyer can see the price is fair without taking the farm&rsquo;s word for it.</div>
+    <a class="rlink" href="https://mymarketnews.ams.usda.gov/viewReport/3236">mymarketnews.ams.usda.gov/viewReport/3236</a>
+  </article>
+
+  <article class="ref" id="r3">
+    <span class="rnum">3</span><span class="rkind">Regulation · national forests</span>
+    <div class="rtitle">Weed Free Forage Products (Order R02-2024-03)</div>
+    <div class="rmeta">USDA Forest Service, Rocky Mountain Region · in force 1 January 2025 to 31 December 2028</div>
+    <div class="rprev">On every national forest in the region, the Bighorn among them, no one may possess, store or carry hay, straw, grain or other forage unless it is certified weed-free, with the certificate in hand and tags or twine on every bale. A violation is a Class B misdemeanor.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is why hunters, outfitters and horse packers heading into the Bighorns ask for certified hay by name.</div>
+    <a class="rlink" href="https://fs.usda.gov/r02/alerts/weed-free-forage-products">fs.usda.gov/r02/alerts/weed-free-forage-products</a>
+  </article>
+
+  <article class="ref" id="r4">
+    <span class="rnum">4</span><span class="rkind">Program · certification</span>
+    <div class="rtitle">Certified Weed Free Products</div>
+    <div class="rmeta">Wyoming Weed &amp; Pest Council · with the Wyoming Department of Agriculture&rsquo;s Weed Free Forage Program</div>
+    <div class="rprev">Wyoming certifies hay to the North American Weed Free Forage standards, which other western states accept too. The county Weed and Pest district does the field inspection.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is the inspection behind the farm&rsquo;s certified bales, and the office a buyer can call to check.</div>
+    <a class="rlink" href="https://wyoweed.org/certified-weed-free-products/">wyoweed.org/certified-weed-free-products</a>
+  </article>
+
+  <article class="ref" id="r5">
+    <span class="rnum">5</span><span class="rkind">Regulation · meat</span>
+    <div class="rtitle">State Meat Program</div>
+    <div class="rmeta">Wyoming Department of Agriculture</div>
+    <div class="rprev">Meat cut and wrapped in a state-inspected plant may be sold to stores or people anywhere in Wyoming, though not out of state. Meat from a custom-exempt plant may not be sold to stores or to anyone else.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is why the farm sells shares of a live steer rather than packages of beef.</div>
+    <a class="rlink" href="https://agriculture.wy.gov/meat-poultry">agriculture.wy.gov/meat-poultry</a>
+  </article>
+
+  <article class="ref" id="r6">
+    <span class="rnum">6</span><span class="rkind">Guide · selling food</span>
+    <div class="rtitle">Food Ventures in Wyoming: A Resource and Regulatory Guide</div>
+    <div class="rmeta">University of Wyoming Extension · bulletin B-1324 · 2018</div>
+    <div class="rprev">Custom-exempt meat is marked &ldquo;Not for Sale&rdquo; and goes back to the animal&rsquo;s owner. One steer can be sold as quarters to four different customers, with proper records. Selling across state lines takes federal inspection.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it spells out, step by step, the quarter-and-half arrangement this farm uses.</div>
+    <a class="rlink" href="https://wyoextension.org/publications/html/B1324/">wyoextension.org/publications/html/B1324</a>
+  </article>
+
+  <article class="ref" id="r7">
+    <span class="rnum">7</span><span class="rkind">Statute · direct sales</span>
+    <div class="rtitle">Wyoming Food Freedom Act, W.S. 11-49-103</div>
+    <div class="rmeta">Wyoming Statutes, Title 11, Chapter 49 · as published by Justia</div>
+    <div class="rprev">Lets producers sell food they grow or make straight to the person who will eat it, but not meat, with narrow exceptions: poultry up to 1,000 birds a year, live animals, and portions of a live animal sold before slaughter for future delivery. A 2024 amendment for direct sales of uninspected beef takes effect only when the governor certifies that federal law allows it.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is the law that allows a share of a live animal to be sold at all.</div>
+    <a class="rlink" href="https://law.justia.com/codes/wyoming/title-11/chapter-49/section-11-49-103/">law.justia.com · W.S. 11-49-103</a>
+  </article>
+
+  <article class="ref" id="r8">
+    <span class="rnum">8</span><span class="rkind">Regulation · livestock</span>
+    <div class="rtitle">Brand Inspection</div>
+    <div class="rmeta">Wyoming Livestock Board</div>
+    <div class="rprev">Brand inspections are required whenever livestock change owners, and to move them across a county or state line. Animals sent straight to a sale barn or a slaughter plant are inspected when they arrive.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it names the two times a Washakie County steer must be inspected: when it changes owners, and when it leaves the county.</div>
+    <a class="rlink" href="https://wlsb.state.wy.us/public/brand-inspection">wlsb.state.wy.us/public/brand-inspection</a>
+  </article>
+
+  <article class="ref" id="r9">
+    <span class="rnum">9</span><span class="rkind">Company · sugar beets</span>
+    <div class="rtitle">Wyoming Sugar Company: history</div>
+    <div class="rmeta">Wyoming Sugar Company · Worland</div>
+    <div class="rprev">The Worland factory was bought in 2002 by local growers, business owners, employees and citizens, who formed the Wyoming Sugar Company to keep it running. In 2018 it became a grower-owned cooperative, and it markets its sugar through United Sugars.</div>
+    <div class="rwhy"><b>Why it is cited:</b> the farm&rsquo;s beets go to this factory under contract; they are not for sale here.</div>
+    <a class="rlink" href="https://wyomingsugar.com/history/">wyomingsugar.com/history</a>
+  </article>
+
+  <article class="ref" id="r10">
+    <span class="rnum">10</span><span class="rkind">Reporting · malt barley</span>
+    <div class="rtitle">There&rsquo;s Something In Wyoming That Makes It Perfect To Grow Coors&rsquo; Special Barley</div>
+    <div class="rmeta">Cowboy State Daily · 19 April 2025</div>
+    <div class="rprev">Molson Coors contracts malt barley around Worland, including a variety of its own that only contract growers may plant. About 45 percent of the harvest goes to the company&rsquo;s grain elevator about three miles outside Worland, and on by rail to a malt house.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it describes the kind of contract the farm&rsquo;s barley is grown under, and the elevator it goes to.</div>
+    <a class="rlink" href="https://cowboystatedaily.com/2025/04/19/theres-something-in-wyoming-that-makes-it-perfect-to-grow-coors-special-barley/">cowboystatedaily.com · 19 April 2025</a>
+  </article>
+
+  <article class="ref" id="r11">
+    <span class="rnum">11</span><span class="rkind">Report · irrigation</span>
+    <div class="rtitle">Highland Hanover Irrigation District Pump Station Replacement Project</div>
+    <div class="rmeta">U.S. Bureau of Reclamation, WaterSMART · 2023</div>
+    <div class="rprev">The district&rsquo;s own account of fields changed from flood irrigation to center pivots: from less than 50 percent efficient to more than 85 percent, done with NRCS EQIP and other program funding.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is the change this farm made, measured on real fields in the Big Horn Basin.</div>
+    <a class="rlink" href="https://www.usbr.gov/watersmart/weeg/docs/2023/HighlandHanoverDistrict_508.pdf">usbr.gov · Highland Hanover project (PDF)</a>
+  </article>
+
+  <article class="ref" id="r12">
+    <span class="rnum">12</span><span class="rkind">Program · cost share</span>
+    <div class="rtitle">Conservation assistance to improve irrigation and conserve water</div>
+    <div class="rmeta">USDA Natural Resources Conservation Service, Wyoming · 16 November 2023</div>
+    <div class="rprev">EQIP help for irrigation that saves water, in priority areas that include the Hanover Irrigation District area. The practices it covers include sprinkler irrigation systems.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is how a family farm pays for part of a pivot.</div>
+    <a class="rlink" href="https://www.nrcs.usda.gov/state-offices/wyoming/news/producers-in-wyoming-encouraged-to-apply-for">nrcs.usda.gov · Wyoming irrigation assistance</a>
+  </article>
+
+  <article class="ref" id="r13">
+    <span class="rnum">13</span><span class="rkind">Reference · climate</span>
+    <div class="rtitle">The Climate of Wyoming</div>
+    <div class="rmeta">Water Resources Data System and State Climate Office, University of Wyoming</div>
+    <div class="rprev">The lower Big Horn Basin around Worland, at about 4,000 feet, is the driest part of the state: 7 to 8 inches of rain and snow a year.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is why nothing on this farm grows without canal water.</div>
+    <a class="rlink" href="https://www.wrds.uwyo.edu/sco/wyoclimate.html">wrds.uwyo.edu/sco/wyoclimate.html</a>
+  </article>
+
+  <article class="ref" id="r14">
+    <span class="rnum">14</span><span class="rkind">Organization · young farmers</span>
+    <div class="rtitle">2026 Wyoming FFA Chapter Awards Results</div>
+    <div class="rmeta">Wyoming FFA Association · 2026</div>
+    <div class="rprev">Chief Washakie FFA, the chapter at Worland High School, earned a Gold rating and was a finalist for Chapter of the Year. Ten Sleep FFA also earned Gold.</div>
+    <div class="rwhy"><b>Why it is cited:</b> these are the county&rsquo;s FFA chapters, the ambassadors in the plan behind this page.</div>
+    <a class="rlink" href="https://association.wyffa.org/2026-wyoming-ffa-chapter-awards-results/">association.wyffa.org · 2026 chapter awards</a>
+  </article>
+
+  <article class="ref" id="r15">
+    <span class="rnum">15</span><span class="rkind">Proposal · the pilot program</span>
+    <div class="rtitle">Grass-Roots AI for Washakie County</div>
+    <div class="rmeta">washakie-ai.online · a $10,000 proposal for grass-roots AI in Washakie County</div>
+    <div class="rprev">A request to the Wyoming Business Council for a twelve-month pilot program in Washakie County: useful, practical websites made automatically for individuals and small businesses, yielding twelve working sites, four public workshops, and the method published free.</div>
+    <div class="rwhy"><b>Why it is cited:</b> a page like this one is what the pilot program would make. It is also the site one level up, linked from the card at the foot of this page.</div>
+    <a class="rlink" href="https://washakie-ai.online/">washakie-ai.online</a>
+  </article>
+
+  <article class="ref" id="r16">
+    <span class="rnum">16</span><span class="rkind">Format · how this page is built</span>
+    <div class="rtitle">Three Columns</div>
+    <div class="rmeta">threecolumns.online · an AI automation tool for generating ultralight one-topic websites</div>
+    <div class="rprev">The format this page is built in: plain answers first, every source previewed in the middle, the full detail last. One page that works on any device, prints properly, and belongs to its owner.</div>
+    <div class="rwhy"><b>Why it is cited:</b> column C&rsquo;s &ldquo;About this page&rdquo; says what the farm gets; this is the whole description.</div>
+    <a class="rlink" href="https://threecolumns.online/">threecolumns.online</a>
+  </article>
+
+  <div id="deadnote" hidden></div>
+</section>
+
+<!-- ================= C ================= -->
+<section class="col dim" id="cC" role="tabpanel" aria-labelledby="tC">
+  <div class="colhead"><b>C</b> &nbsp;How it works (Details)</div>
+  <p class="lede">The farm in detail: the ground, the water, the crops, and the rules behind every answer in column A.</p>
+
+  <h2 id="ground">The ground and the water</h2>
+  <p>The farm sits at about 4,000 feet, in the driest part of Wyoming: the lower Big Horn Basin gets 7 to 8 inches of rain and snow a year<span class="fn" data-ref="r13">13</span>. Nothing here grows on rainfall alone. The water comes from the Big Horn River by canal, and Washakie County irrigates 38,025 acres that way<span class="fn" data-ref="r1">1</span>.</p>
+
+  <h2 id="pivot">The pivot</h2>
+  <p>The alfalfa is watered by a center pivot: a line of pipe on wheeled towers, turning slowly around a fixed point at the middle of the field where the water comes in, and dropping it close to the crop. Before the pivot, the field was flood-irrigated from the ditch.</p>
+  <p>The difference is large. In the Highland Hanover Irrigation District, fields changed from flood irrigation to pivots went from under 50 percent efficient to over 85 percent<span class="fn" data-ref="r11">11</span>, paid for in part through the Natural Resources Conservation Service&rsquo;s EQIP program, which counts sprinkler systems in the Hanover area among its priorities<span class="fn" data-ref="r12">12</span>.</p>
+  <p>A pivot waters a circle, so the corners of a square field stay dry &mdash; the tan corners in the picture at the top of the page.</p>
+
+  <h2 id="rotation">The rotation</h2>
+  <p>Alfalfa stays in for several years; then the ground goes to sugar beets and malt barley before it returns to hay. Those are the county&rsquo;s leading crops by acreage: hay and forage on 20,022 acres, barley on 6,329, sugar beets on 5,298<span class="fn" data-ref="r1">1</span>.</p>
+  <p>The beets go to the factory in Worland, bought by the community in 2002 and a grower-owned cooperative since 2018<span class="fn" data-ref="r9">9</span>. The barley is grown under contract for malting and goes to the elevator a few miles outside town<span class="fn" data-ref="r10">10</span>. Neither is sold here.</p>
+
+  <h2 id="hay">The hay, in detail</h2>
+  <p>Three cuttings in a good year, and each is tested for feed value; ask and we will send the report. Certified weed-free hay comes from fields the county Weed and Pest district has inspected; those bales carry the tags or twine, and come with the certificate, that the Forest Service asks to see<span class="fn" data-ref="r3">3</span><span class="fn" data-ref="r4">4</span>.</p>
+  <p>The price follows the market. The USDA&rsquo;s Wyoming Direct Hay Report comes out every week or two from Torrington<span class="fn" data-ref="r2">2</span>, and the price in column A sits inside its range for the same kind and grade of hay.</p>
+
+  <h2 id="beefdetail">The beef, in detail</h2>
+  <p>A share has to be spoken for before slaughter, and that is what makes it legal. Wyoming lets a farm sell a live animal, or a portion of one, before slaughter for future delivery<span class="fn" data-ref="r7">7</span>, and one steer can go to four customers as quarters, with proper records<span class="fn" data-ref="r6">6</span>. What comes back is custom-exempt meat, marked &ldquo;Not for Sale&rdquo;: for the owner&rsquo;s household, never for resale<span class="fn" data-ref="r5">5</span>.</p>
+  <p>The steer is brand-inspected, as the Livestock Board requires whenever livestock change owners or cross a county line<span class="fn" data-ref="r8">8</span>. A 2024 change to the Food Freedom Act would let farms sell uninspected beef directly, but it takes effect only when the governor certifies that federal law allows it<span class="fn" data-ref="r7">7</span>.</p>
+
+  <h2 id="keeper">Who keeps this page</h2>
+  <p>The farm does not build web pages, and does not have to. The plan behind this demonstration is for members of the county&rsquo;s FFA chapters &mdash; Chief Washakie FFA at Worland High School, and Ten Sleep FFA, both rated Gold in 2026<span class="fn" data-ref="r14">14</span> &mdash; to act as ambassadors: bringing the page to the farm, and the farm&rsquo;s news to the page. When the third cutting is in, the farm sends a text, and the card at the top of the middle column changes.</p>
+  <p>The pilot program that would pay for the first dozen pages like this one is proposed at washakie-ai.online<span class="fn" data-ref="r15">15</span>.</p>
+
+  <h2 id="about">About this page</h2>
+  <p>It is built in the Three Columns format<span class="fn" data-ref="r16">16</span>: plain answers first, every source previewed in the middle, the detail last. It is a handful of plain files the farm owns outright &mdash; no monthly fee to a web company, no login for anyone who reads it, nothing to keep up but the words. It works on a phone in the pickup, and it prints properly for the kitchen table.</p>
+  <div class="note"><strong>Like the best tool on the place:</strong> simple, rugged, and yours.</div>
+
+  <h2 id="wrong">What went wrong</h2>
+  <p>The format asks every page to record at least one thing that went wrong. Here it is:</p>
+  <ul>
+    <li><b>Last year&rsquo;s third cutting was rained on in the windrow.</b> It was baled anyway, tested well below the rest, and sold as feeder hay at a lower price, labeled for what it was &mdash; not mixed in with the good hay.</li>
+  </ul>
+</section>
+
+</main>
+</div>
+
+<footer>
+  East Bench Pivot Farm &middot; an invented farm, for a demonstration<br>
+  Washakie County &middot; Wyoming<br>
+  No analytics, no trackers, no cookies. This page sets nothing and stores nothing for its readers.
+</footer>
+<nav class="uplevel" aria-label="One level up">
+  <a href="https://washakie-ai.online/">
+    <span class="uplabel">&uarr; One level up</span>
+    <span class="upname">washakie-ai.online</span>
+    <span class="upcap">a $10,000 proposal for grass-roots AI in Washakie County</span>
+  </a>
+</nav>
+<div class="endmark">·</div>
+
+<script>
+(function(){
+  var tabs = [].slice.call(document.querySelectorAll('[role="tab"]'));
+  var cols = { tA:'cA', tB:'cB', tC:'cC' };
+  var wide = function(){ return window.matchMedia('(min-width:1101px)').matches; };
+  function select(id){
+    tabs.forEach(function(t){
+      var on = t.id === id;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      var c = document.getElementById(cols[t.id]);
+      c.classList.toggle('active', on);
+      c.classList.toggle('dim', wide() ? !on : false);
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ select(t.id); });
+    t.addEventListener('keydown', function(e){
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var n = tabs[(i + d + tabs.length) % tabs.length];
+      n.focus(); select(n.id);
+    });
+  });
+  window.addEventListener('resize', function(){
+    var cur = tabs.filter(function(t){ return t.getAttribute('aria-selected') === 'true'; })[0];
+    if (cur) select(cur.id);
+  });
+  select('tA');
+
+  // A column is its own button: a click in a dimmed column (or tabbing into it) makes it the
+  // active one, exactly as its A/B/C button would. Capture phase, so a marker or card that
+  // sends the reader to another column still has the last word.
+  Object.keys(cols).forEach(function(tid){
+    var c = document.getElementById(cols[tid]);
+    var take = function(){ if (!c.classList.contains('active')) select(tid); };
+    c.addEventListener('click', take, true);
+    c.addEventListener('focusin', take);
+  });
+
+  // footnote markers -> reference card
+  document.querySelectorAll('.fn').forEach(function(f){
+    f.addEventListener('click', function(){
+      var el = document.getElementById(f.dataset.ref);
+      if (!el) return;
+      select('tB');
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      el.classList.add('flash');
+      setTimeout(function(){ el.classList.remove('flash'); }, 1600);
+    });
+  });
+
+  // internal link cards -> open the passage they point at, in its own column
+  function openPassage(id){
+    var d = document.getElementById(id);
+    if (!d) return false;
+    var col = d.closest('.col');
+    if (col) {
+      var tab = tabs.filter(function(t){ return cols[t.id] === col.id; })[0];
+      if (tab) select(tab.id);
+    }
+    if (d.tagName === 'DETAILS') d.open = true;
+    d.scrollIntoView({behavior:'smooth', block:'start'});
+    d.classList.add('flash');
+    setTimeout(function(){ d.classList.remove('flash'); }, 1600);
+    return true;
+  }
+  document.querySelectorAll('.bcard[data-open]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if (openPassage(a.dataset.open)) e.preventDefault();
+    });
+  });
+
+  document.getElementById('pdf').addEventListener('click', function(){ window.print(); });
+  // print: open every folded answer first, and fold them again after, so paper misses nothing
+  var unfolded = [];
+  window.addEventListener('beforeprint', function(){
+    var closed = [].filter.call(document.querySelectorAll('details'), function(d){ return !d.open; });
+    closed.forEach(function(d){ d.open = true; });
+    unfolded = unfolded.concat(closed);
+  });
+  window.addEventListener('afterprint', function(){
+    unfolded.forEach(function(d){ d.open = false; });
+    unfolded = [];
+  });
+  var th = document.getElementById('theme');
+  th.addEventListener('click', function(){
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+    th.textContent = dark ? 'Dark' : 'Light';
+  });
+
+  // link health: same-origin status file only. No file, no claim.
+  fetch('links.json', {cache:'no-store'}).then(function(r){
+    if (!r.ok) throw 0; return r.json();
+  }).then(function(d){
+    var dead = d.dead || {}, any = false;
+    Object.keys(dead).forEach(function(id){
+      var card = document.getElementById(id);
+      if (!card) return;
+      var a = card.querySelector('.rlink');
+      if (!a) return;
+      a.classList.add('broken');
+      a.removeAttribute('href');
+      a.setAttribute('aria-disabled','true');
+      any = true;
+    });
+    if (any) {
+      var n = document.getElementById('deadnote');
+      var lines = Object.keys(dead).map(function(id){
+        var t = document.getElementById(id).querySelector('.rtitle').textContent;
+        return '&ldquo;' + t + '&rdquo; — unreachable as of ' + dead[id];
+      });
+      n.innerHTML = '<b>A note on the struck-through links.</b> ' +
+        'These sources were live when this report was written and are not now. ' +
+        'They are shown rather than removed, so that what was cited stays visible.<br><br>' +
+        lines.join('<br>') + '<br><br>Last checked ' + (d.checked || 'unknown') + '.';
+      n.hidden = false;
+    }
+  }).catch(function(){ /* no status file: say nothing */ });
+})();
+</script>
+<script src="phone-view.js" defer></script>
+<script src="top-button.js" defer></script>
+<script src="back-link.js" defer></script>
+</body>
+</html>
