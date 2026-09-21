@@ -225,21 +225,23 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   background:var(--card);font-size:16px;line-height:1.5;color:var(--ink);}
 .demo b{color:var(--accentb);}
 .phone{white-space:nowrap;}
-/* ---- SAMPLE, stenciled across the top of the page, like paint on a crate ---- */
+/* ---- SAMPLE, stenciled across the top of the page, like paint on a crate. In light mode it is
+        multiplied over the page, so dark letters show through it; in dark mode it sits behind. ---- */
 header{position:relative;}
-.stencil{position:absolute;top:44px;left:50%;width:min(560px,74vw);height:auto;
-  transform:translateX(-50%) rotate(-12deg);color:var(--accentb);opacity:.3;
-  pointer-events:none;z-index:6;}
-@media (max-width:640px){.stencil{top:34px;width:78vw;}}
-@media print{.stencil{opacity:.25;}}
+.masthead-text,.masthead-fig{position:relative;z-index:1;}
+.stencil{position:absolute;top:26px;left:50%;width:min(600px,84vw);height:auto;
+  transform:translateX(-50%);opacity:.9;mix-blend-mode:multiply;pointer-events:none;user-select:none;z-index:6;}
+:root[data-theme="dark"] .stencil{mix-blend-mode:normal;opacity:.35;z-index:0;}
+@media (max-width:640px){.stencil{top:40px;width:88vw;}}
+@media print{.stencil{opacity:.5;}}
 </style>
 </head>
 <body>
 
 <div class="wrap">
 <header>
-  <!-- the faux stencil: this page is a sample -->
-  <svg class="stencil" viewBox="-18 -12 702 174" aria-hidden="true" focusable="false"><defs><filter id="spray" x="-4%" y="-8%" width="108%" height="116%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/></filter></defs><g fill="currentColor" filter="url(#spray)"><rect x="0" y="0" width="88" height="24" rx="1.5"/><rect x="0" y="31" width="24" height="25" rx="1.5"/><rect x="0" y="63" width="88" height="24" rx="1.5"/><rect x="64" y="94" width="24" height="25" rx="1.5"/><rect x="0" y="126" width="88" height="24" rx="1.5"/><rect x="108" y="0" width="24" height="150" rx="1.5"/><rect x="172" y="0" width="24" height="150" rx="1.5"/><rect x="139" y="0" width="26" height="24" rx="1.5"/><rect x="139" y="72" width="26" height="24" rx="1.5"/><rect x="216" y="0" width="24" height="150" rx="1.5"/><rect x="332" y="0" width="24" height="150" rx="1.5"/><polygon points="247,0 271,0 282.5,100 262.5,100"/><polygon points="325,0 301,0 289.5,100 309.5,100"/><rect x="376" y="0" width="24" height="150" rx="1.5"/><rect x="407" y="0" width="55" height="24" rx="1.5"/><rect x="438" y="31" width="24" height="56" rx="1.5"/><rect x="407" y="63" width="24" height="24" rx="1.5"/><rect x="482" y="0" width="24" height="119" rx="1.5"/><rect x="482" y="126" width="80" height="24" rx="1.5"/><rect x="582" y="0" width="24" height="150" rx="1.5"/><rect x="613" y="0" width="53" height="24" rx="1.5"/><rect x="613" y="63" width="39" height="24" rx="1.5"/><rect x="613" y="126" width="53" height="24" rx="1.5"/></g></svg>
+  <!-- the stencil: this page is a sample (Walter's lettering, painted behind the header text) -->
+  <img class="stencil" src="sample-stencil.png" width="1000" height="337" alt="" aria-hidden="true" decoding="async">
     <div class="masthead-text">
   <div class="eyebrow">
     <span>East Bench Pivot Farm</span><span class="sep">·</span><span>Washakie County, Wyoming</span>
