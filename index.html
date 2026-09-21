@@ -260,7 +260,7 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   <button role="tab" id="tB" aria-controls="cB" aria-selected="false"><span class="key">B</span>Sources</button>
   <button role="tab" id="tC" aria-controls="cC" aria-selected="false"><span class="key">C</span>How it works</button>
   <span class="spacer"></span>
-  <button class="util" id="phoneview" type="button" hidden>Phone view</button>
+  <button class="util" id="phoneview" type="button" data-public hidden>Phone view</button>
   <button class="util" id="pdf">Save as PDF</button>
   <button class="util" id="theme">Dark</button>
 </nav>
@@ -272,7 +272,6 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
 <!-- ================= A ================= -->
 <section class="col active" id="cA" role="tabpanel" aria-labelledby="tA">
   <div class="colhead"><b>A</b> &nbsp;Plain answers</div>
-  <p class="lede">Start here. No jargon, nothing assumed. If you read only this column you will still know what this is, what it costs, and whether it suits you.</p>
 
   <details><summary>What is Three Columns?</summary><div class="body">
     <p>A way of building a single-topic website so that one topic serves two readers at once: the newcomer who knows nothing about it, and the reader who already knows the subject well. Neither is watered down for the other, and neither has to wade through the other.</p>
@@ -337,7 +336,7 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   </div></details>
 
   <details><summary>Does it work on a phone?</summary><div class="body">
-    <p>It is built for the phone first. Below a certain width the three columns become three buttons and you read one at a time; above it, all three sit side by side. Same file, no separate mobile site, nothing to keep in step.</p>
+    <p>It is built for the phone first. Below a certain width the three columns become three buttons and you read one at a time; above it, all three sit side by side. Same file, no separate mobile site, nothing to keep in step. On a desktop, the Phone view button beside Save as PDF shows you this page at the width of a phone.</p>
     <p>On a long page, once you have scrolled down, a round button with an up arrow appears at the bottom right. It takes you straight back to the top.</p>
     <p>It also prints properly, which almost nothing does anymore: all three columns unfold into one document in order, with every collapsed answer opened.</p>
   </div></details>
@@ -368,9 +367,9 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
 
   <h3 class="colbsh" id="colbint">Internal links</h3>
   <p class="colbcap">Most recent content change.</p>
-  <a class="bcard" href="#getting-around" data-open="getting-around">
-    <span class="t">21 September 2026 &mdash; column C now explains the buttons that come and go</span>
-    <span class="d">Top, Back and the developer&rsquo;s Phone view, the one-level-up card that links a family of sites, and this links block are now written up in column C.</span>
+  <a class="bcard" href="#qa" data-open="qa">
+    <span class="t">21 September 2026 &mdash; how every change is checked: Quality assurance, in column C</span>
+    <span class="d">Sixty checks in a real browser at desktop and phone widths, and a second reader who holds every claim up against the code.</span>
   </a>
 
   <h3 class="colbsh" id="colbext">External links</h3>
@@ -426,7 +425,7 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
     <div class="rtitle">A municipal ordinance audit</div>
     <div class="rmeta">Worland, Wyoming · a citizen reading a town's animal-control law against its sources</div>
     <div class="rprev">The same format with no research content and no daily rhythm at all — a standing site rather than a series, and the page-form variant: its middle column, the ordinance text, holds more than a column can, so it is given a page of its own. That column is almost entirely primary documents, linked to the town's own copies.</div>
-    <div class="rwhy"><b>Why it is cited:</b> to show the format is not about science and not about daily publishing. Most sites built this way will be single standing pages.</div>
+    <div class="rwhy"><b>Why it is cited:</b> to show the format is not only about science and not about daily publishing. Most sites built this way will be single standing pages.</div>
     <a class="rlink" href="https://worland-dog-law.online/">worland-dog-law.online</a>
   </article>
 
@@ -473,6 +472,15 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
     <div class="rprev">A standing page in column form. Its middle column opens with the two links blocks; a numeral in A or C puts a Back button on the card it opens; a round button returns to the top; and the last thing on the page is a card pointing one level up, to threecolumns.online.</div>
     <div class="rwhy"><b>Why it is cited:</b> most of what column C describes as recent &mdash; the Top and Back buttons, the rule keeping numerals out of the header, the one-level-up card &mdash; was first asked for there, and then written into the format.</div>
     <a class="rlink" href="https://washakie-ai.online/">washakie-ai.online</a>
+  </article>
+
+  <article class="ref" id="r12">
+    <span class="rnum">12</span><span class="rkind">Tool · testing</span>
+    <div class="rtitle">Playwright</div>
+    <div class="rmeta">Microsoft · open source, Apache 2.0 license · drives Chromium, Firefox and WebKit</div>
+    <div class="rprev">A library for driving a real browser from a script: open a page at a chosen size, click what a reader would click, and read back what the page did &mdash; where things landed, what is visible, whether any script failed.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it runs the checks described under Quality assurance in column C. Each check is something a reader would notice if it broke.</div>
+    <a class="rlink" href="https://playwright.dev/">playwright.dev</a>
   </article>
 
   <div id="deadnote" hidden></div>
@@ -541,7 +549,7 @@ no analytics         no third party in the page</pre>
   <p>One caveat specific to this design: content hidden inside collapsed answers is in the markup and therefore indexable, but a reader arriving from a search lands on a closed accordion. Put the sentence that matters in the summary line, not only inside it.</p>
 
   <h2>Devices</h2>
-  <p>A single breakpoint. Above it, three columns with the unselected two dimmed rather than hidden, so the whole page is scannable; a click anywhere in a dimmed column selects it, as its button would. Below it, one column at a time with the buttons acting as tabs. Nothing is a separate mobile site, so nothing can fall out of step. <b>Phone view</b> is for whoever builds the page, not whoever reads it. Its button stays hidden unless the address carries <span class="mono">?dev</span>, and never shows on a screen that is already phone-sized; then it sits beside Save as PDF and shows the page inside a phone-sized frame at the real widths of common phones and a small tablet, so the phone layout can be checked from a desktop. It stays on for the rest of that browser tab &mdash; the one thing the page ever stores, and only in the browser of whoever asked for it; <span class="mono">?dev=0</span> turns it off.</p>
+  <p>A single breakpoint. Above it, three columns with the unselected two dimmed rather than hidden, so the whole page is scannable; a click anywhere in a dimmed column selects it, as its button would. Below it, one column at a time with the buttons acting as tabs. Nothing is a separate mobile site, so nothing can fall out of step. <b>Phone view</b>, beside Save as PDF, shows the page inside a phone-sized frame at the real widths of common phones and a small tablet, so the phone layout can be checked from a desktop; it never shows on a screen that is already phone-sized. On this page it is there for every reader, because the phone layout is part of what the page demonstrates: its button carries <span class="mono">data-public</span>. On a site made from the format it is for whoever builds the page: its button stays hidden unless the address carries <span class="mono">?dev</span>, and then stays on for the rest of that browser tab &mdash; the one thing such a page ever stores, and only in the browser of whoever asked for it; <span class="mono">?dev=0</span> turns it off.</p>
 
   <h2 id="getting-around">Getting around: the buttons that come and go</h2>
   <p>Two buttons appear only when they are useful, and neither is printed. Scroll about a screen down and a round button with an up arrow appears at the bottom right. It takes you back to the top &mdash; smoothly, or at once if your system asks for reduced motion &mdash; and hands the keyboard to the page title, so the next Tab starts from the top. The page ends with a little blank space, so the last line of the footer can scroll clear of the button on a phone.</p>
@@ -622,6 +630,13 @@ no analytics         no third party in the page</pre>
   <p>A fourth page exists, unlinked and marked not to be indexed. It is the setup sheet: the header, the picture at the head of the page, the most-recent-change card, the source cards, the one-level-up card, and the last link-check result. Its header knows the two kinds of page &mdash; a standing page and a running series &mdash; and each block is written out as text to paste into the file.</p>
   <p>It is not an admin panel and has no login, because there is nothing behind it to protect. It is a form that produces text you paste into a file. It is kept out of the navigation because it is furniture, not content.</p>
 
+  <h2 id="qa">Quality assurance</h2>
+  <p>Changes are checked in two different ways before they are handed over for publishing, because each catches what the other misses.</p>
+  <p><b>By machine.</b> A script drives a real browser<span class="fn" data-ref="r12">12</span> over this page and its template, at desktop width (1440&nbsp;px) and phone width (390&nbsp;px), in light and dark, and makes 60 checks: no sideways scrolling and no script errors at either width; the most-recent-change card, which must open the passage it names; numerals, which must reach their cards and come back through the Back button, from column A and from column C; the Top button; Phone view, shown to every reader here and hidden on the template until the address carries <span class="mono">?dev</span>; what printing leaves out, and that every answer opens for print and folds again after; all three columns with JavaScript off, on a phone and on a desktop; and every block Page D writes. A change is not handed over until all 60 pass. The script is kept with the format&rsquo;s tools, so the checks can be run again.</p>
+  <p><b>By a second reader.</b> A script checks only what someone thought to test. So larger changes are also read, claim by claim, against the code and against the sites the text describes, by a reviewer that had no part in writing them &mdash; a second AI agent, given the files and told to be skeptical. Its first reading of the 21 September update found seventeen problems, several in older text: the page said folded answers printed, and they did not; it said lines were capped near 62 characters, and on a tablet they ran past a hundred; it listed as one of this page&rsquo;s failures something that could not be made to happen here. Each was fixed or reworded; a second reading confirmed the fixes and caught three more, since fixed.</p>
+  <p><b>The links, by hand.</b> Whether each source is still there is checked separately, as <i>Link health, done honestly</i> describes: every source is fetched, and <span class="mono">links.json</span> records the date.</p>
+  <div class="note"><strong>The principle.</strong> A test checks what a page does; only a reader can check what it says. This page claims that every claim on it is demonstrated by the page itself, and the second reading is how that claim is kept honest.</div>
+
   <h2>Failures recorded in building this</h2>
   <p>Per the rule in column A, and these are real:</p>
   <ul>
@@ -629,7 +644,7 @@ no analytics         no third party in the page</pre>
     <li><b>The sources column was first placed on the right.</b> It read as an appendix and got ignored in testing. Moving it to the middle changed nothing but position, and that fixed it.</li>
     <li><b>The link was originally the first line of each card.</b> Readers clicked it immediately and never read the preview, defeating the entire column. Putting it last was the single most important decision in the design.</li>
     <li><b>The format was originally named for a daily report.</b> The first real site built this way had no daily rhythm at all, so the name described a habit rather than the thing. Renamed for the structure, which is what does not change.</li>
-    <li><b>Phone view was first offered to every reader.</b> It is a tool for checking the layout, which readers have no reason to do. It now appears only for whoever builds the page.</li>
+    <li><b>Phone view was first offered to every reader of every site.</b> On a site about a town&rsquo;s dog law, or a grant, readers have no reason to check the layout, so there it now appears only for whoever builds the page. Here, where the layout is the subject, every reader has it.</li>
     <li><b>The family links first went in as a line of footer text</b>, on worland-dog-law.online and washakie-ai.online. They did not read as a way up to the next site. They are now a card of their own below the footer, headed &uarr; One level up.</li>
     <li><b>This page said it read fully without JavaScript, and on a phone it did not.</b> Only column A showed; the other two waited for a script that never ran. A rule that applies only when scripts are off now shows all three.</li>
     <li><b>Printing left every answer folded.</b> The print rules unhid all three columns but could not open a closed answer, so paper carried the questions without their answers. The page now opens every answer just before printing, and folds them again after.</li>

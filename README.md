@@ -47,12 +47,15 @@ so nothing in it can become an old version.
 | `setup.html` | page D — the setup sheet. Unlinked, noindex. Not an admin panel: a form that produces text you paste into a file. |
 | `domain.html` | page E — standing up a domain, step by step. Unlinked, noindex. |
 | `links.json` | link-health status: the date of the last check and any dead links. Written by whoever ran the check — by hand on this site, since no scheduler is wired up yet. If absent, the page says nothing about link health — no file, no claim. |
-| `phone-view.js` | Phone view, for whoever builds the page: shows it in a phone-sized frame. Hidden unless the address carries `?dev`. |
+| `phone-view.js` | Phone view: shows the page in a phone-sized frame. For every reader here, because the page's own button carries `data-public`; on a site made from the format, hidden unless the address carries `?dev`. |
 | `top-button.js` | the round up-arrow button that returns to the top, once the reader has scrolled about a screen down |
 | `back-link.js` | the Back button on a source card, returning to the numeral that opened it |
 | `masthead-sitemap.svg` | the picture at the head of the page: the map of the site family, with which way each link points |
 | `social.png` `apple-touch-icon.png` | the share card and the home-screen icon |
 | `favicon.svg` `robots.txt` `sitemap.xml` `404.html` | the usual furniture |
+
+The browser checks behind column C's *Quality assurance* are kept in
+`Three Columns Tools/qa/` (60 checks as of 21 September 2026).
 
 The three scripts are the same files on every site that carries them. Change one in
 `Three Columns Tools/template/` first, then copy it out, so no copy drifts from the others.
