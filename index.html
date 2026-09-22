@@ -374,6 +374,22 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
     <p>One is enough, not a limit. Every change is saved with a note saying what changed and who made it, so a second person can join at any time and see how the page got to be the way it is.</p>
   </div></details>
 
+  <details><summary>How do I change the words later?</summary><div class="body">
+    <p>Three ways, and you only need one of them.</p>
+    <ol>
+      <li><b>Ask whoever built it.</b> For most subjects that is the whole answer, and it costs the builder a few minutes.</li>
+      <li><b>Open the file and type over the words.</b> The page is one file, and your sentences sit in plain sight between the tags that shape them. The rule is to leave the angle brackets alone and change what is between them.</li>
+      <li><b>Ask an AI to make the change.</b> Say what should be different, in plain English, and read what comes back before it goes up. That is how every site in this family is kept, including this one.</li>
+    </ol>
+    <p><b>What this format gives up.</b> WordPress<span class="fn" data-ref="r14">14</span> exists to give you an editing box: sign in, type, click Update, and the page has changed. That box is the reason for the database behind it, the account you sign in to, the plugins that extend it and the updates that never stop &mdash; and for most of what goes wrong on small sites. There is no box here, because there is nothing to sign in to. What you have instead is a file anybody can open in fifty years.</p>
+    <p><b>What it asks of you.</b> If you want changes made by asking for them in plain English, you need an AI assistant and enough familiarity with one to ask for what you want and to check what comes back. That is the one skill this format assumes &mdash; and teaching it is a main point of the pilot program this format came out of<span class="fn" data-ref="r11">11</span>: twelve sites, four workshops open to anyone, and a few local people given a light introduction to AI, so that a subject who wants a change has somebody nearby to ask.</p>
+  </div></details>
+
+  <details><summary>Who sets one up?</summary><div class="body">
+    <p>One person, once. Making the repository, putting the files in it, turning the hosting on, buying the domain and pointing it at the host takes about twenty minutes the first time, and column C has it written out step by step. On the sites in this family a script does the domain end of it.</p>
+    <p>The person the site is <em>for</em> need do none of that. On the Washakie County pilot program<span class="fn" data-ref="r11">11</span> a subject chooses a name and hands over the material &mdash; the ordinance, the price list, the record of work &mdash; and signs up for nothing, installs nothing and holds no password. The site is handed over at the end, domain and all.</p>
+  </div></details>
+
   <details><summary>Can I publish a running series rather than one page?</summary><div class="body">
     <p>Yes, and this is where the format earns its keep for some trades. Each issue is dated, published the day it is written, and <em>never revised afterward</em> — superseded by a later issue if it turns out to be wrong, but never quietly edited.</p>
     <p>A builder documenting a renovation, an inspector logging visits, a restorer recording a treatment, a researcher recording a day's tests<span class="fn" data-ref="r5">5</span>. What you end up with is not marketing. It is a dated, public, source-cited record of what was done and when, which is a materially different thing to own if anyone later disputes it.</p>
@@ -390,9 +406,9 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
 
   <h3 class="colbsh" id="colbint">Internal links</h3>
   <p class="colbcap">Most recent content change.</p>
-  <a class="bcard" href="#team" data-open="team">
-    <span class="t">22 September 2026 &mdash; why one person is enough: A team of one, in column C</span>
-    <span class="d">Every pair of people is a line to keep open: one for two people, forty-five for ten, none for one. Drawn as polygons, and as the hockey stick the count makes.</span>
+  <a class="bcard" href="#editing" data-open="editing">
+    <span class="t">22 September 2026 &mdash; how a page changes after it goes up: Editing, in column C</span>
+    <span class="d">No admin panel, by design. A change is made to the file itself &mdash; by the builder, by the owner in a text editor, or by an AI asked in plain English.</span>
   </a>
 
   <h3 class="colbsh" id="colbext">External links</h3>
@@ -515,6 +531,15 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
     <a class="rlink" href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month">en.wikipedia.org/wiki/The_Mythical_Man-Month</a>
   </article>
 
+  <article class="ref" id="r14">
+    <span class="rnum">14</span><span class="rkind">Tool · content system</span>
+    <div class="rtitle">WordPress</div>
+    <div class="rmeta">The WordPress project · open source, GPL · the most widely used content system on the web</div>
+    <div class="rprev">A publishing platform built around an editing box: sign in, type, click Update, and the page changes. Everything else follows from that box &mdash; a database to hold the words, accounts to sign in with, themes and plugins to extend it, and updates to keep all of it safe.</div>
+    <div class="rwhy"><b>Why it is cited:</b> because &ldquo;why not WordPress?&rdquo; is the fair question. It is named for what it does well, so that what this format gives up, and what it therefore never has to maintain, is said plainly rather than implied.</div>
+    <a class="rlink" href="https://wordpress.org/">wordpress.org</a>
+  </article>
+
   <div id="deadnote" hidden></div>
 </section>
 
@@ -597,7 +622,7 @@ no analytics         no third party in the page</pre>
   <p>The buttons are a real tab set: <span class="mono">role="tablist"</span>, <span class="mono">aria-selected</span>, panels labeled by their button, arrow-key navigation<span class="fn" data-ref="r8">8</span>. Answers are native <span class="mono">&lt;details&gt;</span> elements, so the browser's own find searches inside them. With JavaScript disabled entirely the page still reads: all three columns render, on a phone as on a desktop, and every answer still opens with a click. What is lost is whatever moves you around &mdash; the switching, the jump from a numeral to its card, the buttons, the striking-through of dead links &mdash; and printing then leaves the answers folded.</p>
   <p>The Top and Back buttons carry spoken labels, since neither shows much text: <i>Back to the top of the page</i>, and <i>Back to where this source is cited, in column A</i> (or C).</p>
 
-  <h2>Publishing, for someone who has used neither GitHub nor GitHub Desktop</h2>
+  <h2 id="setup">Setting a site up, for someone who has used neither GitHub nor GitHub Desktop</h2>
   <p>Written for a reader who has never done any of it. No command line at any point.</p>
   <h3>Once, at the start — about twenty minutes</h3>
 <pre>1  Make a free GitHub account.
@@ -637,7 +662,7 @@ no analytics         no third party in the page</pre>
 8  Turn on two-factor authentication on both the GitHub
    account and the registrar account. These are the only
    two things anyone can actually take from you.</pre>
-  <h3>Every time after that — about a minute</h3>
+  <h3>Sending a change live — about a minute</h3>
 <pre>1  Edit index.html.
 2  Open GitHub Desktop. Changes are listed on the left.
 3  Type one line in Summary saying what changed.
@@ -648,6 +673,12 @@ no analytics         no third party in the page</pre>
    and you will otherwise be looking at yesterday.</pre>
   <p>Two words, and no more. <b>Commit</b> is "save this version with a note." <b>Push</b> is "send it to the internet." Branches, pull requests and merges exist and can be ignored indefinitely.</p>
   <div class="note"><strong>Why this route rather than a website builder.</strong> Because every version is kept, dated and annotated, by default and without effort. For a standing page that is a convenience. For a running record it is the entire point.</div>
+
+  <h2 id="editing">Editing: how a page changes after it goes up</h2>
+  <p>There is no admin panel, and that is deliberate &mdash; an admin panel is a login, and a login is the one thing this format does not have. Page D is a form that writes text for you to paste into the file. It holds nothing, protects nothing, and can be thrown away.</p>
+  <p>So a change is made to the file, by one of three hands: the person who built the page, the owner in a text editor, or an AI asked in plain English. The third is how every site in this family is kept, and it is the one to be clear-eyed about. What it asks is not programming; it is the ability to say what should be different and to read what comes back. What it costs is a subscription to whichever assistant is used, and the habit of looking at the page before it goes live. On the pilot program this format came out of<span class="fn" data-ref="r11">11</span> that help is meant to be local: the workshops are there to leave a few people in the county with a light introduction to AI and the confidence to make a change for a neighbor.</p>
+  <p>What an editor can break, and how to tell: the words sit between the tags, and the tags are what the browser reads. Delete part of one and the page usually still renders, wrongly &mdash; a paragraph swallowed into a heading, a column left half-closed. The checks under <i>Quality assurance</i> catch that at both widths; so does opening the page and looking at it.</p>
+  <div class="note"><strong>Why not WordPress.</strong> WordPress<span class="fn" data-ref="r14">14</span> answers this same question with an editing box, and that box is honest work: it is why somebody with no technical knowledge can change their own page without asking anyone. Its price is a database, an account, a theme, plugins and an update every few weeks, each one a thing that can fail or be broken into. This format takes the other side of the trade: nothing to log in to, nothing to update, and a file that will open in any browser for as long as there are browsers.</div>
 
   <h2 id="team">A team of one</h2>
   <p>Put a dot for each person at the corners of a regular polygon and join every pair: each line is a conversation the team has to keep going. Three people make a triangle, three lines; four make a square and its two diagonals, six; ten make forty-five. The count is <i>n</i>(<i>n</i>&minus;1)/2, which grows roughly with the square of the team, so it climbs slowly at first and then steeply &mdash; a hockey stick. Fred Brooks gave the same count in <i>The Mythical Man-Month</i> in 1975, as part of the reason that adding people to a late software project makes it later<span class="fn" data-ref="r13">13</span>.</p>
