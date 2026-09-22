@@ -224,6 +224,23 @@ a.masthead-img:hover{outline:2px solid var(--accent); outline-offset:3px}
 a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
 @media (max-width:640px){.masthead-fig{width:100%; margin-top:.4rem}}
 @media print{.masthead-fig{display:none !important} header{display:block}}
+
+/* ---- a drawing inside a column: a <figure> with its caption at 22 px, like every caption in the
+        format. Its colors are the page's own, so it follows dark mode and prints in black. ---- */
+.chart-fig{margin:20px 0 4px; max-width:440px}
+.chart-fig svg{display:block; width:100%; height:auto}
+.chart-fig figcaption{font-size:22px; line-height:1.3; color:var(--ink-mid); margin-top:.6rem; text-wrap:balance}
+.tm-e{fill:none; stroke:var(--accent); stroke-width:1; stroke-linecap:round}
+.tm-n{fill:var(--ink)}
+.tm-b{fill:var(--accent); pointer-events:none}
+.tm-g{stroke:var(--rule); stroke-width:1}
+.tm-t{fill:var(--ink-mid); font-family:"Source Serif 4",Georgia,serif; font-size:13px; pointer-events:none}
+.tm-v,.tm-h{fill:var(--ink); font-weight:600}
+.tm-h{font-size:13.5px}
+.tm-k{font-variant-numeric:tabular-nums}
+.tm-hit{fill:transparent}
+@media (hover:hover){.tm-hit:hover{fill:var(--card)}}
+@media print{.tm-t,.tm-v,.tm-h,.tm-n{fill:#000} .tm-hit{fill:none}}
 </style>
 </head>
 <body>
@@ -351,6 +368,11 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
     <p>Two words to learn. <b>Commit</b> means "save this version, with a note." <b>Push</b> means "send it to the internet." Everything else in that application can be ignored indefinitely. Column C has the setup written out step by step.</p>
   </div></details>
 
+  <details><summary>Does it take a team?</summary><div class="body">
+    <p>No. One person can write it, publish it and look after it, and that is more of an advantage than it sounds. Every pair of people on a job is one more conversation to keep going: two people have one, five have ten, ten have forty-five<span class="fn" data-ref="r13">13</span>. The count climbs like a hockey stick, and column C draws it. Each extra person also brings their own idea of how the thing should work, and every idea has to be squared with every other. One person has none of that &mdash; no meetings, no handoffs, no waiting on anybody else before a change can go live.</p>
+    <p>One is enough, not a limit. Every change is saved with a note saying what changed and who made it, so a second person can join at any time and see how the page got to be the way it is.</p>
+  </div></details>
+
   <details><summary>Can I publish a running series rather than one page?</summary><div class="body">
     <p>Yes, and this is where the format earns its keep for some trades. Each issue is dated, published the day it is written, and <em>never revised afterward</em> — superseded by a later issue if it turns out to be wrong, but never quietly edited.</p>
     <p>A builder documenting a renovation, an inspector logging visits, a restorer recording a treatment, a researcher recording a day's tests<span class="fn" data-ref="r5">5</span>. What you end up with is not marketing. It is a dated, public, source-cited record of what was done and when, which is a materially different thing to own if anyone later disputes it.</p>
@@ -367,9 +389,9 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
 
   <h3 class="colbsh" id="colbint">Internal links</h3>
   <p class="colbcap">Most recent content change.</p>
-  <a class="bcard" href="#qa" data-open="qa">
-    <span class="t">21 September 2026 &mdash; how every change is checked: Quality assurance, in column C</span>
-    <span class="d">Sixty checks in a real browser at desktop and phone widths, and a second reader who holds every claim up against the code.</span>
+  <a class="bcard" href="#team" data-open="team">
+    <span class="t">22 September 2026 &mdash; why one person is enough: A team of one, in column C</span>
+    <span class="d">Every pair of people is a line to keep open: one for two people, forty-five for ten, none for one. Drawn as polygons, and as the hockey stick the count makes.</span>
   </a>
 
   <h3 class="colbsh" id="colbext">External links</h3>
@@ -483,13 +505,22 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
     <a class="rlink" href="https://playwright.dev/">playwright.dev</a>
   </article>
 
+  <article class="ref" id="r13">
+    <span class="rnum">13</span><span class="rkind">Book · software projects</span>
+    <div class="rtitle">The Mythical Man-Month</div>
+    <div class="rmeta">Fred Brooks · Addison-Wesley, 1975; anniversary edition 1995 · linked here to Wikipedia&rsquo;s article on it</div>
+    <div class="rprev">Essays drawn from Brooks&rsquo;s years at IBM managing the development of OS/360. The best known is Brooks&rsquo;s law: adding people to a late software project makes it later, partly because every pair of people is a line of communication &mdash; <i>n</i>(<i>n</i>&minus;1)/2 of them among <i>n</i> people, so fifty developers have 1,225. The book also argues that a system keeps its conceptual integrity only when a single architect, or a very few, decides what goes in and what stays out.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is where the count of lines between people comes from, and the case for one mind behind a design. A site one person can keep has no such lines, the point made in column A and drawn in column C.</div>
+    <a class="rlink" href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month">en.wikipedia.org/wiki/The_Mythical_Man-Month</a>
+  </article>
+
   <div id="deadnote" hidden></div>
 </section>
 
 <!-- ================= C ================= -->
 <section class="col dim" id="cC" role="tabpanel" aria-labelledby="tC">
   <div class="colhead"><b>C</b> &nbsp;How it works (Details)</div>
-  <p class="lede">Concepts first, mechanics last. A reader who stops a third of the way down should still have learned something whole.</p>
+  <p class="lede">Prior know-how is assumed, and the items become more technical toward the bottom.</p>
 
   <h2>The shape</h2>
   <p>One HTML file and three small scripts. No framework, no build step, no dependencies except two web fonts, and those fall back to system faces if they fail to load. A typical page is 35&ndash;100&nbsp;KB and has finished rendering before a loading spinner would have appeared. Draft the words in plain text first &mdash; CommonMark, the precisely specified form of Markdown<span class="fn" data-ref="r7">7</span> &mdash; so they outlive whatever tool made them.</p>
@@ -616,6 +647,16 @@ no analytics         no third party in the page</pre>
    and you will otherwise be looking at yesterday.</pre>
   <p>Two words, and no more. <b>Commit</b> is "save this version with a note." <b>Push</b> is "send it to the internet." Branches, pull requests and merges exist and can be ignored indefinitely.</p>
   <div class="note"><strong>Why this route rather than a website builder.</strong> Because every version is kept, dated and annotated, by default and without effort. For a standing page that is a convenience. For a running record it is the entire point.</div>
+
+  <h2 id="team">A team of one</h2>
+  <p>Put a dot for each person at the corners of a regular polygon and join every pair: each line is a conversation the team has to keep going. Three people make a triangle, three lines; four make a square and its two diagonals, six; ten make forty-five. The count is <i>n</i>(<i>n</i>&minus;1)/2, which grows roughly with the square of the team, so it climbs slowly at first and then steeply &mdash; a hockey stick. Fred Brooks gave the same count in <i>The Mythical Man-Month</i> in 1975, as part of the reason that adding people to a late software project makes it later<span class="fn" data-ref="r13">13</span>.</p>
+  <figure class="chart-fig">
+    <svg viewBox="0 0 360 344" role="img" aria-labelledby="tm-title tm-desc"><title id="tm-title">Lines of communication, by the size of the team</title><desc id="tm-desc">Top: dots for one to six people, every pair joined by a line: 0, 1, 3, 6, 10 and 15 lines. Bottom: a column chart for teams of one to ten: 0, 1, 3, 6, 10, 15, 21, 28, 36 and 45 lines, rising slowly and then steeply.</desc><g><circle class="tm-n" cx="30" cy="30" r="2.8"/><text class="tm-t" x="30" y="68" text-anchor="middle">1 person</text><text class="tm-t tm-v" x="30" y="84" text-anchor="middle">0 lines</text></g><g><path class="tm-e" d="M110 30L70 30"/><circle class="tm-n" cx="110" cy="30" r="2.8"/><circle class="tm-n" cx="70" cy="30" r="2.8"/><text class="tm-t" x="90" y="68" text-anchor="middle">2 people</text><text class="tm-t tm-v" x="90" y="84" text-anchor="middle">1 line</text></g><g><path class="tm-e" d="M150 10L167.3 40M150 10L132.7 40M167.3 40L132.7 40"/><circle class="tm-n" cx="150" cy="10" r="2.8"/><circle class="tm-n" cx="167.3" cy="40" r="2.8"/><circle class="tm-n" cx="132.7" cy="40" r="2.8"/><text class="tm-t" x="150" y="68" text-anchor="middle">3 people</text><text class="tm-t tm-v" x="150" y="84" text-anchor="middle">3 lines</text></g><g><path class="tm-e" d="M224.1 15.9L224.1 44.1M224.1 15.9L195.9 44.1M224.1 15.9L195.9 15.9M224.1 44.1L195.9 44.1M224.1 44.1L195.9 15.9M195.9 44.1L195.9 15.9"/><circle class="tm-n" cx="224.1" cy="15.9" r="2.8"/><circle class="tm-n" cx="224.1" cy="44.1" r="2.8"/><circle class="tm-n" cx="195.9" cy="44.1" r="2.8"/><circle class="tm-n" cx="195.9" cy="15.9" r="2.8"/><text class="tm-t" x="210" y="68" text-anchor="middle">4 people</text><text class="tm-t tm-v" x="210" y="84" text-anchor="middle">6 lines</text></g><g><path class="tm-e" d="M270 10L289 23.8M270 10L281.8 46.2M270 10L258.2 46.2M270 10L251 23.8M289 23.8L281.8 46.2M289 23.8L258.2 46.2M289 23.8L251 23.8M281.8 46.2L258.2 46.2M281.8 46.2L251 23.8M258.2 46.2L251 23.8"/><circle class="tm-n" cx="270" cy="10" r="2.8"/><circle class="tm-n" cx="289" cy="23.8" r="2.8"/><circle class="tm-n" cx="281.8" cy="46.2" r="2.8"/><circle class="tm-n" cx="258.2" cy="46.2" r="2.8"/><circle class="tm-n" cx="251" cy="23.8" r="2.8"/><text class="tm-t" x="270" y="68" text-anchor="middle">5 people</text><text class="tm-t tm-v" x="270" y="84" text-anchor="middle">10 lines</text></g><g><path class="tm-e" d="M340 12.7L350 30M340 12.7L340 47.3M340 12.7L320 47.3M340 12.7L310 30M340 12.7L320 12.7M350 30L340 47.3M350 30L320 47.3M350 30L310 30M350 30L320 12.7M340 47.3L320 47.3M340 47.3L310 30M340 47.3L320 12.7M320 47.3L310 30M320 47.3L320 12.7M310 30L320 12.7"/><circle class="tm-n" cx="340" cy="12.7" r="2.8"/><circle class="tm-n" cx="350" cy="30" r="2.8"/><circle class="tm-n" cx="340" cy="47.3" r="2.8"/><circle class="tm-n" cx="320" cy="47.3" r="2.8"/><circle class="tm-n" cx="310" cy="30" r="2.8"/><circle class="tm-n" cx="320" cy="12.7" r="2.8"/><text class="tm-t" x="330" y="68" text-anchor="middle">6 people</text><text class="tm-t tm-v" x="330" y="84" text-anchor="middle">15 lines</text></g><text class="tm-t tm-h" x="0" y="116">Lines to keep open, by the size of the team</text><line class="tm-g" x1="30" y1="300" x2="358" y2="300"/><text class="tm-t tm-k" x="24" y="304" text-anchor="end">0</text><line class="tm-g" x1="30" y1="246.7" x2="358" y2="246.7"/><text class="tm-t tm-k" x="24" y="250.7" text-anchor="end">15</text><line class="tm-g" x1="30" y1="193.3" x2="358" y2="193.3"/><text class="tm-t tm-k" x="24" y="197.3" text-anchor="end">30</text><line class="tm-g" x1="30" y1="140" x2="358" y2="140"/><text class="tm-t tm-k" x="24" y="144" text-anchor="end">45</text><rect class="tm-hit" x="30" y="126" width="32.8" height="174"><title>1 person: 0 lines</title></rect><text class="tm-t tm-k" x="46.4" y="316" text-anchor="middle">1</text><text class="tm-t tm-v tm-k" x="46.4" y="294" text-anchor="middle">0</text><rect class="tm-hit" x="62.8" y="126" width="32.8" height="174"><title>2 people: 1 line</title></rect><path class="tm-b" d="M69.2 300V300Q69.2 296.4 72.8 296.4H85.6Q89.2 296.4 89.2 300V300Z"/><text class="tm-t tm-k" x="79.2" y="316" text-anchor="middle">2</text><rect class="tm-hit" x="95.6" y="126" width="32.8" height="174"><title>3 people: 3 lines</title></rect><path class="tm-b" d="M102 300V293.3Q102 289.3 106 289.3H118Q122 289.3 122 293.3V300Z"/><text class="tm-t tm-k" x="112" y="316" text-anchor="middle">3</text><rect class="tm-hit" x="128.4" y="126" width="32.8" height="174"><title>4 people: 6 lines</title></rect><path class="tm-b" d="M134.8 300V282.7Q134.8 278.7 138.8 278.7H150.8Q154.8 278.7 154.8 282.7V300Z"/><text class="tm-t tm-k" x="144.8" y="316" text-anchor="middle">4</text><rect class="tm-hit" x="161.2" y="126" width="32.8" height="174"><title>5 people: 10 lines</title></rect><path class="tm-b" d="M167.6 300V268.4Q167.6 264.4 171.6 264.4H183.6Q187.6 264.4 187.6 268.4V300Z"/><text class="tm-t tm-k" x="177.6" y="316" text-anchor="middle">5</text><text class="tm-t tm-v tm-k" x="177.6" y="258.4" text-anchor="middle">10</text><rect class="tm-hit" x="194" y="126" width="32.8" height="174"><title>6 people: 15 lines</title></rect><path class="tm-b" d="M200.4 300V250.7Q200.4 246.7 204.4 246.7H216.4Q220.4 246.7 220.4 250.7V300Z"/><text class="tm-t tm-k" x="210.4" y="316" text-anchor="middle">6</text><rect class="tm-hit" x="226.8" y="126" width="32.8" height="174"><title>7 people: 21 lines</title></rect><path class="tm-b" d="M233.2 300V229.3Q233.2 225.3 237.2 225.3H249.2Q253.2 225.3 253.2 229.3V300Z"/><text class="tm-t tm-k" x="243.2" y="316" text-anchor="middle">7</text><rect class="tm-hit" x="259.6" y="126" width="32.8" height="174"><title>8 people: 28 lines</title></rect><path class="tm-b" d="M266 300V204.4Q266 200.4 270 200.4H282Q286 200.4 286 204.4V300Z"/><text class="tm-t tm-k" x="276" y="316" text-anchor="middle">8</text><rect class="tm-hit" x="292.4" y="126" width="32.8" height="174"><title>9 people: 36 lines</title></rect><path class="tm-b" d="M298.8 300V176Q298.8 172 302.8 172H314.8Q318.8 172 318.8 176V300Z"/><text class="tm-t tm-k" x="308.8" y="316" text-anchor="middle">9</text><rect class="tm-hit" x="325.2" y="126" width="32.8" height="174"><title>10 people: 45 lines</title></rect><path class="tm-b" d="M331.6 300V144Q331.6 140 335.6 140H347.6Q351.6 140 351.6 144V300Z"/><text class="tm-t tm-k" x="341.6" y="316" text-anchor="middle">10</text><text class="tm-t tm-v tm-k" x="341.6" y="134" text-anchor="middle">45</text><text class="tm-t" x="194" y="336" text-anchor="middle">people on the team</text></svg>
+    <figcaption>Every pair of people is one line to keep open. One person has none; ten have forty-five.</figcaption>
+  </figure>
+  <p>The talk is only the visible part of the cost. Brooks&rsquo;s larger point was conceptual integrity: a design holds together when a single architect, or a very few, decides what goes in and what stays out, and every added mind is another set of assumptions to reconcile. A site this size needs one person: no meetings, no handoffs, no one else&rsquo;s conventions to learn. Every site in this family is built that way, by one person working with an AI, which drafts and checks while the person decides and publishes. Between people, the count is zero.</p>
+  <p>One is the fewest it needs, not the most it allows. The site lives in git, which keeps every change with its author, its date and its note, so a second person can take up the same site at any time and read how it got the way it is. If two people change the same lines at once, git stops and shows both versions, and one of them chooses.</p>
+  <p>The cost of one is the other side of the same coin: with one keeper, what that person knows can leave with them. The format answers that as far as a format can. The page explains its own workings, here in column C; git keeps every change with its note; and nothing in the page&rsquo;s machinery has a version to go stale while nobody is looking after it. The words can still go out of date, and links still die &mdash; the link check above says when one has.</p>
 
   <h2>A running record</h2>
   <p>Optional, and not what most sites will do. Each issue is dated, published the day it is written, and superseded rather than edited — a later issue may correct an earlier one, but the earlier one stays exactly as published.</p>
