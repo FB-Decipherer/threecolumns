@@ -241,6 +241,29 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
 .tm-hit{fill:transparent}
 @media (hover:hover){.tm-hit:hover{fill:var(--card)}}
 @media print{.tm-t,.tm-v,.tm-h,.tm-n{fill:#000} .tm-hit{fill:none}}
+/* ---- search: one box in the navigation bar, and the page is its own index (search.js) ---- */
+.searchwrap{position:relative; flex:1 1 200px; min-width:160px; max-width:330px;}
+.searchwrap input{width:100%; font-family:"IBM Plex Mono",monospace; font-size:12.5px;
+  letter-spacing:.04em; color:var(--ink); background:var(--card);
+  border:1px solid var(--rule); border-radius:6px; padding:8px 11px;}
+.searchwrap input::placeholder{color:var(--ink-mid); opacity:.85}
+.searchwrap input:focus-visible{outline:2px solid var(--accent); outline-offset:1px}
+.sr-out{position:absolute; top:calc(100% + 6px); left:0; width:min(430px,92vw); z-index:30;
+  background:var(--paper); border:1px solid var(--rule); border-radius:8px;
+  max-height:min(60vh,420px); overflow-y:auto; padding:4px;}
+.sr-out a{display:block; padding:9px 11px; border-radius:6px; text-decoration:none; color:var(--ink);}
+.sr-out a:hover{background:var(--card)}
+.sr-out a + a{border-top:1px solid var(--rule)}
+.sr-k{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--gold);
+  border:1px solid var(--rule); border-radius:4px; padding:0 5px; margin-right:.5em; vertical-align:.08em}
+.sr-t{font-weight:600; font-size:15px}
+.sr-x{display:block; font-size:13.5px; color:var(--ink-mid); line-height:1.45; margin-top:3px}
+.sr-out mark{background:none; color:var(--accentb); font-weight:600}
+.sr-none{margin:8px 11px; color:var(--ink-mid); font-size:14px}
+.sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0 0 0 0); white-space:nowrap; border:0}
+@media (max-width:640px){.searchwrap{flex:1 1 100%; max-width:none; order:5}}
+@media print{.searchwrap{display:none !important}}
 </style>
 </head>
 <body>
@@ -277,6 +300,12 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   <button role="tab" id="tB" aria-controls="cB" aria-selected="false"><span class="key">B</span>Sources</button>
   <button role="tab" id="tC" aria-controls="cC" aria-selected="false"><span class="key">C</span>How it works</button>
   <span class="spacer"></span>
+  <div class="searchwrap" id="searchbar" hidden>
+    <label class="sr-only" for="sitesearch">Search this page</label>
+    <input type="search" id="sitesearch" placeholder="Search this page&hellip;" autocomplete="off" spellcheck="false" aria-controls="searchout">
+    <div class="sr-out" id="searchout" hidden></div>
+    <div class="sr-only" id="searchstatus" role="status" aria-live="polite"></div>
+  </div>
   <button class="util" id="phoneview" type="button" data-public hidden>Phone view</button>
   <button class="util" id="pdf">Save as PDF</button>
   <button class="util" id="theme">Dark</button>
@@ -318,7 +347,7 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   </div></details>
 
   <details><summary>What is the middle column for?</summary><div class="body">
-    <p>Every source, previewed. When column A or C cites something, the citation<span class="fn" data-ref="r1">1</span> is a small numbered marker; clicking it moves you to a card in the middle that tells you what the source is, who made it, what you would find there, and what it is doing in this page.</p>
+    <p>Every source, previewed. When column A or C cites something, the citation is a small red <b>numeral</b><span class="fn" data-ref="r1">1</span> &mdash; the number you just passed. That is what they are called throughout this page. Clicking one moves you to a card in the middle that tells you what the source is, who made it, what you would find there, and what it is doing in this page.</p>
     <p>For a business this column <em>is</em> the sales pitch. Not "we are licensed" but a card naming the license, the issuing authority, and a link to the register where anyone can check it in ten seconds. That is a different order of credibility from a badge image.</p>
     <p>At the top of the column, before any source, one card names the most recent change to the page, so a returning reader sees at once what is new. And when a numeral has brought you to a card, a Back button at its foot takes you to the exact spot you left.</p>
   </div></details>
@@ -371,7 +400,7 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   </div></details>
 
   <details><summary>Does it take a team?</summary><div class="body">
-    <p>No. One person can write it, publish it and look after it, and that is more of an advantage than it sounds. Every pair of people on a job is one more conversation to keep going: two people have one, five have ten, ten have forty-five<span class="fn" data-ref="r13">13</span>. The count climbs like a hockey stick, and column C draws it. Each extra person also brings their own idea of how the thing should work, and every idea has to be squared with every other. One person has none of that &mdash; no meetings, no handoffs, no waiting on anybody else before a change can go live.</p>
+    <p>No. One person can write it, publish it and look after it, and that is more of an advantage than it sounds. Every pair of people on a job is one more conversation to keep going: two people have one, five have ten, ten have forty-five<span class="fn" data-ref="r13">13</span>. The count climbs like a hockey stick, and <a href="#team" data-open="team">column C draws it</a>. Each extra person also brings their own idea of how the thing should work, and every idea has to be squared with every other. One person has none of that &mdash; no meetings, no handoffs, no waiting on anybody else before a change can go live.</p>
     <p>One is enough, not a limit. Every change is saved with a note saying what changed and who made it, so a second person can join at any time and see how the page got to be the way it is.</p>
   </div></details>
 
@@ -528,7 +557,7 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
     <div class="rtitle">The Mythical Man-Month</div>
     <div class="rmeta">Fred Brooks · Addison-Wesley, 1975; anniversary edition 1995 · linked here to Wikipedia&rsquo;s article on it</div>
     <div class="rprev">Essays drawn from Brooks&rsquo;s years at IBM managing the development of OS/360. The best known is Brooks&rsquo;s law: adding people to a late software project makes it later, partly because every pair of people is a line of communication &mdash; <i>n</i>(<i>n</i>&minus;1)/2 of them among <i>n</i> people, so fifty developers have 1,225. The book also argues that a system keeps its conceptual integrity only when a single architect, or a very few, decides what goes in and what stays out.</div>
-    <div class="rwhy"><b>Why it is cited:</b> it is where the count of lines between people comes from, and the case for one mind behind a design. A site one person can keep has no such lines, the point made in column A and drawn in column C.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is where the count of lines between people comes from, and the case for one mind behind a design. A site one person can keep has no such lines, the point made in column A and <a href="#team" data-open="team">drawn in column C</a>.</div>
     <a class="rlink" href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month">en.wikipedia.org/wiki/The_Mythical_Man-Month</a>
   </article>
 
@@ -550,8 +579,8 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   <p class="lede">Prior know-how is assumed, and the items become more technical toward the bottom.</p>
 
   <h2>The shape</h2>
-  <p>One HTML file and three small scripts. No framework, no build step, no dependencies except two web fonts, and those fall back to system faces if they fail to load. A typical page is 35&ndash;100&nbsp;KB and has finished rendering before a loading spinner would have appeared. Draft the words in plain text first &mdash; CommonMark, the precisely specified form of Markdown<span class="fn" data-ref="r7">7</span> &mdash; so they outlive whatever tool made them.</p>
-  <p>The scripts are <span class="mono">phone-view.js</span>, <span class="mono">top-button.js</span> and <span class="mono">back-link.js</span>. Each adds one button and what that button needs, nothing more, so a page missing one of them loses that button and still works. Wherever a site carries one, it is the identical file &mdash; changed once, in the template new sites are made from, and then copied out &mdash; so no copy drifts from the others.</p>
+  <p>One HTML file and four small scripts. No framework, no build step, no dependencies except two web fonts, and those fall back to system faces if they fail to load. A typical page is 35&ndash;100&nbsp;KB and has finished rendering before a loading spinner would have appeared. Draft the words in plain text first &mdash; CommonMark, the precisely specified form of Markdown<span class="fn" data-ref="r7">7</span> &mdash; so they outlive whatever tool made them.</p>
+  <p>The scripts are <span class="mono">phone-view.js</span>, <span class="mono">top-button.js</span>, <span class="mono">back-link.js</span> and <span class="mono">search.js</span>. Each adds one control and what that control needs, nothing more, so a page missing one of them loses that control and still works. Wherever a site carries one, it is the identical file &mdash; changed once, in the template new sites are made from, and then copied out &mdash; so no copy drifts from the others.</p>
   <p>Three columns wide, three buttons narrow, one document printed. The same markup serves all three — nothing is duplicated, because duplicated content is content that will drift.</p>
 
   <h2>Why the sources sit in the middle</h2>
@@ -571,7 +600,7 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
 5  why it is cited      what it is doing in THIS page
 6  the link             last, and only last</pre>
   <p>Items 4 and 5 do the work, and are the two a bare footnote never supplies. Item 5 is the honest one: it forces the writer to say what the source actually supports, which is where padded citation lists fall apart.</p>
-  <p>Numerals belong in columns A and C, never in the header. A name in the header may still be a plain link.</p>
+  <p><b>Numerals</b> &mdash; the small red numbers that follow a claim, each one a link to the card that supports it &mdash; belong in columns A and C, never in the header. A name in the header may still be a plain link.</p>
   <p>Arriving at a card from a numeral adds one control at its foot, below the link: a <b>Back</b> button, pointing the way you came &mdash; <span class="mono">&larr; Back</span> to column A, <span class="mono">Back &rarr;</span> to column C. It returns you to the very numeral you clicked, outlines it in gold for a moment so the eye finds it, and then goes away. It is a way back, not something the card says; the link is still the last thing the card tells you.</p>
 
   <h2>Link health, done honestly</h2>
@@ -612,6 +641,11 @@ no analytics         no third party in the page</pre>
   <h2 id="getting-around">Getting around: the buttons that come and go</h2>
   <p>Two buttons appear only when they are useful, and neither is printed. Scroll about a screen down and a round button with an up arrow appears at the bottom right. It takes you back to the top &mdash; smoothly, or at once if your system asks for reduced motion &mdash; and hands the keyboard to the page title, so the next Tab starts from the top. The page ends with a little blank space, so the last line of the footer can scroll clear of the button on a phone.</p>
   <p>The other is the Back button on a source card, described above: it appears when a numeral sends you to column B, and goes away once it has brought you back. Both were first asked for on washakie-ai.online<span class="fn" data-ref="r11">11</span> and then written into the format, so every new site starts with them.</p>
+
+  <h2 id="search">Search, with the page as its own index</h2>
+  <p>The box in the navigation bar searches this page and nothing else. When the page loads, <span class="mono">search.js</span> walks what is actually there &mdash; every answer in column A, every card in column B, every section in column C &mdash; and builds its index out of the text it finds. Nothing is kept by hand, so the index cannot fall out of step with the page: change a sentence and the next load indexes the sentence you wrote.</p>
+  <p>It earns its place here for a reason peculiar to this format: the answers in column A are folded shut, and a browser&rsquo;s own find bar will not always look inside a folded answer. A reader could search for a word that is on the page and be told it is not. A result names the column and the heading it came from; choosing one opens that column, unfolds the answer if it is folded, and marks where you landed, the way a numeral does.</p>
+  <p>No index file, no service, nothing sent anywhere: it runs in the browser, over text the browser already has, and it stores nothing. With scripts off the box never appears, which is the honest state for a control that could not work.</p>
 
   <h2>Typography</h2>
   <p>Body text at 17&nbsp;px, line height 1.62; on a wide screen each column holds about sixty characters to the line. Figure captions are set at <b>22&nbsp;px</b> — larger than body text, deliberately, because a caption is often the only thing a scanning reader reads; the caption under the picture at the head of this page is one. Three accent colors only: green for structure, gold for the column keys and for marking where you are, red for citations and for whatever a click has just brought you to. A link that has died turns gray and is struck through. Dark mode redefines the nine color properties, and one label color set outside them; the numerals keep their red on a white disc in both themes.</p>
@@ -698,7 +732,7 @@ no analytics         no third party in the page</pre>
 
   <h2 id="family">A family of sites</h2>
   <p>Sites built this way can form a family, wired upward. On an instance that sits under another site in this family, the last thing on the page, below the footer, is a card headed <b>&uarr; One level up</b>: the name of the site above it, and one line saying what that site is, in that site&rsquo;s own words. worland-dog-law.online points to washakie-ai.online<span class="fn" data-ref="r11">11</span>, and washakie-ai.online points here. This site is the class at the top, so it carries no such card; baconian-ciphers.online carries none either, because it links upward to a site outside this family. The map at the head of the page shows the four sites and which way their links point.</p>
-  <p>An instance adds what its own subject needs. worland-dog-law.online, three pages long, puts a search box on each page, covering its index and the ordinance text<span class="fn" data-ref="r6">6</span>; baconian-ciphers.online, a running record in two series, lists every issue of both on its front page<span class="fn" data-ref="r5">5</span>. What proves itself on one instance is written back into the format &mdash; here, and in the template new sites are made from &mdash; so the next site starts with it.</p>
+  <p>An instance adds what its own subject needs. worland-dog-law.online, three pages long, widens the same search box to cover all three, so a reader on any page finds a section on another<span class="fn" data-ref="r6">6</span>; baconian-ciphers.online, a running record in two series, lists every issue of both on its front page<span class="fn" data-ref="r5">5</span>. What proves itself on one instance is written back into the format &mdash; here, and in the template new sites are made from &mdash; so the next site starts with it.</p>
 
   <h2>Page D — the setup sheet nobody sees</h2>
   <p>A fourth page exists, unlinked and marked not to be indexed. It is the setup sheet: the header, the picture at the head of the page, the most-recent-change card, the source cards, the one-level-up card, and the last link-check result. Its header knows the two kinds of page &mdash; a standing page and a running series &mdash; and each block is written out as text to paste into the file.</p>
@@ -706,7 +740,7 @@ no analytics         no third party in the page</pre>
 
   <h2 id="qa">Quality assurance</h2>
   <p>Changes are checked in two different ways before they are handed over for publishing, because each catches what the other misses.</p>
-  <p><b>By machine.</b> A script drives a real browser<span class="fn" data-ref="r12">12</span> over this page and its template, at desktop width (1440&nbsp;px) and phone width (390&nbsp;px), in light and dark, and makes 60 checks: no sideways scrolling and no script errors at either width; the most-recent-change card, which must open the passage it names; numerals, which must reach their cards and come back through the Back button, from column A and from column C; the Top button; Phone view, shown to every reader here and hidden on the template until the address carries <span class="mono">?dev</span>; what printing leaves out, and that every answer opens for print and folds again after; all three columns with JavaScript off, on a phone and on a desktop; and every block Page D writes. A change is not handed over until all 60 pass. The script is kept with the format&rsquo;s tools, so the checks can be run again.</p>
+  <p><b>By machine.</b> A script drives a real browser<span class="fn" data-ref="r12">12</span> over this page and its template, at desktop width (1440&nbsp;px) and phone width (390&nbsp;px), in light and dark, and makes 66 checks: no sideways scrolling and no script errors at either width; the most-recent-change card, which must open the passage it names; numerals, which must reach their cards and come back through the Back button, from column A and from column C; the Top button; Phone view, shown to every reader here and hidden on the template until the address carries <span class="mono">?dev</span>; what printing leaves out, and that every answer opens for print and folds again after; all three columns with JavaScript off, on a phone and on a desktop; and every block Page D writes. A change is not handed over until all 66 pass. The script is kept with the format&rsquo;s tools, so the checks can be run again.</p>
   <p><b>By a second reader.</b> A script checks only what someone thought to test. So larger changes are also read, claim by claim, against the code and against the sites the text describes, by a reviewer that had no part in writing them &mdash; a second AI agent, given the files and told to be skeptical. Its first reading of the 21 September update found seventeen problems, several in older text: the page said folded answers printed, and they did not; it said lines were capped near 62 characters, and on a tablet they ran past a hundred; it listed as one of this page&rsquo;s failures something that could not be made to happen here. Each was fixed or reworded; a second reading confirmed the fixes and caught three more, since fixed.</p>
   <p><b>The links, by hand.</b> Whether each source is still there is checked separately, as <i>Link health, done honestly</i> describes: every source is fetched, and <span class="mono">links.json</span> records the date.</p>
   <div class="note"><strong>The principle.</strong> A test checks what a page does; only a reader can check what it says. This page claims that every claim on it is demonstrated by the page itself, and the second reading is how that claim is kept honest.</div>
@@ -802,7 +836,7 @@ no analytics         no third party in the page</pre>
     setTimeout(function(){ d.classList.remove('flash'); }, 1600);
     return true;
   }
-  document.querySelectorAll('.bcard[data-open]').forEach(function(a){
+  document.querySelectorAll('[data-open]').forEach(function(a){
     a.addEventListener('click', function(e){
       if (openPassage(a.dataset.open)) e.preventDefault();
     });
@@ -860,5 +894,6 @@ no analytics         no third party in the page</pre>
 <script src="phone-view.js" defer></script>
 <script src="top-button.js" defer></script>
 <script src="back-link.js" defer></script>
+<script src="search.js" defer></script>
 </body>
 </html>

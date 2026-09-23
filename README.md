@@ -50,6 +50,7 @@ so nothing in it can become an old version.
 | `phone-view.js` | Phone view: shows the page in a phone-sized frame. For every reader here, because the page's own button carries `data-public`; on a site made from the format, hidden unless the address carries `?dev`. |
 | `top-button.js` | the round up-arrow button that returns to the top, once the reader has scrolled about a screen down |
 | `back-link.js` | the Back button on a source card, returning to the numeral that opened it |
+| `search.js` | the search box in the navigation bar: builds its index from the page itself at load, so it never goes stale, and finds words inside folded answers that a browser’s find bar can miss |
 | `masthead-sitemap.svg` | the picture at the head of the page: the map of the site family, with which way each link points |
 | `social.png` `apple-touch-icon.png` | the share card and the home-screen icon |
 | `sites/` | sample sites in the format, one folder each, not indexed. `sites/east-bench-farm/` is a sample page for an invented Washakie County farm, made for washakie-ai.online |
