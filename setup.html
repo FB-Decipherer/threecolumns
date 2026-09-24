@@ -108,8 +108,8 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;background:var(--card
 <button onclick="copyFigure()">Copy the figure block</button>
 <pre id="out-figure"></pre>
 
-<h2><span class="n">D3</span>Most recent content change</h2>
-<p class="hint">The top of column B, the same on every site: <i>Internal links</i>, captioned <i>Most recent content change.</i>, holding one card &mdash; the date and what changed, linked to the place where it changed &mdash; and then <i>External links</i>, captioned <i>Every reference to some other website.</i>, under which the source cards follow. Paste this straight after column B&rsquo;s opening line. Update the card whenever the content changes; a picture or a spelling fix is not a content change.</p>
+<h2><span class="n">D3</span>The two most recent content changes</h2>
+<p class="hint">The top of column B, the same on every site: <i>Internal links</i>, captioned <i>The two most recent content changes.</i>, holding two cards, newest first &mdash; each a date and what changed, linked to the place on the page where it changed. One card reads as thin; three begins to look like a log. Leave the second set of fields empty on a page that has only ever changed once.</p>
 <div class="row">
   <div><label>Date of the change</label><input id="f-ldate" type="date"></div>
   <div><label>Where it points &mdash; the id of the answer or heading that changed</label><input id="f-lid" placeholder="e.g. getting-around"></div>
@@ -118,6 +118,14 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;background:var(--card
 <input id="f-lhead" placeholder="e.g. column C now explains the buttons that come and go">
 <label>One line more</label>
 <textarea id="f-lline" placeholder="What a returning reader will find there."></textarea>
+<div class="row">
+  <div><label>Date of the change before it</label><input id="f-l2date" type="date"></div>
+  <div><label>Where that one points</label><input id="f-l2id" placeholder="e.g. qa"></div>
+</div>
+<label>What changed then, in a few words</label>
+<input id="f-l2head" placeholder="e.g. every change is now checked twice before it goes up">
+<label>One line more</label>
+<textarea id="f-l2line" placeholder="What a returning reader will find there."></textarea>
 <button onclick="copyLatest()">Copy the links block</button>
 <pre id="out-latest"></pre>
 
@@ -245,18 +253,24 @@ $('f-where').addEventListener('change', figure);
 
 // the links block: Internal links (one card) above External links
 function latest(){
-  var id=$('f-lid').value.trim().replace(/^#/,''), when=shortDate($('f-ldate').value);
+  function card(d, i, h, l){
+    var id=$(i).value.trim().replace(/^#/,'');
+    if(!id && !$(h).value.trim()) return '';
+    return '<a class="bcard" href="#'+id+'" data-open="'+id+'">\n'+
+           '  <span class="t">'+shortDate($(d).value)+' &mdash; '+$(h).value+'</span>\n'+
+           '  <span class="d">'+$(l).value+'</span>\n'+
+           '</a>\n';
+  }
   $('out-latest').textContent =
 '<h3 class="colbsh" id="colbint">Internal links</h3>\n'+
-'<p class="colbcap">Most recent content change.</p>\n'+
-'<a class="bcard" href="#'+id+'" data-open="'+id+'">\n'+
-'  <span class="t">'+when+' &mdash; '+$('f-lhead').value+'</span>\n'+
-'  <span class="d">'+$('f-lline').value+'</span>\n'+
-'</a>\n\n'+
+'<p class="colbcap">The two most recent content changes.</p>\n'+
+card('f-ldate','f-lid','f-lhead','f-lline')+
+card('f-l2date','f-l2id','f-l2head','f-l2line')+
+'\n'+
 '<h3 class="colbsh" id="colbext">External links</h3>\n'+
 '<p class="colbcap">Every reference to some other website.</p>';
 }
-['f-ldate','f-lid','f-lhead','f-lline'].forEach(function(id){ $(id).addEventListener('input', latest); });
+['f-ldate','f-lid','f-lhead','f-lline','f-l2date','f-l2id','f-l2head','f-l2line'].forEach(function(id){ $(id).addEventListener('input', latest); });
 
 // one level up: the last thing on the page
 function up(){

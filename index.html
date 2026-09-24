@@ -435,10 +435,14 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   <p class="lede" style="font-size:15.5px">Everything cited in A or C, previewed. The link is always the last line — read the card first and decide whether you need the original at all.</p>
 
   <h3 class="colbsh" id="colbint">Internal links</h3>
-  <p class="colbcap">Most recent content change.</p>
-  <a class="bcard" href="#editing" data-open="editing">
-    <span class="t">22 September 2026 &mdash; how a page changes after it goes up: Editing, in column C</span>
-    <span class="d">No admin panel, by design. A change is made to the file itself &mdash; by the builder, by the owner in a text editor, or by an AI asked in plain English.</span>
+  <p class="colbcap">The two most recent content changes.</p>
+  <a class="bcard" href="#search" data-open="search">
+    <span class="t">23 September 2026 &mdash; a search box, and the page as its own index: Search, in column C</span>
+    <span class="d">The answers are folded shut, and a browser&rsquo;s own find bar does not always look inside a folded one. The box in the navigation bar does.</span>
+  </a>
+  <a class="bcard" href="#team" data-open="team">
+    <span class="t">23 September 2026 &mdash; the team this does not need: sixteen job titles, under A team of one</span>
+    <span class="d">Product manager to project manager, each one answered by the format rather than by a hire, set beside the drawing of the lines between people.</span>
   </a>
 
   <h3 class="colbsh" id="colbext">External links</h3>
@@ -599,7 +603,7 @@ a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px
   <p>That hunt is old. Printed notes at the foot of the page go back at least to 1568<span class="fn" data-ref="r15">15</span>, and every one of them since has asked the same thing of a reader: leave the sentence, travel to the bottom of the page or the back of the book, find the mark again, come back if you can. Each trip costs a little of the thread the reader was holding. Four and a half centuries of that is long enough to have stopped noticing the cost.</p>
 
   <h2 id="links-block">Two blocks, always in the same place</h2>
-  <p>Column B opens with two blocks built exactly alike: a heading, a caption line, then the content. <b>Internal links</b>, captioned <i>Most recent content change.</i>, holds one card &mdash; the date and what changed, linked to the place on the page where it changed. <b>External links</b>, captioned <i>Every reference to some other website.</i>, holds the source cards, one for every other site the page mentions.</p>
+  <p>Column B opens with two blocks built exactly alike: a heading, a caption line, then the content. <b>Internal links</b>, captioned <i>The two most recent content changes.</i>, holds two cards, newest first &mdash; each a date and what changed, linked to the place on the page where it changed. Two rather than one because a single line reads as thin, and three begins to look like a log. <b>External links</b>, captioned <i>Every reference to some other website.</i>, holds the source cards, one for every other site the page mentions.</p>
   <p>The headings and captions are word for word the same on every site that carries them, and External always sits below Internal, in one column. A reader who has used one Three Columns site already knows where to look on the next. On a site in page form they head the page that is column B, as on worland-dog-law.online&rsquo;s Ordinance Text page<span class="fn" data-ref="r6">6</span>, where External links is a plain list.</p>
 
   <h2>The anatomy of a source card</h2>
@@ -775,7 +779,7 @@ project manager         nobody to coordinate with</pre>
 
   <h2 id="qa">Quality assurance</h2>
   <p>Changes are checked in two different ways before they are handed over for publishing, because each catches what the other misses.</p>
-  <p><b>By machine.</b> A script drives a real browser<span class="fn" data-ref="r12">12</span> over this page and its template, at desktop width (1440&nbsp;px) and phone width (390&nbsp;px), in light and dark, and makes 66 checks: no sideways scrolling and no script errors at either width; the most-recent-change card, which must open the passage it names; numerals, which must reach their cards and come back through the Back button, from column A and from column C; the Top button; Phone view, shown to every reader here and hidden on the template until the address carries <span class="mono">?dev</span>; what printing leaves out, and that every answer opens for print and folds again after; all three columns with JavaScript off, on a phone and on a desktop; and every block Page D writes. A change is not handed over until all 66 pass. The script is kept with the format&rsquo;s tools, so the checks can be run again.</p>
+  <p><b>By machine.</b> A script drives a real browser<span class="fn" data-ref="r12">12</span> over this page and its template, at desktop width (1440&nbsp;px) and phone width (390&nbsp;px), in light and dark, and makes 68 checks: no sideways scrolling and no script errors at either width; the most-recent-change card, which must open the passage it names; numerals, which must reach their cards and come back through the Back button, from column A and from column C; the Top button; Phone view, shown to every reader here and hidden on the template until the address carries <span class="mono">?dev</span>; what printing leaves out, and that every answer opens for print and folds again after; all three columns with JavaScript off, on a phone and on a desktop; and every block Page D writes. A change is not handed over until all 68 pass. The script is kept with the format&rsquo;s tools, so the checks can be run again.</p>
   <p><b>By a second reader.</b> A script checks only what someone thought to test. So larger changes are also read, claim by claim, against the code and against the sites the text describes, by a reviewer that had no part in writing them &mdash; a second AI agent, given the files and told to be skeptical. Its first reading of the 21 September update found seventeen problems, several in older text: the page said folded answers printed, and they did not; it said lines were capped near 62 characters, and on a tablet they ran past a hundred; it listed as one of this page&rsquo;s failures something that could not be made to happen here. Each was fixed or reworded; a second reading confirmed the fixes and caught three more, since fixed.</p>
   <p><b>The links, by hand.</b> Whether each source is still there is checked separately, as <i>Link health, done honestly</i> describes: every source is fetched, and <span class="mono">links.json</span> records the date.</p>
   <div class="note"><strong>The principle.</strong> A test checks what a page does; only a reader can check what it says. This page claims that every claim on it is demonstrated by the page itself, and the second reading is how that claim is kept honest.</div>
