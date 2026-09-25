@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bighorn Basin Tree Service · Insured Tree Work, Worland (a demonstration)</title>
+<meta name="description" content="A demonstration of the Three Columns format for a Washakie County tree service: the company is invented; the insurance, the safety standard and the state’s own verification are real, and sourced.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#FCFAF5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15130F" media="(prefers-color-scheme: dark)">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<noscript><style>
+/* No JavaScript: nothing can switch columns, so show all three, undimmed, on every screen. */
+.col{display:block!important;opacity:1!important}
+</style></noscript>
+<style>
+:root{
+  --paper:#FCFAF5; --card:#F5F1E8; --ink:#1E1B16; --ink-mid:#4A443A;
+  --rule:#DCD5C6; --accent:#4C7A4E; --accentb:#B4372C; --gold:#C8992F;
+  --dead:#8A8177;
+}
+:root[data-theme="dark"]{
+  --paper:#15130F; --card:#1E1B16; --ink:#F2EDE3; --ink-mid:#B7AF9F;
+  --rule:#38332A; --accent:#7FA981; --accentb:#D2695C; --gold:#D9B45C;
+  --dead:#6B655B;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.62;}
+.wrap{max-width:1560px;margin:0 auto;padding:0 26px;}
+a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);}
+a:hover{border-bottom-color:var(--accent);}
+
+/* ---------- header ---------- */
+header{padding:38px 0 4px;}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mid);
+  display:flex;align-items:center;gap:.4em;}
+.eyebrow .sep{opacity:.55;font-family:"Source Serif 4",serif;font-size:1.5em;line-height:0;}
+.mark{width:22px;height:22px;flex:none;}
+h1{font-size:clamp(30px,4.4vw,48px);line-height:1.12;font-weight:600;margin:14px 0 0;
+  letter-spacing:-.012em;}
+h1 .sep{color:var(--accent);font-weight:400;padding:0 .18em;}
+h1 .seg{display:inline-block;}
+.claimlabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:#2E5A33;margin-top:20px;}
+:root[data-theme="dark"] .claimlabel{color:#8FBE91;}
+.standfirst{font-size:20px;line-height:1.5;color:var(--ink-mid);margin:8px 0 0;max-width:62ch;}
+.standfirst strong{display:inline-block;margin-top:10px;font-weight:600;color:var(--ink);}
+.asof{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-mid);
+  border:1px solid var(--rule);border-radius:999px;padding:5px 13px;display:inline-block;margin-top:20px;}
+
+/* ---------- nav ---------- */
+nav{display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  margin-top:26px;padding:11px 0;position:sticky;top:0;background:var(--paper);z-index:20;}
+button{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.06em;
+  background:none;border:1px solid var(--rule);color:var(--ink-mid);
+  padding:8px 15px;border-radius:6px;cursor:pointer;}
+button:hover{border-color:var(--accent);color:var(--ink);}
+button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+button .key{color:var(--gold);font-weight:500;margin-right:.55em;}
+button[aria-selected="true"] .key{color:var(--gold);}
+nav .spacer{flex:1;}
+.util{font-size:11.5px;padding:7px 12px;}
+
+/* ---------- the three columns ---------- */
+main{display:grid;gap:0 34px;padding:30px 0 10px;
+  grid-template-columns:1fr minmax(280px,.82fr) 1fr;}
+.col{min-width:0;}
+.col + .col{border-left:1px solid var(--rule);padding-left:34px;}
+.colhead{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-mid);padding-bottom:9px;
+  border-bottom:2px solid var(--ink);margin-bottom:20px;
+  position:sticky;top:52px;background:var(--paper);}
+.colhead b{color:var(--gold);font-weight:700;
+  display:inline-block;border:1px solid var(--rule);border-radius:6px;
+  padding:2px 7px;margin-right:.5em;line-height:1.25;}
+.col.dim{opacity:.42;}
+.col{transition:opacity .15s;}
+.col.dim:hover{opacity:.62;}
+@media (prefers-reduced-motion:reduce){.col{transition:none;}}
+h2{font-size:22px;font-weight:600;margin:30px 0 6px;letter-spacing:-.006em;}
+h2:first-of-type{margin-top:0;}
+h3{font-size:15.5px;font-weight:600;margin:24px 0 4px;
+  font-family:"IBM Plex Mono",monospace;letter-spacing:.02em;color:var(--accent);}
+p{margin:9px 0 0;}
+.lede{font-size:18px;color:var(--ink-mid);}
+ul,ol{margin:9px 0 0;padding-left:20px;}
+li{margin:5px 0;}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.9em;}
+pre{font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.5;
+  background:var(--card);border:1px solid var(--rule);border-radius:7px;
+  padding:13px 15px;overflow-x:auto;margin:12px 0 0;}
+.note{margin-top:18px;padding:14px 16px;background:var(--card);
+  border-left:3px solid var(--accent);border-radius:0 7px 7px 0;}
+
+details{border-top:1px solid var(--rule);}
+details:last-of-type{border-bottom:1px solid var(--rule);}
+summary{cursor:pointer;padding:12px 0;font-weight:600;list-style:none;
+  display:flex;gap:.6em;align-items:baseline;}
+summary::-webkit-details-marker{display:none;}
+summary::before{content:"+";font-family:"IBM Plex Mono",monospace;color:var(--accent);flex:none;}
+details[open] summary::before{content:"−";}
+details .body{padding:0 0 14px 1.5em;}
+
+/* footnote markers */
+/* reference numerals, in the text and on the cards alike: a white disc with a thin rule-colored
+   border. The numeral keeps the light-theme red in both themes, because the disc stays white. */
+.fn{font-family:"IBM Plex Mono",monospace;font-size:.66em;font-weight:500;line-height:1;
+  color:#B4372C;cursor:pointer;vertical-align:.42em;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:1.8em;height:1.8em;padding:0;margin:0 .08em;
+  background:#FFFFFF;border:1px solid var(--rule);border-radius:999px;}
+.fn:hover{border-color:var(--accentb);}
+
+/* ---------- reference blocks (column B) ---------- */
+.ref{border:1px solid var(--rule);border-radius:9px;padding:15px 16px;margin-bottom:15px;
+  background:var(--card);scroll-margin-top:100px;}
+.ref.flash{border-color:var(--accentb);box-shadow:0 0 0 3px rgba(180,55,44,.14);}
+.rnum{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;line-height:1;
+  color:#B4372C;vertical-align:middle;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;padding:0;
+  background:#FFFFFF;border:1px solid var(--rule);border-radius:999px;}
+.rkind{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-mid);display:inline;margin-left:.7em;}
+.rtitle{font-size:17px;font-weight:600;margin-top:7px;line-height:1.3;}
+.rmeta{font-size:13.5px;color:var(--ink-mid);margin-top:4px;font-style:italic;}
+.rprev{font-size:14.5px;margin-top:9px;}
+.rwhy{font-size:14.5px;margin-top:7px;color:var(--ink-mid);}
+.rwhy b{color:var(--ink);font-weight:600;}
+.rlink{display:block;margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+  padding:8px 11px;border:1px solid var(--rule);border-radius:6px;
+  background:var(--paper);word-break:break-all;border-bottom:1px solid var(--rule);}
+.rlink:hover{border-color:var(--accent);}
+.rlink::before{content:"→ ";color:var(--accent);}
+.rlink.broken{color:var(--dead);border-style:dashed;cursor:not-allowed;
+  text-decoration:line-through;pointer-events:none;}
+.rlink.broken::before{content:"× ";color:var(--dead);}
+#deadnote{margin-top:22px;padding:13px 15px;border:1px dashed var(--rule);border-radius:7px;
+  font-size:14px;color:var(--ink-mid);}
+
+/* ---- Column B links block: Internal links (most recent content change), then External links.
+        Same headings and captions on every Three Columns site, so a reader knows where to look. ---- */
+.colbsh{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-mid);margin:26px 0 0;}
+.colbsh:first-of-type{margin-top:18px;}
+.colbcap{font-size:15.5px;color:var(--ink-mid);margin:4px 0 12px;}
+.bcard{display:block;text-decoration:none;color:inherit;background:var(--card);
+  border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:9px;
+  padding:13px 15px;margin-bottom:15px;}
+.bcard:hover{border-color:var(--accent);}
+.bcard:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.bcard .t{display:block;font-weight:600;font-size:16px;line-height:1.3;}
+.bcard .d{display:block;font-size:14.5px;color:var(--ink-mid);margin-top:6px;}
+details[id],h2[id]{scroll-margin-top:100px;}
+details.flash > summary{color:var(--accentb);}
+h2.flash{color:var(--accentb);}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  background:var(--card);padding:28px 26px 32px;margin-top:54px;
+  font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.9;color:var(--ink-mid);
+  text-align:center;}
+footer strong{color:var(--ink);letter-spacing:.04em;}
+.endmark{text-align:center;padding:26px 0 58px;color:var(--ink-mid);}
+/* one level up: the last thing on the page, a card naming the site one level above this one */
+/* a <nav>, so undo the page's own nav bar rules (sticky, flex, rules above and below) */
+.uplevel{display:block;position:static;border:0;background:none;z-index:auto;
+  max-width:62rem;margin:26px auto 0;padding:0 16px;text-align:center;}
+.uplevel a{display:inline-block;max-width:34rem;background:var(--card);border:1px solid var(--rule);
+  border-radius:8px;padding:12px 18px;color:inherit;text-decoration:none;}
+.uplevel a:hover{border-color:var(--accent);}
+.uplevel .uplabel{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mid);}
+.uplevel .upname{display:block;font-weight:600;font-size:16px;margin-top:5px;
+  text-decoration:underline;text-underline-offset:3px;}
+.uplevel a:hover .upname{color:var(--accent);}
+.uplevel .upcap{display:block;font-size:14px;color:var(--ink-mid);line-height:1.4;margin-top:3px;}
+@media print{.uplevel{display:none;}}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  main{grid-template-columns:1fr;gap:0;}
+  .col + .col{border-left:0;padding-left:0;border-top:1px solid var(--rule);
+    margin-top:34px;padding-top:26px;}
+  .col{display:none;}
+  .col.active{display:block;}
+  .col.dim{opacity:1;}
+  .colhead{position:static;}
+}
+@media print{
+  nav,.endmark{display:none;}
+  .col{display:block!important;opacity:1!important;}
+  main{grid-template-columns:1fr;}
+  .col + .col{border-left:0;padding-left:0;page-break-before:always;}
+  details{border:0;} details .body{display:block!important;padding-left:0;}
+  summary::before{content:"";}
+  body{background:#fff;color:#000;font-size:11pt;}
+}
+
+/* ---- masthead picture: the slot every instance inherits. The picture sits in a <figure> so it
+        can carry a caption, set at 22 px like every caption in the format. ---- */
+header{display:flex; gap:1.6rem; align-items:flex-start; flex-wrap:wrap}
+.masthead-text{flex:1 1 24rem; min-width:0}
+.masthead-fig{flex:0 0 auto; width:clamp(15rem,27vw,22rem); margin:0; align-self:center}
+.masthead-fig figcaption{font-size:22px; line-height:1.3; color:var(--ink-mid);
+  margin-top:.55rem; text-align:center; text-wrap:balance}
+a.masthead-img{display:block; width:100%; line-height:0;
+  border:1px solid var(--rule); border-radius:.5rem; overflow:hidden}
+a.masthead-img img{width:100%; height:auto; display:block}
+a.masthead-img:hover{outline:2px solid var(--accent); outline-offset:3px}
+a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+@media (max-width:640px){.masthead-fig{width:100%; margin-top:.4rem}}
+@media print{.masthead-fig{display:none !important} header{display:block}}
+
+/* ---- the demonstration notice: this farm is invented ---- */
+.demo{margin:14px 0 0;max-width:62ch;padding:10px 14px;border:1px dashed var(--accentb);border-radius:8px;
+  background:var(--card);font-size:16px;line-height:1.5;color:var(--ink);}
+.demo b{color:var(--accentb);}
+.phone{white-space:nowrap;}
+/* ---- SAMPLE, stenciled across the top of the page, like paint on a crate. In light mode it is
+        multiplied over the page, so dark letters show through it; in dark mode it sits behind. ---- */
+header{position:relative;}
+.masthead-text,.masthead-fig{position:relative;z-index:1;}
+.stencil{position:absolute;top:26px;left:50%;width:min(600px,84vw);height:auto;
+  transform:translateX(-50%);opacity:.9;mix-blend-mode:multiply;pointer-events:none;user-select:none;z-index:6;}
+:root[data-theme="dark"] .stencil{mix-blend-mode:normal;opacity:.35;z-index:0;}
+@media (max-width:640px){.stencil{top:40px;width:88vw;}}
+@media print{.stencil{opacity:.5;}}
+
+/* ---------- the insurance block (column A) ---------- */
+.inslabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:#2E5A33;margin:18px 0 7px;}
+:root[data-theme="dark"] .inslabel{color:#8FBE91;}
+.inslabel + .insbox{margin-top:0;}
+.insbox{margin:16px 0 6px;border:1px solid var(--rule);border-radius:10px;
+  overflow:hidden;background:var(--card);max-width:34rem;}
+.insrow{padding:14px 16px;border-top:1px solid var(--rule);}
+.insrow:first-child{border-top:0;}
+.insk{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-mid);}
+.insv{display:block;font-size:17px;font-weight:600;margin-top:5px;line-height:1.35;}
+.insn{display:block;font-size:14.5px;color:var(--ink-mid);margin-top:5px;line-height:1.45;}
+.insgo{display:block;margin-top:11px;min-height:44px;padding:12px 14px;border-radius:8px;
+  border:1px solid var(--accent);background:var(--paper);color:var(--accent);text-align:center;
+  font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:500;line-height:1.3;}
+.insgo::after{content:" \2192";}
+.insgo:hover{background:var(--accent);color:var(--paper);}
+:root[data-theme="dark"] .insgo:hover{color:#15130F;}
+@media (min-width:560px){.insgo{display:inline-block;min-width:17rem;}}
+.bigcall{display:block;margin:18px 0 6px;max-width:34rem;min-height:54px;padding:13px 16px;
+  border-radius:9px;background:var(--accent);border:1px solid var(--accent);color:#FCFAF5;
+  text-align:center;font-size:20px;font-weight:600;}
+.bigcall .sm{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:400;
+  letter-spacing:.15em;text-transform:uppercase;opacity:.86;margin-bottom:4px;}
+.bigcall:hover{background:#3D6440;}
+:root[data-theme="dark"] .bigcall{color:#15130F;}
+.mapfig{margin:16px 0 6px;max-width:460px;}
+.mapfig img{display:block;width:100%;height:auto;border:1px solid var(--rule);border-radius:8px;}
+.mapfig figcaption{font-size:22px;line-height:1.3;color:var(--ink-mid);margin-top:.55rem;text-wrap:balance;}
+@media print{
+  .insgo{border-color:#000;color:#000;background:none;}
+  .bigcall{background:none;color:#000;border-color:#000;}
+  .insbox{background:none;border-color:#000;}
+}
+.homelink{color:inherit; text-decoration:none; border-bottom:2px solid var(--accent);}
+.homelink:hover{border-bottom-color:var(--ink);}
+.backline{margin:12px 0 0; font-size:15px; color:var(--ink-mid);}
+.backline a{font-family:"IBM Plex Mono",monospace; font-size:13.5px; color:var(--accent);
+  border-bottom-color:var(--rule);}
+@media print{.backline{display:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <!-- the stencil: this page is a sample (Walter's lettering, painted behind the header text) -->
+  <img class="stencil" src="sample-stencil.png" width="1000" height="337" alt="" aria-hidden="true" decoding="async">
+    <div class="masthead-text">
+  <div class="eyebrow">
+    <span>Bighorn Basin Tree Service</span><span class="sep">&middot;</span><span>Worland, Wyoming</span>
+  </div>
+  <h1><a class="homelink" href="index.html"><span class="seg">Bighorn Basin Tree Service</span></a> <span class="sep">&middot;</span> <span class="seg">Insured Tree Work in the Basin</span></h1>
+  <p class="backline"><a href="index.html">&#8592; Back to the front page</a> &mdash; the short version: who we are, the insurance, and where we work.</p>
+  <p class="demo"><b>A demonstration.</b> This company is invented, to show a Washakie County trade what a page of its own could look like. The county, the insurance, the safety standard and the state&rsquo;s own verification are real, and every fact about them is sourced in the middle column.</p>
+  <div class="claimlabel">What this is</div>
+  <p class="standfirst">Removals, pruning, storm work and stump grinding, out of Worland. The insurance sits at the top of this page instead of in a folder in the truck &mdash; and you can check it with the State of Wyoming yourself, before you ever call us.</p>
+  <div class="asof">removals &middot; pruning &middot; storm work &middot; stumps &middot; free written estimates &middot; call or text <span class="phone">(307) 555-0168</span></div>
+    </div>
+
+    <figure class="masthead-fig">
+      <a class="masthead-img" href="masthead-tree.svg" target="_blank" rel="noopener" title="Open the full-size picture">
+        <img src="masthead-tree.svg" width="680" height="440" loading="eager" decoding="async"
+             alt="An illustration: a bucket truck standing on its outriggers in a drive with the boom raised into a big cottonwood and an arborist in the bucket, a chipper hitched behind, and the Bighorn Mountains in the distance.">
+      </a>
+      <figcaption>A sample illustration: the bucket in the cottonwood, the chipper hitched behind.</figcaption>
+    </figure>
+  </header>
+
+<nav role="tablist" aria-label="Columns">
+  <button role="tab" id="tA" aria-controls="cA" aria-selected="true"><span class="key">A</span>Plain answers</button>
+  <button role="tab" id="tB" aria-controls="cB" aria-selected="false"><span class="key">B</span>Sources</button>
+  <button role="tab" id="tC" aria-controls="cC" aria-selected="false"><span class="key">C</span>How it works</button>
+  <span class="spacer"></span>
+  <button class="util" id="phoneview" type="button" hidden>Phone view</button>
+  <button class="util" id="pdf">Save as PDF</button>
+  <button class="util" id="theme">Dark</button>
+</nav>
+</div>
+
+<div class="wrap">
+<main>
+
+<!-- ================= A ================= -->
+<section class="col active" id="cA" role="tabpanel" aria-labelledby="tA">
+  <div class="colhead"><b>A</b> &nbsp;Plain answers</div>
+
+  <details id="insured" open><summary>Are you insured?</summary><div class="body">
+    <p>Yes &mdash; and you should not have to take our word for it. Here is the whole of it, with the way to check each line without asking us.</p>
+
+    <div class="inslabel">One-tap insurance verification</div>
+    <div class="insbox">
+      <div class="insrow">
+        <span class="insk">Workers&rsquo; compensation</span>
+        <span class="insv">State of Wyoming &middot; account 0555017</span>
+        <span class="insn">In Wyoming this does not come from a private insurer. The state runs the fund itself<span class="fn" data-ref="r1">1</span>, and for hazardous work like ours the coverage has to be in place before the first day on the job<span class="fn" data-ref="r2">2</span>. If one of our people is hurt in your yard, that is what pays &mdash; not you, and not your homeowner&rsquo;s policy.</span>
+        <a class="insgo" href="https://cogs.wyo.gov/ThirdParty.aspx">Check it with the State of Wyoming</a>
+      </div>
+      <div class="insrow">
+        <span class="insk">General liability</span>
+        <span class="insv">$2,000,000 each occurrence &middot; $4,000,000 aggregate</span>
+        <span class="insn">This is the one that matters if a limb goes through your roof, your fence or your neighbor&rsquo;s car. Written through Basin Mutual Agency in Worland. Ask for the certificate to name <i>you</i> as the certificate holder, and the agent has to tell you if the policy ever lapses.</span>
+        <a class="insgo" href="mailto:certificates@example.com?subject=Certificate%20of%20insurance%20request%20%E2%80%94%20Bighorn%20Basin%20Tree%20Service&amp;body=Please%20send%20a%20certificate%20of%20insurance%20for%20Bighorn%20Basin%20Tree%20Service%2C%20naming%20me%20as%20certificate%20holder.%0A%0AMy%20name%3A%0AProperty%20address%3A%0AWork%20to%20be%20done%3A%0A">Email the agent for a certificate</a>
+      </div>
+      <div class="insrow">
+        <span class="insk">Commercial auto</span>
+        <span class="insv">$1,000,000 combined single limit</span>
+        <span class="insn">On the bucket truck, the chip truck and the chipper &mdash; on your drive and on the road between.</span>
+      </div>
+      <div class="insrow">
+        <span class="insk">Qualification</span>
+        <span class="insv">ISA Certified Arborist &middot; RM&#8209;7842A</span>
+        <span class="insn">Not insurance, but the same kind of thing: a credential somebody else issued, that somebody else can take away, and that you can look up<span class="fn" data-ref="r7">7</span><span class="fn" data-ref="r8">8</span>.</span>
+        <a class="insgo" href="https://www.treesaregood.org/findanarborist/verify">Look up the credential</a>
+      </div>
+    </div>
+
+    <p><b>Every figure above is a sample</b>, because this company is invented. On a real page they would be that company&rsquo;s real numbers, and the links would go to the same three places they go to here.</p>
+  </div></details>
+
+  <details id="checkus"><summary>Can I check all that myself, before I call?</summary><div class="body">
+    <p>You can, and it takes about a minute. That is the point of putting it here.</p>
+    <p>Wyoming will tell you directly. Give the state our federal employer number and it will issue a <b>Certificate of Good Standing</b> covering both workers&rsquo; compensation and unemployment insurance &mdash; a document from the State of Wyoming, not from us, sent to your own email<span class="fn" data-ref="r4">4</span>. We cannot edit it, delay it or talk you out of it.</p>
+    <ul>
+      <li><b>The state &mdash; FEIN 83&#8209;0555017.</b> <a href="https://cogs.wyo.gov/ThirdParty.aspx">cogs.wyo.gov</a>. Workers&rsquo; compensation and unemployment insurance, both at once.</li>
+      <li><b>The credential &mdash; RM&#8209;7842A.</b> <a href="https://www.treesaregood.org/findanarborist/verify">The International Society of Arboriculture&rsquo;s own lookup</a><span class="fn" data-ref="r8">8</span>.</li>
+      <li><b>The liability policy.</b> That one has to come from the agent, because no state publishes it. The button above writes the email for you.</li>
+    </ul>
+    <p>If a contractor will not give you those three, that is your answer, and it costs you nothing to have asked.</p>
+  </div></details>
+
+  <details id="dowhat"><summary>What do you do?</summary><div class="body">
+    <ul>
+      <li><b>Removals</b> &mdash; whole trees, from open pasture to a cottonwood standing over a roof. Rigged down in pieces where there is no room to drop it.</li>
+      <li><b>Pruning</b> &mdash; deadwood, clearance over a roof or a drive, and structural work on young trees.</li>
+      <li><b>Storm and emergency work</b> &mdash; a limb down on a fence, a drive or a building. These go ahead of everything else on the list.</li>
+      <li><b>Stump grinding</b> &mdash; below grade, with the chips left or hauled, as you like.</li>
+      <li><b>Lot and fence&#8209;line clearing</b> &mdash; russian olive, saltcedar and volunteer growth along ditches and fence lines.</li>
+    </ul>
+    <p><b>What we do not do:</b> anything within ten feet of an energized power line. That is not modesty, it is the rule<span class="fn" data-ref="r5">5</span>, and there is a better answer for it below.</p>
+  </div></details>
+
+  <details id="powerline"><summary>There is a power line in the tree. Can you take it?</summary><div class="body">
+    <p><b>Call the power company first, not us.</b> They will come and look at it for nothing, and often do the work for nothing.</p>
+    <ul>
+      <li><b>In and around Worland &mdash; Rocky Mountain Power, 1&#8209;888&#8209;221&#8209;7070.</b> They will send their own arborist to work out which lines are on your property, and routine pruning for clearance is at no cost to you<span class="fn" data-ref="r9">9</span>. Their own instruction is blunt: never prune limbs or remove trees near power lines.</li>
+      <li><b>Out toward Ten Sleep &mdash; Big Horn Rural Electric, (307) 568&#8209;2419</b><span class="fn" data-ref="r10">10</span>.</li>
+    </ul>
+    <p>Why we send you away from work we could bill for: OSHA sets ten feet as the closest anyone who is not a qualified line&#8209;clearance arborist may bring themselves or a tool to a line at 50,000 volts or less<span class="fn" data-ref="r5">5</span>. We are a tree service, not a line&#8209;clearance crew. Once the utility has cleared the line, or dropped it, we are glad to take the rest of the tree.</p>
+  </div></details>
+
+  <details id="where"><summary>Where do you work?</summary><div class="body">
+    <p>Out of Worland, across the Bighorn Basin. Roughly an hour in any direction is an ordinary day; past that, ask, and we will tell you honestly whether it is worth your money to have us drive.</p>
+    <figure class="mapfig">
+      <img src="service-area.svg" width="552" height="548" loading="lazy" decoding="async"
+           alt="A schematic map of the Bighorn Basin with Worland at the center inside a dashed ring about fifty miles across. Ten Sleep lies east; Manderson, Basin, Greybull, Otto and Shell north; Winchester, Kirby, Lucerne and Thermopolis south. The Bighorn River runs north through the basin, with the Big Horn Mountains along the east.">
+      <figcaption>Worland at the middle, and about fifty miles of basin around it.</figcaption>
+    </figure>
+    <p>Worland, Ten Sleep, Manderson, Basin, Greybull, Shell, Hyattville, Otto, Winchester, Kirby, Lucerne and Thermopolis.</p>
+  </div></details>
+
+  <details id="cost"><summary>What does it cost, and how soon can you come?</summary><div class="body">
+    <p>The estimate is free, it is in writing, and it does not expire in twenty&#8209;four hours to make you decide in a hurry.</p>
+    <p>What moves the price is access more than size: whether the truck can get to the tree, whether the wood can be dropped or has to be rigged down over something, how far the brush has to be dragged, and what happens to the wood afterward. A big cottonwood in an open pasture is cheaper than a small one between a garage and a power drop.</p>
+    <p>Storm damage goes first, then the order the work was booked in. In the busy weeks after a wind that can be a few days out; we will tell you which it is when you call, rather than after.</p>
+  </div></details>
+
+  <details id="stump"><summary>Do you grind the stump &mdash; and what about the pipes under it?</summary><div class="body">
+    <p>Yes, and we call before we grind.</p>
+    <p>Wyoming law asks anyone breaking ground to give two business days&rsquo; notice, so the utilities can come and mark what is buried. It is free, it is one phone call &mdash; <b>811</b>, or 1&#8209;800&#8209;849&#8209;2476 &mdash; and the Public Service Commission&rsquo;s own example of when to do it is planting a tree<span class="fn" data-ref="r11">11</span>. A grinder goes deeper than a shovel, so it is not a formality.</p>
+    <p>That wait is why a stump is usually a second visit rather than the same afternoon, and it is worth saying out loud so that it does not look like we forgot.</p>
+  </div></details>
+
+  <details id="facebook"><summary>You have a Facebook page. Why this as well?</summary><div class="body">
+    <p>Because the thing at the top of this page does not work on Facebook.</p>
+    <p>We could post the certificate of insurance there, and we have. It is now an image in a feed from some week in March, and no stranger deciding this afternoon whether to call us is going to find it. There is nowhere on a feed to put an answer and have it stay put &mdash; everything is sorted by when it happened, so the good answer from the spring sinks under the photograph of a chipper.</p>
+    <p>The whole argument of this page is that you should be able to check us in a minute without asking us. That needs a fixed address, one that is still the same address next spring, that you can reach at nine at night without an account, and that works even if we forget to post for a month.</p>
+    <p><b>So we keep both</b>, and you should too if you run something. Facebook is where people find out we exist. This is where they find out whether to trust us.</p>
+  </div></details>
+
+  <details id="who"><summary>Who are you?</summary><div class="body">
+    <p>A two&#8209;truck outfit working out of Worland: a bucket truck, a chipper, a grinder and the people in the picture at the top of this page.</p>
+    <p>We are invented, for a demonstration &mdash; but the shape of the business is the ordinary one for this county, and so is the problem this page is trying to solve. A tree service lives or dies on whether a stranger believes it is insured, and the usual proof is a folded certificate in the glovebox that nobody can check on a Saturday.</p>
+  </div></details>
+</section>
+
+<!-- ================= B ================= -->
+<section class="col dim" id="cB" role="tabpanel" aria-labelledby="tB">
+  <div class="colhead"><b>B</b> &nbsp;Sources</div>
+  <p class="lede" style="font-size:15.5px">Everything cited in A or C, previewed. The link is always the last line &mdash; read the card first and decide whether you need the original at all.</p>
+
+  <h3 class="colbsh" id="colbint">Internal links</h3>
+  <p class="colbcap">The two most recent content changes, and the record behind them.</p>
+  <a class="bcard" href="#powerline" data-open="powerline">
+    <span class="t">23 September 2026 &mdash; wind week: three days out on ordinary work, storm damage still same&#8209;day</span>
+    <span class="d">And a reminder that a line in the tree is the power company&rsquo;s call to take, not ours. The numbers for both utilities, and the rule behind it, are in column A.</span>
+  </a>
+  <a class="bcard" href="#insured" data-open="insured">
+    <span class="t">11 September 2026 &mdash; the insurance page now carries the state link and our FEIN</span>
+    <span class="d">So a customer can pull Wyoming&rsquo;s own Certificate of Good Standing without going through us at all. What that document covers, and what a certificate cannot prove, is in column C.</span>
+  </a>
+
+  <a class="bcard" href="chronicle.html">
+    <span class="t">Chronicle &mdash; what has been happening, and why</span>
+    <span class="d">The whole record in plain language, newest first: the finding this page was built around, what each choice was for, and what is still unproven.</span>
+  </a>
+
+  <h3 class="colbsh" id="colbext">External links</h3>
+  <p class="colbcap">Every reference to some other website.</p>
+
+  <article class="ref" id="r1">
+    <span class="rnum">1</span><span class="rkind">Regulator &middot; how the system works</span>
+    <div class="rtitle">Workers&rsquo; Compensation &mdash; consumer guidance</div>
+    <div class="rmeta">Wyoming Department of Insurance &middot; state regulator &middot; undated page</div>
+    <div class="rprev">States that Wyoming is a monopolistic state, where the state fund is the primary provider of workers&rsquo; compensation insurance. Certain exempt employers and employee groups may buy from private insurers on the open market; most may not. Points employers to the Workers&rsquo; Compensation Division at (307) 777&#8209;6763 and claims at (307) 777&#8209;7441.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is the reason workers&rsquo; compensation does not appear on the same certificate as the liability policy, which otherwise looks to a customer like something missing.</div>
+    <a class="rlink" href="https://doi.wyo.gov/consumers/workers-comp">doi.wyo.gov &middot; workers&rsquo; compensation, consumer page</a>
+  </article>
+
+  <article class="ref" id="r2">
+    <span class="rnum">2</span><span class="rkind">Regulation &middot; who must be covered</span>
+    <div class="rtitle">Workers&rsquo; Compensation: Employers</div>
+    <div class="rmeta">Wyoming Department of Workforce Services &middot; Workers&rsquo; Compensation Division</div>
+    <div class="rprev">Businesses in extra&#8209;hazardous industries must obtain coverage before work begins, with the classification determined from the North American Industry Classification System code the business falls under. Employer services answer on (307) 777&#8209;6763. The division&rsquo;s own online system lets an employer see its own claims, and nobody else&rsquo;s.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is the rule that makes coverage compulsory for this trade rather than a selling point, and the page that shows there is no public lookup behind it.</div>
+    <a class="rlink" href="https://dws.wyo.gov/dws-division/workers-compensation/employers/">dws.wyo.gov &middot; workers&rsquo; compensation, employers</a>
+  </article>
+
+  <article class="ref" id="r3">
+    <span class="rnum">3</span><span class="rkind">Regulator &middot; what applies to the trade</span>
+    <div class="rtitle">Tree Care Industry &mdash; safety and health topics</div>
+    <div class="rmeta">Occupational Safety and Health Administration &middot; US Department of Labor &middot; public domain</div>
+    <div class="rprev">Says that tree care hazards are addressed in OSHA&rsquo;s standards for recordkeeping and for general industry. It does not point to a standard written for tree care, because there is not one; the agency reaches the trade through rules written for other purposes.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it establishes the gap that ANSI Z133 exists to fill, which is the whole reason a voluntary standard matters in this trade.</div>
+    <a class="rlink" href="https://www.osha.gov/tree-care">osha.gov/tree-care</a>
+  </article>
+
+  <article class="ref" id="r4">
+    <span class="rnum">4</span><span class="rkind">Public service &middot; verification</span>
+    <div class="rtitle">Certificate of Good Standing &mdash; third&#8209;party request</div>
+    <div class="rmeta">State of Wyoming &middot; Unemployment Insurance and Workers&rsquo; Compensation divisions</div>
+    <div class="rprev">A form anyone may use. Enter an employer&rsquo;s federal employer identification number and your own name, address and contact details, with an optional project reference; the system shows the business and whether certificates are available from both divisions, and emails the certificates to the requester. The documents come from the state, not from the employer.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is the only independent check a customer in Wyoming has on a contractor&rsquo;s coverage, and it is the reason this page publishes a federal employer number at all.</div>
+    <a class="rlink" href="https://cogs.wyo.gov/ThirdParty.aspx">cogs.wyo.gov/ThirdParty.aspx</a>
+  </article>
+
+  <article class="ref" id="r5">
+    <span class="rnum">5</span><span class="rkind">Regulation &middot; electrical clearance</span>
+    <div class="rtitle">29 CFR 1910.333 &mdash; selection and use of work practices</div>
+    <div class="rmeta">Occupational Safety and Health Administration &middot; general industry standard &middot; public domain</div>
+    <div class="rprev">At 1910.333(c)(3)(i)(A)(<i>1</i>), an unqualified person working near overhead lines must stay at least 10 feet away where the voltage to ground is 50&nbsp;kV or below, with the distance increasing above that. The limit applies to conductive objects the person handles as well as to the person. Qualified persons work instead to Table S&#8209;5, whose distances start at a foot.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is the actual number behind &ldquo;we do not touch power lines,&rdquo; and the difference between a qualified crew and an ordinary one.</div>
+    <a class="rlink" href="https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.333">osha.gov &middot; 1910.333</a>
+  </article>
+
+  <article class="ref" id="r6">
+    <span class="rnum">6</span><span class="rkind">Standard &middot; arboricultural safety</span>
+    <div class="rtitle">ANSI Z133 Arboricultural Safety Standards</div>
+    <div class="rmeta">Tree Care Industry Association &middot; American National Standard &middot; 2026 edition</div>
+    <div class="rprev">The safety standard written for the trade: it applies to employers and employees engaged in arboricultural operations, and the association&rsquo;s own description notes that although compliance is voluntary the standard carries the force of law in many instances in the United States. Sold as a manual; the text is not free to read.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is the measure a tree crew&rsquo;s practice is judged against where OSHA has written no rule of its own, so naming the edition is a claim a customer could hold us to.</div>
+    <a class="rlink" href="https://treecareindustryassociation.org/products/ansi-z133-arboricultural-safety-standards/">treecareindustryassociation.org &middot; ANSI Z133</a>
+  </article>
+
+  <article class="ref" id="r7">
+    <span class="rnum">7</span><span class="rkind">Credential &middot; the arborist</span>
+    <div class="rtitle">Credentials &mdash; ISA Certified Arborist</div>
+    <div class="rmeta">International Society of Arboriculture &middot; Atlanta, Georgia &middot; nonprofit</div>
+    <div class="rprev">Certification is examined, either on paper through a chapter or at a Pearson VUE testing center, and is kept up with continuing education units earned through training and other qualifying activity. The society also runs a public lookup where a name or certification number can be checked against its register.</div>
+    <div class="rwhy"><b>Why it is cited:</b> the credential in column A is only worth printing if a stranger can look it up, so the page has to say who issues it and where the register is.</div>
+    <a class="rlink" href="https://www.isa-arbor.com/credentials">isa-arbor.com/credentials</a>
+  </article>
+
+  <article class="ref" id="r8">
+    <span class="rnum">8</span><span class="rkind">Public service &middot; verification</span>
+    <div class="rtitle">Verify an ISA credential</div>
+    <div class="rmeta">International Society of Arboriculture &middot; its public register, on the society&rsquo;s consumer site</div>
+    <div class="rprev">The society&rsquo;s own lookup: a certification number or a name is checked against the register, so a customer can confirm that the card in somebody&rsquo;s wallet is current and was not simply printed. The tool assembles its page in the browser, which is why the card beside this one describes the credential from the society&rsquo;s main site instead.</div>
+    <div class="rwhy"><b>Why it is cited:</b> a credential nobody can check is a decoration, and this is where the checking happens.</div>
+    <a class="rlink" href="https://www.treesaregood.org/findanarborist/verify">treesaregood.org &middot; verify a credential</a>
+  </article>
+
+  <article class="ref" id="r9">
+    <span class="rnum">9</span><span class="rkind">Utility &middot; trees near lines</span>
+    <div class="rtitle">Vegetation management</div>
+    <div class="rmeta">Rocky Mountain Power &middot; serving Utah, Wyoming and Idaho</div>
+    <div class="rprev">The utility keeps its own arborists, who prune vegetation to keep safe corridors around power lines, reduce wildfire risk and prevent outages. Routine pruning for clearance on distribution lines is at no charge to the customer. Customers with a tree near a line are told to call 1&#8209;888&#8209;221&#8209;7070 for an evaluation, and are told plainly: never prune limbs or remove trees near power lines.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is the better answer to a line in a tree than anything this company could sell, and it comes with a telephone number that works.</div>
+    <a class="rlink" href="https://www.rockymountainpower.net/outages-safety/vegetation-management.html">rockymountainpower.net &middot; vegetation management</a>
+  </article>
+
+  <article class="ref" id="r10">
+    <span class="rnum">10</span><span class="rkind">Local directory &middot; which utility</span>
+    <div class="rtitle">Community Directory</div>
+    <div class="rmeta">Washakie Development Association &middot; Worland, Wyoming</div>
+    <div class="rprev">The county&rsquo;s own list of who supplies what. Electricity: Rocky Mountain Power, 888&#8209;221&#8209;7070; Big Horn REA, 307&#8209;568&#8209;2419, serving the Ten Sleep area; High Plains Power, 307&#8209;856&#8209;9426. Gas, propane, telephone and internet suppliers are listed alongside.</div>
+    <div class="rwhy"><b>Why it is cited:</b> which number to ring for a line in a tree depends on where the tree is, and this is the local list that says so.</div>
+    <a class="rlink" href="https://washakiedevelopment.com/community-directory/">washakiedevelopment.com/community-directory</a>
+  </article>
+
+  <article class="ref" id="r11">
+    <span class="rnum">11</span><span class="rkind">Law &middot; before breaking ground</span>
+    <div class="rtitle">Call Before You Dig</div>
+    <div class="rmeta">Wyoming Public Service Commission &middot; state regulator</div>
+    <div class="rprev">Two business days&rsquo; notice is required by law before digging. One Call of Wyoming takes the notice free, on 811 or 1&#8209;800&#8209;849&#8209;2476, and the utilities come and mark what is buried. The commission&rsquo;s own framing covers everything from weekend yard work to major construction, and it names planting a tree as an occasion for it.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is why stump grinding is a second visit, and the page would rather explain the delay than look forgetful.</div>
+    <a class="rlink" href="https://psc.wyo.gov/home/call-before-you-dig">psc.wyo.gov &middot; call before you dig</a>
+  </article>
+
+  <article class="ref" id="r12">
+    <span class="rnum">12</span><span class="rkind">Method &middot; the format</span>
+    <div class="rtitle">Three Columns</div>
+    <div class="rmeta">threecolumns.online &middot; the written method, published free</div>
+    <div class="rprev">The format this page is built in, and the instructions for building another one: plain answers on the left, every source previewed in the middle, technical detail on the right. One HTML file, no framework, no build step, no database and no server.</div>
+    <div class="rwhy"><b>Why it is cited:</b> a page that asks to be checked should say what it is made of and where the recipe is.</div>
+    <a class="rlink" href="https://threecolumns.online/">threecolumns.online</a>
+  </article>
+
+  <article class="ref" id="r13">
+    <span class="rnum">13</span><span class="rkind">Proposal &middot; who would pay</span>
+    <div class="rtitle">Washakie AI &mdash; a twelve&#8209;month pilot program</div>
+    <div class="rmeta">washakie-ai.online &middot; a grant proposal, not yet submitted</div>
+    <div class="rprev">Asks $10,000 for twelve working websites for Washakie County institutions and small businesses, four public workshops, and a written method anybody can follow afterward. A few local trainees from the workshops are the whole of the plan for keeping the sites going once the year is up.</div>
+    <div class="rwhy"><b>Why it is cited:</b> this page is a sample of what that program would build, and the reader is entitled to know who is proposing to pay for it.</div>
+    <a class="rlink" href="https://washakie-ai.online/">washakie-ai.online</a>
+  </article>
+</section>
+
+<!-- ================= C ================= -->
+<section class="col dim" id="cC" role="tabpanel" aria-labelledby="tC">
+  <div class="colhead"><b>C</b> &nbsp;How it works (Details)</div>
+  <p class="lede">Prior know-how is assumed, and the items become more &ldquo;technical&rdquo; toward the bottom. This is the long form; the <a href="index.html">front page</a> carries the short one. What the insurance actually covers, what a certificate does and does not prove, the rule about power lines, and the machines in the picture.</p>
+
+  <h2 id="certificate">What a certificate of insurance proves, and what it does not</h2>
+  <p>A certificate of insurance is a one&#8209;page summary an agent types up: who is insured, what kinds of policy are in force, the limits, and the dates. It is evidence, not a contract, and it confers nothing by itself. Three things follow from that, and a customer is entitled to know all three.</p>
+  <ul>
+    <li><b>It is a snapshot.</b> It says the policy was in force on the day it was typed. A policy can lapse the following week and the paper in your hand will not change. The fix is to be named as the <b>certificate holder</b>, which puts you on the list the agent must notify.</li>
+    <li><b>Certificate holder is not the same as additional insured.</b> Holder means you get told. Additional insured means you are covered under the policy for claims arising out of the contractor&rsquo;s work. For ordinary residential tree work the first is usually the honest and sufficient answer; a commercial client or a property manager may reasonably ask for the second, and it is the agent, not the crew, who can add it.</li>
+    <li><b>It can be forged in about four minutes.</b> Which is the whole argument for the state link in column A: a Certificate of Good Standing is generated by Wyoming and mailed to <i>your</i> address, and never passes through the contractor&rsquo;s hands at all<span class="fn" data-ref="r4">4</span>.</li>
+  </ul>
+
+  <h2 id="wyocomp">Why workers&rsquo; compensation is different in Wyoming</h2>
+  <p>Wyoming is a <b>monopolistic</b> state: the state fund is the provider of workers&rsquo; compensation, and for most employers a private policy is not an option on the open market at all<span class="fn" data-ref="r1">1</span>. The practical consequence for anyone hiring a crew here is that workers&rsquo; compensation will not appear on the same certificate as the liability policy, because a different body carries it.</p>
+  <p>Coverage is not optional for this trade. Employers in extra&#8209;hazardous industries must be covered before work begins, and the classification is worked out from the federal industry code the business falls under<span class="fn" data-ref="r2">2</span>. Tree work with saws, at height, beside traffic, is not a borderline case.</p>
+  <p>The Division does not publish an open coverage lookup &mdash; there is no page where you type a business name and see a green check. What exists instead is the Certificate of Good Standing: a third party enters the employer&rsquo;s federal employer identification number and their own contact details, and the state returns certificates for workers&rsquo; compensation and unemployment insurance together<span class="fn" data-ref="r4">4</span>. That is why this page publishes its FEIN, which most trade sites do not. It is the key to the only independent check a customer has.</p>
+
+  <h2 id="lines">Power lines, and the ten feet</h2>
+  <p>OSHA&rsquo;s rule for anyone who is not a qualified person is a fixed distance rather than a judgment call: for voltages to ground of 50&nbsp;kV or below, ten feet, and more above that &mdash; and the distance applies to conductive objects as well as to the body, which includes an aluminum pole saw and a wet rope<span class="fn" data-ref="r5">5</span>. Qualified persons work to a different table and to distances measured in inches, but qualification there is a specific status with training behind it, not a matter of experience or nerve.</p>
+  <p>This is why the honest answer to a line in a tree is the utility&rsquo;s telephone number. Rocky Mountain Power keeps its own arborists, will identify which lines on a property are its responsibility, and prunes for clearance at no cost to the customer<span class="fn" data-ref="r9">9</span>. Around Ten Sleep the same call goes to Big Horn Rural Electric instead<span class="fn" data-ref="r10">10</span>. A tree service that takes the job anyway is either qualified for line clearance, and should say so and prove it, or is gambling with somebody else&rsquo;s life on your property.</p>
+
+  <h2 id="standard">The standard the work follows</h2>
+  <p>There is no OSHA standard written for tree care. The agency addresses the trade through its general industry standards and its recordkeeping rules rather than a rule of its own<span class="fn" data-ref="r3">3</span>, which leaves a gap that the industry fills itself.</p>
+  <p>What fills it is <b>ANSI Z133</b>, the American National Standard for arboricultural operations, published through the Tree Care Industry Association. It applies to employers and employees engaged in arboricultural operations, and although compliance is nominally voluntary it is treated as the measure of reasonable practice &mdash; which is to say it carries weight in court whether or not it carries the force of law<span class="fn" data-ref="r6">6</span>. Rigging, saw handling, climbing systems, aerial devices, electrical hazards and the distances above all sit inside it.</p>
+
+  <h2 id="kit">The equipment in the picture</h2>
+  <p>Three machines, and each one is in the illustration at the top of this page for a reason.</p>
+  <ul>
+    <li><b>The bucket truck.</b> An insulated aerial device on a chassis, with a chip body behind the cab, standing on outriggers because a boom at reach turns the truck into a lever. The bucket is the reason a limb over a roof can be cut in pieces small enough to hand down, instead of being dropped and hoped for.</li>
+    <li><b>The chipper.</b> Towed behind, fed from the near side, discharging into the chip body. It is the machine that turns a day of brush into an afternoon of hauling, and it is also the single most dangerous thing on the job; the standard has a good deal to say about it.</li>
+    <li><b>The grinder.</b> Not in the picture, because it comes on the second visit &mdash; after the locate.</li>
+  </ul>
+
+  <h2 id="stumpdetail">Stumps, and what is under them</h2>
+  <p>One&#8209;Call of Wyoming takes two business days&rsquo; notice and costs nothing, and the Public Service Commission&rsquo;s own illustration of when it applies is planting a tree<span class="fn" data-ref="r11">11</span>. A grinder cutting eight to twelve inches below grade, inside the root plate of a tree that was very likely planted along the same easement as the service lines, is a good deal more than planting one.</p>
+  <p>The marks are good for a limited time and are surface paint and flags, not a guarantee of depth. Nothing about a locate makes it safe to grind blind over a marked line: the marks say where to stop, not how hard to push.</p>
+
+  <h2 id="area">The map, and how it was drawn</h2>
+  <p>The service&#8209;area map in column A is schematic, and says so on its face. The towns are plotted from their published coordinates on a plain equirectangular grid, so their positions relative to one another are true; the shaded ground either side of the basin is an impression of the Big Horns and the Absaroka front, not a survey line, and the ring is drawn at fifty statute miles from Worland measured on the map&rsquo;s own scale.</p>
+  <p>Fifty miles was chosen because it is roughly the distance at which a day&rsquo;s work stops paying for the drive, not because anything official stops there.</p>
+
+  <h2 id="openfirst">One deliberate departure from the format</h2>
+  <p>On every other page in this family, all of column A begins folded shut. Here the first answer &mdash; the insurance &mdash; is open when the page loads.</p>
+  <p>The reason is the job this page has to do. A stranger who has just been handed a business card in a parking lot, standing in their yard with a phone, should not have to work out that there is something to tap before they can see whether the company is covered. Everything else on the page folds as usual. It is recorded here because the format asks that a departure be stated rather than quietly taken.</p>
+
+  <h2 id="keeper">Who keeps this page</h2>
+  <p>A tree service does not build web pages and should not have to. Behind this demonstration, the county&rsquo;s own people are meant to: a few local trainees from the public workshops, who can change a price, add a storm&#8209;week note, or correct a phone number and publish it in a couple of minutes.</p>
+  <p>The pilot program that would pay for the first dozen pages like this one is proposed at washakie-ai.online<span class="fn" data-ref="r13">13</span>.</p>
+
+  <h2 id="about">About this page</h2>
+  <p>It is built in the Three Columns format<span class="fn" data-ref="r12">12</span>: plain answers first, every source previewed in the middle, the detail last. It is a handful of plain files the company owns outright &mdash; no monthly fee to a web company, no login for anyone who reads it, nothing to keep up but the words. It loads on a phone with one bar, and it prints properly for the folder in the truck.</p>
+  <div class="note"><strong>The whole argument of this page in one line:</strong> anything a customer has to take on trust is worth less than the same thing they can check themselves in a minute.</div>
+
+  <h2 id="wrong">What went wrong</h2>
+  <p>The format asks every page to record at least one thing that went wrong. Building this one, two things did.</p>
+  <ul>
+    <li><b>The credential lookup could not be read.</b> The International Society of Arboriculture&rsquo;s verification tool<span class="fn" data-ref="r8">8</span> is a script that builds its page in the browser, so the card in column B describes what the organization says about the credential rather than what the lookup returns. The exam prerequisites and the renewal period are not stated on this page for the same reason: they could not be confirmed from the source, so they are left out rather than guessed at.</li>
+    <li><b>There is no open coverage lookup in Wyoming.</b> The first draft of column A promised one. There is not one &mdash; only the Certificate of Good Standing, which needs a federal employer number and an email address. The answer was rewritten around what exists.</li>
+  </ul>
+</section>
+
+</main>
+</div>
+
+<footer>
+  Bighorn Basin Tree Service &middot; an invented company, for a demonstration<br>
+  Worland &middot; Washakie County &middot; Wyoming<br>
+  No analytics, no trackers, no cookies. This page sets nothing and stores nothing for its readers.
+</footer>
+<nav class="uplevel" aria-label="One level up">
+  <a href="https://washakie-ai.online/">
+    <span class="uplabel">&uarr; One level up</span>
+    <span class="upname">washakie-ai.online</span>
+    <span class="upcap">a $10,000 proposal for grass-roots AI in Washakie County</span>
+  </a>
+</nav>
+<div class="endmark">·</div>
+
+<script>
+(function(){
+  var tabs = [].slice.call(document.querySelectorAll('[role="tab"]'));
+  var cols = { tA:'cA', tB:'cB', tC:'cC' };
+  var wide = function(){ return window.matchMedia('(min-width:1101px)').matches; };
+  function select(id){
+    tabs.forEach(function(t){
+      var on = t.id === id;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      var c = document.getElementById(cols[t.id]);
+      c.classList.toggle('active', on);
+      c.classList.toggle('dim', wide() ? !on : false);
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ select(t.id); });
+    t.addEventListener('keydown', function(e){
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var n = tabs[(i + d + tabs.length) % tabs.length];
+      n.focus(); select(n.id);
+    });
+  });
+  window.addEventListener('resize', function(){
+    var cur = tabs.filter(function(t){ return t.getAttribute('aria-selected') === 'true'; })[0];
+    if (cur) select(cur.id);
+  });
+  select('tA');
+
+  // A column is its own button: a click in a dimmed column (or tabbing into it) makes it the
+  // active one, exactly as its A/B/C button would. Capture phase, so a marker or card that
+  // sends the reader to another column still has the last word.
+  Object.keys(cols).forEach(function(tid){
+    var c = document.getElementById(cols[tid]);
+    var take = function(){ if (!c.classList.contains('active')) select(tid); };
+    c.addEventListener('click', take, true);
+    c.addEventListener('focusin', take);
+  });
+
+  // footnote markers -> reference card
+  document.querySelectorAll('.fn').forEach(function(f){
+    f.addEventListener('click', function(){
+      var el = document.getElementById(f.dataset.ref);
+      if (!el) return;
+      select('tB');
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      el.classList.add('flash');
+      setTimeout(function(){ el.classList.remove('flash'); }, 1600);
+    });
+  });
+
+  // internal link cards -> open the passage they point at, in its own column
+  function openPassage(id){
+    var d = document.getElementById(id);
+    if (!d) return false;
+    var col = d.closest('.col');
+    if (col) {
+      var tab = tabs.filter(function(t){ return cols[t.id] === col.id; })[0];
+      if (tab) select(tab.id);
+    }
+    if (d.tagName === 'DETAILS') d.open = true;
+    d.scrollIntoView({behavior:'smooth', block:'start'});
+    d.classList.add('flash');
+    setTimeout(function(){ d.classList.remove('flash'); }, 1600);
+    return true;
+  }
+  document.querySelectorAll('.bcard[data-open]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if (openPassage(a.dataset.open)) e.preventDefault();
+    });
+  });
+
+  document.getElementById('pdf').addEventListener('click', function(){ window.print(); });
+  // print: open every folded answer first, and fold them again after, so paper misses nothing
+  var unfolded = [];
+  window.addEventListener('beforeprint', function(){
+    var closed = [].filter.call(document.querySelectorAll('details'), function(d){ return !d.open; });
+    closed.forEach(function(d){ d.open = true; });
+    unfolded = unfolded.concat(closed);
+  });
+  window.addEventListener('afterprint', function(){
+    unfolded.forEach(function(d){ d.open = false; });
+    unfolded = [];
+  });
+  var th = document.getElementById('theme');
+  th.addEventListener('click', function(){
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+    th.textContent = dark ? 'Dark' : 'Light';
+  });
+
+  // link health: same-origin status file only. No file, no claim.
+  fetch('links.json', {cache:'no-store'}).then(function(r){
+    if (!r.ok) throw 0; return r.json();
+  }).then(function(d){
+    var dead = d.dead || {}, any = false;
+    Object.keys(dead).forEach(function(id){
+      var card = document.getElementById(id);
+      if (!card) return;
+      var a = card.querySelector('.rlink');
+      if (!a) return;
+      a.classList.add('broken');
+      a.removeAttribute('href');
+      a.setAttribute('aria-disabled','true');
+      any = true;
+    });
+    if (any) {
+      var n = document.getElementById('deadnote');
+      var lines = Object.keys(dead).map(function(id){
+        var t = document.getElementById(id).querySelector('.rtitle').textContent;
+        return '&ldquo;' + t + '&rdquo; — unreachable as of ' + dead[id];
+      });
+      n.innerHTML = '<b>A note on the struck-through links.</b> ' +
+        'These sources were live when this report was written and are not now. ' +
+        'They are shown rather than removed, so that what was cited stays visible.<br><br>' +
+        lines.join('<br>') + '<br><br>Last checked ' + (d.checked || 'unknown') + '.';
+      n.hidden = false;
+    }
+  }).catch(function(){ /* no status file: say nothing */ });
+})();
+</script>
+<script src="phone-view.js" defer></script>
+<script src="top-button.js" defer></script>
+<script src="back-link.js" defer></script>
+</body>
+</html>
