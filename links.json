@@ -1,5 +1,5 @@
 {
-  "checked": "2026-09-22",
-  "dead": {},
-  "note": "All fourteen sources reachable on 22 September; the fifteenth, Wikipedia on notes, added and reached 23 September."
+  "checked": "2026-09-24",
+  "note": "Twenty sources. Nineteen reachable on 24 September. The twentieth, facebook.com, is deliberately not reachable by an automated client and will be reported dead by any link checker: that refusal is the point of the card, not a fault. Treat it as a known exception rather than a broken link.",
+  "dead": {}
 }

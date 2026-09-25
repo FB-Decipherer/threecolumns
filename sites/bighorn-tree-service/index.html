@@ -236,6 +236,10 @@ header{position:relative;}
 @media print{.stencil{opacity:.5;}}
 
 /* ---------- the insurance block (column A) ---------- */
+.inslabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:#2E5A33;margin:18px 0 7px;}
+:root[data-theme="dark"] .inslabel{color:#8FBE91;}
+.inslabel + .insbox{margin-top:0;}
 .insbox{margin:16px 0 6px;border:1px solid var(--rule);border-radius:10px;
   overflow:hidden;background:var(--card);max-width:34rem;}
 .insrow{padding:14px 16px;border-top:1px solid var(--rule);}
@@ -315,6 +319,7 @@ header{position:relative;}
   <details id="insured" open><summary>Are you insured?</summary><div class="body">
     <p>Yes &mdash; and you should not have to take our word for it. Here is the whole of it, with the way to check each line without asking us.</p>
 
+    <div class="inslabel">One-tap insurance verification</div>
     <div class="insbox">
       <div class="insrow">
         <span class="insk">Workers&rsquo; compensation</span>
@@ -397,6 +402,13 @@ header{position:relative;}
     <p>That wait is why a stump is usually a second visit rather than the same afternoon, and it is worth saying out loud so that it does not look like we forgot.</p>
   </div></details>
 
+  <details id="facebook"><summary>You have a Facebook page. Why this as well?</summary><div class="body">
+    <p>Because the thing at the top of this page does not work on Facebook.</p>
+    <p>We could post the certificate of insurance there, and we have. It is now an image in a feed from some week in March, and no stranger deciding this afternoon whether to call us is going to find it. There is nowhere on a feed to put an answer and have it stay put &mdash; everything is sorted by when it happened, so the good answer from the spring sinks under the photograph of a chipper.</p>
+    <p>The whole argument of this page is that you should be able to check us in a minute without asking us. That needs a fixed address, one that is still the same address next spring, that you can reach at nine at night without an account, and that works even if we forget to post for a month.</p>
+    <p><b>So we keep both</b>, and you should too if you run something. Facebook is where people find out we exist. This is where they find out whether to trust us.</p>
+  </div></details>
+
   <details id="who"><summary>Who are you?</summary><div class="body">
     <p>A two&#8209;truck outfit working out of Worland: a bucket truck, a chipper, a grinder and the people in the picture at the top of this page.</p>
     <p>We are invented, for a demonstration &mdash; but the shape of the business is the ordinary one for this county, and so is the problem this page is trying to solve. A tree service lives or dies on whether a stranger believes it is insured, and the usual proof is a folded certificate in the glovebox that nobody can check on a Saturday.</p>
@@ -409,7 +421,7 @@ header{position:relative;}
   <p class="lede" style="font-size:15.5px">Everything cited in A or C, previewed. The link is always the last line &mdash; read the card first and decide whether you need the original at all.</p>
 
   <h3 class="colbsh" id="colbint">Internal links</h3>
-  <p class="colbcap">The two most recent content changes.</p>
+  <p class="colbcap">The two most recent content changes, and the record behind them.</p>
   <a class="bcard" href="#powerline" data-open="powerline">
     <span class="t">23 September 2026 &mdash; wind week: three days out on ordinary work, storm damage still same&#8209;day</span>
     <span class="d">And a reminder that a line in the tree is the power company&rsquo;s call to take, not ours. The numbers for both utilities, and the rule behind it, are in column A.</span>
@@ -417,6 +429,11 @@ header{position:relative;}
   <a class="bcard" href="#insured" data-open="insured">
     <span class="t">11 September 2026 &mdash; the insurance page now carries the state link and our FEIN</span>
     <span class="d">So a customer can pull Wyoming&rsquo;s own Certificate of Good Standing without going through us at all. What that document covers, and what a certificate cannot prove, is in column C.</span>
+  </a>
+
+  <a class="bcard" href="chronicle.html">
+    <span class="t">Chronicle &mdash; what has been happening, and why</span>
+    <span class="d">The whole record in plain language, newest first: the finding this page was built around, what each choice was for, and what is still unproven.</span>
   </a>
 
   <h3 class="colbsh" id="colbext">External links</h3>

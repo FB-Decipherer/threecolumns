@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page F &middot; do you really own it? &middot; Three Columns</title>
+<meta name="description" content="What owning a Three Columns site actually consists of: the domain, the words, the files, and the hosting you do not own. With the license defect in these repositories recorded rather than tidied away.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#FCFAF5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<!-- Unlike pages D and E, this one is NOT noindex: it answers a question a prospective
+     owner would type into a search engine, and it is part of the public case. -->
+<style>
+
+:root{--paper:#FCFAF5;--card:#F5F1E8;--ink:#1E1B16;--ink-mid:#4A443A;--rule:#DCD5C6;
+  --accent:#4C7A4E;--accentb:#B4372C;--gold:#C8992F;--done:#7FA981;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif;font-size:16.5px;line-height:1.62;}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 80px;}
+header{padding:34px 0 20px;border-bottom:2px solid var(--ink);}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--accentb);}
+h1{font-size:36px;margin:8px 0 0;font-weight:600;letter-spacing:-.012em;}
+.sub{color:var(--ink-mid);margin-top:10px;}
+h2{font-size:21px;margin:40px 0 2px;font-weight:600;display:flex;gap:.6em;align-items:baseline;}
+h2 .n{font-family:"IBM Plex Mono",monospace;color:var(--gold);font-size:.72em;flex:none;}
+h3{font-size:15px;font-family:"IBM Plex Mono",monospace;color:var(--accent);
+  margin:22px 0 2px;letter-spacing:.02em;}
+p{margin:9px 0 0;} p.hint{color:var(--ink-mid);font-size:15px;margin-top:4px;}
+
+p{margin:9px 0 0;} p.hint{color:var(--ink-mid);font-size:15px;margin-top:4px;}
+ul{margin:9px 0 0;padding-left:1.15rem;} li{margin:5px 0;}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.9em;}
+.verdict{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);
+  border-radius:8px;padding:15px 18px;margin:20px 0 0;}
+.verdict b{color:var(--accent);}
+.warn{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accentb);
+  border-radius:8px;padding:15px 18px;margin:20px 0 0;}
+.warn b{color:var(--accentb);}
+.holder{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-mid);margin:16px 0 0;}
+.holder b{color:var(--ink);}
+table{border-collapse:collapse;width:100%;margin:16px 0 0;font-size:15px;}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--rule);}
+th{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-mid);font-weight:500;border-bottom:1.5px solid var(--ink);}
+td:first-child{font-weight:600;width:11rem;}
+.src{font-size:14px;color:var(--ink-mid);margin-top:8px;}
+.src a{color:inherit;}
+a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);}
+a:hover{border-bottom-color:var(--accent);}
+footer{margin-top:52px;padding-top:16px;border-top:1px solid var(--rule);
+  font-size:14px;color:var(--ink-mid);}
+@media (max-width:640px){
+  h1{font-size:29px;} table{font-size:14px;} th,td{padding:8px 7px;}
+  td:first-child{width:auto;}
+}
+@media print{
+  body{background:#fff;}
+  .wrap{max-width:none; padding-bottom:0;}
+  a{border:0;}
+  h1,h2,h3{break-after:avoid; page-break-after:avoid;}
+  .verdict,.warn,table,.src{break-inside:avoid; page-break-inside:avoid;}
+  .verdict,.warn{background:none;}
+  footer{break-before:avoid;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">Page F &middot; what you actually own</div>
+  <h1>Do you really own it?</h1>
+  <p class="sub">Every page in this family says the site belongs outright to the person it is about. That sentence is doing a lot of work. This page takes it apart into the five things it is made of, names who holds each one, and says plainly where the claim is weaker than it sounds &mdash; including one defect in how these sites are licensed today.</p>
+</header>
+
+<h2><span class="n">F1</span>The short answer</h2>
+<div class="verdict">
+  <p><b>You own the domain and you own the words.</b> Those are the two things that matter, and both are yours on the public record from the day they exist.</p>
+  <p><b>You do not own the hosting</b> &mdash; and neither does anyone else who is not running their own machine in their own building. GitHub can shut your site off at any time, for no reason, with no notice, and says so in its terms.</p>
+  <p><b>The reason that is survivable</b> is that everything you own is portable in an afternoon. The files are plain files. The domain points wherever you tell it. Losing the host costs you a Saturday, not your site.</p>
+</div>
+<p class="hint">Everything below is the detail behind those three sentences.</p>
+
+<h2><span class="n">F2</span>The domain</h2>
+<p>This is the real ownership artifact, and the only one that is worth money. A domain is registered to a registrant &mdash; a named person or entity &mdash; through an accredited registrar, and the relationship is a registration agreement between those two parties. ICANN publishes what a registrant is entitled to: the agreement itself in writing, honest pricing, and clear instructions for registering, managing, <em>transferring</em>, renewing and restoring the name<a href="#s3">&nbsp;[3]</a>.</p>
+<p class="holder">Held by: <b>you</b>, as the named registrant</p>
+<p>The word that matters is transferring. A domain is not tied to the registrar you bought it from, or to the host it currently points at. If a registrar behaves badly you move the name elsewhere and it keeps working. That portability is what makes the address yours rather than rented.</p>
+<p>The one obligation is renewal. A domain is a lease, not a freehold: about a dollar a month, and if it lapses it eventually returns to the market and somebody else can take it. There is no version of this where nobody has to remember. <b>Put the renewal on a card in a drawer.</b></p>
+
+<h2><span class="n">F3</span>The words and the pictures</h2>
+<p>Copyright in what you wrote is yours automatically, from the moment you write it. Nobody grants it to you, there is nothing to file, and no platform can take it. This is true on Facebook too, and it is the part of the ownership question that is genuinely not in dispute anywhere.</p>
+<p class="holder">Held by: <b>you</b>, automatically</p>
+<p>What differs between one arrangement and another is never who owns the content. It is what license you had to hand over to publish it, and whether you can leave with anything. That comparison is <b>F7</b>.</p>
+
+<h2><span class="n">F4</span>The files</h2>
+<p>One HTML file, a stylesheet inside it, three or four small scripts, an icon, a picture or two. No database, no content system, no proprietary format, and nothing that needs an account to open.</p>
+<p class="holder">Held by: <b>you</b> &mdash; a folder you can copy</p>
+<p>There is no export feature because there is nothing to export from. Copying the folder <em>is</em> the export, and what you get is the whole working site, not a dump of your text with the layout stripped off. This is the unglamorous item that makes <b>F2</b> mean something: an address you can move is only useful if you have something to move to it.</p>
+
+<h2><span class="n">F5</span>The hosting, which you do not own</h2>
+<p>GitHub's terms are unusually plain and worth reading rather than paraphrasing. Three provisions matter here.</p>
+<ul>
+  <li><b>&ldquo;You own Your Content.&rdquo;</b> Stated in those words<a href="#s2">&nbsp;[2]</a>.</li>
+  <li><b>The license you grant is scoped.</b> GitHub may store, host, archive, parse, display and copy your content <em>as necessary to provide, develop and improve the service</em>, which now includes training its AI features &mdash; with an opt&#8209;out in account settings<a href="#s2">&nbsp;[2]</a>. Note the limit: it is tied to running the service. Compare that wording with <b>F7</b>.</li>
+  <li><b>They can switch you off.</b> GitHub &ldquo;has the right to suspend or terminate your access to all or any part of the Website at any time, with or without cause, with or without notice, effective immediately&rdquo;<a href="#s2">&nbsp;[2]</a>.</li>
+</ul>
+<p class="holder">Held by: <b>GitHub</b>, entirely, at their discretion</p>
+<div class="warn">
+  <p><b>Say this part out loud to anyone you set a site up for.</b> Free hosting is free because it is not a promise. The honest claim is not &ldquo;this will always be here&rdquo; &mdash; it is &ldquo;if this stops being here, you lose a Saturday and nothing else,&rdquo; because the domain is yours and the files are on your own disk.</p>
+</div>
+<p>There is also a provision people miss: making a repository public grants every other user of the service &ldquo;a nonexclusive, worldwide license to use, display, perform and reproduce (by forking)&rdquo; your content through the service<a href="#s2">&nbsp;[2]</a>. Publishing openly is itself a grant. For a site whose whole purpose is to be read, that is unobjectionable &mdash; but it should be a decision rather than a surprise.</p>
+
+<h2><span class="n">F6</span>A defect, recorded rather than tidied away</h2>
+<div class="warn">
+  <p><b>Every repository in this family carries an MIT license at its root, and that is wrong for a subject's site.</b></p>
+</div>
+<p>MIT is exactly right for the <em>format</em>. The method is published free so that the thirteenth site costs nobody anything, and a permissive license is how that promise is kept.</p>
+<p>But the license file sits at the root of the repository, and a repository holds more than the format. On threecolumns.online it also holds <span class="mono">sites/east-bench-farm/</span> and <span class="mono">sites/bighorn-tree-service/</span>. As things stand today, the MIT grant reaches those too &mdash; which means anyone may copy, modify, redistribute and commercially reuse those pages' text, with nothing owed but an attribution line.</p>
+<p>For the two samples this costs nothing, because they are invented. For a real subject it would be a genuine mistake: a farm's price list, a contractor's insurance page and a shop's own words, handed to any competitor who wants them, by a file nobody read.</p>
+<p><b>What it should be instead:</b> the format's files permissively licensed, the subject's content reserved, and the boundary written down where the site is handed over. One license file cannot do both jobs while it lives at the root of a repository containing both.</p>
+<p class="hint">This is recorded here because the format requires that failures be published rather than fixed quietly. It is a live defect as of 24 September 2026 and is not yet corrected.</p>
+
+<h2><span class="n">F7</span>The comparison that actually matters</h2>
+<p>On every arrangement below, you keep copyright. What changes is the license you grant in order to publish, and what you are able to take with you.</p>
+<table>
+  <tr><th>Where it lives</th><th>The license you grant</th><th>What you can leave with</th></tr>
+  <tr>
+    <td>Facebook</td>
+    <td>A &ldquo;non&#8209;exclusive, transferable, sub&#8209;licensable, royalty&#8209;free and worldwide&rdquo; license to host, distribute, modify and create derivative works of your content<a href="#s1">&nbsp;[1]</a>.</td>
+    <td>Your copyright, and a data download. Not the address, not the audience, not the page.</td>
+  </tr>
+  <tr>
+    <td>Twitter / X</td>
+    <td>A &ldquo;worldwide, non&#8209;exclusive, royalty&#8209;free&rdquo; license to use the content in any and all media, with the right to sub&#8209;license<a href="#s1">&nbsp;[1]</a>.</td>
+    <td>The same.</td>
+  </tr>
+  <tr>
+    <td>TikTok</td>
+    <td>An &ldquo;unconditional, irrevocable, non&#8209;exclusive, royalty&#8209;free, fully transferable, perpetual worldwide license&rdquo; to TikTok and third parties, extending to your name and likeness<a href="#s1">&nbsp;[1]</a>.</td>
+    <td>The same.</td>
+  </tr>
+  <tr>
+    <td>This arrangement</td>
+    <td>To GitHub: what is necessary to run the service, plus AI features with an opt&#8209;out<a href="#s2">&nbsp;[2]</a>. To the public: whatever your license file says &mdash; see <b>F6</b>.</td>
+    <td>The domain, the files, and the working site. Everything except the host, which is replaceable.</td>
+  </tr>
+</table>
+<p class="hint">Read the first column and the third together. The licenses differ in breadth, but the decisive column is the last one: on a platform there is nothing to leave with, because the address was never yours.</p>
+
+<h2><span class="n">F8</span>Handover, for the pilot program</h2>
+<p>If a site was built for you under the Washakie County pilot program, ownership is not a feeling about the arrangement. It is four specific transfers, and you should expect all four in writing.</p>
+<ul>
+  <li><b>The domain</b> moved into a registrar account in your name, with you as registrant &mdash; or, if you would rather not run one, the registration transferred with the renewal date and the renewal cost stated.</li>
+  <li><b>The repository</b> transferred to your account, or the folder handed across on a drive if you do not want one. Either works; the second needs a host.</li>
+  <li><b>The DNS records</b>, written down, so any competent person can repoint the name later.</li>
+  <li><b>The license decision</b> made explicitly at that point, per <b>F6</b>, rather than inherited from whatever file happened to be in the repository.</li>
+</ul>
+<p>Until those have happened the site is not yours, however friendly the arrangement is. Ask for the date.</p>
+
+<h2><span class="n">F9</span>What this page is not</h2>
+<p>It is not legal advice, and it is not written by a lawyer. It is a plain description of documents that are public, each one linked below so you can read the original rather than trust the summary &mdash; which is the same standard the rest of these sites hold themselves to.</p>
+<p>Terms change without announcement, and the summaries here were read on the date in the footer. Anything that actually matters to you &mdash; a dispute, a transfer that goes wrong, a competitor copying your pages &mdash; is a question for a lawyer in your own jurisdiction, not for a web page.</p>
+
+<h2><span class="n">F10</span>Sources</h2>
+<p class="src" id="s1"><b>[1]</b> <a href="https://intellectual-property-helpdesk.ec.europa.eu/news-events/news/intellectual-property-and-social-media-2020-01-23_en">Intellectual property and social media</a> &mdash; European Commission, Executive Agency for Small and Medium&#8209;sized Enterprises, 23 January 2020. Sets out that users retain copyright on every major platform, and quotes the license each one takes in return.</p>
+<p class="src" id="s2"><b>[2]</b> <a href="https://docs.github.com/en/site-policy/github-terms/github-terms-of-service">GitHub Terms of Service</a> &mdash; GitHub, Inc. The provisions quoted are in section D (user&#8209;generated content) and the termination section.</p>
+<p class="src" id="s3"><b>[3]</b> <a href="https://www.icann.org/resources/pages/benefits-2013-09-16-en">Registrants' Benefits and Responsibilities</a> &mdash; ICANN. What a domain registrant is entitled to from a registrar, including the process for transferring a name away.</p>
+<p class="src"><b>[4]</b> Facebook's own terms of service are not cited directly here, and could not be: four attempts to fetch pages on facebook.com from an ordinary web client on 24 September 2026 &mdash; including the terms page itself &mdash; were refused by its robots file. That is why source [1] is a European Commission summary rather than the document itself, and it is the subject of the <a href="/#feed">Facebook answer on the front page</a>.</p>
+
+<footer>
+  Page F &middot; Three Columns &middot; terms read and summarized 24 September 2026<br>
+  This page stores nothing for its readers, sets no cookie, and loads no tracker.
+</footer>
+</div>
+</body>
+</html>
