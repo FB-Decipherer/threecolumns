@@ -82,12 +82,26 @@ h2{margin-top:44px;}
 <h2>Where it stands</h2>
 <div class="verdict">
   <p><b>This site is the technical reference for the Three Columns format</b>, and it is written in the format it describes: plain answers on the left, every source previewed in the middle, technical detail on the right.</p>
-  <p><b>It currently carries</b> twenty previewed sources, a search box that indexes the page from its own contents, and three sub-pages &mdash; D, the setup sheet a subject never has to see; E, standing up a domain; and F, what owning one of these sites actually consists of.</p>
+  <p><b>It currently carries</b> twenty-two previewed sources, a search box that indexes the page from its own contents, and three sub-pages &mdash; D, the setup sheet a subject never has to see; E, standing up a domain; and F, what owning one of these sites actually consists of.</p>
   <p><b>Two sample sites live under it</b>, at <span class="mono">/sites/</span>: an invented farm and an invented tree service, both marked SAMPLE, both built exactly as a real one would be.</p>
+  <p><b>Every page of every site now has a copy elsewhere.</b> All 32 pages across the four live sites are sent to the Internet Archive by a command on the author&rsquo;s machine, dated, and each capture is verified to exist rather than assumed from the reply. What that is worth, and the three things it is not, are answered in column A.</p>
   <p><b>The argument has not changed since the first day.</b> One topic, one HTML file, no server, no database, no subscription, no vendor &mdash; and every claim on the page backed by a source the reader can check without leaving the column.</p>
 </div>
 
 <h2>What has been happening</h2>
+
+<h3>25 September 2026 &mdash; a copy of every page, kept by someone who is not the author</h3>
+<p>The format&rsquo;s whole proposition is <i>do not take my word for it, check</i>. Until today that sentence had one hole in it: everything a reader could check was served from an address the author pays for, on a host whose terms the author has to accept, and nothing outside that arrangement recorded what any page had ever said. Walter asked whether there was an off-the-shelf way to fix it. There is.</p>
+<p>A new command, <span class="mono">ARCHIVE SITES</span>, finds every site on the volume the way the link checker does &mdash; a folder with both a <span class="mono">CNAME</span> and an <span class="mono">index.html</span> &mdash; turns each page into the address it is served at, and submits it to the Internet Archive&rsquo;s Wayback Machine. Thirty-two pages across four sites, and new sites are picked up without anyone editing a list.</p>
+<p>Three decisions are worth recording because each one could have gone the other way:</p>
+<ul>
+  <li><b>Session notes are excluded.</b> The walk found three working documents under <span class="mono">claude/</span> on washakie-ai.online and would happily have made them permanent. They are published only as a side effect of publishing everything else. Superseded drafts and anything awaiting deletion are left out for the same reason: a public, permanent record of withdrawn work is not a service to anybody.</li>
+  <li><b>Success is measured by outcome.</b> Submitting a page returns a reply saying the request was accepted, which is not the same as a capture existing. The command waits, then asks the archive page by page whether today&rsquo;s capture is really there, and reports only what it can confirm. Anything it cannot confirm is named rather than glossed.</li>
+  <li><b>It asks first.</b> A capture is public and effectively permanent; removing one means writing to the Internet Archive, not deleting a file. So the command prints exactly what it is about to send and waits for a yes.</li>
+</ul>
+<p>The answer in column A sets out what this buys: a date the author did not set, proof against quiet editing, a citation that still resolves when the domain does not, and &mdash; with a free account &mdash; the cited sources captured alongside the page that cites them. It is also honest about what it is not. Not a backup: the archive keeps the page as a reader sees it, not the files it was built from. Nothing for search ranking. No visitors.</p>
+<p>The reason it earns a place in the format rather than being a convenience: an archived copy is the one link in the chain the author does not control.</p>
+
 
 <h3>24 September 2026 &mdash; the word that was never on the page</h3>
 <p>Walter, reading all of this back: <i>&ldquo;I don&rsquo;t remember if Transparency is one of the many advantages offered by this project, but surely that belongs somewhere.&rdquo;</i> It was not. The word appeared nowhere on any site in the family &mdash; the only match anywhere was a line of stylesheet setting a shape to <span class="mono">transparent</span>.</p>
@@ -125,6 +139,7 @@ h2{margin-top:44px;}
 
 <h2>Still open</h2>
 <ul>
+  <li><b>The sources are not yet archived, only the pages.</b> Capturing what a page links to needs a free archive.org account and its two keys in a file beside the command. Without them the pages are kept and the sources they cite are not &mdash; which is backwards for a format whose middle column exists so a reader can go and look. Five minutes of setup, not yet done.</li>
   <li><b>The license defect above.</b> Not fixed. It needs the format permissively licensed and a subject's content reserved, which one file at a repository root cannot do.</li>
   <li><b>The link checker reports a link dead that is not.</b> One source card points at facebook.com, which by design refuses automated clients. The site's own notes name it as a known exception, but the checking command does not yet understand the difference.</li>
   <li><b>How a family of sites should be addressed</b> &mdash; one domain with folders, one domain with subdomains, or a domain each &mdash; is undecided, and the answer changes what twelve sites cost.</li>
