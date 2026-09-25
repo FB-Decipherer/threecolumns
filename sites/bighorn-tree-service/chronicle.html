@@ -83,10 +83,17 @@ h2{margin-top:44px;}
 <div class="verdict">
   <p><b>This is a sample, and says so across the masthead.</b> Bighorn Basin Tree Service does not exist. It was built to show a Washakie County trade what a page of its own could look like.</p>
   <p><b>It exists to solve one problem.</b> A stranger standing in their own yard cannot tell whether the outfit quoting them is insured, and the usual proof is a folded certificate in a glovebox that nobody can check on a Saturday. So the insurance is the first answer on the page, and every line of it links to a check somebody else keeps.</p>
+  <p><b>The reader decides how much of it to read.</b> The front page is a card &mdash; name, telephone number, one picture of the work, the insurance with its three checks, the service area. Under it sits a band captioned <b>More Info</b> with three checkboxes: Plain Answers, References, How it Works. Nothing below is loaded, opened or scrolled past until somebody asks for it, and asking costs one tap.</p>
   <p><b>The rules around it are real</b> &mdash; Wyoming&rsquo;s monopolistic workers&rsquo; compensation fund, OSHA&rsquo;s ten feet from a power line, the arboricultural safety standard, the power company&rsquo;s free pruning near its own lines. Thirteen sources, all fetched.</p>
 </div>
 
 <h2>What has been happening</h2>
+
+<h3>25 September 2026 &mdash; the long page came back, behind three checkboxes</h3>
+<p>Splitting the page in two on the morning of the same day fixed the reading problem and introduced a smaller one: everything behind the card was now somewhere else, reachable only by leaving the page. Walter&rsquo;s answer put the choice where it belongs, with the reader: <i>&ldquo;at bottom there is a horizontal area captioned at top More Info, and below, 3 checkboxes across page equally spaced &hellip; reader has the choice of getting as little or as much as they like.&rdquo;</i></p>
+<p>So the card keeps its 197 words and gains a band at the foot of it. Three boxes, equally spaced, labeled <b>Plain Answers</b>, <b>References</b> and <b>How it Works</b> &mdash; the three columns, named in plain language rather than by letter. Check one, two or all three; the sections appear underneath in order. Nothing is checked when the page loads.</p>
+<p>It is done with checkboxes and no JavaScript at all. A checked box reveals its section through a CSS sibling rule, which means the page behaves the same with scripting switched off, and there is no state to lose. Two smaller things fall out of the same mechanism: a footnote numeral now opens <b>References</b> by itself and lands on the card it points at, and an internal link card opens <b>Plain Answers</b> and unfolds the answer it points into &mdash; both from the address bar, both without script.</p>
+<p>The wide three-column page is still there, unchanged, named at the bottom of the band. The format now has a short face and a long one on a single address, and the reader turns the dial.</p>
 
 <h3>25 September 2026 &mdash; the page was too much to read, so it became two</h3>
 <p>Walter, looking at what had been built: <i>&ldquo;the page is way, way, way too much to read. It presupposes that everyone will be interested in reading all that background info.&rdquo;</i> He was right, and the numbers were blunt: column A alone had grown to 1,347 words across nine answers, on top of thirteen source cards and ten technical sections. Nothing had been deleted &mdash; the insurance block was intact and still first &mdash; but it had become one ninth of one column, which for the person it was built for is the same as losing it.</p>
@@ -109,7 +116,8 @@ h2{margin-top:44px;}
   <li><b>The ISA credential lookup could not be read</b> by machine, so the source card describes the credential from the society&rsquo;s main site rather than from the register itself. The exam prerequisites and renewal period are deliberately left off this page rather than guessed at.</li>
   <li><b>The license arrangement applies here too</b> &mdash; the repository&rsquo;s license currently reaches this page&rsquo;s words. It is written up on the method site&rsquo;s Page F, unfixed.</li>
   <li><b>The split is new and untested.</b> Nobody has yet arrived at the card cold and tried to decide whether to call. That is the only test that matters and it has not been run.</li>
-  <li><b>Which face a site shows should be a setting, not a rebuild.</b> Walter&rsquo;s suggestion is that the setup sheet &mdash; page D &mdash; carry it as a choice, so a subject picks short or long without anybody editing HTML. Not built.</li>
+  <li><b>Which face a site shows should be a setting, not a rebuild.</b> Walter&rsquo;s suggestion is that the setup sheet &mdash; page D &mdash; carry it as a choice, so a subject picks short or long without anybody editing HTML. Still not built. What is built here decides it at the other end, by the reader rather than the owner, and the two are not the same thing: a subject may well want the long face first.</li>
+  <li><b>The prose now exists twice.</b> The card page carries its own copy of all three columns, and <span class="mono">details.html</span> carries the original. They were generated from one source and agree today. Nothing yet stops them drifting apart, and the honest fix is to build the card page from the three-column page as a publishing step rather than keeping both by hand.</li>
 </ul>
 
 <footer>
