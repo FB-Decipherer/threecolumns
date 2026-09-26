@@ -138,10 +138,15 @@ footer{margin-top:34px; padding-top:14px; border-top:1px solid var(--rule);
 #ck-b:focus-visible ~ .moreinfo label[for="ck-b"],
 #ck-c:focus-visible ~ .moreinfo label[for="ck-c"]{outline:2px solid var(--accent); outline-offset:3px;}
 
-.xcol{display:none; padding-top:28px;}
-#ck-a:checked ~ #sec-a, #ck-b:checked ~ #sec-b, #ck-c:checked ~ #sec-c{display:block;}
-/* a footnote, or an internal card, opens the section it lands in */
-#sec-a:has(:target), #sec-b:has(:target), #sec-c:has(:target){display:block;}
+/* All three show on arrival; unchecking a box hides one. The reader turns the page
+   down rather than up, which is the way round Walter asked for. */
+.xcol{display:block; padding-top:28px;}
+#ck-a:not(:checked) ~ #sec-a,
+#ck-b:not(:checked) ~ #sec-b,
+#ck-c:not(:checked) ~ #sec-c{display:none;}
+/* a footnote, or an internal card, re-opens a section that was switched off.
+   !important because the hide rule above carries two IDs and would otherwise win. */
+#sec-a:has(:target), #sec-b:has(:target), #sec-c:has(:target){display:block!important;}
 .xhead{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.16em;
   text-transform:uppercase; color:var(--ink-mid); padding-bottom:9px;
   border-bottom:2px solid var(--ink); margin-bottom:20px;}
@@ -298,13 +303,13 @@ footer{margin-top:34px; padding-top:14px; border-top:1px solid var(--rule);
 </figure>
 
 <div class="expand">
-  <input class="ckin" type="checkbox" id="ck-a">
-  <input class="ckin" type="checkbox" id="ck-b">
-  <input class="ckin" type="checkbox" id="ck-c">
+  <input class="ckin" type="checkbox" id="ck-a" checked>
+  <input class="ckin" type="checkbox" id="ck-b" checked>
+  <input class="ckin" type="checkbox" id="ck-c" checked>
 
   <div class="moreinfo">
     <p class="micap">More Info</p>
-    <p class="misub">As little or as much as you like</p>
+    <p class="misub">Uncheck anything you would rather not read</p>
     <div class="mibtns">
       <label class="ckbtn" for="ck-a"><span class="box"></span>Plain<br>Answers</label>
       <label class="ckbtn" for="ck-b"><span class="box"></span>References</label>
