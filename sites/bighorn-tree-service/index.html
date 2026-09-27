@@ -112,6 +112,12 @@ footer{margin-top:34px; padding-top:14px; border-top:1px solid var(--rule);
 .misub{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.13em;
   text-transform:uppercase; color:var(--ink-mid); text-align:center; margin:0 0 14px; opacity:.8;}
 .mibtns{display:grid; grid-template-columns:repeat(3,1fr); gap:9px;}
+.mireset{margin:13px 0 0; text-align:center;}
+.mireset button{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-mid); background:none; border:0;
+  border-bottom:1px solid var(--rule); padding:3px 0; cursor:pointer;}
+.mireset button:hover{color:var(--ink); border-bottom-color:var(--accent);}
+.mireset[hidden]{display:none;}
 .ckbtn{display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
   gap:7px; min-height:62px; padding:11px 6px; border:1px solid var(--rule); border-radius:9px;
   background:var(--card); color:var(--ink-mid); cursor:pointer; text-align:center;
@@ -238,8 +244,41 @@ footer{margin-top:34px; padding-top:14px; border-top:1px solid var(--rule);
 }
 @media print{
   .xcol{display:block!important;}
-  .moreinfo,.asthree{display:none;}
+  .moreinfo,.asthree,.mireset{display:none;}
   .fn,.rnum{background:none; border-color:#999;}
+}
+
+
+/* ================= THE THRESHOLD =================
+   A 3Col page has two halves and this is the boundary between them.
+   ABOVE it: whatever the subject needs — a card, a masthead, a price list,
+   anything. No rules at all.
+   BELOW it: 3Col proper — the three columns, the previewed sources, the
+   workings. Identical in shape on every site in the family.
+
+   It has to read as different in KIND from the rules already on the page,
+   which divide paragraphs and sections. So: a DOUBLE rule (nothing else on
+   any page is doubled), a wide gap of air either side, and the mark itself
+   sitting in a break in the line. Works in one color, prints, and needs no
+   script. Deliberately not full-bleed: that would fight the no-sideways-
+   scroll rule the whole family is checked against. */
+.threshold{margin:46px 0 34px; text-align:center}
+.threshold .bar{position:relative; height:5px;
+  border-top:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink);
+  opacity:.85}
+/* the mark sits in a gap it knocks in the rule, so it must be positioned
+   against the BAR, not against the whole block (the caption is in the block) */
+.threshold .mark{position:absolute; left:50%; top:50%;
+  transform:translate(-50%,-50%); background:var(--paper);
+  padding:0 13px; display:flex; align-items:center; line-height:0}
+.threshold .mark svg{width:26px; height:26px; display:block}
+.threshold .cap{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--ink-mid); margin:16px auto 0; max-width:30rem; line-height:1.5}
+@media print{
+  .threshold .bar{border-color:#000; opacity:1}
+  .threshold .mark{background:#fff}
+  .threshold .cap{color:#333}
 }
 
 @media print{
@@ -302,10 +341,63 @@ footer{margin-top:34px; padding-top:14px; border-top:1px solid var(--rule);
   <figcaption>About fifty miles from Worland. Farther by arrangement.</figcaption>
 </figure>
 
+<div class="threshold" role="separator" aria-label="Below this line, the page is in the Three Columns format">
+  <div class="bar">
+    <div class="mark">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="1.5" y="4" width="6" height="16" rx="1.4" fill="currentColor"></rect>
+      <rect x="9" y="7.5" width="6" height="9" rx="1.4" fill="currentColor"></rect>
+      <rect x="16.5" y="4" width="6" height="16" rx="1.4" fill="currentColor"></rect>
+    </svg>
+    </div>
+  </div>
+  <p class="cap">Everything below is the same on every 3Col site</p>
+</div>
+
 <div class="expand">
+  <!-- ===================================================================
+       DISPLAY DEFAULTS FOR THIS SITE.  This is the setting, and it is the
+       markup itself: `checked` means that column is open when the page is
+       first opened.  Delete the word `checked` on any line to have that
+       column start folded.  The three are independent.
+       No script is involved, so the default survives scripting being off,
+       and an archived copy of this page keeps whatever was set here.
+       =================================================================== -->
   <input class="ckin" type="checkbox" id="ck-a" checked>
   <input class="ckin" type="checkbox" id="ck-b" checked>
   <input class="ckin" type="checkbox" id="ck-c" checked>
+
+  <script>
+  /* Reader memory, layered on the defaults above.  It runs here rather than
+     at the end of the page so that it fires before the sections below are
+     painted: a remembered choice must not flash open and then shut.
+     With scripting off, nothing here happens and the defaults stand. */
+  (function(){
+    var KEY='3col-display', ids=['ck-a','ck-b','ck-c'], el={}, i;
+    for(i=0;i<ids.length;i++){ el[ids[i]]=document.getElementById(ids[i]); if(!el[ids[i]]) return; }
+    var dflt={}; for(i=0;i<ids.length;i++) dflt[ids[i]]=el[ids[i]].checked;
+    var saved=null;
+    try{ saved=JSON.parse(localStorage.getItem(KEY)); }catch(e){}
+    if(saved) for(i=0;i<ids.length;i++) if(typeof saved[ids[i]]==='boolean') el[ids[i]].checked=saved[ids[i]];
+    function differs(){ for(var j=0;j<ids.length;j++) if(el[ids[j]].checked!==dflt[ids[j]]) return true; return false; }
+    function paint(){ var r=document.getElementById('ck-reset-row'); if(r) r.hidden=!differs(); }
+    function save(){
+      var v={}; for(var j=0;j<ids.length;j++) v[ids[j]]=el[ids[j]].checked;
+      try{ localStorage.setItem(KEY,JSON.stringify(v)); }catch(e){}
+      paint();
+    }
+    for(i=0;i<ids.length;i++) el[ids[i]].addEventListener('change',save);
+    document.addEventListener('DOMContentLoaded',function(){
+      var b=document.getElementById('ck-reset');
+      if(b) b.addEventListener('click',function(){
+        for(var j=0;j<ids.length;j++) el[ids[j]].checked=dflt[ids[j]];
+        try{ localStorage.removeItem(KEY); }catch(e){}
+        paint();
+      });
+      paint();
+    });
+  })();
+  </script>
 
   <div class="moreinfo">
     <p class="micap">More Info</p>
@@ -315,6 +407,7 @@ footer{margin-top:34px; padding-top:14px; border-top:1px solid var(--rule);
       <label class="ckbtn" for="ck-b"><span class="box"></span>References</label>
       <label class="ckbtn" for="ck-c"><span class="box"></span>How it<br>Works</label>
     </div>
+    <p class="mireset" id="ck-reset-row" hidden><button type="button" id="ck-reset">Back to this site&rsquo;s default view</button></p>
   </div>
 
   <section class="xcol" id="sec-a" aria-label="Plain answers">
