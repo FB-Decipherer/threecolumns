@@ -286,6 +286,46 @@ footer{margin-top:34px; padding-top:14px; border-top:1px solid var(--rule);
   .insgo{background:none; color:#000; border-color:#000}
   .stencil{opacity:.35}
 }
+/* ===== the column code =====================================================
+   Green A, yellow B, red C. A traffic signal: public at the top, technical at
+   the bottom. It rides on the spine down the left of each section, on the rule
+   under each section heading, on the A/B/C badge, on the same letters in the tab
+   strip, and on the tick in each More Info box. The buttons themselves stay
+   neutral -- the tick is the signal, not the outline. Body text stays black,
+   and every column keeps its letter and its heading, so nothing here depends on
+   color alone. */
+:root{--col-a:#4C7A4E; --col-b:#C8992F; --col-c:#B4372C;}
+:root[data-theme="dark"]{--col-a:#59925d; --col-b:#C9A245; --col-c:#d66055;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --col-a:#59925d; --col-b:#C9A245; --col-c:#d66055;}}
+
+/* the spine: each column's own left edge, in its own color */
+#sec-a,#sec-b,#sec-c{border-left-style:solid; border-left-width:2px; padding-left:30px;}
+#sec-a{border-left-color:var(--col-a);}
+#sec-b{border-left-color:var(--col-b);}
+#sec-c{border-left-color:var(--col-c);}
+
+/* the rule under each heading, and the badge */
+#sec-a .xhead{border-bottom-color:var(--col-a);}
+#sec-b .xhead{border-bottom-color:var(--col-b);}
+#sec-c .xhead{border-bottom-color:var(--col-c);}
+#sec-a .xhead b{color:var(--col-a); border-color:var(--col-a);}
+#sec-b .xhead b{color:var(--col-b); border-color:var(--col-b);}
+#sec-c .xhead b{color:var(--col-c); border-color:var(--col-c);}
+/* the tick in each More Info box; the box outline stays neutral */
+#ck-a:checked ~ .moreinfo label[for="ck-a"] .box{background:var(--col-a); border-color:var(--col-a);}
+#ck-b:checked ~ .moreinfo label[for="ck-b"] .box{background:var(--col-b); border-color:var(--col-b);}
+#ck-c:checked ~ .moreinfo label[for="ck-c"] .box{background:var(--col-c); border-color:var(--col-c);}
+#ck-a:checked ~ .moreinfo label[for="ck-a"],
+#ck-b:checked ~ .moreinfo label[for="ck-b"],
+#ck-c:checked ~ .moreinfo label[for="ck-c"]{border-color:var(--rule);}
+
+@media print{
+  /* on paper the code is three grays; the letter still says which column */
+  #sec-a{border-left-color:#4a4a4a;} #sec-b{border-left-color:#9a9a9a;} #sec-c{border-left-color:#6f6f6f;}
+  #sec-a .xhead{border-bottom-color:#4a4a4a;}
+  #sec-b .xhead{border-bottom-color:#9a9a9a;}
+  #sec-c .xhead{border-bottom-color:#6f6f6f;}
 </style>
 </head>
 <body>
