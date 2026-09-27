@@ -16,7 +16,7 @@
 <style>
 :root{
   --paper:#FCFAF5; --card:#F5F1E8; --ink:#1E1B16; --ink-mid:#4A443A;
-  --rule:#DCD5C6; --accent:#4C7A4E; --accentb:#B4372C; --gold:#C8992F;
+  --rule:#DCD5C6; --accent:#4C7A4E; --accentb:#B4372C; --gold:#8A6A15;
 }
 :root[data-theme="dark"]{
   --paper:#15130F; --card:#1E1B16; --ink:#F2EDE3; --ink-mid:#B7AF9F;
@@ -295,10 +295,10 @@ footer{margin-top:34px; padding-top:14px; border-top:1px solid var(--rule);
    neutral -- the tick is the signal, not the outline. Body text stays black,
    and every column keeps its letter and its heading, so nothing here depends on
    color alone. */
-:root{--col-a:#4C7A4E; --col-b:#C8992F; --col-c:#B4372C;}
-:root[data-theme="dark"]{--col-a:#59925d; --col-b:#C9A245; --col-c:#d66055;}
+:root{--col-a:#4C7A4E; --col-b:#D8AC45; --col-c:#B4372C;}
+:root[data-theme="dark"]{--col-a:#59925d; --col-b:#D9B45C; --col-c:#d66055;}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --col-a:#59925d; --col-b:#C9A245; --col-c:#d66055;}}
+  --col-a:#59925d; --col-b:#D9B45C; --col-c:#d66055;}}
 
 /* the spine: each column's own left edge, in its own color */
 #sec-a,#sec-b,#sec-c{border-left-style:solid; border-left-width:2px; padding-left:30px;}
@@ -316,7 +316,7 @@ footer{margin-top:34px; padding-top:14px; border-top:1px solid var(--rule);
 #sec-b .xhead{border-bottom-color:var(--col-b);}
 #sec-c .xhead{border-bottom-color:var(--col-c);}
 #sec-a .xhead b{color:var(--col-a); border-color:var(--col-a);}
-#sec-b .xhead b{color:var(--col-b); border-color:var(--col-b);}
+#sec-b .xhead b{color:var(--gold); border-color:var(--col-b);}
 #sec-c .xhead b{color:var(--col-c); border-color:var(--col-c);}
 /* the tick in each More Info box; the box outline stays neutral */
 #ck-a:checked ~ .moreinfo label[for="ck-a"] .box{background:var(--col-a); border-color:var(--col-a);}
