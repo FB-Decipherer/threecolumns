@@ -501,6 +501,18 @@ body:has(#ck-c:not(:checked)) #sec-c .xhead b{margin-right:0;}
       paint();
     }
     for(i=0;i<ids.length;i++) el[ids[i]].addEventListener('change',save);
+    /* Following a numeral into a column the reader closed switches it back on.
+       Without this the citation scrolls to something the strip rules have hidden. */
+    var COL={'ck-a':'sec-a','ck-b':'sec-b','ck-c':'sec-c'};
+    function openForTarget(){
+      var h=location.hash.slice(1); if(!h) return;
+      var t=document.getElementById(h); if(!t) return;
+      for(var j=0;j<ids.length;j++){
+        var c=document.getElementById(COL[ids[j]]);
+        if(c && c.contains(t) && !el[ids[j]].checked){ el[ids[j]].checked=true; save(); return; }
+      }
+    }
+    window.addEventListener('hashchange', openForTarget);
     document.addEventListener('DOMContentLoaded',function(){
       var b=document.getElementById('ck-reset');
       if(b) b.addEventListener('click',function(){
@@ -508,7 +520,7 @@ body:has(#ck-c:not(:checked)) #sec-c .xhead b{margin-right:0;}
         try{ localStorage.removeItem(KEY); }catch(e){}
         paint();
       });
-      paint();
+      paint(); openForTarget();
     });
   })();
   </script>
