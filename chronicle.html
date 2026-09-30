@@ -86,10 +86,79 @@ h2{margin-top:44px;}
   <p><b>It currently carries</b> twenty-three previewed sources, a search box that indexes the page from its own contents, and three sub-pages &mdash; D, the setup sheet a subject never has to see; E, standing up a domain; and F, what owning one of these sites actually consists of.</p>
   <p><b>Two sample sites live under it</b>, at <span class="mono">/sites/</span>: an invented farm and an invented tree service, both marked SAMPLE, both built exactly as a real one would be.</p>
   <p><b>Every page of every site now has a copy elsewhere.</b> All 32 pages across the four live sites are sent to the Internet Archive by a command on the author&rsquo;s machine, dated, and each capture is verified to exist rather than assumed from the reply. What that is worth, and the three things it is not, are answered in column A.</p>
+  <p><b>Every page now carries a threshold and a set of switches.</b> A double rule with the 3Col mark knocking a gap in it separates what belongs to the subject from what is the same on every 3Col site; below it, the reader decides which of the three columns are on the page at all.</p>
   <p><b>The argument has not changed since the first day.</b> One topic, one HTML file, no server, no database, no subscription, no vendor &mdash; and every claim on the page backed by a source the reader can check without leaving the column.</p>
 </div>
 
 <h2>What has been happening</h2>
+
+<h3>28 September 2026 &mdash; a color doing two jobs, and a citation that led nowhere</h3>
+<p>Walter said the gold looked a little too dark. Measuring it before changing it turned a matter of taste
+into a matter of fact: as <i>text</i> on the paper background that gold sat at 2.50:1, against 4.79 for the
+green and 5.71 for the red. It was already failing, and lightening it to taste would have made it worse.</p>
+<p>The cause was one value doing two unrelated jobs &mdash; marking column B in bars, borders and icons, where
+it wants to be bright, and setting the letter B and the tab key, where it wants to be dark. Those were
+separated. The mark went brighter, the lettering went darker, and both now pass. Every icon file followed,
+recolored by solving each blended pixel against the paper rather than by a flat swap, and checked by census:
+no pixel of the old value survives anywhere in the family.</p>
+<p>Worth stating plainly, because it explains a design decision that otherwise looks arbitrary. Printed on a
+monochrome laser the green and the red land at 103 and 91 &mdash; twelve levels apart out of 255. On paper
+they are the same color. That is why column A is always leftmost and column C always rightmost: position
+carries the code, and hue only confirms it.</p>
+<p><b>And a citation that led nowhere.</b> A reader who had switched the middle column off, then followed a
+source numeral from A or C, arrived at nothing. The machinery to reopen a switched&#8209;off column was
+present and correct &mdash; but wired to an event the page never fires, because the numerals are not links.
+Following one never changes the address, so the browser never announces anything. Fixed across every page that
+has columns. Then the test was tested: with the fix disabled the check reports the reference as hidden and
+zero by zero, which is exactly the fault described. A test that cannot fail proves nothing.</p>
+
+<h3>27 September 2026 &mdash; one mark, in every instance</h3>
+<p>Walter: <i>&ldquo;in all instances it should match below between the two horizontal rules.&rdquo;</i>
+Checked by measuring the drawing rather than by looking at it, which found three faults where one had been
+reported: a favicon rotated a quarter turn, a home&#8209;screen icon rendered from that same rotated file and
+inheriting the error, and a third set still carrying an older shape in the wrong colors entirely.</p>
+<p>What was already right was confirmed rather than assumed. A comparison pulled the geometry out of every
+page&rsquo;s threshold mark and out of that page&rsquo;s favicon and compared them field by field &mdash;
+identical across all six, the same drawing by construction rather than by coincidence, since the mark takes
+its colors from the page&rsquo;s own variables.</p>
+<p>A gap turned up while looking that nobody had asked about. Only two pages in the whole family declared a
+home&#8209;screen icon; fifteen had none, so saving one to an iPhone home screen would have produced a
+screenshot of the page instead of a mark. They all have one now.</p>
+
+<h3>26&ndash;27 September 2026 &mdash; the reader decides which columns exist</h3>
+<p>Walter wanted the column switches on every 3Col site. Surveying first was worth the delay: only seven pages
+in the family carry three columns at all. worland&#8209;dog&#8209;law.online and baconian&#8209;ciphers.online
+do not lack the switches &mdash; they have no three&#8209;column pages for switches to control. Their pages
+are an audit, a chronicle, an ordinance text and a research record.</p>
+<p>The six that remained posed a real design problem, because they already had an A/B/C tab strip. Two
+controls doing similar things would have been the wrong answer. Instead they were made orthogonal, and the
+distinction is worth stating because it is now part of the format: <b>the switches decide whether a column is
+on the page at all; the tabs go on deciding which one has focus.</b> A column switched off leaves the grid and
+the tab strip together, and on a wide screen the grid closes up around what is left. Turn all three off and
+the page is its masthead and the band &mdash; which is still there to turn them back on.</p>
+<p>Almost all of it is ordinary CSS responding to the state of a checkbox, so it works with scripting off.
+Live at 00:35 on the 27th, and verified by fetching each published page rather than by assuming the upload
+had worked.</p>
+
+<h3>26 September 2026 (evening) &mdash; the threshold, and a mark convicted by its own author</h3>
+<p>Walter: <i>&ldquo;above the line it is freeform to whatever the app requires, below it, the 3Col per
+se.&rdquo;</i> Built as a contract rather than a divider. A <b>double</b> rule &mdash; nothing else anywhere
+in the family is doubled, so the doubling says <i>different in kind</i> before a word is read &mdash; with the
+3Col mark knocking a gap in the line, and beneath it a caption: <i>Everything below is the same on every 3Col
+site.</i></p>
+<p>The mark itself was then convicted by the person who commissioned it. Walter, looking at a generated
+version: <i>&ldquo;your three bar icon looks to me like the flag of Canada with a maple leaf in the
+middle.&rdquo;</i> He was right, and it condemned the one already shipped that afternoon. Three tall bands
+with a device in the center is a flag, not a diagram. The answer was not fewer bars but something above them
+&mdash; a masthead block, then the rule, then the three columns &mdash; so that the mark draws the
+format&rsquo;s own thesis, and the threshold on a real page is the same figure assembled from the page
+itself.</p>
+<p>The columns also got a code, and Walter supplied the semantics unprompted: <i>&ldquo;green for public
+outreach, red for prior knowhow, yellow intermediate, like a traffic signal.&rdquo;</i> The metaphor carries
+its own warning. A real signal never trusts color alone &mdash; red is always at the top and green always at
+the bottom, because red and green are precisely the pair that fails. Tested against simulated red&#8209;green
+color blindness, the first palette&rsquo;s green and red collapsed to nearly one color. The tuned version
+keeps every hue exactly as drawn and moves only lightness, and position does the real work.</p>
 
 <h3>26 September 2026 &mdash; the license defect closed, and a copyright line in every footer</h3>
 <p>Walter: <i>&ldquo;isn&rsquo;t some brief copyright notice needed at footer?&rdquo;</i> Strictly, no &mdash; copyright has been automatic since the United States joined the Berne Convention in 1989, and a notice adds no rights. But it names the owner and the year, and under US law a notice on published copies takes away an infringer&rsquo;s plea of innocent infringement in mitigation of damages. So it earns its line.</p>
@@ -167,12 +236,12 @@ h2{margin-top:44px;}
   <li><b>The license defect above.</b> Not fixed. It needs the format permissively licensed and a subject's content reserved, which one file at a repository root cannot do.</li>
   <li><b>The link checker reports a link dead that is not.</b> One source card points at facebook.com, which by design refuses automated clients. The site's own notes name it as a known exception, but the checking command does not yet understand the difference.</li>
   <li><b>How a family of sites should be addressed</b> &mdash; one domain with folders, one domain with subdomains, or a domain each &mdash; is undecided, and the answer changes what twelve sites cost.</li>
-  <li><b>This page exists only here.</b> The other four sites have the same history and no chronicle yet.</li>
+  <li><b>This page exists only here.</b> washakie&#8209;ai.online has one too, as of 30 September. The other three sites have the same history and no chronicle yet.</li>
   <li><b>It does not go all the way back.</b> The record begins on 17 September; the site&rsquo;s first commit was 10 September. Eleven commits from that first week are not described here, and their commit messages &mdash; <span class="mono">vv</span>, <span class="mono">wer</span>, <span class="mono">3</span> &mdash; will not help anybody reconstruct them.</li>
 </ul>
 
 <footer>
-  Chronicle &middot; threecolumns.online &middot; covering 17 to 24 September 2026 &middot; the site itself dates from 10 September<br>
+  Chronicle &middot; threecolumns.online &middot; covering 17 to 28 September 2026 &middot; the site itself dates from 10 September<br>
   Written alongside the working log rather than from it: that log is about implementation, this page is about purpose.<br>
   &copy; 2026 Walter Wilkinson &middot; code MIT &middot; <a href="legal.html">words reserved</a>
 </footer>
