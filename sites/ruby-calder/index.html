@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ruby Calder &middot; Chief Washakie FFA, Worland High School (a demonstration)</title>
+<meta name="description" content="A demonstration of the Three Columns format as a high school student's first record of involvement: the student is invented; the chapter, the degrees, the events and the rules behind them are real, and sourced.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#FCFAF5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15130F" media="(prefers-color-scheme: dark)">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<noscript><style>
+/* No JavaScript: nothing can switch columns, so every column still switched on
+   shows, undimmed, on every screen. The three display checkboxes below the
+   threshold go on working here -- they are CSS, not script. */
+.col{opacity:1!important}
+@media (max-width:1100px){.col{display:block!important}}
+
+/* ===== a portrait where the model had a landscape ======================= */
+.masthead-fig{flex:0 1 20rem}
+.masthead-fig .masthead-img img{max-width:min(100%,19rem); height:auto}
+/* ===== the record table: the one piece of real tabular matter here ====== */
+.rec{width:100%; border-collapse:collapse; margin:.6rem 0 1rem; font-size:.96rem}
+.rec th,.rec td{text-align:left; padding:.42rem .55rem; border-bottom:1px solid var(--rule);
+  vertical-align:top}
+.rec th{font-weight:600; white-space:nowrap}
+.rec td.n{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
+.rec tbody tr{break-inside:avoid}
+@media print{ .rec thead{display:table-header-group} }
+@media (max-width:460px){ .rec,.rec th,.rec td{font-size:.9rem} .rec th,.rec td{padding:.36rem .3rem} }
+</style></noscript>
+<style>
+:root{
+  --paper:#FCFAF5; --card:#F5F1E8; --ink:#1E1B16; --ink-mid:#4A443A;
+  --rule:#DCD5C6; --accent:#4C7A4E; --accentb:#B4372C; --gold:#8A6A15;
+  --dead:#8A8177;
+}
+:root[data-theme="dark"]{
+  --paper:#15130F; --card:#1E1B16; --ink:#F2EDE3; --ink-mid:#B7AF9F;
+  --rule:#38332A; --accent:#7FA981; --accentb:#D2695C; --gold:#D9B45C;
+  --dead:#6B655B;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.62;}
+.wrap{max-width:1560px;margin:0 auto;padding:0 26px;}
+a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);}
+a:hover{border-bottom-color:var(--accent);}
+
+/* ---------- header ---------- */
+header{padding:38px 0 4px;}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mid);
+  display:flex;align-items:center;gap:.4em;}
+.eyebrow .sep{opacity:.55;font-family:"Source Serif 4",serif;font-size:1.5em;line-height:0;}
+.mark{width:22px;height:22px;flex:none;}
+h1{font-size:clamp(30px,4.4vw,48px);line-height:1.12;font-weight:600;margin:14px 0 0;
+  letter-spacing:-.012em;}
+h1 .sep{color:var(--accent);font-weight:400;padding:0 .18em;}
+h1 .seg{display:inline-block;}
+.claimlabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:#2E5A33;margin-top:20px;}
+:root[data-theme="dark"] .claimlabel{color:#8FBE91;}
+.standfirst{font-size:20px;line-height:1.5;color:var(--ink-mid);margin:8px 0 0;max-width:62ch;}
+.standfirst strong{display:inline-block;margin-top:10px;font-weight:600;color:var(--ink);}
+.asof{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-mid);
+  border:1px solid var(--rule);border-radius:999px;padding:5px 13px;display:inline-block;margin-top:20px;}
+
+/* ---------- nav ---------- */
+nav{display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  margin-top:26px;padding:11px 0;position:sticky;top:0;background:var(--paper);z-index:20;}
+button{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.06em;
+  background:none;border:1px solid var(--rule);color:var(--ink-mid);
+  padding:8px 15px;border-radius:6px;cursor:pointer;}
+button:hover{border-color:var(--accent);color:var(--ink);}
+button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+button .key{color:var(--gold);font-weight:500;margin-right:.55em;}
+button[aria-selected="true"] .key{color:var(--gold);}
+nav .spacer{flex:1;}
+.util{font-size:11.5px;padding:7px 12px;}
+
+/* ---------- the three columns ---------- */
+main{display:grid;gap:0 34px;padding:30px 0 10px;
+  grid-template-columns:1fr minmax(280px,.82fr) 1fr;}
+.col{min-width:0;}
+.col + .col{border-left:1px solid var(--rule);padding-left:34px;}
+.colhead{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-mid);padding-bottom:9px;
+  border-bottom:2px solid var(--ink);margin-bottom:20px;
+  position:sticky;top:52px;background:var(--paper);}
+.colhead b{color:var(--gold);font-weight:700;
+  display:inline-block;border:1px solid var(--rule);border-radius:6px;
+  padding:2px 7px;margin-right:.5em;line-height:1.25;}
+.col.dim{opacity:.42;}
+.col{transition:opacity .15s;}
+.col.dim:hover{opacity:.62;}
+@media (prefers-reduced-motion:reduce){.col{transition:none;}}
+h2{font-size:22px;font-weight:600;margin:30px 0 6px;letter-spacing:-.006em;}
+h2:first-of-type{margin-top:0;}
+h3{font-size:15.5px;font-weight:600;margin:24px 0 4px;
+  font-family:"IBM Plex Mono",monospace;letter-spacing:.02em;color:var(--accent);}
+p{margin:9px 0 0;}
+.lede{font-size:18px;color:var(--ink-mid);}
+ul,ol{margin:9px 0 0;padding-left:20px;}
+li{margin:5px 0;}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.9em;}
+pre{font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.5;
+  background:var(--card);border:1px solid var(--rule);border-radius:7px;
+  padding:13px 15px;overflow-x:auto;margin:12px 0 0;}
+.note{margin-top:18px;padding:14px 16px;background:var(--card);
+  border-left:3px solid var(--accent);border-radius:0 7px 7px 0;}
+
+details{border-top:1px solid var(--rule);}
+details:last-of-type{border-bottom:1px solid var(--rule);}
+summary{cursor:pointer;padding:12px 0;font-weight:600;list-style:none;
+  display:flex;gap:.6em;align-items:baseline;}
+summary::-webkit-details-marker{display:none;}
+summary::before{content:"+";font-family:"IBM Plex Mono",monospace;color:var(--accent);flex:none;}
+details[open] summary::before{content:"−";}
+details .body{padding:0 0 14px 1.5em;}
+
+/* footnote markers */
+/* reference numerals, in the text and on the cards alike: a white disc with a thin rule-colored
+   border. The numeral keeps the light-theme red in both themes, because the disc stays white. */
+.fn{font-family:"IBM Plex Mono",monospace;font-size:.66em;font-weight:500;line-height:1;
+  color:#B4372C;cursor:pointer;vertical-align:.42em;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:1.8em;height:1.8em;padding:0;margin:0 .08em;
+  background:#FFFFFF;border:1px solid var(--rule);border-radius:999px;}
+.fn:hover{border-color:var(--accentb);}
+
+/* ---------- reference blocks (column B) ---------- */
+.ref{border:1px solid var(--rule);border-radius:9px;padding:15px 16px;margin-bottom:15px;
+  background:var(--card);scroll-margin-top:100px;}
+.ref.flash{border-color:var(--accentb);box-shadow:0 0 0 3px rgba(180,55,44,.14);}
+.rnum{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;line-height:1;
+  color:#B4372C;vertical-align:middle;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;padding:0;
+  background:#FFFFFF;border:1px solid var(--rule);border-radius:999px;}
+.rkind{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-mid);display:inline;margin-left:.7em;}
+.rtitle{font-size:17px;font-weight:600;margin-top:7px;line-height:1.3;}
+.rmeta{font-size:13.5px;color:var(--ink-mid);margin-top:4px;font-style:italic;}
+.rprev{font-size:14.5px;margin-top:9px;}
+.rwhy{font-size:14.5px;margin-top:7px;color:var(--ink-mid);}
+.rwhy b{color:var(--ink);font-weight:600;}
+.rlink{display:block;margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+  padding:8px 11px;border:1px solid var(--rule);border-radius:6px;
+  background:var(--paper);word-break:break-all;border-bottom:1px solid var(--rule);}
+.rlink:hover{border-color:var(--accent);}
+.rlink::before{content:"→ ";color:var(--accent);}
+.rlink.broken{color:var(--dead);border-style:dashed;cursor:not-allowed;
+  text-decoration:line-through;pointer-events:none;}
+.rlink.broken::before{content:"× ";color:var(--dead);}
+#deadnote{margin-top:22px;padding:13px 15px;border:1px dashed var(--rule);border-radius:7px;
+  font-size:14px;color:var(--ink-mid);}
+
+/* ---- Column B links block: Internal links (most recent content change), then External links.
+        Same headings and captions on every Three Columns site, so a reader knows where to look. ---- */
+.colbsh{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-mid);margin:26px 0 0;}
+.colbsh:first-of-type{margin-top:18px;}
+.colbcap{font-size:15.5px;color:var(--ink-mid);margin:4px 0 12px;}
+.bcard{display:block;text-decoration:none;color:inherit;background:var(--card);
+  border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:9px;
+  padding:13px 15px;margin-bottom:15px;}
+.bcard:hover{border-color:var(--accent);}
+.bcard:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.bcard .t{display:block;font-weight:600;font-size:16px;line-height:1.3;}
+.bcard .d{display:block;font-size:14.5px;color:var(--ink-mid);margin-top:6px;}
+details[id],h2[id]{scroll-margin-top:100px;}
+details.flash > summary{color:var(--accentb);}
+h2.flash{color:var(--accentb);}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  background:var(--card);padding:28px 26px 32px;margin-top:54px;
+  font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.9;color:var(--ink-mid);
+  text-align:center;}
+footer strong{color:var(--ink);letter-spacing:.04em;}
+.endmark{text-align:center;padding:26px 0 58px;color:var(--ink-mid);}
+/* one level up: the last thing on the page, a card naming the site one level above this one */
+/* a <nav>, so undo the page's own nav bar rules (sticky, flex, rules above and below) */
+.uplevel{display:block;position:static;border:0;background:none;z-index:auto;
+  max-width:62rem;margin:26px auto 0;padding:0 16px;text-align:center;}
+.uplevel a{display:inline-block;max-width:34rem;background:var(--card);border:1px solid var(--rule);
+  border-radius:8px;padding:12px 18px;color:inherit;text-decoration:none;}
+.uplevel a:hover{border-color:var(--accent);}
+.uplevel .uplabel{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mid);}
+.uplevel .upname{display:block;font-weight:600;font-size:16px;margin-top:5px;
+  text-decoration:underline;text-underline-offset:3px;}
+.uplevel a:hover .upname{color:var(--accent);}
+.uplevel .upcap{display:block;font-size:14px;color:var(--ink-mid);line-height:1.4;margin-top:3px;}
+@media print{.uplevel{display:none;}}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  main{grid-template-columns:1fr;gap:0;}
+  .col + .col{border-left:0;padding-left:0;border-top:1px solid var(--rule);
+    margin-top:34px;padding-top:26px;}
+  .col{display:none;}
+  .col.active{display:block;}
+  .col.dim{opacity:1;}
+  .colhead{position:static;}
+}
+@media print{
+  nav,.endmark{display:none;}
+  .col{display:block!important;opacity:1!important;}
+  main{grid-template-columns:1fr;}
+  .col + .col{border-left:0;padding-left:0;page-break-before:always;}
+  details{border:0;} details .body{display:block!important;padding-left:0;}
+  summary::before{content:"";}
+  body{background:#fff;color:#000;font-size:11pt;}
+}
+
+/* ---- masthead picture: the slot every instance inherits. The picture sits in a <figure> so it
+        can carry a caption, set at 22 px like every caption in the format. ---- */
+header{display:flex; gap:1.6rem; align-items:flex-start; flex-wrap:wrap}
+.masthead-text{flex:1 1 24rem; min-width:0}
+.masthead-fig{flex:0 0 auto; width:clamp(15rem,27vw,22rem); margin:0; align-self:center}
+.masthead-fig figcaption{font-size:22px; line-height:1.3; color:var(--ink-mid);
+  margin-top:.55rem; text-align:center; text-wrap:balance}
+a.masthead-img{display:block; width:100%; line-height:0;
+  border:1px solid var(--rule); border-radius:.5rem; overflow:hidden}
+a.masthead-img img{width:100%; height:auto; display:block}
+a.masthead-img:hover{outline:2px solid var(--accent); outline-offset:3px}
+a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+@media (max-width:640px){.masthead-fig{width:100%; margin-top:.4rem}}
+@media print{.masthead-fig{display:none !important} header{display:block}}
+
+/* ---- the demonstration notice: this farm is invented ---- */
+.demo{margin:14px 0 0;max-width:62ch;padding:10px 14px;border:1px dashed var(--accentb);border-radius:8px;
+  background:var(--card);font-size:16px;line-height:1.5;color:var(--ink);}
+.demo b{color:var(--accentb);}
+.phone{white-space:nowrap;}
+/* ---- SAMPLE, stenciled across the top of the page, like paint on a crate. In light mode it is
+        multiplied over the page, so dark letters show through it; in dark mode it sits behind. ---- */
+header{position:relative;}
+.masthead-text,.masthead-fig{position:relative;z-index:1;}
+.stencil{position:absolute;top:26px;left:50%;width:min(600px,84vw);height:auto;
+  transform:translateX(-50%);opacity:.9;mix-blend-mode:multiply;pointer-events:none;user-select:none;z-index:6;}
+:root[data-theme="dark"] .stencil{mix-blend-mode:normal;opacity:.35;z-index:0;}
+@media (max-width:640px){.stencil{top:40px;width:88vw;}}
+@media print{.stencil{opacity:.5;}}
+
+/* ===================== 3Col standard block =====================
+   The threshold, and the three display checkboxes below it. The checkboxes
+   decide whether a column is on the page at all; the A/B/C tabs above keep
+   deciding which one has focus. A column that is switched off leaves the grid
+   and the tab strip together. No JavaScript is needed for any of that. */
+.threshold{margin:34px 0 26px; text-align:center}
+.threshold .bar{position:relative; height:5px;
+  border-top:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink); opacity:.85}
+.threshold .mark{position:absolute; left:50%; top:50%;
+  transform:translate(-50%,-50%); background:var(--paper);
+  padding:0 13px; display:flex; align-items:center; line-height:0}
+.threshold .mark svg{width:22px; height:22px; flex:none;}
+.threshold .mark{width:max-content;}  /* the mark is absolutely positioned, so it cannot size itself from the icon:
+     without this its box is the padding alone and the icon overflows to one side,
+     leaving the gap centered on the rule but the icon not centered in the gap. */  /* explicit, or the page's own svg rules can shrink it to nothing in the flex row */
+.threshold .cap{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--ink-mid); margin:15px auto 0; max-width:30rem; line-height:1.5}
+
+.expand{margin:0 0 6px}
+.ckin{position:absolute; width:1px; height:1px; opacity:0; overflow:hidden; white-space:nowrap}
+.moreinfo{border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  padding:16px 0 18px;}
+.micap{font-size:22px; line-height:1.25; text-align:center; color:var(--ink-mid);
+  margin:0 0 4px; text-wrap:balance;}
+.misub{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-mid); text-align:center; margin:0 0 14px; opacity:.8;}
+.mibtns{display:grid; grid-template-columns:repeat(3,1fr); gap:9px;}
+.ckbtn{display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+  gap:7px; min-height:62px; padding:11px 6px; border:1px solid var(--rule); border-radius:9px;
+  background:var(--card); color:var(--ink-mid); cursor:pointer; text-align:center;
+  font-family:"IBM Plex Mono",monospace; font-size:12px; line-height:1.25; letter-spacing:.02em;
+  -webkit-tap-highlight-color:transparent;}
+.ckbtn .box{flex:none; width:19px; height:19px; border:1.5px solid var(--rule); border-radius:4px;
+  background:var(--paper); position:relative;}
+.ckbtn .box::after{content:"\2713"; position:absolute; inset:0; display:flex;
+  align-items:center; justify-content:center; font-size:13px; line-height:1;
+  color:var(--paper); opacity:0;}
+.ckbtn:hover{border-color:var(--accent); color:var(--ink);}
+#ck-a:checked ~ .moreinfo label[for="ck-a"],
+#ck-b:checked ~ .moreinfo label[for="ck-b"],
+#ck-c:checked ~ .moreinfo label[for="ck-c"]{border-color:var(--accent); color:var(--ink);}
+#ck-a:checked ~ .moreinfo label[for="ck-a"] .box,
+#ck-b:checked ~ .moreinfo label[for="ck-b"] .box,
+#ck-c:checked ~ .moreinfo label[for="ck-c"] .box{background:var(--accent); border-color:var(--accent);}
+#ck-a:checked ~ .moreinfo label[for="ck-a"] .box::after,
+#ck-b:checked ~ .moreinfo label[for="ck-b"] .box::after,
+#ck-c:checked ~ .moreinfo label[for="ck-c"] .box::after{opacity:1;}
+#ck-a:focus-visible ~ .moreinfo label[for="ck-a"],
+#ck-b:focus-visible ~ .moreinfo label[for="ck-b"],
+#ck-c:focus-visible ~ .moreinfo label[for="ck-c"]{outline:2px solid var(--accent); outline-offset:3px;}
+.mireset{margin:13px 0 0; text-align:center;}
+.mireset button{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-mid); background:none; border:0;
+  border-bottom:1px solid var(--rule); padding:3px 0; cursor:pointer;}
+.mireset button:hover{color:var(--ink); border-bottom-color:var(--accent);}
+.mireset[hidden]{display:none;}
+
+/* A column and its tab go together. !important because the no-script stylesheet
+   forces columns visible to defeat the tab strip, and these checkboxes are CSS,
+   so they have to keep working when there is no script to defeat. */
+body:has(#ck-a:not(:checked)) #cA, body:has(#ck-a:not(:checked)) #tA,
+body:has(#ck-b:not(:checked)) #cB, body:has(#ck-b:not(:checked)) #tB,
+body:has(#ck-c:not(:checked)) #cC, body:has(#ck-c:not(:checked)) #tC{display:none!important;}
+/* A footnote or an internal card re-opens a column that was switched off. This
+   carries one more :has() than the rule above, so it outranks it on specificity
+   rather than on source order. */
+body:has(#ck-a:not(:checked)) #cA:has(:target),
+body:has(#ck-b:not(:checked)) #cB:has(:target),
+body:has(#ck-c:not(:checked)) #cC:has(:target){display:block!important;}
+
+@media (min-width:1101px){
+  /* the grid closes up around whatever is left, and the leftmost column
+     never keeps the divider that belonged to the one before it */
+  body:has(#ck-a:not(:checked)) main{grid-template-columns:minmax(280px,.82fr) 1fr;}
+  body:has(#ck-b:not(:checked)) main{grid-template-columns:1fr 1fr;}
+  body:has(#ck-c:not(:checked)) main{grid-template-columns:1fr minmax(280px,.82fr);}
+  body:has(#ck-a:not(:checked)):has(#ck-b:not(:checked)) main,
+  body:has(#ck-a:not(:checked)):has(#ck-c:not(:checked)) main,
+  body:has(#ck-b:not(:checked)):has(#ck-c:not(:checked)) main{grid-template-columns:1fr;}
+  body:has(#ck-a:not(:checked)) #cB{border-left:0; padding-left:0;}
+  body:has(#ck-a:not(:checked)):has(#ck-b:not(:checked)) #cC{border-left:0; padding-left:0;}
+}
+@media print{
+  .moreinfo,.mireset{display:none;}
+  .threshold .bar{border-color:#000; opacity:1}
+  .threshold .mark{background:#fff}
+  .threshold .cap{color:#333}
+  /* everything prints, whatever the reader switched off on screen */
+  #cA,#cB,#cC{display:block!important;}
+}
+/* ===== the column code =====================================================
+   Green A, yellow B, red C. A traffic signal: public at the top, technical at
+   the bottom. It rides on the spine down the left of each column, on the rule
+   under each column heading, on the A/B/C badge, on the same letters in the tab
+   strip, and on the tick in each More Info box. The buttons themselves stay
+   neutral -- the tick is the signal, not the outline. Body text stays black,
+   and every column keeps its letter and its heading, so nothing here depends on
+   color alone. */
+:root{--col-a:#4C7A4E; --col-b:#D8AC45; --col-c:#B4372C;}
+:root[data-theme="dark"]{--col-a:#59925d; --col-b:#D9B45C; --col-c:#d66055;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --col-a:#59925d; --col-b:#D9B45C; --col-c:#d66055;}}
+
+/* the spine: each column's own left edge, in its own color */
+#cA,#cB,#cC{border-left-style:solid; border-left-width:2px; padding-left:30px;}
+#cA{border-left-color:var(--col-a);}
+/* inside a column, anything that was accent-colored takes that column's color:
+   the source cards, the + before an answer, the arrow before a link, hovers, focus rings. */
+#cA{--accent:var(--col-a);}
+#cB{--accent:var(--col-b);}
+#cC{--accent:var(--col-c);}
+#cB{border-left-color:var(--col-b);}
+#cC{border-left-color:var(--col-c);}
+
+/* the rule under each heading, and the badge */
+#cA .colhead{border-bottom-color:var(--col-a);}
+#cB .colhead{border-bottom-color:var(--col-b);}
+#cC .colhead{border-bottom-color:var(--col-c);}
+#cA .colhead b{color:var(--col-a); border-color:var(--col-a);}
+#cB .colhead b{color:var(--gold); border-color:var(--col-b);}
+#cC .colhead b{color:var(--col-c); border-color:var(--col-c);}
+/* the same letters up in the tab strip */
+#tA .key{color:var(--col-a);} #tB .key{color:var(--gold);} #tC .key{color:var(--col-c);}
+/* the tick in each More Info box; the box outline stays neutral */
+#ck-a:checked ~ .moreinfo label[for="ck-a"] .box{background:var(--col-a); border-color:var(--col-a);}
+#ck-b:checked ~ .moreinfo label[for="ck-b"] .box{background:var(--col-b); border-color:var(--col-b);}
+#ck-c:checked ~ .moreinfo label[for="ck-c"] .box{background:var(--col-c); border-color:var(--col-c);}
+#ck-a:checked ~ .moreinfo label[for="ck-a"],
+#ck-b:checked ~ .moreinfo label[for="ck-b"],
+#ck-c:checked ~ .moreinfo label[for="ck-c"]{border-color:var(--rule);}
+
+@media (max-width:1100px){
+  /* stacked: the spine moves to the top of each column, still its own color */
+  #cA,#cB,#cC{border-left:0; padding-left:0; border-top-style:solid; border-top-width:2px;}
+  #cA{border-top-color:var(--col-a);}
+  #cB{border-top-color:var(--col-b);}
+  #cC{border-top-color:var(--col-c);}
+}
+@media print{
+  /* on paper the code is three grays; the letter still says which column */
+  #cA{border-left-color:#4a4a4a;} #cB{border-left-color:#9a9a9a;} #cC{border-left-color:#6f6f6f;}
+  #cA .colhead{border-bottom-color:#4a4a4a;}
+  #cB .colhead{border-bottom-color:#9a9a9a;}
+  #cC .colhead{border-bottom-color:#6f6f6f;}
+}
+
+/* ===== the control moves into the column heading =========================
+   One row instead of two: the box that switches a column off now sits at the
+   right end of that column's own heading rule. The heading is sticky, so the
+   control travels down the page with the reader instead of scrolling away.
+   A switched-off column collapses to a narrow strip rather than disappearing,
+   because a control that removes itself leaves no way back. */
+.colhead{display:flex; align-items:center; gap:.5em;}
+.colhead .nm{flex:1 1 auto; min-width:0;}
+.colhead .sw{flex:0 0 auto; width:19px; height:19px; border-radius:4px;
+  border:1.5px solid var(--rule); background:var(--paper); position:relative;
+  cursor:pointer; -webkit-tap-highlight-color:transparent;}
+.colhead .sw::after{content:"\2713"; position:absolute; inset:0; display:flex;
+  align-items:center; justify-content:center; font-size:13px; line-height:1;
+  color:var(--paper); opacity:0;}
+.colhead .sw:hover{border-color:var(--accent);}
+#ck-a:checked ~ main #cA .colhead .sw,
+#ck-b:checked ~ main #cB .colhead .sw,
+#ck-c:checked ~ main #cC .colhead .sw{border-color:currentColor;}
+body:has(#ck-a:checked) #cA .colhead .sw{background:var(--col-a); border-color:var(--col-a);}
+body:has(#ck-b:checked) #cB .colhead .sw{background:var(--col-b); border-color:var(--col-b);}
+body:has(#ck-c:checked) #cC .colhead .sw{background:var(--col-c); border-color:var(--col-c);}
+body:has(#ck-a:checked) #cA .colhead .sw::after,
+body:has(#ck-b:checked) #cB .colhead .sw::after,
+body:has(#ck-c:checked) #cC .colhead .sw::after{opacity:1;}
+#ck-a:focus-visible ~ main #cA .colhead .sw,
+#ck-b:focus-visible ~ main #cB .colhead .sw,
+#ck-c:focus-visible ~ main #cC .colhead .sw{outline:2px solid var(--accent); outline-offset:3px;}
+
+/* the band's own furniture goes; the reset line stays and moves up under the threshold */
+.moreinfo{border:0; padding:0; margin:0;}
+.micap,.misub,.mibtns{display:none;}
+.mireset{margin:0 0 18px;}
+
+/* a switched-off column keeps its heading and collapses to a strip.
+   The band's original rule removed the whole column; that is what this undoes.
+   Its TAB still goes, because a closed column cannot be read. */
+body:has(#ck-a:not(:checked)) #cA,
+body:has(#ck-b:not(:checked)) #cB,
+body:has(#ck-c:not(:checked)) #cC{display:block!important;}
+body:has(#ck-a:not(:checked)) #cA > *:not(.colhead),
+body:has(#ck-b:not(:checked)) #cB > *:not(.colhead),
+body:has(#ck-c:not(:checked)) #cC > *:not(.colhead){display:none!important;}
+body:has(#ck-a:not(:checked)) #cA .colhead .nm,
+body:has(#ck-b:not(:checked)) #cB .colhead .nm,
+body:has(#ck-c:not(:checked)) #cC .colhead .nm{display:none;}
+body:has(#ck-a:not(:checked)) #cA .colhead,
+body:has(#ck-b:not(:checked)) #cB .colhead,
+body:has(#ck-c:not(:checked)) #cC .colhead{border-bottom:0; flex-direction:column;
+  align-items:center; gap:11px;}
+/* the strip is narrow, so the letter and the box stack instead of sitting side by side,
+   and the spine's indent shrinks or the box is pushed out of reach */
+body:has(#ck-a:not(:checked)) #cA,
+body:has(#ck-b:not(:checked)) #cB,
+body:has(#ck-c:not(:checked)) #cC{padding-left:12px; padding-right:12px;}
+body:has(#ck-a:not(:checked)) #cA .colhead b,
+body:has(#ck-b:not(:checked)) #cB .colhead b,
+body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
+
+@media (min-width:1101px){
+  body:has(#ck-a:not(:checked)) main{grid-template-columns:76px minmax(280px,.82fr) 1fr;}
+  body:has(#ck-b:not(:checked)) main{grid-template-columns:1fr 76px 1fr;}
+  body:has(#ck-c:not(:checked)) main{grid-template-columns:1fr minmax(280px,.82fr) 76px;}
+  body:has(#ck-a:not(:checked)):has(#ck-b:not(:checked)) main{grid-template-columns:76px 76px 1fr;}
+  body:has(#ck-a:not(:checked)):has(#ck-c:not(:checked)) main{grid-template-columns:76px 1fr 76px;}
+  body:has(#ck-b:not(:checked)):has(#ck-c:not(:checked)) main{grid-template-columns:1fr 76px 76px;}
+  body:has(#ck-a:not(:checked)):has(#ck-b:not(:checked)):has(#ck-c:not(:checked)) main{
+    grid-template-columns:76px 76px 76px;}
+}
+
+/* ===== the selected tab is filled with its own column's color ==============
+   The label color is not a guess: each fill was measured against paper and
+   against ink, and the one that reads takes it. Gold is the odd one out in the
+   light theme -- white on gold is 2.50:1, which fails, so its label is ink at
+   6.58:1. In the dark theme all three fills are light, so all three labels are
+   ink. Every pair below clears 4.5:1. */
+:root{--on-a:#FCFAF5; --on-b:#1E1B16; --on-c:#FCFAF5;}
+:root[data-theme="dark"]{--on-a:#1E1B16; --on-b:#1E1B16; --on-c:#1E1B16;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --on-a:#1E1B16; --on-b:#1E1B16; --on-c:#1E1B16;}}
+#tA[aria-selected="true"]{background:var(--col-a); border-color:var(--col-a); color:var(--on-a);}
+#tB[aria-selected="true"]{background:var(--col-b); border-color:var(--col-b); color:var(--on-b);}
+#tC[aria-selected="true"]{background:var(--col-c); border-color:var(--col-c); color:var(--on-c);}
+#tA[aria-selected="true"] .key{color:var(--on-a);}
+#tB[aria-selected="true"] .key{color:var(--on-b);}
+#tC[aria-selected="true"] .key{color:var(--on-c);}
+/* unselected, the letter alone carries the code, as it already did */
+
+/* the mark in the threshold is the same one as the favicon and the masthead:
+   three equal bars, one per column, taking the column colors so it follows the
+   theme. It used to be tall-short-tall in a single color, which read as a flag. */
+.threshold .mark svg rect:nth-of-type(1){fill:var(--col-a);}
+.threshold .mark svg rect:nth-of-type(2){fill:var(--col-b);}
+.threshold .mark svg rect:nth-of-type(3){fill:var(--col-c);}
+@media print{
+  .threshold .mark svg rect:nth-of-type(1){fill:#4a4a4a;}
+  .threshold .mark svg rect:nth-of-type(2){fill:#9a9a9a;}
+  .threshold .mark svg rect:nth-of-type(3){fill:#6f6f6f;}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <!-- the stencil: this page is a sample (Walter's lettering, painted behind the header text) -->
+  <img class="stencil" src="sample-stencil.png" width="1000" height="337" alt="" aria-hidden="true" decoding="async">
+    <div class="masthead-text">
+  <div class="eyebrow">
+    <span>Ruby Calder</span><span class="sep">&middot;</span><span>Worland, Washakie County, Wyoming</span>
+  </div>
+  <h1><span class="seg">Ruby Calder</span> <span class="sep">&middot;</span> <span class="seg">Chief Washakie FFA</span></h1>
+  <p class="demo"><b>A demonstration.</b> This student is invented, to show a Washakie County FFA member what a page of their own could look like. The chapter, the degrees, the events, the record book and the rules behind them are real, and every one of them is sourced in the middle column. No real student&rsquo;s name, photograph or record appears on this page.</p>
+  <div class="claimlabel">What this is</div>
+  <p class="standfirst">A junior at Worland High School, two years into FFA, running fourteen head of ewes on leased ground. This page is the record of what I have actually done &mdash; the degrees, the hours, the events, the service &mdash; kept current, in one place, with a card in my pocket that points here.</p>
+  <div class="asof">looking for summer work &middot; lambing, irrigating, harvest &middot; call or text <span class="phone">(307) 555-0184</span></div>
+    </div>
+
+    <figure class="masthead-fig">
+      <a class="masthead-img" href="portrait.svg" target="_blank" rel="noopener" title="Open the full-size picture">
+        <img src="portrait.svg" width="440" height="520" loading="eager" decoding="async"
+             alt="A drawn placeholder standing in for the student&rsquo;s photograph: a plain portrait frame holding a simple figure in silhouette against a field and mountains, with a caption marking it as the place a real photograph would go.">
+      </a>
+      <figcaption>Where the student&rsquo;s own photograph goes. Drawn, not photographed &mdash; this student does not exist.</figcaption>
+    </figure>
+  </header>
+
+<nav role="tablist" aria-label="Columns">
+  <button role="tab" id="tA" aria-controls="cA" aria-selected="true"><span class="key">A</span>Plain answers</button>
+  <button role="tab" id="tB" aria-controls="cB" aria-selected="false"><span class="key">B</span>Sources</button>
+  <button role="tab" id="tC" aria-controls="cC" aria-selected="false"><span class="key">C</span>How it works</button>
+  <span class="spacer"></span>
+  <button class="util" id="phoneview" type="button" hidden>Phone view</button>
+  <button class="util" id="pdf">Save as PDF</button>
+  <button class="util" id="theme">Dark</button>
+</nav>
+</div>
+
+<div class="wrap">
+<div class="threshold" role="separator" aria-label="Below this line, the page is in the Three Columns format">
+  <div class="bar"><div class="mark"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22"><rect x="1.5" y="4" width="6" height="16" rx="1.4"></rect><rect x="9" y="4" width="6" height="16" rx="1.4"></rect><rect x="16.5" y="4" width="6" height="16" rx="1.4"></rect></svg></div></div>
+  <p class="cap">Everything below is the same on every 3Col site</p>
+</div>
+
+<div class="expand">
+  <!-- ===================================================================
+       DISPLAY DEFAULTS FOR THIS SITE.  This is the setting, and it is the
+       markup itself: `checked` means that column is on the page when it is
+       first opened.  Delete the word `checked` on any line to have that
+       column start switched off.  The three are independent.
+       No script is involved, so the default survives scripting being off,
+       and an archived copy of this page keeps whatever was set here.
+       =================================================================== -->
+  <input class="ckin" type="checkbox" id="ck-a" checked>
+  <input class="ckin" type="checkbox" id="ck-b" checked>
+  <input class="ckin" type="checkbox" id="ck-c" checked>
+
+  <script>
+  /* Reader memory, layered on the defaults above, plus two pieces of housekeeping
+     the tab strip needs. Placed here rather than at the end of the page so a
+     remembered choice is applied before the columns are painted and never flashes
+     open and then shut. With scripting off none of this runs and the defaults stand. */
+  (function(){
+    var KEY='3col-display', ids=['ck-a','ck-b','ck-c'], TAB={'ck-a':'tA','ck-b':'tB','ck-c':'tC'},
+        COL={'ck-a':'cA','ck-b':'cB','ck-c':'cC'}, el={}, i;
+    for(i=0;i<ids.length;i++){ el[ids[i]]=document.getElementById(ids[i]); if(!el[ids[i]]) return; }
+    var dflt={}; for(i=0;i<ids.length;i++) dflt[ids[i]]=el[ids[i]].checked;
+    var saved=null;
+    try{ saved=JSON.parse(localStorage.getItem(KEY)); }catch(e){}
+    if(saved) for(i=0;i<ids.length;i++) if(typeof saved[ids[i]]==='boolean') el[ids[i]].checked=saved[ids[i]];
+    function differs(){ for(var j=0;j<ids.length;j++) if(el[ids[j]].checked!==dflt[ids[j]]) return true; return false; }
+    function paint(){ var r=document.getElementById('ck-reset-row'); if(r) r.hidden=!differs(); }
+    /* the tab strip must never be left pointing at a column that is switched off */
+    function keepTabOnSomethingVisible(){
+      var vis=ids.filter(function(k){ return el[k].checked; });
+      if(!vis.length) return;
+      var cur=ids.filter(function(k){
+        var t=document.getElementById(TAB[k]);
+        return t && t.getAttribute('aria-selected')==='true';
+      })[0];
+      if(!cur || !el[cur].checked){
+        var t=document.getElementById(TAB[vis[0]]); if(t) t.click();
+      }
+    }
+    function save(){
+      var v={}; for(var j=0;j<ids.length;j++) v[ids[j]]=el[ids[j]].checked;
+      try{ localStorage.setItem(KEY,JSON.stringify(v)); }catch(e){}
+      paint(); keepTabOnSomethingVisible();
+    }
+    for(i=0;i<ids.length;i++) el[ids[i]].addEventListener('change',save);
+    /* following a citation into a column the reader closed switches it back on,
+       so the grid stays consistent and what they are reading is really there */
+    /* Switch on whichever column holds this element. Returns true when that
+       actually changed something. */
+    function reveal(t){
+      if(!t) return false;
+      for(var j=0;j<ids.length;j++){
+        var c=document.getElementById(COL[ids[j]]);
+        if(c && c.contains(t)){
+          if(el[ids[j]].checked) return false;
+          el[ids[j]].checked=true; save(); return true;
+        }
+      }
+      return false;
+    }
+    /* A numeral and an internal card are handled in script and never touch
+       location.hash, so hashchange cannot reach them. They call this instead;
+       without it a citation into a switched-off column scrolls to nothing. */
+    window.threeColReveal = reveal;
+    function openForTarget(){
+      var h=location.hash.slice(1); if(!h) return;
+      reveal(document.getElementById(h));
+    }
+    window.addEventListener('hashchange', openForTarget);
+    document.addEventListener('DOMContentLoaded',function(){
+      var b=document.getElementById('ck-reset');
+      if(b) b.addEventListener('click',function(){
+        for(var j=0;j<ids.length;j++) el[ids[j]].checked=dflt[ids[j]];
+        try{ localStorage.removeItem(KEY); }catch(e){}
+        paint(); keepTabOnSomethingVisible();
+      });
+      paint(); openForTarget();
+      setTimeout(keepTabOnSomethingVisible,0);
+    });
+  })();
+  </script>
+
+  <p class="mireset" id="ck-reset-row" hidden><button type="button" id="ck-reset">Back to this site&rsquo;s default view</button></p>
+  <div class="moreinfo">
+    <p class="micap">More Info</p>
+    <p class="misub">Uncheck anything you would rather not read</p>
+    <div class="mibtns">
+      <label class="ckbtn" for="ck-a"><span class="box"></span>Plain answers</label>
+      <label class="ckbtn" for="ck-b"><span class="box"></span>Sources</label>
+      <label class="ckbtn" for="ck-c"><span class="box"></span>How it works</label>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="wrap">
+<main>
+
+<!-- ================= A ================= -->
+<section class="col active" id="cA" role="tabpanel" aria-labelledby="tA">
+  <div class="colhead"><b>A</b><span class="nm"> &nbsp;Plain answers</span><label class="sw" for="ck-a" title="Show or hide this column"></label></div>
+
+  <details id="who"><summary>Who are you?</summary><div class="body">
+    <p>Ruby Calder. Junior at Worland High School, and a member of Chief Washakie FFA, the chapter at the high school here<span class="fn" data-ref="r7">7</span>.</p>
+    <p>I keep fourteen head of commercial ewes on leased ground east of town. That is my project, and most of what is on this page grew out of it.</p>
+    <p>This year I am the chapter <b>Reporter</b>, which in FFA is the officer whose job is the chapter newsletter or website, the news releases, and the photographs<span class="fn" data-ref="r5">5</span>. So a page like this one is, more or less, my actual job.</p>
+  </div></details>
+
+  <details id="sae"><summary>What is an SAE, and what is yours?</summary><div class="body">
+    <p>SAE stands for <b>Supervised Agricultural Experience</b>. It is the part of agricultural education that happens outside the classroom, and it is the thing FFA is actually built around.</p>
+    <p>There are two layers<span class="fn" data-ref="r2">2</span>. Every student does a <b>Foundational SAE</b> &mdash; career planning, employability skills, personal finance, workplace safety, agricultural literacy. On top of that a student may run an <b>Immersion SAE</b>, which is the real project: ownership, a placement, research, a school enterprise, or service learning.</p>
+    <p>Mine is an <b>Ownership/Entrepreneurship SAE</b>: the ewes. I bought the first six with money from haying, lease the ground, keep the books, and sell the lambs. Washakie County runs about 28,700 head of sheep, so it is not an unusual thing to be doing here<span class="fn" data-ref="r12">12</span>.</p>
+    <div class="note"><strong>One thing worth knowing if you are reading this to understand FFA.</strong> Only the hours and dollars from the Immersion SAE count toward degrees. Foundational SAE work is required of everyone and is genuinely useful, but it does not go in the degree box<span class="fn" data-ref="r2">2</span>. The numbers below are Immersion hours only.</div>
+  </div></details>
+
+  <details id="record"><summary>What have you actually done?</summary><div class="body">
+    <p>This is the part that would otherwise be a blank page. It comes out of my record book, and it is current as of the date at the bottom of this column.</p>
+
+    <p><b>Degrees earned</b></p>
+    <table class="rec">
+      <thead><tr><th scope="col">Degree</th><th scope="col">When</th><th scope="col">Conferred by</th></tr></thead>
+      <tbody>
+        <tr><td>Discovery FFA Degree</td><td>8th grade</td><td>the chapter</td></tr>
+        <tr><td>Greenhand FFA Degree</td><td>freshman year</td><td>the chapter</td></tr>
+        <tr><td>Chapter FFA Degree</td><td>sophomore year</td><td>the chapter</td></tr>
+        <tr><td>State FFA Degree</td><td><i>applying this year</i></td><td>Wyoming FFA Association</td></tr>
+      </tbody>
+    </table>
+    <p>The ladder has five rungs &mdash; Discovery, Greenhand, Chapter, State, American &mdash; and each one has written requirements, not just a vote<span class="fn" data-ref="r1">1</span>. Wyoming calls the fourth one the <b>State FFA Degree</b>; some states rename theirs, and Wyoming does not<span class="fn" data-ref="r8">8</span>. The fifth is awarded by the national organization, and asks for three consecutive years of records from a project like mine<span class="fn" data-ref="r9">9</span> &mdash; which is the reason to keep the book properly now rather than later.</p>
+
+    <p><b>Where I stand against the State FFA Degree requirements</b><span class="fn" data-ref="r1">1</span></p>
+    <table class="rec">
+      <thead><tr><th scope="col">Required</th><th scope="col" class="n">Needed</th><th scope="col" class="n">Mine</th></tr></thead>
+      <tbody>
+        <tr><td>Months of active membership</td><td class="n">24</td><td class="n">27</td></tr>
+        <tr><td>Hours of agricultural instruction</td><td class="n">360</td><td class="n">382</td></tr>
+        <tr><td>Earned and productively invested</td><td class="n">$1,000</td><td class="n">$1,240</td></tr>
+        <tr><td>&hellip; or hours worked beyond class</td><td class="n">300</td><td class="n">412</td></tr>
+        <tr><td>FFA activities above chapter level</td><td class="n">5</td><td class="n">5</td></tr>
+        <tr><td>Community service hours</td><td class="n">25</td><td class="n">31</td></tr>
+        <tr><td>&hellip; across separate activities</td><td class="n">2</td><td class="n">3</td></tr>
+      </tbody>
+    </table>
+    <p class="note"><b>These are sample figures for a demonstration.</b> They are set to be internally consistent with the published thresholds rather than copied from any real student&rsquo;s book.</p>
+
+    <p><b>Events</b></p>
+    <ul>
+      <li><b>Livestock Evaluation</b> &mdash; Career Development Event, state qualifier, sophomore and junior year<span class="fn" data-ref="r4">4</span></li>
+      <li><b>Agronomy</b> &mdash; Career Development Event, district<span class="fn" data-ref="r4">4</span></li>
+      <li><b>Prepared Public Speaking</b> &mdash; Leadership Development Event, district<span class="fn" data-ref="r4">4</span></li>
+      <li><b>Parliamentary Procedure</b> &mdash; Leadership Development Event, chapter team<span class="fn" data-ref="r4">4</span></li>
+      <li><b>Wool Judging</b> &mdash; a Wyoming state event, with no national counterpart<span class="fn" data-ref="r8">8</span></li>
+    </ul>
+
+    <p><b>Office and service</b></p>
+    <ul>
+      <li>Chapter <b>Reporter</b>, junior year<span class="fn" data-ref="r5">5</span></li>
+      <li>Food bank gleaning, fairgrounds clean-up, and the chapter&rsquo;s grade-school farm safety day &mdash; 31 hours across the three</li>
+    </ul>
+
+    <p><b>My chapter</b></p>
+    <p>Chief Washakie FFA was rated <b>Gold</b> in 2026, which is the top rating Wyoming gives in the National Chapter Award program &mdash; a state rating, not a national one<span class="fn" data-ref="r6">6</span><span class="fn" data-ref="r7">7</span>.</p>
+  </div></details>
+
+  <details id="want"><summary>What are you looking for?</summary><div class="body">
+    <p>Summer work, and I am not particular about what kind. Lambing, irrigating, fencing, haying, beet harvest, working corrals, running a swather if somebody will teach me.</p>
+    <p>I can also do the unglamorous parts: keep a set of books, write things down accurately, and show up at the hour I said I would.</p>
+    <p>If you are reading this because you got my card, the number is at the top of this page.</p>
+  </div></details>
+
+  <details id="skills"><summary>What can you actually do?</summary><div class="body">
+    <ul>
+      <li>Lambing and basic sheep husbandry &mdash; feeding, docking, vaccination, keeping lambing records.</li>
+      <li>Hand lines and gated pipe. Not pivots yet.</li>
+      <li>Fencing: barbed wire and net wire, braces, stretching a fence straight.</li>
+      <li>Hauling with a gooseneck, and backing one without a crowd.</li>
+      <li>Keeping the books for a project that has to balance &mdash; income, expenses, and what the animals are actually worth.</li>
+      <li>Speaking to a room without reading off a card, which is what the speaking events are for.</li>
+    </ul>
+    <p>What I cannot do yet is more useful to say: I have no commercial license, I have never run a beet harvester, and I have not welded anything anyone should rely on.</p>
+  </div></details>
+
+  <details id="whatffa"><summary>What is FFA, if I have never had anything to do with it?</summary><div class="body">
+    <p>It is the student organization attached to agricultural education in schools &mdash; about a million members nationally, and a little over 4,600 in Wyoming across roughly 64 high school chapters<span class="fn" data-ref="r8">8</span>.</p>
+    <p>The part most people do not realize is how much of it is written down. Degrees have published hour and dollar thresholds<span class="fn" data-ref="r1">1</span>. There are eighteen Career Development Events and seven Leadership Development Events, with official names and rules<span class="fn" data-ref="r4">4</span>. Chapters are rated against a published standard<span class="fn" data-ref="r6">6</span>. Officers have written duties<span class="fn" data-ref="r5">5</span>.</p>
+    <p>Which is the whole reason a page like this works. A student in FFA is already generating a documented record. It just normally sits in a record book nobody outside the program ever sees.</p>
+  </div></details>
+
+  <details id="whynotresume"><summary>Why a web page instead of a r&eacute;sum&eacute;?</summary><div class="body">
+    <p>Because at sixteen a r&eacute;sum&eacute; is mostly blank, and the blankness is misleading. I have done a fair amount; it just does not fit the shape of a r&eacute;sum&eacute;, which expects job titles and employers.</p>
+    <p>This page holds the things a r&eacute;sum&eacute; has no row for: an SAE, hours against a published threshold, events with placings, service hours, an office with real duties. When I do write a first r&eacute;sum&eacute;, it gets written <b>from</b> this, and the hard part &mdash; remembering what I did and when &mdash; is already done.</p>
+    <p>It also updates. A r&eacute;sum&eacute; handed out in March is wrong by June.</p>
+  </div></details>
+
+  <details id="card"><summary>You handed me a card. How does the code on the back work?</summary><div class="body">
+    <p>Point your phone&rsquo;s camera at it. Do not open any app first &mdash; just the camera, the way you would to take a picture of it. Hold it steady about a hand&rsquo;s width away.</p>
+    <p>A link should appear across the top or bottom of the screen. Tap the link. That brings you here.</p>
+    <p><b>If nothing happens:</b></p>
+    <ul>
+      <li>Make sure the whole square is in the picture, including the white border around it.</li>
+      <li>Try more light, or move so your own shadow is off the card.</li>
+      <li>Some older phones need the camera app&rsquo;s own scanner switched on in settings, or a separate QR app.</li>
+      <li>If your phone is older than about 2017, the camera may not do this at all.</li>
+    </ul>
+    <p><b>If it still does nothing, the address is printed on the card underneath the square.</b> Type it into any browser. That is why it is printed there &mdash; the code is a convenience, not the only way in.</p>
+  </div></details>
+
+  <details id="whose"><summary>Whose page is this, and what happens when I graduate?</summary><div class="body">
+    <p>Mine. Not the school&rsquo;s and not the chapter&rsquo;s. It can be moved to an address I own, and it can be taken down.</p>
+    <p>That matters more than it sounds. What is on this page &mdash; a student&rsquo;s name, photograph, participation in a recognized school activity, and the degrees and awards received &mdash; is exactly what federal law calls <b>directory information</b>, which a school may release only after giving notice and letting a parent opt out<span class="fn" data-ref="r10">10</span>.</p>
+    <p>So the rule for a real student&rsquo;s version of this page is simple: <b>the student and a parent decide, in writing, before it goes up</b>, and either of them can say take it down, at any time, without giving a reason. I could not find a National FFA or Wyoming FFA policy on publishing members&rsquo; names and photographs online, and say so rather than implying one exists<span class="fn" data-ref="r11">11</span>.</p>
+  </div></details>
+</section>
+<!-- ================= B ================= -->
+<section class="col dim" id="cB" role="tabpanel" aria-labelledby="tB">
+  <div class="colhead"><b>B</b><span class="nm"> &nbsp;Sources</span><label class="sw" for="ck-b" title="Show or hide this column"></label></div>
+  <h3 class="colbsh" id="colbint">Internal links</h3>
+  <p class="colbcap">The two most recent content changes, and the record behind them.</p>
+  <a class="bcard" href="#record" data-open="record">
+    <span class="t">2 October 2026 &mdash; the record, set against the published thresholds</span>
+    <span class="d">Every figure is checked against the written degree requirements rather than invented loosely, because the numbers are the first thing an advisor would check.</span>
+  </a>
+  <a class="bcard" href="#whose" data-open="whose">
+    <span class="t">2 October 2026 &mdash; who owns the page, and how it comes down</span>
+    <span class="d">A student&rsquo;s name, photograph, activities and awards are directory information under federal law. The consent rule is written into the page rather than left to assumption.</span>
+  </a>
+
+  <a class="bcard" href="chronicle.html">
+    <span class="t">Chronicle &mdash; what has been happening, and why</span>
+    <span class="d">The whole record in plain language, newest first: how this page was built, what each choice was for, and what is still untested &mdash; including that no real student or advisor has seen it.</span>
+  </a>
+
+  <h3 class="colbsh" id="colbext">External links</h3>
+  <p class="colbcap">Every reference to some other website, previewed. The link is always the last line &mdash; read the card first and decide whether you need the round-trip distraction of visiting the original at all.</p>
+
+  <article class="ref" id="r1">
+    <span class="rnum">1</span><span class="rkind">Program reference &middot; the degree ladder</span>
+    <div class="rtitle">FFA Degrees</div>
+    <div class="rmeta">National FFA Organization &middot; reference page, no edition date stated &middot; read 2 October 2026</div>
+    <div class="rprev">The five degrees in order &mdash; Discovery, Greenhand, Chapter, State, American &mdash; with the requirements for each. The Chapter degree asks 180 hours of instruction, an SAE in operation, $150 earned and productively invested or 45 hours worked beyond class, a 15-minute discussion led, five parliamentary procedures demonstrated, three chapter functions above committee level and 10 hours of community service. The State degree asks 24 months of membership, 360 hours of instruction, $1,000 invested or 300 hours worked, five activities above chapter level and 25 hours of service across at least two activities.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is the measuring stick the record in column A is set against. Every figure in that table is a threshold from this page, and the student&rsquo;s numbers are chosen to sit just above them.</div>
+    <a class="rlink" href="https://www.ffa.org/participate/awards/">ffa.org &middot; degrees and awards</a>
+  </article>
+
+  <article class="ref" id="r2">
+    <span class="rnum">2</span><span class="rkind">Framework &middot; what an SAE is</span>
+    <div class="rtitle">SAE for All: Teacher Guide</div>
+    <div class="rmeta">The National Council for Agricultural Education &middot; &copy; 2017 &middot; the framework currently in use</div>
+    <div class="rprev">Sets out the two tiers. The Foundational SAE, done by every student, covers career exploration and planning, employability skills, personal financial management, workplace safety and agricultural literacy. The Immersion SAE is the project on top of it, in one of five types: placement or internship, ownership or entrepreneurship, research, school-based enterprise, or service learning. It states directly that hours spent on the Foundational SAE outside the context of an Immersion SAE &ldquo;may not contribute to the attainment of FFA awards or degrees.&rdquo;</div>
+    <div class="rwhy"><b>Why it is cited:</b> for that last sentence. It is the constraint that decides whether an involvement record is honest, and the easiest one to get wrong &mdash; counting a student&rsquo;s classwork hours into a degree threshold would be caught immediately by any advisor.</div>
+    <a class="rlink" href="https://saeforall.org/">saeforall.org</a>
+  </article>
+
+  <article class="ref" id="r3">
+    <span class="rnum">3</span><span class="rkind">Record keeping &middot; where the numbers come from</span>
+    <div class="rtitle">The AET &mdash; Agricultural Experience Tracker</div>
+    <div class="rmeta">theaet.com &middot; privately operated, adopted state by state &middot; platform launched 2007</div>
+    <div class="rprev">An online record book for agricultural education: hours, income and expenses, skills journaled, projects, and FFA activity participation. It is the submission vehicle for degree and award applications in the states that have adopted it, and Wyoming is one &mdash; Wyoming FFA directs State Star Award applications through it. It is not a National FFA product and no National FFA page designates it the official system; states choose their own.</div>
+    <div class="rwhy"><b>Why it is cited:</b> because the claim that this page can assemble itself rests on a student already keeping these records somewhere. It is worth being exact that this is the system most chapters use rather than an official one.</div>
+    <a class="rlink" href="https://theaet.com/">theaet.com</a>
+  </article>
+
+  <article class="ref" id="r4">
+    <span class="rnum">4</span><span class="rkind">Program reference &middot; the events, by their real names</span>
+    <div class="rtitle">Career Development Events and Leadership Development Events</div>
+    <div class="rmeta">National FFA Organization &middot; reference listing &middot; read 2 October 2026</div>
+    <div class="rprev">Eighteen Career Development Events and seven Leadership Development Events, plus the Agriscience Fair, which is an activity and neither. Livestock Evaluation and Agronomy are CDEs; Prepared Public Speaking and Parliamentary Procedure are LDEs. Several names in common use are not the official ones: the mechanics event is Agricultural Technology and Mechanical Systems, and Agricultural Issues Forum is an LDE rather than a CDE.</div>
+    <div class="rwhy"><b>Why it is cited:</b> to get the event names right. National FFA&rsquo;s own main events page merges all twenty-five into one unlabeled list, which is probably why the CDE and LDE split is so often reported wrongly.</div>
+    <a class="rlink" href="https://www.ffa.org/participate/cdes/">ffa.org &middot; competitive events</a>
+  </article>
+
+  <article class="ref" id="r5">
+    <span class="rnum">5</span><span class="rkind">Program reference &middot; what an officer actually does</span>
+    <div class="rtitle">Chapter Officer Responsibilities</div>
+    <div class="rmeta">National FFA Organization &middot; no date or edition stated in the document &middot; read 2 October 2026</div>
+    <div class="rprev">Written duties for each chapter office. The Reporter chairs the public relations committee, plans public information programs with local radio, television and newspapers, releases news to local and regional media, &ldquo;publishes a chapter newsletter or website,&rdquo; maintains the chapter scrapbook, sends stories up to district and state reporters, and serves as chapter photographer.</div>
+    <div class="rwhy"><b>Why it is cited:</b> because the Reporter&rsquo;s written job already includes keeping a chapter website. The student in this demonstration holds that office, which is not a coincidence &mdash; it is the office this whole idea belongs to.</div>
+    <a class="rlink" href="https://www.ffa.org/participate/chapter-officers/">ffa.org &middot; chapter officers</a>
+  </article>
+
+  <article class="ref" id="r6">
+    <span class="rnum">6</span><span class="rkind">Award program &middot; what a Gold rating is</span>
+    <div class="rtitle">National Chapter Award program</div>
+    <div class="rmeta">National FFA Organization</div>
+    <div class="rprev">Chapters are judged against the National Quality FFA Chapter Standards and their own Program of Activities across three divisions &mdash; Growing Leaders, Building Communities, Strengthening Agriculture &mdash; completing at least fifteen activities, one for each of five standards in each division. State ratings run Gold, Silver, Bronze above a baseline Superior certificate. Gold is the top state rating, and gold chapters are the ones eligible to advance to national judging, where the scale changes to three-, two- and one-star.</div>
+    <div class="rwhy"><b>Why it is cited:</b> so that &ldquo;Gold&rdquo; on this page means something specific. It is the highest rating Wyoming awards, and it is not a national award &mdash; calling it national recognition would be an overstatement.</div>
+    <a class="rlink" href="https://www.ffa.org/participate/awards/national-chapter/">ffa.org &middot; National Chapter Award</a>
+  </article>
+
+  <article class="ref" id="r7">
+    <span class="rnum">7</span><span class="rkind">Reporting &middot; the 2026 state convention, and a single source</span>
+    <div class="rtitle">2026 Wyoming State FFA Convention: Wyoming FFA members gathered to celebrate accomplishments and elect new leadership</div>
+    <div class="rmeta">Wyoming Livestock Roundup &middot; 1 May 2026</div>
+    <div class="rprev">Reports the 2026 state convention and publishes the list of thirty-two gold-rated chapters, Chief Washakie and Ten Sleep among them. Chief Washakie is the chapter at Worland High School; Ten Sleep FFA is at Ten Sleep High School; both sit in Region 2 of Wyoming FFA&rsquo;s five regions.</div>
+    <div class="rwhy"><b>Why it is cited, and the caveat.</b> This is a credible agricultural trade paper, but it is the <b>only</b> source found for the 2026 ratings &mdash; Wyoming FFA publishes no historical results list. Before this claim goes on any real student&rsquo;s page it should be confirmed with the chapter or the association, which costs one telephone call.</div>
+    <a class="rlink" href="https://www.wylr.net/2026/05/01/2026-wyoming-state-ffa-convention-wyoming-ffa-members-gathered-to-celebrate-accomplishments-and-elect-new-leadership/">wylr.net &middot; 2026 Wyoming State FFA Convention</a>
+  </article>
+
+  <article class="ref" id="r8">
+    <span class="rnum">8</span><span class="rkind">State association &middot; degrees, events and scale</span>
+    <div class="rtitle">Wyoming FFA Association &mdash; awards and degrees</div>
+    <div class="rmeta">Wyoming FFA Association &middot; wyffa.org &middot; read 2 October 2026</div>
+    <div class="rprev">Lists the degree ladder as Discovery, Greenhand, Chapter, State and American &mdash; Wyoming uses the national name for its state degree rather than renaming it, as Texas and Pennsylvania do. Carries the state&rsquo;s event offerings, which include Wool Judging and Greenhand Quiz Bowl alongside the national events. The association covers roughly sixty-four high school chapters and more than four thousand six hundred members, with state convention held in Cheyenne in April.</div>
+    <div class="rwhy"><b>Why it is cited:</b> for the degree name, which is the kind of detail that marks a page as written by somebody who checked. Wool Judging is cited from here too, and labeled a state event, because it has no national counterpart.</div>
+    <a class="rlink" href="https://association.wyffa.org/awards-and-degrees/">association.wyffa.org &middot; awards and degrees</a>
+  </article>
+
+  <article class="ref" id="r9">
+    <span class="rnum">9</span><span class="rkind">Handbook &middot; the top of the ladder</span>
+    <div class="rtitle">American FFA Degree &amp; American Star Award Handbook</div>
+    <div class="rmeta">National FFA Organization &middot; revised January 2025, for the 2026 award year</div>
+    <div class="rprev">The requirements for the highest degree: thirty-six consecutive months of membership, graduation at least twelve months before the convention at which it is granted, 540 hours of secondary instruction, an outstanding SAE with three consecutive years of records, a C average or better, and fifty hours of community service across at least three activities. The financial requirement has three alternative routes, including $10,000 earned with $7,500 productively invested, or $2,000 earned and invested together with 2,250 hours worked beyond class time.</div>
+    <div class="rwhy"><b>Why it is cited:</b> to show where the ladder goes. A junior with a working project is three years of records away from it, which is the point of keeping the record at all.</div>
+    <a class="rlink" href="https://www.ffa.org/participate/awards/american-degree/">ffa.org &middot; American FFA Degree</a>
+  </article>
+
+  <article class="ref" id="r10">
+    <span class="rnum">10</span><span class="rkind">Regulation &middot; what may be published about a student</span>
+    <div class="rtitle">34 CFR 99.3 &mdash; Definitions: &ldquo;Directory information&rdquo;</div>
+    <div class="rmeta">Family Educational Rights and Privacy Act regulations, U.S. Department of Education &middot; Title 34 last amended 29 September 2026</div>
+    <div class="rprev">Defines directory information as information in a student&rsquo;s education record &ldquo;that would not generally be considered harmful or an invasion of privacy if disclosed,&rdquo; and enumerates it: the student&rsquo;s name, address, telephone listing, electronic mail address, photograph, date and place of birth, major field of study, grade level, enrollment status, dates of attendance, &ldquo;participation in officially recognized activities and sports,&rdquo; and &ldquo;degrees, honors, and awards received.&rdquo; A school may disclose it only after public notice of what it so designates and a reasonable period for a parent to opt out.</div>
+    <div class="rwhy"><b>Why it is cited:</b> because it maps onto the contents of this page almost field for field &mdash; name, photograph, activities, awards. It is the right authority for the consent rule, and it is federal, current and dated, which no FFA policy on the subject is.</div>
+    <a class="rlink" href="https://www.ecfr.gov/current/title-34/subtitle-A/part-99/subpart-A/section-99.3">ecfr.gov &middot; 34 CFR 99.3</a>
+  </article>
+
+  <article class="ref" id="r11">
+    <span class="rnum">11</span><span class="rkind">Policy &middot; and a gap worth naming</span>
+    <div class="rtitle">National FFA Organization Privacy Policy</div>
+    <div class="rmeta">National FFA Organization &middot; effective September 2020</div>
+    <div class="rprev">Covers collection of student information &mdash; name, address, age, email, telephone, birthdate, grade level, graduation year &mdash; states that FFA does not knowingly collect personal information from children under thirteen without a parent or guardian&rsquo;s consent, and that students, parents and guardians may review what has been collected and request adjustment or deletion at any time. It says nothing about photographs, media releases, or publishing members&rsquo; names and achievements online.</div>
+    <div class="rwhy"><b>Why it is cited:</b> for what is missing from it. Neither National FFA nor Wyoming FFA publishes a policy on putting members&rsquo; names and photographs online, so this page cites the law instead and says plainly that it looked and found none.</div>
+    <a class="rlink" href="https://www.ffa.org/privacy-policy">ffa.org &middot; privacy policy</a>
+  </article>
+
+  <article class="ref" id="r12">
+    <span class="rnum">12</span><span class="rkind">Statistics &middot; county agriculture</span>
+    <div class="rtitle">2022 Census of Agriculture: Washakie County profile</div>
+    <div class="rmeta">USDA National Agricultural Statistics Service &middot; released 2024 &middot; public domain</div>
+    <div class="rprev">206 farms on 368,504 acres, 38,025 of them irrigated. Hay and forage leads by acreage at 20,022 acres, then barley at 6,329 and sugar beets at 5,298. The county runs 35,968 cattle and 28,744 sheep, and livestock brings in 55 percent of its $60.6 million in farm sales.</div>
+    <div class="rwhy"><b>Why it is cited:</b> the sheep figure. A fourteen-head ewe project is an ordinary thing in a county running nearly twenty-nine thousand head, which is what makes the invented project a plausible one.</div>
+    <a class="rlink" href="https://www.nass.usda.gov/Publications/AgCensus/2022/Online_Resources/County_Profiles/Wyoming/cp56043.pdf">nass.usda.gov &middot; 2022 county profile, Washakie County (PDF)</a>
+  </article>
+
+  <div class="note" id="deadnote" hidden></div>
+</section>
+<!-- ================= C ================= -->
+<section class="col dim" id="cC" role="tabpanel" aria-labelledby="tC">
+  <div class="colhead"><b>C</b><span class="nm"> &nbsp;How it works (Details)</span><label class="sw" for="ck-c" title="Show or hide this column"></label></div>
+  <p class="lede">Prior know-how is assumed here, and the items become more &ldquo;technical&rdquo; toward the bottom. What this replaces, how the record assembles itself, what the printed card is for, and who decides whether a page like this exists at all.</p>
+
+  <h2 id="precursor">What this replaces</h2>
+  <p>A first r&eacute;sum&eacute; is a bad instrument for a sixteen-year-old. It is a form designed to list employment, handed to someone who has not been employed, and the result reads as an absence rather than a beginning.</p>
+  <p>The absence is false. A student two years into agricultural education has a documented project, hours logged against published thresholds, competitive events with placings, an office with written duties, and service hours recorded by date. That is more documented activity than most adults can produce on demand. It simply has no row on a r&eacute;sum&eacute; form.</p>
+  <p>So this page is not a r&eacute;sum&eacute; and does not try to be one. It is the thing a first r&eacute;sum&eacute; gets written <b>from</b>, two years later, when there is a job title to put at the top. The hard part of writing that r&eacute;sum&eacute; &mdash; remembering what happened and when, and finding the numbers &mdash; is already done.</p>
+
+  <h2 id="assembles">How the record assembles itself</h2>
+  <p>The claim that a page like this maintains itself rests on something that is already true: the student is keeping these records anyway, because the degree and award applications demand them.</p>
+  <p>In Wyoming that record book is The AET, which holds hours, income and expenses, skills journaled, projects and activity participation, and which the state association uses as the application route for its Star awards<span class="fn" data-ref="r3">3</span>. It is a privately operated system adopted state by state rather than a National FFA product, which is worth stating precisely rather than calling it the official record book<span class="fn" data-ref="r3">3</span>.</p>
+  <p>The involvement block in column A is the shape of what comes out of such a book. Today a student would copy it across at the end of a semester, which takes a few minutes. The interesting version is the one where it is exported rather than retyped, and that is a question for the chapter and the record-book vendor, not for this page.</p>
+  <p>One constraint governs the whole thing and is easy to get wrong. Only Immersion SAE hours and dollars count toward degrees; Foundational SAE work, which every student does, does not<span class="fn" data-ref="r2">2</span>. A record that totals the two together would overstate a student&rsquo;s standing and would be caught by the first advisor who read it. The figures in column A are Immersion only.</p>
+
+  <h2 id="handbills">The card, and why it is called a handbill</h2>
+  <p>The package around this page is about a hundred printed cards. The front carries the student&rsquo;s name, chapter and telephone number. The back carries a square code pointing here, the address printed underneath it in readable type, and three lines of instruction for someone who has never used one.</p>
+  <p>Those three lines are the part that matters, and they are usually missing. A code with no fallback is a dead end for the person most likely to be holding the card &mdash; an older rancher, at a sale barn, in bad light. So the address is printed, the instructions say what to do when nothing happens, and column A answers it again at length.</p>
+  <p>The printed address has to be short enough to type, and that turns out to be a real constraint rather than a preference. At a size anybody can read off a card, a path under a shared domain does not fit on one line. So each student wants a short address of their own, which costs about a dozen dollars a year and is theirs when they leave.</p>
+  <p>The older name for this object is a handbill: a single sheet, printed cheaply, handed to a person, carrying one message. A business card is a handbill that fits in a wallet. What the code adds is that the handbill is no longer fixed at the moment of printing &mdash; the card stays the same while what it points at keeps up with the student.</p>
+  <p>A practical note on printing: the card is designed to work in one color on ordinary stock, and the code is checked to still scan after being forced to pure black and white. A code that reads on a screen and fails on a cheap printer is the standard way this goes wrong.</p>
+
+  <h2 id="consent">Who decides whether this page exists</h2>
+  <p>This is the part that has to be settled before a single real student&rsquo;s page is built, and it is why the demonstration uses an invented student.</p>
+  <p>What such a page carries is, almost field for field, what federal law enumerates as <b>directory information</b>: a student&rsquo;s name, photograph, participation in officially recognized activities, and degrees, honors and awards received<span class="fn" data-ref="r10">10</span>. A school may disclose directory information, but only after public notice of what it designates as such and a reasonable period for a parent to opt out &mdash; and an opt-out binds the school.</p>
+  <p>Two things follow. A page built <b>by the school or chapter</b> about a student sits inside that framework and inherits its notice and opt-out machinery. A page built <b>by the student</b>, about themselves, on an address they own, is not a school disclosure at all &mdash; but the student is a minor, so a parent is still the right person to agree to it.</p>
+  <p>Neither National FFA nor Wyoming FFA publishes a policy on putting members&rsquo; names and photographs online. That is a real gap rather than a failure to find it, and this page says so rather than implying a policy exists<span class="fn" data-ref="r11">11</span>.</p>
+  <div class="note"><strong>The working rule, then:</strong> written agreement from the student and a parent before anything goes up; the page belongs to the student and moves with them; and either of them can have it taken down at any time, without giving a reason and without it being awkward. A page that cannot be taken down easily should not go up.</div>
+
+  <h2 id="cost">What it costs</h2>
+  <p>A domain is the only recurring cost, and it is on the order of a dozen dollars a year. The page itself is a handful of plain files with no database, no login and no monthly service behind it, so hosting is free at the sizes involved. The cards are the other cost, and a hundred of them is small.</p>
+  <p>That is the whole point of the format. A student&rsquo;s page should not depend on a subscription that lapses the summer after they graduate.</p>
+
+  <h2 id="about">About this page</h2>
+  <p>It is built in the Three Columns format: plain answers first, every source previewed in the middle, the detail last. The same handful of files as every other page in this family, and the same behavior &mdash; it works on a phone, prints properly, and keeps working with scripting switched off.</p>
+  <p>The pilot program that would pay for the first dozen pages like this one is proposed at washakie&#8209;ai.online.</p>
+
+  <h2 id="wrong">What went wrong</h2>
+  <p>The format asks every page to record at least one thing that went wrong. There are three here, and all three were caught in checking rather than drafting.</p>
+  <ul>
+    <li><b>The state degree had the wrong name.</b> This page was drafted calling it the &ldquo;Wyoming FFA Degree,&rdquo; by analogy with states that do rename theirs &mdash; the Lone Star Farmer in Texas, the Keystone Degree in Pennsylvania. Wyoming does not. It is the <b>State FFA Degree</b><span class="fn" data-ref="r8">8</span>. An invented student with an invented degree name would have been spotted by the first advisor who read it.</li>
+    <li><b>Two event names were wrong and one was in the wrong category.</b> There is no national event called &ldquo;Ag Mechanics&rdquo; &mdash; it is Agricultural Technology and Mechanical Systems &mdash; and Agricultural Issues Forum is a Leadership Development Event rather than a Career Development Event<span class="fn" data-ref="r4">4</span>. In fairness this is easy to get wrong: National FFA&rsquo;s own main events page lists all twenty-five events merged together with no labels.</li>
+    <li><b>The address would not fit on the card.</b> The first set of card artwork put the full address on one line on the back, and it ran straight off the edge of the card &mdash; which was not noticed in the design and was caught only when the artwork was rendered and looked at. It is set on two lines now, and there is a check in the card build that refuses to produce artwork whose text crosses the trim. The useful part is what the failure meant: a path under a shared domain is too long to print at a readable size, which is the argument for each student having a short address of their own.</li>
+    <li><b>The chapter&rsquo;s Gold rating rests on one source.</b> It is a credible trade paper, and it is still one source; the association publishes no historical results<span class="fn" data-ref="r7">7</span>. It is stated here with the caveat attached rather than quietly. On a real student&rsquo;s page it should be confirmed with the chapter first, which is a single telephone call.</li>
+  </ul>
+</section>
+
+</main>
+</div>
+
+<footer>
+  Ruby Calder &middot; an invented student, for a demonstration<br>
+  Chief Washakie FFA is a real chapter at Worland High School. This page is not its work, and not the school&rsquo;s.<br>
+  A US Handbill &amp; Broadsheet page &middot; Worland &middot; Washakie County &middot; Wyoming<br>
+  No analytics, no trackers, no cookies. This page sets nothing and stores nothing for its readers.<br>
+  &copy; 2026 Walter Wilkinson &middot; code MIT &middot; <a href="../../legal.html">words reserved</a>
+</footer>
+<nav class="uplevel" aria-label="One level up">
+  <a href="https://washakie-ai.online/">
+    <span class="uplabel">&uarr; One level up</span>
+    <span class="upname">washakie-ai.online</span>
+    <span class="upcap">a $10,000 proposal for grass-roots AI in Washakie County</span>
+  </a>
+</nav>
+<div class="endmark">·</div>
+
+<script>
+(function(){
+  var tabs = [].slice.call(document.querySelectorAll('[role="tab"]'));
+  var cols = { tA:'cA', tB:'cB', tC:'cC' };
+  var wide = function(){ return window.matchMedia('(min-width:1101px)').matches; };
+  function select(id){
+    tabs.forEach(function(t){
+      var on = t.id === id;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      var c = document.getElementById(cols[t.id]);
+      c.classList.toggle('active', on);
+      c.classList.toggle('dim', wide() ? !on : false);
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ select(t.id); });
+    t.addEventListener('keydown', function(e){
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var n = tabs[(i + d + tabs.length) % tabs.length];
+      n.focus(); select(n.id);
+    });
+  });
+  window.addEventListener('resize', function(){
+    var cur = tabs.filter(function(t){ return t.getAttribute('aria-selected') === 'true'; })[0];
+    if (cur) select(cur.id);
+  });
+  select('tA');
+
+  // A column is its own button: a click in a dimmed column (or tabbing into it) makes it the
+  // active one, exactly as its A/B/C button would. Capture phase, so a marker or card that
+  // sends the reader to another column still has the last word.
+  Object.keys(cols).forEach(function(tid){
+    var c = document.getElementById(cols[tid]);
+    var take = function(){ if (!c.classList.contains('active')) select(tid); };
+    c.addEventListener('click', take, true);
+    c.addEventListener('focusin', take);
+  });
+
+  // footnote markers -> reference card
+  document.querySelectorAll('.fn').forEach(function(f){
+    f.addEventListener('click', function(){
+      var el = document.getElementById(f.dataset.ref);
+      if (!el) return;
+      if (window.threeColReveal) window.threeColReveal(el);
+      select('tB');
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      el.classList.add('flash');
+      setTimeout(function(){ el.classList.remove('flash'); }, 1600);
+    });
+  });
+
+  // internal link cards -> open the passage they point at, in its own column
+  function openPassage(id){
+    var d = document.getElementById(id);
+    if (!d) return false;
+    if (window.threeColReveal) window.threeColReveal(d);
+    var col = d.closest('.col');
+    if (col) {
+      var tab = tabs.filter(function(t){ return cols[t.id] === col.id; })[0];
+      if (tab) select(tab.id);
+    }
+    if (d.tagName === 'DETAILS') d.open = true;
+    d.scrollIntoView({behavior:'smooth', block:'start'});
+    d.classList.add('flash');
+    setTimeout(function(){ d.classList.remove('flash'); }, 1600);
+    return true;
+  }
+  document.querySelectorAll('.bcard[data-open]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if (openPassage(a.dataset.open)) e.preventDefault();
+    });
+  });
+
+  document.getElementById('pdf').addEventListener('click', function(){ window.print(); });
+  // print: open every folded answer first, and fold them again after, so paper misses nothing
+  var unfolded = [];
+  window.addEventListener('beforeprint', function(){
+    var closed = [].filter.call(document.querySelectorAll('details'), function(d){ return !d.open; });
+    closed.forEach(function(d){ d.open = true; });
+    unfolded = unfolded.concat(closed);
+  });
+  window.addEventListener('afterprint', function(){
+    unfolded.forEach(function(d){ d.open = false; });
+    unfolded = [];
+  });
+  var th = document.getElementById('theme');
+  th.addEventListener('click', function(){
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+    th.textContent = dark ? 'Dark' : 'Light';
+  });
+
+  // link health: same-origin status file only. No file, no claim.
+  fetch('links.json', {cache:'no-store'}).then(function(r){
+    if (!r.ok) throw 0; return r.json();
+  }).then(function(d){
+    var dead = d.dead || {}, any = false;
+    Object.keys(dead).forEach(function(id){
+      var card = document.getElementById(id);
+      if (!card) return;
+      var a = card.querySelector('.rlink');
+      if (!a) return;
+      a.classList.add('broken');
+      a.removeAttribute('href');
+      a.setAttribute('aria-disabled','true');
+      any = true;
+    });
+    if (any) {
+      var n = document.getElementById('deadnote');
+      var lines = Object.keys(dead).map(function(id){
+        var t = document.getElementById(id).querySelector('.rtitle').textContent;
+        return '&ldquo;' + t + '&rdquo; — unreachable as of ' + dead[id];
+      });
+      n.innerHTML = '<b>A note on the struck-through links.</b> ' +
+        'These sources were live when this report was written and are not now. ' +
+        'They are shown rather than removed, so that what was cited stays visible.<br><br>' +
+        lines.join('<br>') + '<br><br>Last checked ' + (d.checked || 'unknown') + '.';
+      n.hidden = false;
+    }
+  }).catch(function(){ /* no status file: say nothing */ });
+})();
+</script>
+<script src="phone-view.js" defer></script>
+<script src="top-button.js" defer></script>
+<script src="back-link.js" defer></script>
+</body>
+</html>

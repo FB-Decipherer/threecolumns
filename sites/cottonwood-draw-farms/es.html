@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cottonwood Draw Farms &middot; Trabajo de cosecha por temporada, condado de Washakie (una demostraci&oacute;n)</title>
+<meta name="description" content="Una demostraci&oacute;n del formato Tres Columnas para una finca del condado de Washakie que contrata cuadrilla de temporada: la finca es inventada; el condado, los cultivos, las agencias y la ley son reales y est&aacute;n documentados.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#FCFAF5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15130F" media="(prefers-color-scheme: dark)">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<noscript><style>
+/* No JavaScript: nothing can switch columns, so every column still switched on
+   shows, undimmed, on every screen. The three display checkboxes below the
+   threshold go on working here -- they are CSS, not script. */
+.col{opacity:1!important}
+@media (max-width:1100px){.col{display:block!important}}
+
+/* ===== language switch: a peer page, not a widget ======================== */
+.langswitch{margin:.85rem 0 0; font-size:.95rem; line-height:1.45}
+.langswitch a{display:inline-block; padding:.42rem .7rem; border:1px solid var(--rule);
+  border-radius:.4rem; text-decoration:none; background:var(--card)}
+.langswitch a:hover,.langswitch a:focus-visible{border-color:var(--ink)}
+.langswitch b{display:block}
+@media print{.langswitch a{border:none; padding:0; background:none}}
+</style></noscript>
+<style>
+:root{
+  --paper:#FCFAF5; --card:#F5F1E8; --ink:#1E1B16; --ink-mid:#4A443A;
+  --rule:#DCD5C6; --accent:#4C7A4E; --accentb:#B4372C; --gold:#8A6A15;
+  --dead:#8A8177;
+}
+:root[data-theme="dark"]{
+  --paper:#15130F; --card:#1E1B16; --ink:#F2EDE3; --ink-mid:#B7AF9F;
+  --rule:#38332A; --accent:#7FA981; --accentb:#D2695C; --gold:#D9B45C;
+  --dead:#6B655B;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.62;}
+.wrap{max-width:1560px;margin:0 auto;padding:0 26px;}
+a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);}
+a:hover{border-bottom-color:var(--accent);}
+
+/* ---------- header ---------- */
+header{padding:38px 0 4px;}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mid);
+  display:flex;align-items:center;gap:.4em;}
+.eyebrow .sep{opacity:.55;font-family:"Source Serif 4",serif;font-size:1.5em;line-height:0;}
+.mark{width:22px;height:22px;flex:none;}
+h1{font-size:clamp(30px,4.4vw,48px);line-height:1.12;font-weight:600;margin:14px 0 0;
+  letter-spacing:-.012em;}
+h1 .sep{color:var(--accent);font-weight:400;padding:0 .18em;}
+h1 .seg{display:inline-block;}
+.claimlabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:#2E5A33;margin-top:20px;}
+:root[data-theme="dark"] .claimlabel{color:#8FBE91;}
+.standfirst{font-size:20px;line-height:1.5;color:var(--ink-mid);margin:8px 0 0;max-width:62ch;}
+.standfirst strong{display:inline-block;margin-top:10px;font-weight:600;color:var(--ink);}
+.asof{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-mid);
+  border:1px solid var(--rule);border-radius:999px;padding:5px 13px;display:inline-block;margin-top:20px;}
+
+/* ---------- nav ---------- */
+nav{display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  margin-top:26px;padding:11px 0;position:sticky;top:0;background:var(--paper);z-index:20;}
+button{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.06em;
+  background:none;border:1px solid var(--rule);color:var(--ink-mid);
+  padding:8px 15px;border-radius:6px;cursor:pointer;}
+button:hover{border-color:var(--accent);color:var(--ink);}
+button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+button .key{color:var(--gold);font-weight:500;margin-right:.55em;}
+button[aria-selected="true"] .key{color:var(--gold);}
+nav .spacer{flex:1;}
+.util{font-size:11.5px;padding:7px 12px;}
+
+/* ---------- the three columns ---------- */
+main{display:grid;gap:0 34px;padding:30px 0 10px;
+  grid-template-columns:1fr minmax(280px,.82fr) 1fr;}
+.col{min-width:0;}
+.col + .col{border-left:1px solid var(--rule);padding-left:34px;}
+.colhead{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-mid);padding-bottom:9px;
+  border-bottom:2px solid var(--ink);margin-bottom:20px;
+  position:sticky;top:52px;background:var(--paper);}
+.colhead b{color:var(--gold);font-weight:700;
+  display:inline-block;border:1px solid var(--rule);border-radius:6px;
+  padding:2px 7px;margin-right:.5em;line-height:1.25;}
+.col.dim{opacity:.42;}
+.col{transition:opacity .15s;}
+.col.dim:hover{opacity:.62;}
+@media (prefers-reduced-motion:reduce){.col{transition:none;}}
+h2{font-size:22px;font-weight:600;margin:30px 0 6px;letter-spacing:-.006em;}
+h2:first-of-type{margin-top:0;}
+h3{font-size:15.5px;font-weight:600;margin:24px 0 4px;
+  font-family:"IBM Plex Mono",monospace;letter-spacing:.02em;color:var(--accent);}
+p{margin:9px 0 0;}
+.lede{font-size:18px;color:var(--ink-mid);}
+ul,ol{margin:9px 0 0;padding-left:20px;}
+li{margin:5px 0;}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.9em;}
+pre{font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.5;
+  background:var(--card);border:1px solid var(--rule);border-radius:7px;
+  padding:13px 15px;overflow-x:auto;margin:12px 0 0;}
+.note{margin-top:18px;padding:14px 16px;background:var(--card);
+  border-left:3px solid var(--accent);border-radius:0 7px 7px 0;}
+
+details{border-top:1px solid var(--rule);}
+details:last-of-type{border-bottom:1px solid var(--rule);}
+summary{cursor:pointer;padding:12px 0;font-weight:600;list-style:none;
+  display:flex;gap:.6em;align-items:baseline;}
+summary::-webkit-details-marker{display:none;}
+summary::before{content:"+";font-family:"IBM Plex Mono",monospace;color:var(--accent);flex:none;}
+details[open] summary::before{content:"−";}
+details .body{padding:0 0 14px 1.5em;}
+
+/* footnote markers */
+/* reference numerals, in the text and on the cards alike: a white disc with a thin rule-colored
+   border. The numeral keeps the light-theme red in both themes, because the disc stays white. */
+.fn{font-family:"IBM Plex Mono",monospace;font-size:.66em;font-weight:500;line-height:1;
+  color:#B4372C;cursor:pointer;vertical-align:.42em;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:1.8em;height:1.8em;padding:0;margin:0 .08em;
+  background:#FFFFFF;border:1px solid var(--rule);border-radius:999px;}
+.fn:hover{border-color:var(--accentb);}
+
+/* ---------- reference blocks (column B) ---------- */
+.ref{border:1px solid var(--rule);border-radius:9px;padding:15px 16px;margin-bottom:15px;
+  background:var(--card);scroll-margin-top:100px;}
+.ref.flash{border-color:var(--accentb);box-shadow:0 0 0 3px rgba(180,55,44,.14);}
+.rnum{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;line-height:1;
+  color:#B4372C;vertical-align:middle;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;padding:0;
+  background:#FFFFFF;border:1px solid var(--rule);border-radius:999px;}
+.rkind{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-mid);display:inline;margin-left:.7em;}
+.rtitle{font-size:17px;font-weight:600;margin-top:7px;line-height:1.3;}
+.rmeta{font-size:13.5px;color:var(--ink-mid);margin-top:4px;font-style:italic;}
+.rprev{font-size:14.5px;margin-top:9px;}
+.rwhy{font-size:14.5px;margin-top:7px;color:var(--ink-mid);}
+.rwhy b{color:var(--ink);font-weight:600;}
+.rlink{display:block;margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+  padding:8px 11px;border:1px solid var(--rule);border-radius:6px;
+  background:var(--paper);word-break:break-all;border-bottom:1px solid var(--rule);}
+.rlink:hover{border-color:var(--accent);}
+.rlink::before{content:"→ ";color:var(--accent);}
+.rlink.broken{color:var(--dead);border-style:dashed;cursor:not-allowed;
+  text-decoration:line-through;pointer-events:none;}
+.rlink.broken::before{content:"× ";color:var(--dead);}
+#deadnote{margin-top:22px;padding:13px 15px;border:1px dashed var(--rule);border-radius:7px;
+  font-size:14px;color:var(--ink-mid);}
+
+/* ---- Column B links block: Internal links (most recent content change), then External links.
+        Same headings and captions on every Three Columns site, so a reader knows where to look. ---- */
+.colbsh{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-mid);margin:26px 0 0;}
+.colbsh:first-of-type{margin-top:18px;}
+.colbcap{font-size:15.5px;color:var(--ink-mid);margin:4px 0 12px;}
+.bcard{display:block;text-decoration:none;color:inherit;background:var(--card);
+  border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:9px;
+  padding:13px 15px;margin-bottom:15px;}
+.bcard:hover{border-color:var(--accent);}
+.bcard:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.bcard .t{display:block;font-weight:600;font-size:16px;line-height:1.3;}
+.bcard .d{display:block;font-size:14.5px;color:var(--ink-mid);margin-top:6px;}
+details[id],h2[id]{scroll-margin-top:100px;}
+details.flash > summary{color:var(--accentb);}
+h2.flash{color:var(--accentb);}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  background:var(--card);padding:28px 26px 32px;margin-top:54px;
+  font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.9;color:var(--ink-mid);
+  text-align:center;}
+footer strong{color:var(--ink);letter-spacing:.04em;}
+.endmark{text-align:center;padding:26px 0 58px;color:var(--ink-mid);}
+/* one level up: the last thing on the page, a card naming the site one level above this one */
+/* a <nav>, so undo the page's own nav bar rules (sticky, flex, rules above and below) */
+.uplevel{display:block;position:static;border:0;background:none;z-index:auto;
+  max-width:62rem;margin:26px auto 0;padding:0 16px;text-align:center;}
+.uplevel a{display:inline-block;max-width:34rem;background:var(--card);border:1px solid var(--rule);
+  border-radius:8px;padding:12px 18px;color:inherit;text-decoration:none;}
+.uplevel a:hover{border-color:var(--accent);}
+.uplevel .uplabel{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mid);}
+.uplevel .upname{display:block;font-weight:600;font-size:16px;margin-top:5px;
+  text-decoration:underline;text-underline-offset:3px;}
+.uplevel a:hover .upname{color:var(--accent);}
+.uplevel .upcap{display:block;font-size:14px;color:var(--ink-mid);line-height:1.4;margin-top:3px;}
+@media print{.uplevel{display:none;}}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  main{grid-template-columns:1fr;gap:0;}
+  .col + .col{border-left:0;padding-left:0;border-top:1px solid var(--rule);
+    margin-top:34px;padding-top:26px;}
+  .col{display:none;}
+  .col.active{display:block;}
+  .col.dim{opacity:1;}
+  .colhead{position:static;}
+}
+@media print{
+  nav,.endmark{display:none;}
+  .col{display:block!important;opacity:1!important;}
+  main{grid-template-columns:1fr;}
+  .col + .col{border-left:0;padding-left:0;page-break-before:always;}
+  details{border:0;} details .body{display:block!important;padding-left:0;}
+  summary::before{content:"";}
+  body{background:#fff;color:#000;font-size:11pt;}
+}
+
+/* ---- masthead picture: the slot every instance inherits. The picture sits in a <figure> so it
+        can carry a caption, set at 22 px like every caption in the format. ---- */
+header{display:flex; gap:1.6rem; align-items:flex-start; flex-wrap:wrap}
+.masthead-text{flex:1 1 24rem; min-width:0}
+.masthead-fig{flex:0 0 auto; width:clamp(15rem,27vw,22rem); margin:0; align-self:center}
+.masthead-fig figcaption{font-size:22px; line-height:1.3; color:var(--ink-mid);
+  margin-top:.55rem; text-align:center; text-wrap:balance}
+a.masthead-img{display:block; width:100%; line-height:0;
+  border:1px solid var(--rule); border-radius:.5rem; overflow:hidden}
+a.masthead-img img{width:100%; height:auto; display:block}
+a.masthead-img:hover{outline:2px solid var(--accent); outline-offset:3px}
+a.masthead-img:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+@media (max-width:640px){.masthead-fig{width:100%; margin-top:.4rem}}
+@media print{.masthead-fig{display:none !important} header{display:block}}
+
+/* ---- the demonstration notice: this farm is invented ---- */
+.demo{margin:14px 0 0;max-width:62ch;padding:10px 14px;border:1px dashed var(--accentb);border-radius:8px;
+  background:var(--card);font-size:16px;line-height:1.5;color:var(--ink);}
+.demo b{color:var(--accentb);}
+.phone{white-space:nowrap;}
+/* ---- SAMPLE, stenciled across the top of the page, like paint on a crate. In light mode it is
+        multiplied over the page, so dark letters show through it; in dark mode it sits behind. ---- */
+header{position:relative;}
+.masthead-text,.masthead-fig{position:relative;z-index:1;}
+.stencil{position:absolute;top:26px;left:50%;width:min(600px,84vw);height:auto;
+  transform:translateX(-50%);opacity:.9;mix-blend-mode:multiply;pointer-events:none;user-select:none;z-index:6;}
+:root[data-theme="dark"] .stencil{mix-blend-mode:normal;opacity:.35;z-index:0;}
+@media (max-width:640px){.stencil{top:40px;width:88vw;}}
+@media print{.stencil{opacity:.5;}}
+
+/* ===================== 3Col standard block =====================
+   The threshold, and the three display checkboxes below it. The checkboxes
+   decide whether a column is on the page at all; the A/B/C tabs above keep
+   deciding which one has focus. A column that is switched off leaves the grid
+   and the tab strip together. No JavaScript is needed for any of that. */
+.threshold{margin:34px 0 26px; text-align:center}
+.threshold .bar{position:relative; height:5px;
+  border-top:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink); opacity:.85}
+.threshold .mark{position:absolute; left:50%; top:50%;
+  transform:translate(-50%,-50%); background:var(--paper);
+  padding:0 13px; display:flex; align-items:center; line-height:0}
+.threshold .mark svg{width:22px; height:22px; flex:none;}
+.threshold .mark{width:max-content;}  /* the mark is absolutely positioned, so it cannot size itself from the icon:
+     without this its box is the padding alone and the icon overflows to one side,
+     leaving the gap centered on the rule but the icon not centered in the gap. */  /* explicit, or the page's own svg rules can shrink it to nothing in the flex row */
+.threshold .cap{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--ink-mid); margin:15px auto 0; max-width:30rem; line-height:1.5}
+
+.expand{margin:0 0 6px}
+.ckin{position:absolute; width:1px; height:1px; opacity:0; overflow:hidden; white-space:nowrap}
+.moreinfo{border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  padding:16px 0 18px;}
+.micap{font-size:22px; line-height:1.25; text-align:center; color:var(--ink-mid);
+  margin:0 0 4px; text-wrap:balance;}
+.misub{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-mid); text-align:center; margin:0 0 14px; opacity:.8;}
+.mibtns{display:grid; grid-template-columns:repeat(3,1fr); gap:9px;}
+.ckbtn{display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+  gap:7px; min-height:62px; padding:11px 6px; border:1px solid var(--rule); border-radius:9px;
+  background:var(--card); color:var(--ink-mid); cursor:pointer; text-align:center;
+  font-family:"IBM Plex Mono",monospace; font-size:12px; line-height:1.25; letter-spacing:.02em;
+  -webkit-tap-highlight-color:transparent;}
+.ckbtn .box{flex:none; width:19px; height:19px; border:1.5px solid var(--rule); border-radius:4px;
+  background:var(--paper); position:relative;}
+.ckbtn .box::after{content:"\2713"; position:absolute; inset:0; display:flex;
+  align-items:center; justify-content:center; font-size:13px; line-height:1;
+  color:var(--paper); opacity:0;}
+.ckbtn:hover{border-color:var(--accent); color:var(--ink);}
+#ck-a:checked ~ .moreinfo label[for="ck-a"],
+#ck-b:checked ~ .moreinfo label[for="ck-b"],
+#ck-c:checked ~ .moreinfo label[for="ck-c"]{border-color:var(--accent); color:var(--ink);}
+#ck-a:checked ~ .moreinfo label[for="ck-a"] .box,
+#ck-b:checked ~ .moreinfo label[for="ck-b"] .box,
+#ck-c:checked ~ .moreinfo label[for="ck-c"] .box{background:var(--accent); border-color:var(--accent);}
+#ck-a:checked ~ .moreinfo label[for="ck-a"] .box::after,
+#ck-b:checked ~ .moreinfo label[for="ck-b"] .box::after,
+#ck-c:checked ~ .moreinfo label[for="ck-c"] .box::after{opacity:1;}
+#ck-a:focus-visible ~ .moreinfo label[for="ck-a"],
+#ck-b:focus-visible ~ .moreinfo label[for="ck-b"],
+#ck-c:focus-visible ~ .moreinfo label[for="ck-c"]{outline:2px solid var(--accent); outline-offset:3px;}
+.mireset{margin:13px 0 0; text-align:center;}
+.mireset button{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-mid); background:none; border:0;
+  border-bottom:1px solid var(--rule); padding:3px 0; cursor:pointer;}
+.mireset button:hover{color:var(--ink); border-bottom-color:var(--accent);}
+.mireset[hidden]{display:none;}
+
+/* A column and its tab go together. !important because the no-script stylesheet
+   forces columns visible to defeat the tab strip, and these checkboxes are CSS,
+   so they have to keep working when there is no script to defeat. */
+body:has(#ck-a:not(:checked)) #cA, body:has(#ck-a:not(:checked)) #tA,
+body:has(#ck-b:not(:checked)) #cB, body:has(#ck-b:not(:checked)) #tB,
+body:has(#ck-c:not(:checked)) #cC, body:has(#ck-c:not(:checked)) #tC{display:none!important;}
+/* A footnote or an internal card re-opens a column that was switched off. This
+   carries one more :has() than the rule above, so it outranks it on specificity
+   rather than on source order. */
+body:has(#ck-a:not(:checked)) #cA:has(:target),
+body:has(#ck-b:not(:checked)) #cB:has(:target),
+body:has(#ck-c:not(:checked)) #cC:has(:target){display:block!important;}
+
+@media (min-width:1101px){
+  /* the grid closes up around whatever is left, and the leftmost column
+     never keeps the divider that belonged to the one before it */
+  body:has(#ck-a:not(:checked)) main{grid-template-columns:minmax(280px,.82fr) 1fr;}
+  body:has(#ck-b:not(:checked)) main{grid-template-columns:1fr 1fr;}
+  body:has(#ck-c:not(:checked)) main{grid-template-columns:1fr minmax(280px,.82fr);}
+  body:has(#ck-a:not(:checked)):has(#ck-b:not(:checked)) main,
+  body:has(#ck-a:not(:checked)):has(#ck-c:not(:checked)) main,
+  body:has(#ck-b:not(:checked)):has(#ck-c:not(:checked)) main{grid-template-columns:1fr;}
+  body:has(#ck-a:not(:checked)) #cB{border-left:0; padding-left:0;}
+  body:has(#ck-a:not(:checked)):has(#ck-b:not(:checked)) #cC{border-left:0; padding-left:0;}
+}
+@media print{
+  .moreinfo,.mireset{display:none;}
+  .threshold .bar{border-color:#000; opacity:1}
+  .threshold .mark{background:#fff}
+  .threshold .cap{color:#333}
+  /* everything prints, whatever the reader switched off on screen */
+  #cA,#cB,#cC{display:block!important;}
+}
+/* ===== the column code =====================================================
+   Green A, yellow B, red C. A traffic signal: public at the top, technical at
+   the bottom. It rides on the spine down the left of each column, on the rule
+   under each column heading, on the A/B/C badge, on the same letters in the tab
+   strip, and on the tick in each More Info box. The buttons themselves stay
+   neutral -- the tick is the signal, not the outline. Body text stays black,
+   and every column keeps its letter and its heading, so nothing here depends on
+   color alone. */
+:root{--col-a:#4C7A4E; --col-b:#D8AC45; --col-c:#B4372C;}
+:root[data-theme="dark"]{--col-a:#59925d; --col-b:#D9B45C; --col-c:#d66055;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --col-a:#59925d; --col-b:#D9B45C; --col-c:#d66055;}}
+
+/* the spine: each column's own left edge, in its own color */
+#cA,#cB,#cC{border-left-style:solid; border-left-width:2px; padding-left:30px;}
+#cA{border-left-color:var(--col-a);}
+/* inside a column, anything that was accent-colored takes that column's color:
+   the source cards, the + before an answer, the arrow before a link, hovers, focus rings. */
+#cA{--accent:var(--col-a);}
+#cB{--accent:var(--col-b);}
+#cC{--accent:var(--col-c);}
+#cB{border-left-color:var(--col-b);}
+#cC{border-left-color:var(--col-c);}
+
+/* the rule under each heading, and the badge */
+#cA .colhead{border-bottom-color:var(--col-a);}
+#cB .colhead{border-bottom-color:var(--col-b);}
+#cC .colhead{border-bottom-color:var(--col-c);}
+#cA .colhead b{color:var(--col-a); border-color:var(--col-a);}
+#cB .colhead b{color:var(--gold); border-color:var(--col-b);}
+#cC .colhead b{color:var(--col-c); border-color:var(--col-c);}
+/* the same letters up in the tab strip */
+#tA .key{color:var(--col-a);} #tB .key{color:var(--gold);} #tC .key{color:var(--col-c);}
+/* the tick in each More Info box; the box outline stays neutral */
+#ck-a:checked ~ .moreinfo label[for="ck-a"] .box{background:var(--col-a); border-color:var(--col-a);}
+#ck-b:checked ~ .moreinfo label[for="ck-b"] .box{background:var(--col-b); border-color:var(--col-b);}
+#ck-c:checked ~ .moreinfo label[for="ck-c"] .box{background:var(--col-c); border-color:var(--col-c);}
+#ck-a:checked ~ .moreinfo label[for="ck-a"],
+#ck-b:checked ~ .moreinfo label[for="ck-b"],
+#ck-c:checked ~ .moreinfo label[for="ck-c"]{border-color:var(--rule);}
+
+@media (max-width:1100px){
+  /* stacked: the spine moves to the top of each column, still its own color */
+  #cA,#cB,#cC{border-left:0; padding-left:0; border-top-style:solid; border-top-width:2px;}
+  #cA{border-top-color:var(--col-a);}
+  #cB{border-top-color:var(--col-b);}
+  #cC{border-top-color:var(--col-c);}
+}
+@media print{
+  /* on paper the code is three grays; the letter still says which column */
+  #cA{border-left-color:#4a4a4a;} #cB{border-left-color:#9a9a9a;} #cC{border-left-color:#6f6f6f;}
+  #cA .colhead{border-bottom-color:#4a4a4a;}
+  #cB .colhead{border-bottom-color:#9a9a9a;}
+  #cC .colhead{border-bottom-color:#6f6f6f;}
+}
+
+/* ===== the control moves into the column heading =========================
+   One row instead of two: the box that switches a column off now sits at the
+   right end of that column's own heading rule. The heading is sticky, so the
+   control travels down the page with the reader instead of scrolling away.
+   A switched-off column collapses to a narrow strip rather than disappearing,
+   because a control that removes itself leaves no way back. */
+.colhead{display:flex; align-items:center; gap:.5em;}
+.colhead .nm{flex:1 1 auto; min-width:0;}
+.colhead .sw{flex:0 0 auto; width:19px; height:19px; border-radius:4px;
+  border:1.5px solid var(--rule); background:var(--paper); position:relative;
+  cursor:pointer; -webkit-tap-highlight-color:transparent;}
+.colhead .sw::after{content:"\2713"; position:absolute; inset:0; display:flex;
+  align-items:center; justify-content:center; font-size:13px; line-height:1;
+  color:var(--paper); opacity:0;}
+.colhead .sw:hover{border-color:var(--accent);}
+#ck-a:checked ~ main #cA .colhead .sw,
+#ck-b:checked ~ main #cB .colhead .sw,
+#ck-c:checked ~ main #cC .colhead .sw{border-color:currentColor;}
+body:has(#ck-a:checked) #cA .colhead .sw{background:var(--col-a); border-color:var(--col-a);}
+body:has(#ck-b:checked) #cB .colhead .sw{background:var(--col-b); border-color:var(--col-b);}
+body:has(#ck-c:checked) #cC .colhead .sw{background:var(--col-c); border-color:var(--col-c);}
+body:has(#ck-a:checked) #cA .colhead .sw::after,
+body:has(#ck-b:checked) #cB .colhead .sw::after,
+body:has(#ck-c:checked) #cC .colhead .sw::after{opacity:1;}
+#ck-a:focus-visible ~ main #cA .colhead .sw,
+#ck-b:focus-visible ~ main #cB .colhead .sw,
+#ck-c:focus-visible ~ main #cC .colhead .sw{outline:2px solid var(--accent); outline-offset:3px;}
+
+/* the band's own furniture goes; the reset line stays and moves up under the threshold */
+.moreinfo{border:0; padding:0; margin:0;}
+.micap,.misub,.mibtns{display:none;}
+.mireset{margin:0 0 18px;}
+
+/* a switched-off column keeps its heading and collapses to a strip.
+   The band's original rule removed the whole column; that is what this undoes.
+   Its TAB still goes, because a closed column cannot be read. */
+body:has(#ck-a:not(:checked)) #cA,
+body:has(#ck-b:not(:checked)) #cB,
+body:has(#ck-c:not(:checked)) #cC{display:block!important;}
+body:has(#ck-a:not(:checked)) #cA > *:not(.colhead),
+body:has(#ck-b:not(:checked)) #cB > *:not(.colhead),
+body:has(#ck-c:not(:checked)) #cC > *:not(.colhead){display:none!important;}
+body:has(#ck-a:not(:checked)) #cA .colhead .nm,
+body:has(#ck-b:not(:checked)) #cB .colhead .nm,
+body:has(#ck-c:not(:checked)) #cC .colhead .nm{display:none;}
+body:has(#ck-a:not(:checked)) #cA .colhead,
+body:has(#ck-b:not(:checked)) #cB .colhead,
+body:has(#ck-c:not(:checked)) #cC .colhead{border-bottom:0; flex-direction:column;
+  align-items:center; gap:11px;}
+/* the strip is narrow, so the letter and the box stack instead of sitting side by side,
+   and the spine's indent shrinks or the box is pushed out of reach */
+body:has(#ck-a:not(:checked)) #cA,
+body:has(#ck-b:not(:checked)) #cB,
+body:has(#ck-c:not(:checked)) #cC{padding-left:12px; padding-right:12px;}
+body:has(#ck-a:not(:checked)) #cA .colhead b,
+body:has(#ck-b:not(:checked)) #cB .colhead b,
+body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
+
+@media (min-width:1101px){
+  body:has(#ck-a:not(:checked)) main{grid-template-columns:76px minmax(280px,.82fr) 1fr;}
+  body:has(#ck-b:not(:checked)) main{grid-template-columns:1fr 76px 1fr;}
+  body:has(#ck-c:not(:checked)) main{grid-template-columns:1fr minmax(280px,.82fr) 76px;}
+  body:has(#ck-a:not(:checked)):has(#ck-b:not(:checked)) main{grid-template-columns:76px 76px 1fr;}
+  body:has(#ck-a:not(:checked)):has(#ck-c:not(:checked)) main{grid-template-columns:76px 1fr 76px;}
+  body:has(#ck-b:not(:checked)):has(#ck-c:not(:checked)) main{grid-template-columns:1fr 76px 76px;}
+  body:has(#ck-a:not(:checked)):has(#ck-b:not(:checked)):has(#ck-c:not(:checked)) main{
+    grid-template-columns:76px 76px 76px;}
+}
+
+/* ===== the selected tab is filled with its own column's color ==============
+   The label color is not a guess: each fill was measured against paper and
+   against ink, and the one that reads takes it. Gold is the odd one out in the
+   light theme -- white on gold is 2.50:1, which fails, so its label is ink at
+   6.58:1. In the dark theme all three fills are light, so all three labels are
+   ink. Every pair below clears 4.5:1. */
+:root{--on-a:#FCFAF5; --on-b:#1E1B16; --on-c:#FCFAF5;}
+:root[data-theme="dark"]{--on-a:#1E1B16; --on-b:#1E1B16; --on-c:#1E1B16;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --on-a:#1E1B16; --on-b:#1E1B16; --on-c:#1E1B16;}}
+#tA[aria-selected="true"]{background:var(--col-a); border-color:var(--col-a); color:var(--on-a);}
+#tB[aria-selected="true"]{background:var(--col-b); border-color:var(--col-b); color:var(--on-b);}
+#tC[aria-selected="true"]{background:var(--col-c); border-color:var(--col-c); color:var(--on-c);}
+#tA[aria-selected="true"] .key{color:var(--on-a);}
+#tB[aria-selected="true"] .key{color:var(--on-b);}
+#tC[aria-selected="true"] .key{color:var(--on-c);}
+/* unselected, the letter alone carries the code, as it already did */
+
+/* the mark in the threshold is the same one as the favicon and the masthead:
+   three equal bars, one per column, taking the column colors so it follows the
+   theme. It used to be tall-short-tall in a single color, which read as a flag. */
+.threshold .mark svg rect:nth-of-type(1){fill:var(--col-a);}
+.threshold .mark svg rect:nth-of-type(2){fill:var(--col-b);}
+.threshold .mark svg rect:nth-of-type(3){fill:var(--col-c);}
+@media print{
+  .threshold .mark svg rect:nth-of-type(1){fill:#4a4a4a;}
+  .threshold .mark svg rect:nth-of-type(2){fill:#9a9a9a;}
+  .threshold .mark svg rect:nth-of-type(3){fill:#6f6f6f;}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <!-- the stencil: this page is a sample (Walter's lettering, painted behind the header text) -->
+  <img class="stencil" src="sample-stencil.png" width="1000" height="337" alt="" aria-hidden="true" decoding="async">
+    <div class="masthead-text">
+  <div class="eyebrow">
+    <span>Cottonwood Draw Farms</span><span class="sep">&middot;</span><span>Condado de Washakie, Wyoming</span>
+  </div>
+  <h1><span class="seg">Cottonwood Draw Farms</span> <span class="sep">&middot;</span> <span class="seg">Trabajo de cosecha por temporada</span></h1>
+  <p class="demo"><b>Una demostraci&oacute;n.</b> Esta finca es inventada, para mostrarle a una finca del condado de Washakie c&oacute;mo podr&iacute;a verse una p&aacute;gina propia. El condado, los cultivos, las agencias y la ley son reales, y cada afirmaci&oacute;n legal de esta p&aacute;gina est&aacute; documentada en la columna del medio.</p>
+  <div class="claimlabel">Qu&eacute; es esto</div>
+  <p class="standfirst">Contratamos cuadrilla de temporada para la cosecha de remolacha y cebada, al este de Worland. Esta p&aacute;gina dice en qu&eacute; consiste el trabajo, qu&eacute; le corresponde a usted seg&uacute;n la ley, y a qui&eacute;n llamar si algo anda mal. Est&aacute; escrita para que la lean las personas que hacen el trabajo.</p>
+  <p class="langswitch"><a href="index.html" lang="en" hreflang="en" rel="alternate"><b>This page in English</b> &mdash; the full version, not a summary</a></p>
+  <div class="asof">cosecha de remolacha y cebada &middot; de fines de septiembre a noviembre &middot; llame o mande mensaje al <span class="phone">(307) 555-0168</span></div>
+    </div>
+
+    <figure class="masthead-fig">
+      <a class="masthead-img" href="masthead-harvest.svg" target="_blank" rel="noopener" title="Abrir la imagen a tama&ntilde;o completo">
+        <img src="masthead-harvest.svg" width="680" height="440" loading="eager" decoding="async"
+             alt="Una ilustraci&oacute;n: un campo de remolacha cuyos surcos corren hacia el horizonte, con cinco remolachas arrancadas y sus hojas en el surco del frente, una l&iacute;nea de &aacute;lamos junto al r&iacute;o y la larga silueta de las monta&ntilde;as Bighorn detr&aacute;s.">
+      </a>
+      <figcaption>Ilustraci&oacute;n de muestra: tierra de remolacha, las Bighorn detr&aacute;s.</figcaption>
+    </figure>
+  </header>
+
+<nav role="tablist" aria-label="Columns">
+  <button role="tab" id="tA" aria-controls="cA" aria-selected="true"><span class="key">A</span>Respuestas claras</button>
+  <button role="tab" id="tB" aria-controls="cB" aria-selected="false"><span class="key">B</span>Fuentes</button>
+  <button role="tab" id="tC" aria-controls="cC" aria-selected="false"><span class="key">C</span>C&oacute;mo funciona</button>
+  <span class="spacer"></span>
+  <button class="util" id="phoneview" type="button" hidden>Vista de tel&eacute;fono</button>
+  <button class="util" id="pdf">Guardar como PDF</button>
+  <button class="util" id="theme">Oscuro</button>
+</nav>
+</div>
+
+<div class="wrap">
+<div class="threshold" role="separator" aria-label="Debajo de esta l&iacute;nea, la p&aacute;gina sigue el formato Tres Columnas">
+  <div class="bar"><div class="mark"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22"><rect x="1.5" y="4" width="6" height="16" rx="1.4"></rect><rect x="9" y="4" width="6" height="16" rx="1.4"></rect><rect x="16.5" y="4" width="6" height="16" rx="1.4"></rect></svg></div></div>
+  <p class="cap">Todo lo que sigue es igual en cada sitio 3Col</p>
+</div>
+
+<div class="expand">
+  <!-- ===================================================================
+       DISPLAY DEFAULTS FOR THIS SITE.  This is the setting, and it is the
+       markup itself: `checked` means that column is on the page when it is
+       first opened.  Delete the word `checked` on any line to have that
+       column start switched off.  The three are independent.
+       No script is involved, so the default survives scripting being off,
+       and an archived copy of this page keeps whatever was set here.
+       =================================================================== -->
+  <input class="ckin" type="checkbox" id="ck-a" checked>
+  <input class="ckin" type="checkbox" id="ck-b" checked>
+  <input class="ckin" type="checkbox" id="ck-c" checked>
+
+  <script>
+  /* Reader memory, layered on the defaults above, plus two pieces of housekeeping
+     the tab strip needs. Placed here rather than at the end of the page so a
+     remembered choice is applied before the columns are painted and never flashes
+     open and then shut. With scripting off none of this runs and the defaults stand. */
+  (function(){
+    var KEY='3col-display', ids=['ck-a','ck-b','ck-c'], TAB={'ck-a':'tA','ck-b':'tB','ck-c':'tC'},
+        COL={'ck-a':'cA','ck-b':'cB','ck-c':'cC'}, el={}, i;
+    for(i=0;i<ids.length;i++){ el[ids[i]]=document.getElementById(ids[i]); if(!el[ids[i]]) return; }
+    var dflt={}; for(i=0;i<ids.length;i++) dflt[ids[i]]=el[ids[i]].checked;
+    var saved=null;
+    try{ saved=JSON.parse(localStorage.getItem(KEY)); }catch(e){}
+    if(saved) for(i=0;i<ids.length;i++) if(typeof saved[ids[i]]==='boolean') el[ids[i]].checked=saved[ids[i]];
+    function differs(){ for(var j=0;j<ids.length;j++) if(el[ids[j]].checked!==dflt[ids[j]]) return true; return false; }
+    function paint(){ var r=document.getElementById('ck-reset-row'); if(r) r.hidden=!differs(); }
+    /* the tab strip must never be left pointing at a column that is switched off */
+    function keepTabOnSomethingVisible(){
+      var vis=ids.filter(function(k){ return el[k].checked; });
+      if(!vis.length) return;
+      var cur=ids.filter(function(k){
+        var t=document.getElementById(TAB[k]);
+        return t && t.getAttribute('aria-selected')==='true';
+      })[0];
+      if(!cur || !el[cur].checked){
+        var t=document.getElementById(TAB[vis[0]]); if(t) t.click();
+      }
+    }
+    function save(){
+      var v={}; for(var j=0;j<ids.length;j++) v[ids[j]]=el[ids[j]].checked;
+      try{ localStorage.setItem(KEY,JSON.stringify(v)); }catch(e){}
+      paint(); keepTabOnSomethingVisible();
+    }
+    for(i=0;i<ids.length;i++) el[ids[i]].addEventListener('change',save);
+    /* following a citation into a column the reader closed switches it back on,
+       so the grid stays consistent and what they are reading is really there */
+    /* Switch on whichever column holds this element. Returns true when that
+       actually changed something. */
+    function reveal(t){
+      if(!t) return false;
+      for(var j=0;j<ids.length;j++){
+        var c=document.getElementById(COL[ids[j]]);
+        if(c && c.contains(t)){
+          if(el[ids[j]].checked) return false;
+          el[ids[j]].checked=true; save(); return true;
+        }
+      }
+      return false;
+    }
+    /* A numeral and an internal card are handled in script and never touch
+       location.hash, so hashchange cannot reach them. They call this instead;
+       without it a citation into a switched-off column scrolls to nothing. */
+    window.threeColReveal = reveal;
+    function openForTarget(){
+      var h=location.hash.slice(1); if(!h) return;
+      reveal(document.getElementById(h));
+    }
+    window.addEventListener('hashchange', openForTarget);
+    document.addEventListener('DOMContentLoaded',function(){
+      var b=document.getElementById('ck-reset');
+      if(b) b.addEventListener('click',function(){
+        for(var j=0;j<ids.length;j++) el[ids[j]].checked=dflt[ids[j]];
+        try{ localStorage.removeItem(KEY); }catch(e){}
+        paint(); keepTabOnSomethingVisible();
+      });
+      paint(); openForTarget();
+      setTimeout(keepTabOnSomethingVisible,0);
+    });
+  })();
+  </script>
+
+  <p class="mireset" id="ck-reset-row" hidden><button type="button" id="ck-reset">Volver a la vista normal de este sitio</button></p>
+  <div class="moreinfo">
+    <p class="micap">M&aacute;s informaci&oacute;n</p>
+    <p class="misub">Desmarque lo que prefiera no leer</p>
+    <div class="mibtns">
+      <label class="ckbtn" for="ck-a"><span class="box"></span>Respuestas claras</label>
+      <label class="ckbtn" for="ck-b"><span class="box"></span>Fuentes</label>
+      <label class="ckbtn" for="ck-c"><span class="box"></span>C&oacute;mo funciona</label>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="wrap">
+<main>
+
+<!-- ================= A ================= -->
+<section class="col active" id="cA" role="tabpanel" aria-labelledby="tA">
+  <div class="colhead"><b>A</b><span class="nm"> &nbsp;Respuestas claras</span><label class="sw" for="ck-a" title="Mostrar u ocultar esta columna"></label></div>
+
+  <details id="work"><summary>&iquest;En qu&eacute; consiste el trabajo, y cu&aacute;ndo es?</summary><div class="body">
+    <p>Cosecha de remolacha y de cebada, y la alfalfa que viene antes. De fines de septiembre hasta noviembre; el clima decide los d&iacute;as exactos.</p>
+    <ul>
+      <li><b>Remolacha azucarera</b> &mdash; trabajar con la cosechadora y los camiones, hacer las pilas y limpiar las cabeceras.</li>
+      <li><b>Cebada maltera</b> &mdash; carro granelero, manejo de cami&oacute;n y los viajes al elevador.</li>
+      <li><b>Alfalfa</b> &mdash; apilar y acarrear, antes en la temporada.</li>
+    </ul>
+    <p>La remolacha y la cebada son dos de los tres cultivos m&aacute;s grandes de este condado por superficie<span class="fn" data-ref="r21">21</span>. La temporada es corta y los d&iacute;as son largos mientras dura.</p>
+  </div></details>
+
+  <details id="pay"><summary>&iquest;Cu&aacute;nto paga el trabajo?</summary><div class="body">
+    <p><b>Esta p&aacute;gina no pone una cifra de salario, y lo hace a prop&oacute;sito.</b> No porque lo estemos escondiendo &mdash; la tarifa viene en la orden de trabajo que a usted le entregan, y se la decimos por tel&eacute;fono. Es porque el piso legal que sostiene esa tarifa cambia, y un n&uacute;mero escrito en una p&aacute;gina web se vuelve viejo y termina enga&ntilde;ando justo a quien m&aacute;s necesita que sea correcto.</p>
+    <p>Lo que la ley exige de verdad es que a usted le ofrezcan y le paguen <b>la cifra m&aacute;s alta</b> de varias: el salario de efecto adverso, un salario prevaleciente aprobado, cualquier tarifa de contrato colectivo, el salario m&iacute;nimo federal, el salario m&iacute;nimo estatal, o cualquier tarifa mayor que el patr&oacute;n pretenda pagar<span class="fn" data-ref="r2">2</span>.</p>
+    <p>En un trabajo contratado por el programa H&#8209;2A, la que suele mandar es el <b>salario de efecto adverso</b>, conocido como AEWR. Las tarifas vigentes las publica el Departamento del Trabajo en un solo lugar, por c&oacute;digo de ocupaci&oacute;n y por estado<span class="fn" data-ref="r3">3</span>. Ah&iacute; es donde hay que mirar el d&iacute;a que lo necesite.</p>
+    <div class="note"><strong>Y hay algo que debe saber antes de mirar.</strong> El 26 de agosto de 2026 un tribunal federal resolvi&oacute; que el m&eacute;todo que usaba el Departamento del Trabajo para fijar esas tarifas era ilegal, y le orden&oacute; al Departamento producir uno nuevo. Las tarifas ya publicadas siguen aplicando por ahora, y el Departamento ha dicho que los patrones deben seguir pag&aacute;ndolas. Pero tambi&eacute;n ha dicho que a los trabajadores empleados entre esa fecha y la llegada del m&eacute;todo nuevo <b>podr&iacute;a deb&eacute;rseles despu&eacute;s un ajuste de salario</b> por ese per&iacute;odo<span class="fn" data-ref="r4">4</span>. Si trabaja esta cosecha, guarde sus talones de pago.</div>
+    <p>Hay una protecci&oacute;n que no se mueve: si una tarifa nueva publicada durante su contrato resulta <b>m&aacute;s baja</b> que la que le garantizaron, el patr&oacute;n tiene que seguir pagando la garantizada<span class="fn" data-ref="r2">2</span>. Su pago no puede bajarse a media temporada porque cambi&oacute; una f&oacute;rmula en Washington.</p>
+  </div></details>
+
+  <details id="wyomin"><summary>&iquest;Me aplica el salario m&iacute;nimo de Wyoming?</summary><div class="body">
+    <p><b>No.</b> La ley de salario m&iacute;nimo de Wyoming define qui&eacute;n cuenta como empleado, y la definici&oacute;n dice que &ldquo;no incluir&aacute; &hellip; a ninguna persona empleada en la agricultura&rdquo;<span class="fn" data-ref="r5">5</span>. El trabajo agr&iacute;cola queda excluido por completo.</p>
+    <p>As&iacute; que la cifra estatal no es su piso, y quien se la cite &mdash; para arriba o para abajo &mdash; le est&aacute; citando la ley equivocada. Su piso es el salario m&iacute;nimo federal donde la ley federal de salarios alcanza a la finca, o el AEWR y las reglas de salario prevaleciente de arriba si el trabajo vino por H&#8209;2A.</p>
+  </div></details>
+
+  <details id="hours"><summary>&iquest;Me garantizan horas?</summary><div class="body">
+    <p><b>Si usted est&aacute; aqu&iacute; con visa H&#8209;2A, o hace el mismo trabajo junto a esa cuadrilla, s&iacute;.</b> El patr&oacute;n tiene que ofrecerle trabajo por lo menos <b>tres cuartas partes de los d&iacute;as laborables</b> de su per&iacute;odo de contrato. Si le ofrece menos que eso, le debe lo que usted habr&iacute;a ganado si hubiera trabajado los d&iacute;as garantizados<span class="fn" data-ref="r1">1</span>.</p>
+    <p>El reglamento hace la cuenta &eacute;l mismo: un contrato de diez semanas, a seis d&iacute;as por semana y ocho horas diarias, son 480 horas, de modo que la garant&iacute;a es de <b>360 horas</b><span class="fn" data-ref="r1">1</span>. Su propio d&iacute;a de descanso religioso y los d&iacute;as feriados federales no cuentan en su contra.</p>
+    <p>Por eso su talón de pago tiene que mostrar las horas garantizadas aparte de las horas por encima de la garant&iacute;a &mdash; para que usted mismo pueda revisarlo<span class="fn" data-ref="r1">1</span>.</p>
+  </div></details>
+
+  <details id="housing"><summary>&iquest;La vivienda es gratis? &iquest;En qu&eacute; condiciones tiene que estar?</summary><div class="body">
+    <p><b>Sin costo</b> para los trabajadores H&#8209;2A, y para cualquiera que haga el mismo trabajo y no pueda razonablemente regresar a su casa al terminar el d&iacute;a<span class="fn" data-ref="r1">1</span>. Ni descontada, ni dep&oacute;sito, ni renta.</p>
+    <p>Tambi&eacute;n tiene que cumplir normas federales de vivienda &mdash; una lista de verdad, que cubre agua, ba&ntilde;os, cocina, camas, calefacci&oacute;n, mosquiteros y dem&aacute;s. Cu&aacute;l lista aplica depende de un detalle curioso: la vivienda construida a partir del <b>3 de abril de 1980</b> debe cumplir las normas de la Administraci&oacute;n de Seguridad y Salud Ocupacional, mientras que la m&aacute;s antigua puede cumplir esas o un conjunto anterior<span class="fn" data-ref="r13">13</span>.</p>
+    <p>Tambi&eacute;n le corresponden tres comidas al d&iacute;a, o instalaciones de cocina gratuitas y convenientes para prepararse la suya. Si dan comida y la cobran, el cobro tiene un m&aacute;ximo legal y debe estar dicho en la oferta de trabajo<span class="fn" data-ref="r1">1</span>.</p>
+  </div></details>
+
+  <details id="rides"><summary>&iquest;Qui&eacute;n paga el viaje hasta ac&aacute;, y el traslado diario al campo?</summary><div class="body">
+    <ol>
+      <li><b>Para llegar ac&aacute;.</b> Una vez que usted cumple la mitad del per&iacute;odo de contrato, el patr&oacute;n debe pagarle el costo razonable de transporte y alimentaci&oacute;n diaria desde donde usted vino &mdash; en este pa&iacute;s o en el extranjero &mdash; si no se lo adelantaron ya<span class="fn" data-ref="r1">1</span>.</li>
+      <li><b>Al campo.</b> El transporte entre la vivienda del patr&oacute;n y el lugar de trabajo es <b>sin costo para usted</b><span class="fn" data-ref="r1">1</span>.</li>
+      <li><b>De regreso.</b> Al terminar el contrato, o si lo despiden sin causa y no tiene otro trabajo H&#8209;2A al cual ir, el patr&oacute;n le da o le paga el viaje de vuelta<span class="fn" data-ref="r1">1</span>.</li>
+    </ol>
+    <p>El veh&iacute;culo tambi&eacute;n importa. Un veh&iacute;culo de cuadrilla debe llevar seguro de <b>no menos de $100,000 por cada asiento</b><span class="fn" data-ref="r12">12</span>, y cumplir normas de seguridad en luces, frenos, llantas, direcci&oacute;n y carga, con un asiento para cada persona que viaje<span class="fn" data-ref="r12">12</span>.</p>
+  </div></details>
+
+  <details id="fees"><summary>Alguien me pidi&oacute; dinero para darme este trabajo. &iquest;Eso se permite?</summary><div class="body">
+    <p><b>No.</b> La regla es tajante: el patr&oacute;n y sus agentes no deben haber &ldquo;solicitado ni recibido pago de ninguna clase&rdquo; de un trabajador por nada relacionado con obtener la certificaci&oacute;n del trabajo<span class="fn" data-ref="r7">7</span>.</p>
+    <p>Alcanza tambi&eacute;n al reclutador. El patr&oacute;n tiene que <b>dejarlo por escrito</b> en su contrato con cualquier contratista o reclutador de mano de obra extranjera: que ellos tampoco pueden pedir ni recibir dinero de los trabajadores<span class="fn" data-ref="r7">7</span>.</p>
+    <p>Si usted pag&oacute; para conseguir este trabajo, eso amerita una llamada al n&uacute;mero que est&aacute; al final de esta columna. Guarde el recibo, el mensaje o la nota que tenga.</p>
+  </div></details>
+
+  <details id="contract"><summary>&iquest;Debo tener algo por escrito?</summary><div class="body">
+    <p>S&iacute;, y en un idioma que usted entienda<span class="fn" data-ref="r1">1</span>. Los plazos est&aacute;n fijados:</p>
+    <ul>
+      <li>Un trabajador H&#8209;2A recibe el contrato de trabajo <b>a m&aacute;s tardar cuando solicita la visa</b>.</li>
+      <li>Un trabajador que hace el mismo trabajo y ya est&aacute; aqu&iacute; lo recibe <b>a m&aacute;s tardar el primer d&iacute;a de trabajo</b>.</li>
+    </ul>
+    <p>Si no le entregan un contrato aparte, entonces la orden de trabajo <b>es</b> su contrato, junto con lo que la ley exige adem&aacute;s<span class="fn" data-ref="r1">1</span>. As&iacute; que guarde la orden de trabajo. Ese es el documento.</p>
+  </div></details>
+
+  <details id="water"><summary>Agua, ba&ntilde;o y d&oacute;nde lavarse las manos &mdash; &iquest;en el campo?</summary><div class="body">
+    <p>Donde hay <b>once o m&aacute;s</b> personas haciendo labor manual en el campo en un mismo d&iacute;a, el patr&oacute;n debe dar agua potable, ba&ntilde;o e instalaciones para lavarse las manos<span class="fn" data-ref="r8">8</span>. El agua tiene que ser potable, &ldquo;convenientemente fresca&rdquo;, en cantidad suficiente para el calor y para el trabajo, y puesta donde todos puedan alcanzarla de verdad<span class="fn" data-ref="r8">8</span>.</p>
+    <div class="note"><strong>Y aqu&iacute; est&aacute; la parte que casi todos confunden en Wyoming.</strong> Para la mayor&iacute;a de los asuntos de seguridad en el trabajo en este estado, usted llama a la agencia estatal. Pero el saneamiento en el campo es una de las cosas que Wyoming <b>no</b> asumi&oacute;. El agua, los ba&ntilde;os y el lavado de manos en el campo, y los campamentos de trabajo agr&iacute;cola, los hace cumplir aqu&iacute; la <b>Divisi&oacute;n de Horas y Salarios</b> federal<span class="fn" data-ref="r9">9</span>. Llamar a la equivocada le cuesta semanas.</div>
+  </div></details>
+
+  <details id="hurt"><summary>&iquest;Qu&eacute; pasa si me lastimo?</summary><div class="body">
+    <p>Esta es la respuesta m&aacute;s importante de la p&aacute;gina, porque Wyoming es un caso poco com&uacute;n y la respuesta depende de c&oacute;mo lo contrataron.</p>
+    <p>Wyoming exige seguro de compensaci&oacute;n laboral solamente para los empleos que incluye en su lista de &ldquo;extra&#8209;peligrosos&rdquo;. En el sector agr&iacute;cola, la <b>&uacute;nica</b> entrada en esa lista es la tala de &aacute;rboles. La producci&oacute;n de cultivos y la producci&oacute;n animal no aparecen en la lista, lo que significa que la cobertura para el trabajo com&uacute;n de finca y rancho es <b>opcional</b> &mdash; algo que el patr&oacute;n puede elegir llevar, no algo que el estado exija<span class="fn" data-ref="r6">6</span>.</p>
+    <p><b>Pero si usted est&aacute; aqu&iacute; por H&#8209;2A, de todos modos tiene que estar cubierto.</b> La ley federal previ&oacute; exactamente esta situaci&oacute;n: donde un estado excluye el trabajo agr&iacute;cola de su sistema de compensaci&oacute;n, el patr&oacute;n H&#8209;2A tiene que dar un seguro con beneficios <b>por lo menos iguales</b> a los que dar&iacute;a la ley estatal de compensaci&oacute;n para trabajo comparable, sin costo para usted &mdash; y debe presentar la prueba al gobierno antes de que lo certifiquen para contratar<span class="fn" data-ref="r1">1</span>.</p>
+    <div class="note"><strong>As&iacute; que dos personas pueden estar apilando la misma alfalfa con protecci&oacute;n distinta.</strong> El trabajador con visa est&aacute; cubierto por exigencia federal. El vecino contratado localmente puede no tener ninguna cobertura, a menos que esta finca haya decidido llevarla. <b>Pregunte antes de empezar, y pida la respuesta por escrito.</b> Es una pregunta justa y a un patr&oacute;n cuidadoso no le va a molestar.</div>
+  </div></details>
+
+  <details id="stub"><summary>&iquest;Qu&eacute; debe mostrar mi tal&oacute;n de pago?</summary><div class="body">
+    <p>En cada d&iacute;a de pago o antes, por escrito<span class="fn" data-ref="r1">1</span>:</p>
+    <ul>
+      <li>Ganancia total del per&iacute;odo, y la tarifa por hora o por pieza.</li>
+      <li><b>Horas ofrecidas, mostradas por separado</b>: las de la garant&iacute;a de tres cuartas partes y las que pasan de la garant&iacute;a.</li>
+      <li>Horas realmente trabajadas.</li>
+      <li>Cada descuento, detallado.</li>
+      <li>Unidades producidas cada d&iacute;a, si le pagan a destajo.</li>
+      <li>Las fechas del per&iacute;odo de pago, y el nombre, direcci&oacute;n y n&uacute;mero federal de identificaci&oacute;n del patr&oacute;n.</li>
+    </ul>
+    <p>El pago llega por lo menos <b>dos veces al mes</b>, o m&aacute;s seguido si esa es la costumbre del lugar<span class="fn" data-ref="r1">1</span>. Un descuento no es legal si le deja ganancia al patr&oacute;n, o si es principalmente para beneficio o conveniencia del patr&oacute;n<span class="fn" data-ref="r1">1</span>.</p>
+    <p>Si usted no tiene visa H&#8209;2A, un conjunto paralelo de reglas llega al mismo punto: estado de cuenta detallado por escrito cada per&iacute;odo de pago, y registros de n&oacute;mina guardados <b>tres a&ntilde;os</b><span class="fn" data-ref="r11">11</span>.</p>
+  </div></details>
+
+  <details id="twolaws"><summary>&iquest;La cuadrilla con visa est&aacute; cubierta por la misma ley que yo?</summary><div class="body">
+    <p><b>No, y esto sorprende a la gente.</b> Dos cuadrillas pueden trabajar el mismo campo bajo dos leyes distintas.</p>
+    <ul>
+      <li><b>Los trabajadores aqu&iacute; con visa H&#8209;2A</b> est&aacute;n cubiertos por las reglas del H&#8209;2A &mdash; los requisitos de la oferta de trabajo que esta columna cita una y otra vez<span class="fn" data-ref="r1">1</span>.</li>
+      <li><b>Los trabajadores migrantes y de temporada que no tienen esa visa</b> est&aacute;n cubiertos por otra ley, la Ley de Protecci&oacute;n al Trabajador Agr&iacute;cola Migrante y Temporal, que exige informaci&oacute;n escrita de las condiciones al reclutarlo, estados de cuenta de pago, seguridad y seguro del veh&iacute;culo, y normas de vivienda<span class="fn" data-ref="r11">11</span>.</li>
+    </ul>
+    <p>La segunda ley <b>excluye</b> expresamente a los trabajadores H&#8209;2A de sus definiciones<span class="fn" data-ref="r10">10</span>. No quedan desprotegidos &mdash; los protege el otro conjunto de reglas. Pero s&iacute; significa que la respuesta a &ldquo;qu&eacute; me corresponde&rdquo; empieza por c&oacute;mo lo contrataron.</p>
+    <p>Esa ley tambi&eacute;n le da dos cosas que usted controla: una queja por represalia ante el Secretario del Trabajo <b>dentro de 180 d&iacute;as</b>, y el derecho de demandar en corte federal sin pasar primero por ninguna agencia<span class="fn" data-ref="r14">14</span>.</p>
+  </div></details>
+
+  <details id="call"><summary>Algo anda mal. &iquest;A qui&eacute;n llamo?</summary><div class="body">
+    <p><b>Divisi&oacute;n de Horas y Salarios, Departamento del Trabajo de EE.&nbsp;UU. &mdash; <span class="phone">1&#8209;866&#8209;487&#8209;9243</span></b> (1&#8209;866&#8209;4&#8209;US&#8209;WAGE), de 8am a 5pm en su propia zona horaria. Este es el n&uacute;mero correcto para salarios, la garant&iacute;a de horas, vivienda, transporte, cuotas de reclutamiento y &mdash; en Wyoming &mdash; saneamiento en el campo<span class="fn" data-ref="r18">18</span>.</p>
+    <p>Wyoming no tiene oficina propia de Horas y Salarios; la oficina de distrito que cubre este estado est&aacute; en <b>Salt Lake City</b><span class="fn" data-ref="r20">20</span>.</p>
+    <p>Lo que el Departamento dice sobre llamar:</p>
+    <ul>
+      <li>Su nombre, el asunto de la queja y hasta si existe una queja <b>no pueden divulgarse</b><span class="fn" data-ref="r15">15</span>.</li>
+      <li>&ldquo;No pregunta por el estatus migratorio de los empleados&rdquo;, salvo lo necesario para hacer cumplir los propios programas de certificaci&oacute;n laboral temporal, y no comparte informaci&oacute;n que pueda identificarlo ante otra agencia<span class="fn" data-ref="r15">15</span>.</li>
+      <li>Tomar represalias contra usted por quejarse o por cooperar es en s&iacute; mismo ilegal<span class="fn" data-ref="r15">15</span>.</li>
+    </ul>
+    <p><b>Una segunda puerta, mucho menos conocida.</b> Usted puede entrar a un centro de empleo de Wyoming y presentar ah&iacute; una queja por una violaci&oacute;n de la ley laboral. El estado tiene que recibirla y remitirla, y por ser usted trabajador agr&iacute;cola el reloj corre m&aacute;s r&aacute;pido que para otras quejas<span class="fn" data-ref="r17">17</span>. La oficina estatal del programa de trabajadores agr&iacute;colas est&aacute; en Riverton y tiene personal biling&uuml;e<span class="fn" data-ref="r19">19</span>.</p>
+    <p>Para asuntos de seguridad que no sean saneamiento en el campo: <b>OSHA de Wyoming, <span class="phone">(307) 777&#8209;7786</span></b><span class="fn" data-ref="r9">9</span>.</p>
+  </div></details>
+
+  <details id="enforced"><summary>&iquest;Todo esto se est&aacute; haciendo cumplir ahora mismo?</summary><div class="body">
+    <p>Una respuesta honesta: <b>casi todo, pero no todo, y preferimos decirle cu&aacute;l es cu&aacute;l.</b></p>
+    <p>Un conjunto de protecciones H&#8209;2A m&aacute;s nuevas, agregadas en 2024, sigue impreso en los reglamentos pero <b>no se est&aacute; haciendo cumplir</b>. El Departamento del Trabajo le indic&oacute; a sus propios investigadores suspender el cumplimiento de todo lo que agreg&oacute; la regla de 2024, despu&eacute;s de que tribunales de varios estados bloquearan partes de ella, y una propuesta para eliminar esas disposiciones est&aacute; pendiente y no es definitiva<span class="fn" data-ref="r16">16</span>.</p>
+    <p>Todo lo que esta columna le dice &mdash; la garant&iacute;a de horas, la vivienda sin costo seg&uacute;n normas federales, la comida o la cocina, los tres deberes de transporte, la prohibici&oacute;n de cuotas de reclutamiento, el contrato por escrito, la compensaci&oacute;n laboral, el tal&oacute;n de pago, los l&iacute;mites a los descuentos &mdash; viene de las reglas anteriores y <b>no est&aacute; afectado</b> por esa suspensi&oacute;n<span class="fn" data-ref="r16">16</span>.</p>
+    <p>Lo que s&iacute; est&aacute; afectado es una capa m&aacute;s delgada encima: requisitos de cintur&oacute;n de seguridad en los veh&iacute;culos de cuadrilla, disciplina progresiva antes de un despido con causa, y algunos puntos de divulgaci&oacute;n. Puede que sobrevivan o puede que no. Los dejamos fuera de esta columna en vez de decirle que tiene algo que tal vez no pueda hacer valer.</p>
+  </div></details>
+
+  <details id="whypage"><summary>&iquest;Por qu&eacute; una p&aacute;gina web, y no un volante en la tienda?</summary><div class="body">
+    <p>Tambi&eacute;n ponemos volantes. Esta p&aacute;gina es la que siempre est&aacute;, siempre igual y siempre en los dos idiomas: sin cuenta que abrir, sin nada que saltarse, el trabajo y la ley en un solo lugar.</p>
+    <p>Y es honesta sobre sus propios l&iacute;mites. Donde la ley no est&aacute; resuelta, lo dice. Donde un n&uacute;mero se volver&iacute;a viejo, lo manda a usted al lugar donde el n&uacute;mero vive de verdad. La columna C tiene el detalle, y la columna del medio le muestra cada fuente antes de que usted decida si vale la pena ir a verla.</p>
+  </div></details>
+</section>
+<!-- ================= B ================= -->
+<section class="col dim" id="cB" role="tabpanel" aria-labelledby="tB">
+  <div class="colhead"><b>B</b><span class="nm"> &nbsp;Fuentes</span><label class="sw" for="ck-b" title="Show or hide this column"></label></div>
+  <h3 class="colbsh" id="colbint">Enlaces internos</h3>
+  <p class="colbcap">Los dos cambios de contenido m&aacute;s recientes, y el registro que hay detr&aacute;s.</p>
+  <a class="bcard" href="#pay" data-open="pay">
+    <span class="t">2 de octubre de 2026 &mdash; la respuesta sobre el pago ya no lleva una cifra</span>
+    <span class="d">Un tribunal resolvi&oacute; el 26 de agosto que el m&eacute;todo de fijaci&oacute;n de tarifas era ilegal. La respuesta en la columna A ahora explica el piso, lo manda a la p&aacute;gina oficial de tarifas y le dice que guarde sus talones de pago.</span>
+  </a>
+  <a class="bcard" href="#hurt" data-open="hurt">
+    <span class="t">2 de octubre de 2026 &mdash; la respuesta sobre lesiones, tras comprobar qu&eacute; exige realmente Wyoming</span>
+    <span class="d">La compensaci&oacute;n laboral es opcional para el trabajo agr&iacute;cola en este estado, pero un patr&oacute;n H&#8209;2A debe dar cobertura equivalente de todos modos. Dos personas de la misma cuadrilla pueden estar en situaciones distintas.</span>
+  </a>
+
+  <a class="bcard" href="chronicle.html">
+    <span class="t">Cr&oacute;nica &mdash; qu&eacute; ha pasado, y por qu&eacute;</span>
+    <span class="d">El registro completo en lenguaje claro, lo m&aacute;s nuevo primero: c&oacute;mo se construy&oacute; esta p&aacute;gina, para qu&eacute; sirvi&oacute; cada decisi&oacute;n, y qu&eacute; sigue sin probarse &mdash; incluido que ninguna finca real ni cuadrilla real la ha visto.</span>
+  </a>
+
+  <h3 class="colbsh" id="colbext">Enlaces externos</h3>
+  <p class="colbcap">Cada referencia a otro sitio web, con vista previa. El enlace siempre es la &uacute;ltima l&iacute;nea &mdash; lea primero la tarjeta y decida si de verdad necesita la distracci&oacute;n del viaje de ida y vuelta para visitar el original.</p>
+
+  <article class="ref" id="r1">
+    <span class="rnum">1</span><span class="rkind">Reglamento &middot; qu&eacute; debe contener la oferta de trabajo</span>
+    <div class="rtitle">20 CFR 655.122 &mdash; Contents of job offers</div>
+    <div class="rmeta">Employment and Training Administration, U.S. Department of Labor &middot; 87 FR 61791 (12 October 2022), as amended 89 FR 34060 (29 April 2024)</div>
+    <div class="rprev">La columna vertebral de la protecci&oacute;n al trabajador H&#8209;2A. Vivienda sin costo seg&uacute;n normas federales (d); comidas o cocina gratuita (g); los tres deberes de transporte y el reembolso al cumplir el 50 por ciento (h); la garant&iacute;a de tres cuartas partes con su ejemplo ya calculado (i); registros de ganancias abiertos al trabajador (j); el tal&oacute;n de pago que muestra las horas garantizadas aparte (k); pago al menos dos veces al mes (m); descuentos que no pueden dejarle ganancia al patr&oacute;n (p); el contrato escrito en un idioma que el trabajador entienda (q); y, en (e), la compensaci&oacute;n laboral, incluida la regla para los estados que excluyen la agricultura.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> casi todo derecho mencionado en la columna A es un inciso de este mismo reglamento. Se cita muchas veces en vez de parafrasearlo una, para que el lector pueda comprobar cualquier respuesta por separado.</div>
+    <a class="rlink" href="https://www.ecfr.gov/current/title-20/part-655/section-655.122">ecfr.gov &middot; 20 CFR 655.122</a>
+  </article>
+
+  <article class="ref" id="r2">
+    <span class="rnum">2</span><span class="rkind">Reglamento &middot; el piso salarial</span>
+    <div class="rtitle">20 CFR 655.120 &mdash; Offered wage rate</div>
+    <div class="rmeta">Employment and Training Administration, U.S. Department of Labor &middot; amended 88 FR 12801, 89 FR 34060, 90 FR 47963 (2 October 2025)</div>
+    <div class="rprev">Obliga al patr&oacute;n a ofrecer, anunciar y pagar <b>la m&aacute;s alta</b> de estas: la tarifa de efecto adverso, un salario prevaleciente aprobado, una tarifa de contrato colectivo, el salario m&iacute;nimo federal, el salario m&iacute;nimo estatal, o cualquier tarifa mayor que el patr&oacute;n pretenda pagar. El inciso (b) fija el m&eacute;todo: cifras estatales de la Oficina de Estad&iacute;sticas Laborales en dos niveles de destreza, un ajuste a la baja por vivienda con tope del 30 por ciento, y la ocupaci&oacute;n determinada por lo que el trabajador hace en m&aacute;s de la mitad de los d&iacute;as. El inciso (b)(6) es el trinquete: si una tarifa actualizada resulta menor que la garantizada, el patr&oacute;n debe seguir pagando la garantizada.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> es la autoridad de las dos cosas que la columna A dice sobre el pago &mdash; que el piso es una prueba de &ldquo;la m&aacute;s alta&rdquo;, y que un rec&aacute;lculo a media temporada no puede recortar una tarifa garantizada.</div>
+    <a class="rlink" href="https://www.ecfr.gov/current/title-20/part-655/section-655.120">ecfr.gov &middot; 20 CFR 655.120</a>
+  </article>
+
+  <article class="ref" id="r3">
+    <span class="rnum">3</span><span class="rkind">Datos oficiales &middot; d&oacute;nde vive la tarifa vigente</span>
+    <div class="rtitle">H&#8209;2A Adverse Effect Wage Rates (AEWRs)</div>
+    <div class="rmeta">Office of Foreign Labor Certification, U.S. Department of Labor &middot; updated as rates are issued</div>
+    <div class="rprev">El punto de publicaci&oacute;n autoritativo de cada AEWR, nombrado textualmente en el aviso del Registro Federal que las fija: &ldquo;Todos los AEWR por hora determinados conforme a 20 CFR 655.120(b) est&aacute;n disponibles para cada c&oacute;digo SOC y &aacute;rea geogr&aacute;fica en la siguiente direcci&oacute;n.&rdquo; La p&aacute;gina se divide en ocupaciones de pastoreo y todas las dem&aacute;s, con las tarifas distribuidas en una hoja de c&aacute;lculo descargable por c&oacute;digo de ocupaci&oacute;n y estado, m&aacute;s un archivo de per&iacute;odos anteriores.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> esta p&aacute;gina deliberadamente no imprime ninguna tarifa. Aqu&iacute; est&aacute; la tarifa, y el orden es: busque el c&oacute;digo de ocupaci&oacute;n de lo que usted realmente hace, busque el nivel de destreza que dice su orden de trabajo, y lea el rengl&oacute;n de Wyoming.</div>
+    <a class="rlink" href="https://flag.dol.gov/wage-data/adverse-effect-wage-rates">flag.dol.gov/wage-data/adverse-effect-wage-rates</a>
+  </article>
+
+  <article class="ref" id="r4">
+    <span class="rnum">4</span><span class="rkind">Aviso de la agencia &middot; una orden judicial de hace cinco semanas</span>
+    <div class="rtitle">OFLC Announces Updates to Implementation of the H&#8209;2A Adverse Effect Wage Rate Methodology&hellip; Compliance with District Court Order</div>
+    <div class="rmeta">Office of Foreign Labor Certification, U.S. Department of Labor &middot; 2 September 2026</div>
+    <div class="rprev">Informa de la orden del 26 de agosto de 2026 en <i>United Farm Workers v. Department of Labor</i>, No. 25&#8209;cv&#8209;01614 (E.D. Cal.), que resolvi&oacute; que el m&eacute;todo de fijaci&oacute;n salarial del Departamento era ilegal y le orden&oacute; producir uno nuevo y publicar tarifas nuevas sin demora. La regla no fue anulada. El aviso declara que las tarifas vigentes siguen aplicando y que los patrones deben seguir cumpliendo la ley, y que podr&iacute;a exig&iacute;rseles pagos de ajuste salarial por el per&iacute;odo entre el aviso y el m&eacute;todo nuevo &mdash; aclarando que por ahora no existe tal obligaci&oacute;n de pago. No se dio plazo.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> es la raz&oacute;n por la que la respuesta sobre el pago est&aacute; escrita como est&aacute;, y la raz&oacute;n por la que quien trabaje esta cosecha debe guardar cada tal&oacute;n de pago.</div>
+    <a class="rlink" href="https://flag.dol.gov/announcement/2026-09-02">flag.dol.gov/announcement/2026-09-02</a>
+  </article>
+
+  <article class="ref" id="r5">
+    <span class="rnum">5</span><span class="rkind">Ley estatal &middot; la exclusi&oacute;n agr&iacute;cola</span>
+    <div class="rtitle">Wyoming Statutes 27&#8209;4&#8209;201 and 27&#8209;4&#8209;202 &mdash; minimum wage</div>
+    <div class="rmeta">Wyoming Statutes, 2025 &middot; Title 27, Chapter 4, Article 2</div>
+    <div class="rprev">La secci&oacute;n 27&#8209;4&#8209;202(a) fija el salario m&iacute;nimo del estado. La secci&oacute;n 27&#8209;4&#8209;201(a)(iv) define &ldquo;empleado&rdquo; para ese prop&oacute;sito y excluye, en el apartado (A), a &ldquo;cualquier persona empleada en la agricultura&rdquo;. En la misma lista quedan excluidos el servicio dom&eacute;stico, los empleados ejecutivos y profesionales de buena fe, los empleados de gobierno, cierta actividad sin fines de lucro y los vendedores externos.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> porque el salario m&iacute;nimo estatal es lo primero a lo que la gente recurre, y para el trabajo agr&iacute;cola en Wyoming es sencillamente la ley equivocada. Dar la cifra sin la exclusi&oacute;n enga&ntilde;ar&iacute;a en ambos sentidos.</div>
+    <a class="rlink" href="https://law.justia.com/codes/wyoming/title-27/chapter-4/article-2/section-27-4-201/">law.justia.com &middot; W.S. 27&#8209;4&#8209;201</a>
+  </article>
+
+  <article class="ref" id="r6">
+    <span class="rnum">6</span><span class="rkind">Ley estatal &middot; qui&eacute;n debe tener cobertura por lesi&oacute;n</span>
+    <div class="rtitle">Wyoming Statutes 27&#8209;14&#8209;108 &mdash; extrahazardous employments; elective coverage</div>
+    <div class="rmeta">Wyoming Statutes, 2025 &middot; Worker&rsquo;s Compensation Act</div>
+    <div class="rprev">El inciso (a) enumera los empleos para los que Wyoming exige seguro de compensaci&oacute;n laboral, por clasificaci&oacute;n industrial. Toda la entrada del sector agr&iacute;cola es la tala de &aacute;rboles. La producci&oacute;n de cultivos y la producci&oacute;n animal no aparecen en ninguna parte de la lista. El inciso (j) permite entonces que cualquier patr&oacute;n cuyo trabajo no est&eacute; listado elija la cobertura voluntariamente, para todos sus empleados, y pueda retirarla despu&eacute;s de dos a&ntilde;os.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> establece el hueco que vuelve importante la respuesta sobre lesiones en la columna A &mdash; la cobertura del trabajo agr&iacute;cola com&uacute;n en este estado es una decisi&oacute;n del patr&oacute;n, no una exigencia.</div>
+    <a class="rlink" href="https://law.justia.com/codes/wyoming/title-27/chapter-14/article-1/section-27-14-108/">law.justia.com &middot; W.S. 27&#8209;14&#8209;108</a>
+  </article>
+
+  <article class="ref" id="r7">
+    <span class="rnum">7</span><span class="rkind">Reglamento &middot; compromisos del patr&oacute;n</span>
+    <div class="rtitle">20 CFR 655.135 &mdash; Assurances and obligations of H&#8209;2A employers</div>
+    <div class="rmeta">Employment and Training Administration, U.S. Department of Labor &middot; 87 FR 61791, as amended 89 FR 34062</div>
+    <div class="rprev">Inciso (j): el patr&oacute;n y sus agentes no han solicitado ni recibido pago de ninguna clase de ning&uacute;n empleado por nada relacionado con obtener la certificaci&oacute;n laboral. Inciso (k): el patr&oacute;n debe prohibir contractualmente, por escrito, que cualquier contratista o reclutador de mano de obra extranjera que contrate solicite o reciba pago de los trabajadores. El inciso (p) exige copias de los acuerdos con agentes y reclutadores, y su identidad y ubicaci&oacute;n. Aqu&iacute; tambi&eacute;n: contrataci&oacute;n sin discriminaci&oacute;n (a) y la condici&oacute;n de que no haya huelga (b).</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> las cuotas de reclutamiento son lo m&aacute;s com&uacute;n que un trabajador paga sin haber debido pagarlo nunca, y la prohibici&oacute;n alcanza al reclutador a trav&eacute;s del propio contrato del patr&oacute;n.</div>
+    <a class="rlink" href="https://www.ecfr.gov/current/title-20/part-655/section-655.135">ecfr.gov &middot; 20 CFR 655.135</a>
+  </article>
+
+  <article class="ref" id="r8">
+    <span class="rnum">8</span><span class="rkind">Norma de seguridad &middot; agua, ba&ntilde;os, lavado de manos</span>
+    <div class="rtitle">29 CFR 1928.110 &mdash; Field sanitation</div>
+    <div class="rmeta">Occupational Safety and Health Administration, U.S. Department of Labor &middot; 52 FR 16095 (1 May 1987), amended 76 FR 33612 (8 June 2011)</div>
+    <div class="rprev">Aplica a cualquier establecimiento agr&iacute;cola donde once o m&aacute;s empleados realicen labor manual en el campo en un mismo d&iacute;a. Exige agua potable, &ldquo;convenientemente fresca y en cantidad suficiente, tomando en cuenta la temperatura del aire, la humedad y la naturaleza del trabajo&rdquo;, colocada donde todos los empleados puedan alcanzarla y servida en vasos de un solo uso o por fuente; un ba&ntilde;o y un lavamanos por cada veinte empleados a no m&aacute;s de un cuarto de milla; y oportunidad razonable de usarlos. La labor manual excluye el cuidado de ganado y el trabajo en estructuras permanentes.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> es la norma, y el umbral de once empleados es lo primero que hay que establecer antes de que cualquier otra cosa sobre ella sea cierta.</div>
+    <a class="rlink" href="https://www.ecfr.gov/current/title-29/section-1928.110">ecfr.gov &middot; 29 CFR 1928.110</a>
+  </article>
+
+  <article class="ref" id="r9">
+    <span class="rnum">9</span><span class="rkind">Plan estatal &middot; qui&eacute;n hace cumplir qu&eacute; en Wyoming</span>
+    <div class="rtitle">Wyoming State Plan &mdash; Occupational Safety and Health</div>
+    <div class="rmeta">Occupational Safety and Health Administration, U.S. Department of Labor &middot; plan approved 1974, final approval 50 FR 26558 (27 June 1985)</div>
+    <div class="rprev">Wyoming opera su propio plan aprobado de seguridad y salud ocupacional a trav&eacute;s del Departamento de Servicios de Fuerza Laboral, que cubre a los patrones privados y al gobierno estatal y local, en 5221 Yellowstone Road, Cheyenne, tel&eacute;fono (307) 777&#8209;7786. El saneamiento en el campo y la mayor&iacute;a de los campamentos temporales de trabajo agr&iacute;cola quedan fuera del plan: en los estados con plan propio que los cedieron, los hace cumplir la Divisi&oacute;n de Horas y Salarios federal por orden del propio Secretario del Trabajo, y no el estado.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> porque la ruta es contraintuitiva y equivocarse echa a perder una queja. Seguridad al estado; agua y ba&ntilde;os en el campo a Horas y Salarios.</div>
+    <a class="rlink" href="https://www.osha.gov/stateplans/wy">osha.gov/stateplans/wy</a>
+  </article>
+
+  <article class="ref" id="r10">
+    <span class="rnum">10</span><span class="rkind">Ley &middot; definiciones, y una exclusi&oacute;n que importa</span>
+    <div class="rtitle">29 U.S.C. 1802 &mdash; Migrant and Seasonal Agricultural Worker Protection Act: definitions</div>
+    <div class="rmeta">United States Code &middot; Cornell Legal Information Institute</div>
+    <div class="rprev">Define al trabajador agr&iacute;cola migrante como quien trabaja en empleo agr&iacute;cola de temporada o temporal y debe ausentarse de noche de su residencia permanente, y al trabajador agr&iacute;cola de temporada como quien hace el mismo trabajo sin tener que ausentarse. Ambas definiciones excluyen despu&eacute;s, en 1802(8)(B)(ii) y 1802(10)(B)(iii), a cualquier no inmigrante temporal autorizado a trabajar en la agricultura bajo las disposiciones H&#8209;2A de la ley migratoria. La familia inmediata del patr&oacute;n tambi&eacute;n queda excluida.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> es la raz&oacute;n por la que dos cuadrillas en un mismo campo responden a dos leyes distintas, que es lo m&aacute;s confuso del derecho laboral agr&iacute;cola y conviene decirlo de frente en vez de dejarlo impl&iacute;cito.</div>
+    <a class="rlink" href="https://www.law.cornell.edu/uscode/text/29/1802">law.cornell.edu &middot; 29 U.S.C. 1802</a>
+  </article>
+
+  <article class="ref" id="r11">
+    <span class="rnum">11</span><span class="rkind">Ley &middot; informaci&oacute;n, estados de cuenta y registros</span>
+    <div class="rtitle">29 U.S.C. 1821 &mdash; Information and recordkeeping requirements</div>
+    <div class="rmeta">United States Code &middot; Cornell Legal Information Institute</div>
+    <div class="rprev">Exige informaci&oacute;n escrita de las condiciones al momento del reclutamiento para los trabajadores migrantes &mdash; lugar de trabajo, tarifas por hora y a destajo, cultivos y actividades, per&iacute;odo de empleo, transporte, vivienda, costos cobrados, cualquier huelga en curso, cualquier arreglo de comisi&oacute;n, y si habr&aacute; compensaci&oacute;n laboral y seguro de desempleo estatales. Exige exhibir el cartel de derechos en el lugar de trabajo. Exige registros de la base del pago, unidades a destajo, horas, ganancia total, cada suma retenida y su motivo, y el pago neto, conservados tres a&ntilde;os, con un estado de cuenta detallado entregado al trabajador cada per&iacute;odo de pago.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> es la autoridad del tal&oacute;n de pago y de la informaci&oacute;n previa para la cuadrilla que <b>no</b> tiene visa H&#8209;2A, que de otro modo no encontrar&iacute;a nada en esta p&aacute;gina que le aplicara.</div>
+    <a class="rlink" href="https://www.law.cornell.edu/uscode/text/29/1821">law.cornell.edu &middot; 29 U.S.C. 1821</a>
+  </article>
+
+  <article class="ref" id="r12">
+    <span class="rnum">12</span><span class="rkind">Reglamento &middot; el veh&iacute;culo de la cuadrilla</span>
+    <div class="rtitle">29 CFR part 500, subpart D &mdash; motor vehicle safety and insurance</div>
+    <div class="rmeta">Wage and Hour Division, U.S. Department of Labor &middot; 48 FR 36741 (12 August 1983)</div>
+    <div class="rprev">Secci&oacute;n 500.121(b): &ldquo;El monto del seguro de responsabilidad del veh&iacute;culo no ser&aacute; menor de $100,000 por cada asiento del veh&iacute;culo, pero en ning&uacute;n caso se exigir&aacute; que el seguro total exceda $5,000,000 por un solo veh&iacute;culo.&rdquo; Las normas del veh&iacute;culo exigen luces, frenos, llantas con al menos 2/32 de pulgada de dibujo, direcci&oacute;n, claxon, espejos y limpiaparabrisas en funcionamiento, l&iacute;neas y tanque de combustible sin fugas, ventilaci&oacute;n, carga dentro de la especificaci&oacute;n del fabricante, y un asiento para cada ocupante. Los viajes de m&aacute;s de 75 millas y las operaciones de jornal diario traen consigo las normas de transportista y un conductor de al menos 21 a&ntilde;os con una temporada de experiencia. Los veh&iacute;culos compartidos entre los propios trabajadores quedan fuera.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> el viaje al campo es donde m&aacute;s seguido mueren los trabajadores agr&iacute;colas, y la cifra del seguro es lo bastante concreta para comprobarla.</div>
+    <a class="rlink" href="https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-A/part-500/subpart-D">ecfr.gov &middot; 29 CFR 500 subpart D</a>
+  </article>
+
+  <article class="ref" id="r13">
+    <span class="rnum">13</span><span class="rkind">Reglamento &middot; cu&aacute;l norma de vivienda aplica</span>
+    <div class="rtitle">29 CFR 500.132 &mdash; Applicable federal housing standards</div>
+    <div class="rmeta">Wage and Hour Division, U.S. Department of Labor</div>
+    <div class="rprev">Nombra los dos conjuntos aplicables &mdash; las normas de la Administraci&oacute;n de Empleo y Capacitaci&oacute;n en 20 CFR 654.404 y siguientes, y las de la Administraci&oacute;n de Seguridad y Salud Ocupacional en 29 CFR 1910.142 &mdash; y los divide por fecha. La vivienda cuya construcci&oacute;n comenz&oacute; a partir del 3 de abril de 1980, y que no estaba bajo contrato al 4 de marzo de 1980, debe cumplir las normas de OSHA. La m&aacute;s antigua puede cumplir cualquiera de los dos conjuntos, a elecci&oacute;n del propietario.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> &ldquo;cumple normas federales&rdquo; no significa nada si no se sabe cu&aacute;les normas, y en vivienda agr&iacute;cola la respuesta de verdad depende de una fecha de 1980.</div>
+    <a class="rlink" href="https://www.ecfr.gov/current/title-29/section-500.132">ecfr.gov &middot; 29 CFR 500.132</a>
+  </article>
+
+  <article class="ref" id="r14">
+    <span class="rnum">14</span><span class="rkind">Ley &middot; dos remedios que controla el trabajador</span>
+    <div class="rtitle">29 U.S.C. 1854 and 1855 &mdash; private right of action; prohibition on retaliation</div>
+    <div class="rmeta">United States Code &middot; Cornell Legal Information Institute</div>
+    <div class="rprev">La secci&oacute;n 1854(a) permite a cualquier persona agraviada por una violaci&oacute;n demandar en corte federal de distrito &ldquo;sin importar el monto en controversia, sin importar la ciudadan&iacute;a de las partes y sin necesidad de agotar ning&uacute;n remedio administrativo alternativo&rdquo;. Ante una violaci&oacute;n intencional la corte puede conceder da&ntilde;os reales o da&ntilde;os de ley de hasta $500 por demandante por violaci&oacute;n. La secci&oacute;n 1855 proh&iacute;be intimidar, amenazar, poner en lista negra, despedir o discriminar de cualquier manera contra un trabajador que con causa justa haya presentado una queja o testificado, y permite una queja ante el Secretario dentro de 180 d&iacute;as, con remedios que incluyen la reinstalaci&oacute;n con pago retroactivo.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> porque estos dos no dependen de que una agencia decida actuar, y el plazo de 180 d&iacute;as es de los que se pierden por no saber que existen.</div>
+    <a class="rlink" href="https://www.law.cornell.edu/uscode/text/29/1854">law.cornell.edu &middot; 29 U.S.C. 1854</a>
+  </article>
+
+  <article class="ref" id="r15">
+    <span class="rnum">15</span><span class="rkind">Gu&iacute;a de la agencia &middot; represalias y estatus migratorio</span>
+    <div class="rtitle">Field Assistance Bulletin No. 2022&#8209;02: Protecting Workers from Retaliation</div>
+    <div class="rmeta">Wage and Hour Division, U.S. Department of Labor &middot; 10 March 2022 &middot; current, not rescinded</div>
+    <div class="rprev">Declara que la Divisi&oacute;n protege a todos los trabajadores en Estados Unidos, incluidos los de bajos salarios y los inmigrantes; que &ldquo;salvo en la medida necesaria para hacer cumplir las protecciones de ciertos programas de certificaci&oacute;n laboral temporal, la Divisi&oacute;n no pregunta por el estatus migratorio de los empleados&rdquo;; y que &ldquo;no comparte informaci&oacute;n que pudiera identificar a los quejosos o a los trabajadores involucrados en sus investigaciones y exponerlos a acciones adversas de otras agencias de gobierno&rdquo;. Las p&aacute;ginas de quejas de la Divisi&oacute;n agregan que el nombre del quejoso, el asunto de la queja y hasta si existe una queja no pueden divulgarse.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> es la &uacute;nica base exacta para decirle algo a un trabajador sobre estatus y confidencialidad. Esta p&aacute;gina dice lo que dice la propia gu&iacute;a de la Divisi&oacute;n y no promete nada m&aacute;s.</div>
+    <a class="rlink" href="https://www.dol.gov/sites/dolgov/files/WHD/fab/fab-2022-2.pdf">dol.gov &middot; Field Assistance Bulletin 2022&#8209;02 (PDF)</a>
+  </article>
+
+  <article class="ref" id="r16">
+    <span class="rnum">16</span><span class="rkind">Gu&iacute;a de la agencia &middot; qu&eacute; no se est&aacute; haciendo cumplir</span>
+    <div class="rtitle">Field Assistance Bulletin No. 2025&#8209;2: H&#8209;2A Farmworker Protection Rule Enforcement Guidance</div>
+    <div class="rmeta">Wage and Hour Division, U.S. Department of Labor &middot; 20 June 2025</div>
+    <div class="rprev">Indica a la Divisi&oacute;n suspender el cumplimiento de todas las disposiciones introducidas por la regla final H&#8209;2A de 2024, tras medidas cautelares en Georgia y Kentucky que cubren a un grupo de estados y asociaciones, y una suspensi&oacute;n nacional de dos incisos. Un tribunal de Carolina del Norte lleg&oacute; a la conclusi&oacute;n contraria y confirm&oacute; la regla, de modo que los tribunales genuinamente discrepan. Una propuesta de derogaci&oacute;n se public&oacute; en 90 FR 28919 el 2 de julio de 2025 y cerr&oacute; comentarios; al 2 de octubre de 2026 no se hab&iacute;a publicado derogaci&oacute;n definitiva. Entre lo afectado est&aacute;n las reglas de organizaci&oacute;n y actividad concertada, el acceso de visitas a la vivienda, la divulgaci&oacute;n de tarifas a destajo, la vigencia inmediata de una tarifa nueva, la identificaci&oacute;n de due&ntilde;os y supervisores, los cinturones de seguridad en el transporte del patr&oacute;n, la disciplina progresiva antes del despido con causa, la divulgaci&oacute;n de reclutadores y el inicio diferido.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> es la raz&oacute;n por la que esta p&aacute;gina distingue entre lo que est&aacute; en los libros y lo que se hace cumplir. Las protecciones centrales anteriores no quedan tocadas; las agregadas en 2024 s&iacute;, y decirle lo contrario a un trabajador ser&iacute;a prepararlo para el fracaso.</div>
+    <a class="rlink" href="https://www.dol.gov/sites/dolgov/files/WHD/fab/fab2025-2.pdf">dol.gov &middot; Field Assistance Bulletin 2025&#8209;2 (PDF)</a>
+  </article>
+
+  <article class="ref" id="r17">
+    <span class="rnum">17</span><span class="rkind">Reglamento &middot; la v&iacute;a de queja poco usada</span>
+    <div class="rtitle">20 CFR part 658, subpart E &mdash; Employment Service and employment-related law complaint system</div>
+    <div class="rmeta">Employment and Training Administration, U.S. Department of Labor &middot; 81 FR 56352 (19 August 2016), as amended through 88 FR 82731 (24 November 2023)</div>
+    <div class="rprev">Obliga a cada agencia estatal de fuerza laboral a recibir quejas por violaciones de la ley laboral y remitirlas a la agencia encargada de hacerla cumplir, y a avisarle al quejoso qu&eacute; agencia la recibi&oacute;. Trat&aacute;ndose de un trabajador agr&iacute;cola migrante o de temporada, el representante debe primero intentar una soluci&oacute;n informal local y debe remitir la queja cuando eso falle, cuando la soluci&oacute;n local perjudicar&iacute;a al quejoso, o despu&eacute;s de cinco d&iacute;as h&aacute;biles. Las quejas de trabajadores agr&iacute;colas corren en plazos m&aacute;s cortos que las dem&aacute;s en cada etapa, y debe darse seguimiento mensual al quejoso.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> es una puerta real que casi nadie usa &mdash; un trabajador puede entrar a un centro de empleo estatal y el estado tiene que recibir la queja y moverla, m&aacute;s r&aacute;pido justamente por tratarse de un trabajador agr&iacute;cola.</div>
+    <a class="rlink" href="https://www.ecfr.gov/current/title-20/part-658/subpart-E">ecfr.gov &middot; 20 CFR 658 subpart E</a>
+  </article>
+
+  <article class="ref" id="r18">
+    <span class="rnum">18</span><span class="rkind">Resumen oficial en lenguaje claro &middot; con una advertencia</span>
+    <div class="rtitle">Fact Sheet #26: H&#8209;2A of the Immigration and Nationality Act</div>
+    <div class="rmeta">Wage and Hour Division, U.S. Department of Labor &middot; February 2010, updated 29 April 2024</div>
+    <div class="rprev">El propio resumen de la Divisi&oacute;n sobre las protecciones al trabajador H&#8209;2A, escrito para trabajadores y patrones y no para abogados, con la l&iacute;nea gratuita 1&#8209;866&#8209;4&#8209;US&#8209;WAGE. Enuncia la prohibici&oacute;n de cuotas de reclutamiento en una sola l&iacute;nea: los patrones no deben solicitar ni recibir pago de ninguna clase de los trabajadores por nada relacionado con obtener la certificaci&oacute;n laboral.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> como el punto de partida m&aacute;s amable, y con una advertencia pegada. Su fecha de actualizaci&oacute;n es abril de 2024, as&iacute; que describe la regla de 2024, partes de la cual ya no se hacen cumplir &mdash; vea la gu&iacute;a de la tarjeta 16 antes de confiar en cualquier l&iacute;nea suelta.</div>
+    <a class="rlink" href="https://www.dol.gov/agencies/whd/fact-sheets/26-h2a">dol.gov &middot; Fact Sheet #26</a>
+  </article>
+
+  <article class="ref" id="r19">
+    <span class="rnum">19</span><span class="rkind">Programa estatal &middot; la puerta m&aacute;s cercana</span>
+    <div class="rtitle">Migrant &amp; Seasonal Farm Worker Program</div>
+    <div class="rmeta">Wyoming Department of Workforce Services &middot; page last modified 13 February 2026</div>
+    <div class="rprev">El programa estatal para quienes trabajan en la agricultura: conectar a los trabajadores con empleo, capacitaci&oacute;n y servicios de apoyo, y ayudar con problemas relacionados con el empleo. Personal biling&uuml;e. La oficina est&aacute; en 422 East Fremont, Riverton, Wyoming 82501, tel&eacute;fono (307) 856&#8209;9231.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> es la manera pr&aacute;ctica de entrar al sistema estatal de quejas de la tarjeta 17, y la atiende gente que habla los dos idiomas en que est&aacute; escrita esta p&aacute;gina.</div>
+    <a class="rlink" href="https://dws.wyo.gov/dws-division/workforce-center-program-operations/programs/migrant-seasonal-farm-worker-program/">dws.wyo.gov &middot; Migrant &amp; Seasonal Farm Worker Program</a>
+  </article>
+
+  <article class="ref" id="r20">
+    <span class="rnum">20</span><span class="rkind">Contacto de la agencia &middot; qu&eacute; oficina cubre Wyoming</span>
+    <div class="rtitle">Wage and Hour Division local offices</div>
+    <div class="rmeta">Wage and Hour Division, U.S. Department of Labor</div>
+    <div class="rprev">El buscador de oficinas dice claramente que Wyoming no tiene oficina propia de Horas y Salarios y manda los asuntos de Wyoming a la Oficina de Distrito de Salt Lake City, 60 East South Temple Street, Suite 575, Salt Lake City, Utah 84111, tel&eacute;fono (801) 524&#8209;5706. La l&iacute;nea gratuita 1&#8209;866&#8209;487&#8209;9243 llega a la Divisi&oacute;n desde cualquier parte.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> para que un trabajador en Worland a quien le digan que contacte &ldquo;su oficina local&rdquo; sepa que la oficina local est&aacute; en otro estado, y no concluya que no hay a qui&eacute;n llamar.</div>
+    <a class="rlink" href="https://www.dol.gov/agencies/whd/contact/local-offices">dol.gov &middot; Wage and Hour local offices</a>
+  </article>
+
+  <article class="ref" id="r21">
+    <span class="rnum">21</span><span class="rkind">Estad&iacute;stica &middot; la agricultura del condado</span>
+    <div class="rtitle">2022 Census of Agriculture: Washakie County profile</div>
+    <div class="rmeta">USDA National Agricultural Statistics Service &middot; released 2024 &middot; public domain</div>
+    <div class="rprev">206 fincas en 368,504 acres, de los cuales 38,025 son de riego. El forraje es el cultivo m&aacute;s grande por superficie con 20,022 acres, luego la cebada con 6,329 y la remolacha azucarera con 5,298. El condado tiene 35,968 cabezas de ganado y 28,744 ovejas, y la ganader&iacute;a aporta el 55 por ciento de sus $60.6 millones en ventas agr&iacute;colas.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> es el condado al que esta finca inventada corresponde. Los cultivos nombrados en la columna A son de verdad los principales del condado, y eso es lo que hace que el patr&oacute;n de trabajo por temporada de esta p&aacute;gina sea el real.</div>
+    <a class="rlink" href="https://www.nass.usda.gov/Publications/AgCensus/2022/Online_Resources/County_Profiles/Wyoming/cp56043.pdf">nass.usda.gov &middot; 2022 county profile, Washakie County (PDF)</a>
+  </article>
+
+  <article class="ref" id="r22">
+    <span class="rnum">22</span><span class="rkind">Reglamentaci&oacute;n &middot; una regla que desapareci&oacute; en septiembre</span>
+    <div class="rtitle">Rescission of Coordinated Enforcement Regulations</div>
+    <div class="rmeta">Final rule &middot; Employment and Training Administration, Wage and Hour Division and OSHA, U.S. Department of Labor &middot; 91 FR 55744, published 31 August 2026, effective 30 September 2026</div>
+    <div class="rprev">Elimina y reserva la parte 42 del t&iacute;tulo 29, que fijaba procedimientos formales para coordinar entre la Divisi&oacute;n de Horas y Salarios, OSHA y la Administraci&oacute;n de Empleo y Capacitaci&oacute;n la aplicaci&oacute;n de las protecciones al trabajador agr&iacute;cola migrante y de temporada. La raz&oacute;n declarada del Departamento es que los procedimientos estaban obsoletos, ya no reflejaban su estructura ni sus pr&aacute;cticas y no se hab&iacute;an aplicado de manera consistente en d&eacute;cadas, y que las protecciones de fondo siguen en la ley del trabajador agr&iacute;cola y en los reglamentos H&#8209;2A.</div>
+    <div class="rwhy"><b>Por qu&eacute; se cita:</b> entr&oacute; en vigor dos d&iacute;as antes de que se escribiera esta p&aacute;gina, y es la raz&oacute;n por la que la p&aacute;gina nombra agencias y tel&eacute;fonos directamente en vez de apuntar a una regla de coordinaci&oacute;n que el lector encontrar&iacute;a ahora vac&iacute;a.</div>
+    <a class="rlink" href="https://www.federalregister.gov/documents/2026/08/31/2026-17726/rescission-of-coordinated-enforcement-regulations">federalregister.gov &middot; 91 FR 55744</a>
+  </article>
+
+  <div class="note" id="deadnote" hidden></div>
+</section>
+<!-- ================= C ================= -->
+<section class="col dim" id="cC" role="tabpanel" aria-labelledby="tC">
+  <div class="colhead"><b>C</b><span class="nm"> &nbsp;C&oacute;mo funciona (detalles)</span><label class="sw" for="ck-c" title="Mostrar u ocultar esta columna"></label></div>
+  <p class="lede">Aqu&iacute; se da por supuesto algo de conocimiento previo, y los temas se vuelven m&aacute;s &ldquo;t&eacute;cnicos&rdquo; hacia abajo. C&oacute;mo se calcula de verdad el piso salarial, qu&eacute; ley alcanza a qu&eacute; trabajador, qu&eacute; acaban de hacer los tribunales con todo ello, y por qu&eacute; esta p&aacute;gina no imprime ninguna tarifa.</p>
+
+  <h2 id="twocrews">Dos cuadrillas, dos leyes</h2>
+  <p>Una finca del condado de Washakie puede tener en cosecha dos clases de trabajador en el mismo campo, protegidos por cuerpos legales distintos que apenas se tocan.</p>
+  <div class="cols">
+  <p><b>Los trabajadores con visa H&#8209;2A</b> est&aacute;n cubiertos por el reglamento de la oferta de trabajo en 20 CFR 655.122, que se hace cumplir conforme a 29 CFR parte 501<span class="fn" data-ref="r1">1</span>. Ah&iacute; viven la garant&iacute;a de horas, la vivienda sin costo, los deberes de transporte, la obligaci&oacute;n de comidas y la regla que suple la compensaci&oacute;n laboral.</p>
+  <p><b>Los trabajadores migrantes y de temporada sin esa visa</b> est&aacute;n cubiertos por la Ley de Protecci&oacute;n al Trabajador Agr&iacute;cola Migrante y Temporal, 29 U.S.C. 1801 y siguientes, con reglamentos en 29 CFR parte 500<span class="fn" data-ref="r11">11</span>. Ah&iacute; viven la informaci&oacute;n al reclutar, los estados de cuenta de pago, el seguro del veh&iacute;culo y la certificaci&oacute;n de la vivienda.</p>
+  </div>
+  <p>La divisi&oacute;n es deliberada y expresa: la ley del trabajador agr&iacute;cola excluye a los trabajadores H&#8209;2A de sus dos definiciones<span class="fn" data-ref="r10">10</span>. As&iacute; que la primera pregunta en cualquier disputa no es qu&eacute; pas&oacute; sino c&oacute;mo fue contratado el trabajador, porque eso determina cu&aacute;l ley hay que abrir.</p>
+  <p>Hay una segunda divisi&oacute;n dentro de esa misma ley que conviene conocer. Su exenci&oacute;n para negocios peque&ntilde;os toma prestada la prueba de &ldquo;d&iacute;as-hombre&rdquo; de la ley federal de salarios, de modo que una finca por debajo de ese umbral queda del todo fuera de la ley &mdash; salvo respecto de cualquier contratista de mano de obra agr&iacute;cola que emplee, el cual sigue cubierto<span class="fn" data-ref="r10">10</span>.</p>
+
+  <h2 id="howwage">C&oacute;mo se calcula el piso salarial, y por qu&eacute; aqu&iacute; no hay ninguna cifra</h2>
+  <p>El salario de efecto adverso existe para que traer mano de obra agr&iacute;cola extranjera no jale hacia abajo el salario de los trabajadores que ya est&aacute;n aqu&iacute;. No es el salario; es uno de seis pisos, y el patr&oacute;n debe el m&aacute;s alto de ellos<span class="fn" data-ref="r2">2</span>.</p>
+  <p>Hasta hace poco hab&iacute;a en esencia una tarifa por estado. Desde 2023 las tarifas est&aacute;n ligadas a <b>c&oacute;digos de clasificaci&oacute;n ocupacional</b>, y desde la regla publicada el 2 de octubre de 2025 se calculan con datos salariales por ocupaci&oacute;n de la Oficina de Estad&iacute;sticas Laborales en <b>dos niveles de destreza</b> &mdash; un nivel de entrada tomado del primer tercio de la distribuci&oacute;n salarial y un nivel con experiencia tomado de toda ella &mdash; con un ajuste a la baja cuando el patr&oacute;n aloja al trabajador, con tope del 30 por ciento de la tarifa<span class="fn" data-ref="r2">2</span>. La ocupaci&oacute;n que cuenta es aquella cuyas labores el trabajador realiza en <b>m&aacute;s de la mitad</b> de los d&iacute;as del contrato<span class="fn" data-ref="r2">2</span>.</p>
+  <p>Ese cambio es la raz&oacute;n pr&aacute;ctica por la que esta p&aacute;gina no lleva cifra. Ya no existe &ldquo;la tarifa de Wyoming&rdquo; que se pueda citar. Existe una tarifa para un c&oacute;digo de ocupaci&oacute;n en un nivel de destreza en un estado, publicada en una hoja de c&aacute;lculo que se reemplaza cuando se reemiten las tarifas<span class="fn" data-ref="r3">3</span>. Cualquier n&uacute;mero escrito en esta p&aacute;gina estar&iacute;a mal para la mayor&iacute;a de los lectores de inmediato, y para todos ellos tarde o temprano.</p>
+  <p>La &uacute;nica pieza de ese mecanismo que conviene llevar en la cabeza es el trinquete de 20 CFR 655.120(b)(6): cuando una tarifa reci&eacute;n publicada resulta <b>menor</b> que la garantizada en la orden de trabajo, el patr&oacute;n debe seguir pagando la garantizada<span class="fn" data-ref="r2">2</span>. Las tarifas revisadas a media temporada pueden subir un salario y no pueden bajar una garant&iacute;a.</p>
+
+  <h2 id="court">Qu&eacute; hizo el tribunal el 26 de agosto de 2026</h2>
+  <p>Un tribunal federal del Distrito Este de California resolvi&oacute; que el m&eacute;todo de fijaci&oacute;n salarial del Departamento era ilegal y le orden&oacute; producir uno nuevo y publicar tarifas nuevas sin demora. <b>No</b> anul&oacute; la regla, de modo que las tarifas publicadas siguen aplicando<span class="fn" data-ref="r4">4</span>.</p>
+  <p>El propio aviso del Departamento dice dos cosas que conviven inc&oacute;modamente, y vale m&aacute;s citarlas que suavizarlas. Los patrones &ldquo;deben seguir cumpliendo todas las leyes aplicables&rdquo; y las tarifas vigentes &ldquo;siguen siendo aplicables en este momento&rdquo;. Y a los patrones cuyos trabajadores fueron pagados bajo el m&eacute;todo impugnado durante lo que el Departamento llama el per&iacute;odo de pago retroactivo &ldquo;podr&iacute;a exig&iacute;rseles hacer pagos de ajuste salarial&rdquo; &mdash; aunque &ldquo;no existe tal obligaci&oacute;n de pago en este momento&rdquo;<span class="fn" data-ref="r4">4</span>.</p>
+  <p>Traducido para quien est&aacute; apilando remolacha: su tarifa se mantiene, y existe la posibilidad real de que m&aacute;s adelante se deba un ajuste por esta temporada. No se ha anunciado plazo para el m&eacute;todo nuevo. Lo &uacute;nico sensato que un trabajador puede hacer es guardar cada tal&oacute;n de pago y la orden de trabajo, y por eso la columna A lo dice sin rodeos.</p>
+
+  <h2 id="onbooks">En los libros y sin hacerse cumplir: un mapa honesto</h2>
+  <p>Una regla de 2024 agreg&oacute; una capa de protecciones H&#8209;2A. Tribunales de Georgia y Kentucky suspendieron partes de ella para grupos de estados y asociaciones, un tribunal de Misisipi suspendi&oacute; dos incisos a nivel nacional, y un tribunal de Carolina del Norte confirm&oacute; la regla por completo. En junio de 2025 la Divisi&oacute;n de Horas y Salarios instruy&oacute; a sus propios investigadores <b>suspender el cumplimiento de toda disposici&oacute;n que agreg&oacute; la regla de 2024</b>, y en julio de 2025 se propuso una derogaci&oacute;n que al 2 de octubre de 2026 no era definitiva<span class="fn" data-ref="r16">16</span>.</p>
+  <p>Esto produce una situaci&oacute;n genuinamente extra&ntilde;a: un lector puede abrir el reglamento vigente, encontrar ah&iacute; impresa una protecci&oacute;n, y no poder hacerla valer. Quien escribe una p&aacute;gina dirigida a trabajadores tiene que decidir qu&eacute; hacer con eso. Esta p&aacute;gina presenta como vigentes las protecciones anteriores, porque lo son, y deja las adiciones de 2024 fuera de la columna A en vez de describir un derecho sobre el cual el trabajador no puede actuar.</p>
+  <p>Para que conste, la capa suspendida incluye los requisitos de cintur&oacute;n de seguridad en el transporte del patr&oacute;n, las condiciones de disciplina progresiva previas a un despido con causa, puntos de divulgaci&oacute;n de tarifas a destajo y de reclutadores, la vigencia inmediata de una tarifa nueva, y el acceso de visitas a la vivienda del patr&oacute;n<span class="fn" data-ref="r16">16</span>.</p>
+
+  <h2 id="wygaps">Los dos huecos de Wyoming</h2>
+  <p>Dos rasgos de la ley de Wyoming moldean esta p&aacute;gina m&aacute;s que ninguna norma federal.</p>
+  <p><b>El salario m&iacute;nimo no alcanza al trabajo agr&iacute;cola en absoluto.</b> La definici&oacute;n de empleado en la ley estatal excluye a &ldquo;cualquier persona empleada en la agricultura&rdquo;<span class="fn" data-ref="r5">5</span>. La exclusi&oacute;n es categ&oacute;rica, no una tarifa menor.</p>
+  <p><b>La compensaci&oacute;n laboral es electiva para el trabajo agr&iacute;cola.</b> Wyoming exige cobertura solo para los empleos de su lista de extra&#8209;peligrosos, y la &uacute;nica entrada agr&iacute;cola de esa lista es la tala &mdash; la producci&oacute;n de cultivos y la producci&oacute;n animal no est&aacute;n<span class="fn" data-ref="r6">6</span>. Un patr&oacute;n puede elegir la cobertura para todos sus empleados y retirarla despu&eacute;s de dos a&ntilde;os<span class="fn" data-ref="r6">6</span>.</p>
+  <p>Lo notable es c&oacute;mo interact&uacute;a con la ley federal. Precisamente porque Wyoming excluye la agricultura, 20 CFR 655.122(e) obliga al patr&oacute;n H&#8209;2A a dar un seguro con beneficios al menos iguales a los que dar&iacute;a el sistema estatal para trabajo comparable, sin costo para el trabajador, con prueba presentada antes de la certificaci&oacute;n<span class="fn" data-ref="r1">1</span>. El resultado es que el programa federal tapa un hueco de la ley estatal para los trabajadores con visa y lo deja abierto para los locales. En una finca que no eligi&oacute; cobertura, el de la visa est&aacute; asegurado y el vecino no.</p>
+
+  <h2 id="whoenforces">Qui&eacute;n hace cumplir qu&eacute;, en este estado</h2>
+  <p>Wyoming opera un plan estatal aprobado de seguridad y salud ocupacional, as&iacute; que la seguridad agr&iacute;cola com&uacute;n va a la agencia estatal en Cheyenne<span class="fn" data-ref="r9">9</span>. Pero Wyoming est&aacute; entre los estados que no asumieron el saneamiento en el campo ni la mayor&iacute;a de los campamentos de trabajo agr&iacute;cola, y eso lo hace cumplir aqu&iacute; la Divisi&oacute;n de Horas y Salarios federal por orden del Secretario del Trabajo<span class="fn" data-ref="r9">9</span>. Los campamentos ligados a producci&oacute;n de huevo, aves o carne roja y al procesamiento posterior a la cosecha s&iacute; se quedan con el estado.</p>
+  <p>Hasta el 30 de septiembre de 2026 exist&iacute;a un reglamento que describ&iacute;a c&oacute;mo coordinaban estas agencias la aplicaci&oacute;n en materia de trabajadores agr&iacute;colas. Ese d&iacute;a fue eliminado y reservado<span class="fn" data-ref="r22">22</span>. Por eso esta p&aacute;gina nombra agencias y tel&eacute;fonos directamente en vez de apuntar a una regla de coordinaci&oacute;n que el lector encontrar&iacute;a ahora vac&iacute;a.</p>
+
+  <h2 id="spanish">Sobre las dos versiones</h2>
+  <p>La p&aacute;gina en ingl&eacute;s y esta son iguales en rango: las mismas respuestas, las mismas fuentes, la misma columna C. El enlace entre ambas est&aacute; arriba del umbral y no escondido en el pie, porque una p&aacute;gina cuyos lectores incluyen a personas que trabajan en espa&ntilde;ol y leen ingl&eacute;s legal con dificultad no deber&iacute;a hacer que el segundo idioma cueste m&aacute;s encontrar que el primero.</p>
+  <p>La ley respalda esa intuici&oacute;n. La ley del trabajador agr&iacute;cola exige la informaci&oacute;n &ldquo;en ingl&eacute;s o, seg&uacute;n sea necesario y razonable, en espa&ntilde;ol u otro idioma com&uacute;n entre los trabajadores agr&iacute;colas migrantes o de temporada que no dominen el ingl&eacute;s&rdquo;<span class="fn" data-ref="r11">11</span>, y el contrato H&#8209;2A debe estar en un idioma que el trabajador entienda<span class="fn" data-ref="r1">1</span>. Una finca cuya cuadrilla lee espa&ntilde;ol y cuya p&aacute;gina de contrataci&oacute;n est&aacute; solo en ingl&eacute;s ya se qued&oacute; atr&aacute;s de su propio papeleo.</p>
+  <p>Los t&iacute;tulos de los documentos en la columna del medio se dejaron en ingl&eacute;s a prop&oacute;sito: es lo que el lector va a encontrar cuando siga el enlace, y cambiarlos har&iacute;a m&aacute;s dif&iacute;cil reconocer el documento. La vista previa y el motivo de la cita s&iacute; est&aacute;n en espa&ntilde;ol.</p>
+  <p>La traducci&oacute;n es asistida por computadora y revisada, y vale decirlo en voz alta: no la ha revisado un traductor certificado, y nada en ninguna de las dos p&aacute;ginas es asesor&iacute;a legal.</p>
+
+  <h2 id="keeper">Qui&eacute;n mantiene esta p&aacute;gina</h2>
+  <p>La finca no construye p&aacute;ginas web y no tendr&iacute;a por qu&eacute; hacerlo. Detr&aacute;s de esta demostraci&oacute;n, los cap&iacute;tulos del condado de Future Farmers of America &mdash; Chief Washakie FFA en Worland High School y Ten Sleep FFA &mdash; son los encargados que se esperan: llevar p&aacute;ginas como esta a las fincas, y traer de vuelta a cada p&aacute;gina las novedades de su finca. Todav&iacute;a no se sabe si les interesar&aacute;.</p>
+  <p>El programa piloto que pagar&iacute;a la primera docena de p&aacute;ginas como esta se propone en washakie&#8209;ai.online.</p>
+
+  <h2 id="about">Sobre esta p&aacute;gina</h2>
+  <p>Est&aacute; hecha en el formato Tres Columnas: primero las respuestas claras, cada fuente con vista previa en el medio, el detalle al final. Son unos cuantos archivos sencillos que la finca posee por completo &mdash; sin cuota mensual, sin cuenta para quien la lea, sin nada que mantener salvo las palabras. Funciona en un tel&eacute;fono dentro de la camioneta y se imprime bien para una mesa de cocina o un tablero de avisos.</p>
+  <div class="note"><strong>Nada aqu&iacute; es asesor&iacute;a legal.</strong> Es una lectura clara de leyes p&uacute;blicas con todas las fuentes a la vista, escrita para que un trabajador pueda llevarle la cita a alguien que s&iacute; pueda actuar. Donde la ley no est&aacute; resuelta, esta p&aacute;gina dice que no est&aacute; resuelta en vez de escoger una respuesta.</div>
+
+  <h2 id="wrong">Qu&eacute; sali&oacute; mal</h2>
+  <p>El formato pide que cada p&aacute;gina registre al menos una cosa que sali&oacute; mal. Aqu&iacute; est&aacute;, y tiene que ver con el m&eacute;todo de esta misma p&aacute;gina.</p>
+  <ul>
+    <li><b>El primer borrador de la respuesta sobre el pago llevaba una cifra en d&oacute;lares.</b> Era un salario de efecto adverso, cuidadosamente documentado, y estaba mal por tres razones a la vez: era anterior al aviso de tarifas de agosto de 2026, era una sola cifra estatal en un sistema que hab&iacute;a dejado de funcionar as&iacute; en 2023, y el m&eacute;todo que la produjo hab&iacute;a sido declarado ilegal cinco semanas antes de que se escribiera esta p&aacute;gina. Las tres se detectaron al comprobar, no al redactar. La respuesta ahora no lleva ning&uacute;n n&uacute;mero y manda al lector a donde la tarifa vive de verdad &mdash; lo cual resulta ser una mejor p&aacute;gina que la que llevaba la cifra, para todos los lectores y en todas las temporadas que vengan.</li>
+    <li><b>Un error cercano, relacionado.</b> Se iba a incluir una oficina de servicios para trabajadores agr&iacute;colas cercana, con su direcci&oacute;n y tel&eacute;fono. Result&oacute; que el dato ven&iacute;a de una p&aacute;gina con derechos de autor de 2022 y de una tabla federal de financiamiento de 2019. Publicar un tel&eacute;fono sin verificar para un trabajador en apuros ser&iacute;a la peor falla posible de esta p&aacute;gina, as&iacute; que la oficina no aparece hasta que alguien la haya llamado.</li>
+  </ul>
+</section>
+
+</main>
+</div>
+
+<footer>
+  Cottonwood Draw Farms &middot; una finca inventada, para una demostraci&oacute;n<br>
+  Condado de Washakie &middot; Wyoming &middot; <a href="index.html" lang="en" hreflang="en" rel="alternate">this page in English</a><br>
+  Nada aqu&iacute; es asesor&iacute;a legal. Cada afirmaci&oacute;n legal est&aacute; documentada en la columna del medio.<br>
+  Sin anal&iacute;ticas, sin rastreadores, sin cookies. Esta p&aacute;gina no guarda ni almacena nada de quien la lee.<br>
+  &copy; 2026 Walter Wilkinson &middot; c&oacute;digo MIT &middot; <a href="../../legal.html">texto reservado</a>
+</footer>
+<nav class="uplevel" aria-label="One level up">
+  <a href="https://washakie-ai.online/">
+    <span class="uplabel">&uarr; Un nivel arriba</span>
+    <span class="upname">washakie-ai.online</span>
+    <span class="upcap">una propuesta de $10,000 para IA comunitaria en el condado de Washakie</span>
+  </a>
+</nav>
+<div class="endmark">·</div>
+
+<script>
+(function(){
+  var tabs = [].slice.call(document.querySelectorAll('[role="tab"]'));
+  var cols = { tA:'cA', tB:'cB', tC:'cC' };
+  var wide = function(){ return window.matchMedia('(min-width:1101px)').matches; };
+  function select(id){
+    tabs.forEach(function(t){
+      var on = t.id === id;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      var c = document.getElementById(cols[t.id]);
+      c.classList.toggle('active', on);
+      c.classList.toggle('dim', wide() ? !on : false);
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ select(t.id); });
+    t.addEventListener('keydown', function(e){
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var n = tabs[(i + d + tabs.length) % tabs.length];
+      n.focus(); select(n.id);
+    });
+  });
+  window.addEventListener('resize', function(){
+    var cur = tabs.filter(function(t){ return t.getAttribute('aria-selected') === 'true'; })[0];
+    if (cur) select(cur.id);
+  });
+  select('tA');
+
+  // A column is its own button: a click in a dimmed column (or tabbing into it) makes it the
+  // active one, exactly as its A/B/C button would. Capture phase, so a marker or card that
+  // sends the reader to another column still has the last word.
+  Object.keys(cols).forEach(function(tid){
+    var c = document.getElementById(cols[tid]);
+    var take = function(){ if (!c.classList.contains('active')) select(tid); };
+    c.addEventListener('click', take, true);
+    c.addEventListener('focusin', take);
+  });
+
+  // footnote markers -> reference card
+  document.querySelectorAll('.fn').forEach(function(f){
+    f.addEventListener('click', function(){
+      var el = document.getElementById(f.dataset.ref);
+      if (!el) return;
+      if (window.threeColReveal) window.threeColReveal(el);
+      select('tB');
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      el.classList.add('flash');
+      setTimeout(function(){ el.classList.remove('flash'); }, 1600);
+    });
+  });
+
+  // internal link cards -> open the passage they point at, in its own column
+  function openPassage(id){
+    var d = document.getElementById(id);
+    if (!d) return false;
+    if (window.threeColReveal) window.threeColReveal(d);
+    var col = d.closest('.col');
+    if (col) {
+      var tab = tabs.filter(function(t){ return cols[t.id] === col.id; })[0];
+      if (tab) select(tab.id);
+    }
+    if (d.tagName === 'DETAILS') d.open = true;
+    d.scrollIntoView({behavior:'smooth', block:'start'});
+    d.classList.add('flash');
+    setTimeout(function(){ d.classList.remove('flash'); }, 1600);
+    return true;
+  }
+  document.querySelectorAll('.bcard[data-open]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if (openPassage(a.dataset.open)) e.preventDefault();
+    });
+  });
+
+  document.getElementById('pdf').addEventListener('click', function(){ window.print(); });
+  // print: open every folded answer first, and fold them again after, so paper misses nothing
+  var unfolded = [];
+  window.addEventListener('beforeprint', function(){
+    var closed = [].filter.call(document.querySelectorAll('details'), function(d){ return !d.open; });
+    closed.forEach(function(d){ d.open = true; });
+    unfolded = unfolded.concat(closed);
+  });
+  window.addEventListener('afterprint', function(){
+    unfolded.forEach(function(d){ d.open = false; });
+    unfolded = [];
+  });
+  var th = document.getElementById('theme');
+  th.addEventListener('click', function(){
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+    th.textContent = dark ? 'Dark' : 'Light';
+  });
+
+  // link health: same-origin status file only. No file, no claim.
+  fetch('links.json', {cache:'no-store'}).then(function(r){
+    if (!r.ok) throw 0; return r.json();
+  }).then(function(d){
+    var dead = d.dead || {}, any = false;
+    Object.keys(dead).forEach(function(id){
+      var card = document.getElementById(id);
+      if (!card) return;
+      var a = card.querySelector('.rlink');
+      if (!a) return;
+      a.classList.add('broken');
+      a.removeAttribute('href');
+      a.setAttribute('aria-disabled','true');
+      any = true;
+    });
+    if (any) {
+      var n = document.getElementById('deadnote');
+      var lines = Object.keys(dead).map(function(id){
+        var t = document.getElementById(id).querySelector('.rtitle').textContent;
+        return '&ldquo;' + t + '&rdquo; — unreachable as of ' + dead[id];
+      });
+      n.innerHTML = '<b>A note on the struck-through links.</b> ' +
+        'These sources were live when this report was written and are not now. ' +
+        'They are shown rather than removed, so that what was cited stays visible.<br><br>' +
+        lines.join('<br>') + '<br><br>Last checked ' + (d.checked || 'unknown') + '.';
+      n.hidden = false;
+    }
+  }).catch(function(){ /* no status file: say nothing */ });
+})();
+</script>
+<script src="phone-view.js" defer></script>
+<script src="top-button.js" defer></script>
+<script src="back-link.js" defer></script>
+</body>
+</html>
