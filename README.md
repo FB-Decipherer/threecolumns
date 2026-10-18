@@ -15,7 +15,7 @@ document. And where one column holds more than any column can — an entire muni
 say — it is given its own page, as at worland-dog-law.online. Stacked, paged or side by
 side, it is the same three.
 
-Live: **https://threecolumns.online**
+Live: **https://gyro-sites.online**
 
 ## Why
 

@@ -1,0 +1,330 @@
+<title>GYRO Format Definition</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600&family=Source+Code+Pro:wght@400;600&display=swap">
+<style>
+/* layout: one reading column; numbered requirement tables grouped by part of the page; the three column colors used only as keys */
+:root {
+  --paper:#fcfaf5; --ink:#1e1b16; --muted:#5b554b; --rule:#d6cfbf; --card:#f3eee3;
+  --col-a:#4c7a4e; --col-b:#a9821f; --col-c:#b4372c; --col-o:#d2691e; --must:#1e1b16;
+  --display:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  --mono:"Source Code Pro", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper:#15130f; --ink:#f2ede3; --muted:#b3ab9c; --rule:#3a352c; --card:#1f1c17;
+  --col-a:#7fa981; --col-b:#d9b45c; --col-c:#d66055; --col-o:#e8924a; --must:#f2ede3; color-scheme:dark } }
+:root[data-theme="dark"] {
+  --paper:#15130f; --ink:#f2ede3; --muted:#b3ab9c; --rule:#3a352c; --card:#1f1c17;
+  --col-a:#7fa981; --col-b:#d9b45c; --col-c:#d66055; --col-o:#e8924a; --must:#f2ede3; color-scheme:dark }
+
+body { background:var(--paper); color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:28px 64px; }
+main { max-width:860px; margin:0 auto; display:grid; gap:34px; }
+h1 { font-family:var(--display); font-weight:700; font-size:2.1rem; line-height:1.15; margin:0; text-wrap:balance; }
+h2 { font-family:var(--display); font-weight:600; font-size:1.45rem; margin:0 0 10px; text-wrap:balance; }
+h3 { font-family:var(--body); font-weight:600; font-size:1rem; letter-spacing:.06em; text-transform:uppercase; margin:20px 0 8px; color:var(--muted); }
+p { margin:0 0 12px; max-width:68ch; }
+.meta { font-family:var(--mono); font-size:.85rem; color:var(--muted); margin-top:8px; }
+.caption { font-size:22px; line-height:1.4; color:var(--muted); }
+.defn { font-family:var(--display); font-size:1.3rem; line-height:1.5; border-top:3px double var(--ink); border-bottom:3px double var(--ink); padding-block:16px; margin:0; }
+section { display:grid; gap:4px; }
+.keys { display:flex; flex-wrap:wrap; gap:10px 22px; margin:6px 0 4px; }
+.key { display:flex; align-items:center; gap:8px; font-weight:600; }
+.sw { width:14px; height:14px; border:1.5px solid var(--ink); }
+.sw.a { background:var(--col-a) } .sw.b { background:var(--col-b) } .sw.c { background:var(--col-c) } .sw.o { background:var(--col-o) }
+.tw { overflow-x:auto; }
+table { border-collapse:collapse; width:100%; font-size:.97rem; }
+thead th { text-align:left; font-weight:600; font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); border-bottom:1.5px solid var(--ink); padding:6px 8px; }
+td { border-bottom:1px solid var(--rule); padding:8px; vertical-align:top; }
+td.id { font-family:var(--mono); font-size:.88rem; white-space:nowrap; width:3.6em; }
+td.lv { font-family:var(--mono); font-size:.8rem; font-weight:600; white-space:nowrap; width:5.2em; }
+td.lv.must { color:var(--must) } td.lv.should, td.lv.may { color:var(--muted); font-weight:400 }
+code, .v { font-family:var(--mono); font-size:.88em; }
+.v { background:var(--card); padding:1px 5px; border:1px solid var(--rule); }
+.bar-a { border-left:4px solid var(--col-a); padding-left:12px; }
+.bar-b { border-left:4px solid var(--col-b); padding-left:12px; }
+.bar-c { border-left:4px solid var(--col-c); padding-left:12px; }
+.two { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.two > div { min-width:0; }
+.box { border:1.5px dashed var(--ink); padding:12px 16px; }
+/* the index demo deliberately ignores the theme: white ground, black type, as the rule requires */
+.demo { background:#fff; color:#000; border:1px solid #000; padding:22px 20px; font-family:var(--body); display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; }
+.demo .t { flex-basis:100%; font-family:var(--display); font-size:1.5rem; font-weight:700; margin:0 0 4px; }
+.demo label { display:inline-flex; align-items:center; gap:8px; font-size:1.05rem; cursor:pointer; }
+.demo input { width:18px; height:18px; accent-color:#000; margin:0; }
+.demo .part { flex-basis:100%; display:none; border:1px dashed #000; padding:10px 12px; font-size:.95rem; }
+.demo #d-intro:checked ~ .p-intro, .demo #d-info:checked ~ .p-info { display:block; }
+.demo .thr { flex-basis:100%; display:none; border-top:3px double #000; }
+.demo #d-intro:checked ~ #d-info:checked ~ .thr { display:block; }
+.demo input:focus-visible { outline:2px solid #000; outline-offset:2px; }
+@media print { .demo { break-inside:avoid; } .demo .part { display:block; } .demo .thr { display:block; } }
+ul { margin:0; padding-left:1.2em; } li { margin:0 0 4px; }
+ol.issues { margin:0; padding-left:1.4em; } ol.issues li { margin-bottom:10px; }
+footer { border-top:1px solid var(--rule); padding-top:14px; font-size:.9rem; color:var(--muted); }
+@media (max-width:640px) { .two { grid-template-columns:1fr } h1 { font-size:1.7rem } td.lv { width:auto } }
+@media print {
+  :root { --paper:#fff; --ink:#000; --muted:#333; --rule:#999; --card:#fff; }
+  body { padding:0; font-size:11pt; }
+  main, section { display:block; max-width:none; }
+  main > * { margin-bottom:16px; }
+  .sw, td, .bar-a, .bar-b, .bar-c { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  tr, .box, .defn { break-inside:avoid; }
+  thead { display:table-header-group; }
+  h2, h3 { break-after:avoid; }
+  section { break-inside:auto; }
+  .caption { font-size:13pt; }
+}
+</style>
+
+<main>
+<header>
+  <h1>GYRO Format Definition</h1>
+  <p class="meta">Version 0.21, working draft · 17 October 2026 · Walter Wilkinson · Worland · Washakie County · Wyoming</p>
+  <p class="caption">What a page has to do to be a GYRO page, what it may do, and what its author brings. Compiled from gyro-sites.online, the README and the project log; where those disagree, the disagreement is listed at the end rather than settled here.</p>
+</header>
+
+<p class="defn">GYRO is a page format for a single-topic website. Every page presents its topic at three depths, in three columns: A, plain answers; B, the sources; C, how it works. Every source sits in the middle column as a previewed card, and everything below a marked threshold follows the same standard on every GYRO site.</p>
+
+<section>
+  <h2>How to read this</h2>
+  <p><b>MUST</b> marks what makes a page GYRO; a page missing one is not a GYRO page. <b>SHOULD</b> is the default, departed from only for a reason the page states in column C. <b>MAY</b> is optional. Each rule has a number so a site can be audited against it line by line.</p>
+  <p><b>The name.</b> GYRO, always in capitals, is read off the color scheme: <b>G</b>reen, <b>Y</b>ellow, <b>R</b>ed for the three columns readers see, and <b>O</b>range for the admin page, which only the builder ever sees.</p>
+  <p>The class is gyro-sites.online. Every other site is an instance. A rule that proves itself on an instance is written back into the class and the template, so the next site starts with it.</p>
+  <div class="keys">
+    <span class="key"><span class="sw a"></span>A · Plain answers</span>
+    <span class="key"><span class="sw b"></span>B · Sources</span>
+    <span class="key"><span class="sw c"></span>C · How it works</span>
+    <span class="key"><span class="sw o"></span>Admin page, builder only</span>
+  </div>
+</section>
+
+<section>
+  <h2>0 · The index page</h2>
+  <p>The threshold (rule 1.4) divides every GYRO page into two named parts: <b>Intro</b> above it, <b>Info</b> below it. The front page, <code>index.html</code>, is built from that division.</p>
+  <div class="demo" role="group" aria-label="Working example of a GYRO index page">
+    <p class="t">East Bench Farm</p>
+    <input type="checkbox" id="d-intro"><label for="d-intro">Intro</label>
+    <input type="checkbox" id="d-info"><label for="d-info">Info</label>
+    <div class="part p-intro"><b>Intro</b> · what this site's subject needs: name, standfirst, picture.</div>
+    <div class="thr"></div>
+    <div class="part p-info"><b>Info</b> · the GYRO standard: control strip, then columns A, B and C.</div>
+  </div>
+  <p class="caption">Working example. Tick either box, or both. No script runs here.</p>
+  <div class="tw"><table>
+    <thead><tr><th>No.</th><th>Level</th><th>Rule</th></tr></thead>
+    <tbody>
+    <tr><td class="id">0.1</td><td class="lv must">MUST</td><td>The index page shows the site's title, exactly two checkboxes and the site's picture as a thumbnail, nothing else. The checkboxes are labeled <span class="v">Intro</span> then <span class="v">Info</span>, in that order. The thumbnail opens the picture full size; it steps aside when Intro is on, since the same picture heads Intro.</td></tr>
+    <tr><td class="id">0.2</td><td class="lv must">MUST</td><td>Starkly, jarringly austere: white background, black type, and no Dark mode on <code>index.html</code>, whatever the reader's system setting. Dark mode belongs everywhere in Info (rules 7.4 and 9.2).</td></tr>
+    <tr><td class="id">0.3</td><td class="lv must">MUST</td><td>Checking Intro shows everything above the threshold; unchecking it hides it. Info does the same for everything below. The two are independent, and both may show at once.</td></tr>
+    <tr><td class="id">0.4</td><td class="lv should">SHOULD</td><td>Both boxes are unchecked on load, so the first view is the title and two words.</td></tr>
+    <tr><td class="id">0.5</td><td class="lv must">MUST</td><td>The checkboxes work with scripts off. They are plain CSS checkboxes, as on <code>masthead-system.html</code>.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>1 · The shape</h2>
+  <div class="tw"><table>
+    <thead><tr><th>No.</th><th>Level</th><th>Rule</th></tr></thead>
+    <tbody>
+    <tr><td class="id">1.1</td><td class="lv must">MUST</td><td>One topic per site. A topic may run as a standing page or as a running series, never as a mixed bag.</td></tr>
+    <tr><td class="id">1.2</td><td class="lv must">MUST</td><td>Three columns at three depths, always in the order A, B, C: A plain answers for the newcomer; B every source, previewed, for the checker; C full detail for the specialist. A is always leftmost and C always rightmost.</td></tr>
+    <tr><td class="id">1.3</td><td class="lv must">MUST</td><td>The columns are defined by depth, not by geometry. They are side by side where they fit, stacked on a phone, and given their own pages where one column holds more than a column can (as at worland-dog-law.online). Stacked, paged or side by side, they are still called columns.</td></tr>
+    <tr><td class="id">1.4</td><td class="lv must">MUST</td><td>The threshold divides the page. Above it is <b>Intro</b>: whatever the subject needs, such as name, standfirst, picture. Below it is <b>Info</b>: the GYRO standard. It is drawn as a double rule, the only doubled line in the family, with the GYRO mark knocking a gap in it and the caption, in italics, <span class="v"><i>Below is standard on every GYRO site</i></span>. Standard, not identical: the structure is the same everywhere, the content is each site's own.</td></tr>
+    <tr><td class="id">1.5</td><td class="lv must">MUST</td><td>Every color, heading, caption and control below the threshold is the same on every GYRO site. A reader who has used one site already knows where to look on the next: <i>the same colors, the same places, on every site</i>. Stacked on a phone, each column keeps a 6px stripe of its color down its left edge, often the only cue to where the reader is.</td></tr>
+    <tr><td class="id">1.5a</td><td class="lv must">MUST</td><td>Position carries meaning. Every standard element has a standard place, and the page reads from the plainest point, the top of column A, to the most technical, the foot of column C.</td></tr>
+    <tr><td class="id">1.6</td><td class="lv should">SHOULD</td><td>A single page. Paged form is used only when a column outgrows a column (rule 1.3).</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="bar-a">
+  <h2>2 · Column A, plain answers</h2>
+  <div class="tw"><table>
+    <thead><tr><th>No.</th><th>Level</th><th>Rule</th></tr></thead>
+    <tbody>
+    <tr><td class="id">2.1</td><td class="lv must">MUST</td><td>Written for a reader who knows nothing about the subject: what is this, what does it cost, why should I care.</td></tr>
+    <tr><td class="id">2.2</td><td class="lv must">MUST</td><td>Each answer is a native folding element under a question, folded on load.</td></tr>
+    <tr><td class="id">2.3</td><td class="lv should">SHOULD</td><td>The sentence that matters sits in the question line or the first line of the answer, because a reader arriving from a search lands on a closed fold.</td></tr>
+    <tr><td class="id">2.3a</td><td class="lv must">MUST</td><td>Each answer opens with its plain answer in bold, one sentence, so a reader who stops there has it.</td></tr>
+    <tr><td class="id">2.3b</td><td class="lv must">MUST</td><td>Point of view follows the reader. A client's own site speaks as the client to its customers (<i>we</i>, <i>ours</i>). The class site, the handout and any pitch speak to the prospective owner (<i>you</i>, <i>yours</i>). The same answer, such as why a website as well as Facebook, is written once in each voice, never mixed.</td></tr>
+    <tr><td class="id">2.4</td><td class="lv may">MAY</td><td>The first answer may be open on load, as on the tree-service sample, provided column C says so and why.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="bar-b">
+  <h2>3 · Column B, sources</h2>
+  <h3>The two fixed blocks</h3>
+  <div class="tw"><table>
+    <thead><tr><th>No.</th><th>Level</th><th>Rule</th></tr></thead>
+    <tbody>
+    <tr><td class="id">3.1</td><td class="lv must">MUST</td><td>Column B opens with two blocks built alike (heading, caption line, then content), one above the other in one column, never side by side.</td></tr>
+    <tr><td class="id">3.2</td><td class="lv must">MUST</td><td><b>Internal links</b>, captioned <span class="v">The two most recent content changes.</span>: two cards, newest first, each a date and what changed, linked to the place on the page where it changed.</td></tr>
+    <tr><td class="id">3.3</td><td class="lv must">MUST</td><td><b>External links</b>, below it, captioned <span class="v">Every reference to some other website.</span>: one source card for every other site the page mentions. The headings and both captions are word for word the same on every site.</td></tr>
+    </tbody>
+  </table></div>
+  <h3>The source card</h3>
+  <div class="tw"><table>
+    <thead><tr><th>No.</th><th>Level</th><th>Rule</th></tr></thead>
+    <tbody>
+    <tr><td class="id">3.4</td><td class="lv must">MUST</td><td>Six parts, in this order, every time: <b>1</b> number and kind · <b>2</b> title · <b>3</b> provenance (who made it, when, under what license) · <b>4</b> preview (what you would find there) · <b>5</b> why it is cited (what it is doing on this page) · <b>6</b> the link.</td></tr>
+    <tr><td class="id">3.5</td><td class="lv must">MUST</td><td>The link is last, and only last. A Back button may appear below it; that is a way back, not something the card says.</td></tr>
+    <tr><td class="id">3.6</td><td class="lv must">MUST</td><td>Part 5 is written by the citer and says what the source actually supports. Part 4 says what is really there, not the publisher's own blurb.</td></tr>
+    <tr><td class="id">3.7</td><td class="lv must">MUST</td><td>One card per source. Citing it again costs another numeral, not another card.</td></tr>
+    <tr><td class="id">3.8</td><td class="lv may">MAY</td><td>Part 4 may speak the source's own medium: a baked thumbnail for an image or scan, a first page and page count for a PDF, row and column counts for a dataset. Parts 1, 2, 3, 5 and 6 never change. A thumbnail is used only when part 3 shows reproduction is allowed, and is stored in the page, never fetched at read time.</td></tr>
+    <tr><td class="id">3.9</td><td class="lv must">MUST</td><td>A source that has died is marked, not removed: its link is disabled and struck through, with a dated note at the foot of column B.</td></tr>
+    <tr><td class="id">3.10</td><td class="lv must">MUST</td><td>Link status is read from a same-site file, <code>links.json</code>, written by whoever ran the check. No file means no claim, never a false alarm. The page never tests other sites from the reader's browser.</td></tr>
+    <tr><td class="id">3.11</td><td class="lv must">MUST</td><td>A source that cannot be fetched cannot be previewed, so it cannot be cited. It may still be linked as a plain name.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="bar-c">
+  <h2>4 · Column C, how it works</h2>
+  <div class="tw"><table>
+    <thead><tr><th>No.</th><th>Level</th><th>Rule</th></tr></thead>
+    <tbody>
+    <tr><td class="id">4.1</td><td class="lv must">MUST</td><td>Opens with the lede, word for word: <span class="v">Prior know-how is assumed here, and the items become more technical toward the bottom.</span></td></tr>
+    <tr><td class="id">4.2</td><td class="lv must">MUST</td><td>Sections run from least to most technical.</td></tr>
+    <tr><td class="id">4.3</td><td class="lv must">MUST</td><td>The last thing in column C is the <b>Technical Colophon</b>: the essentials of how the page is built and run (format version, file, scripts, fonts, hosting, TLS, domain and DNS, publishing tools, what built and checked it, with versions, what is collected, license, last change), listed without explanation and without defining its terms. Instead each term is underlined as a link to its Wikipedia article, the one place in the format where a link goes straight out rather than to a source card. It is the polar opposite of the first answer in column A.</td></tr>
+    <tr><td class="id">4.4</td><td class="lv should">SHOULD</td><td>Describes what the page does rather than telling the reader what to do. Write <i>words are drafted here</i>, not <i>draft the words</i>.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>5 · Citation</h2>
+  <div class="tw"><table>
+    <thead><tr><th>No.</th><th>Level</th><th>Rule</th></tr></thead>
+    <tbody>
+    <tr><td class="id">5.1</td><td class="lv must">MUST</td><td>A claim is cited with a numeral: a small red number on a white disc that links to the card with the same number. Numerals appear only in columns A and C, never in the header. A name in the header may be a plain link.</td></tr>
+    <tr><td class="id">5.2</td><td class="lv must">MUST</td><td>Every reference names what it points at, never where it sits. No <i>ibid.</i>, no <i>see above</i>, because a page read out of order has no <i>above</i>.</td></tr>
+    <tr><td class="id">5.3</td><td class="lv must">MUST</td><td>Both directions are one click. A numeral brings its card into view and marks it; a Back button at the card's foot returns to the numeral, outlined in gold; the number on the card itself cycles through every place that cites it.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>6 · Transparency</h2>
+  <p>Each of these costs the author something. That cost is the only reason any of them is worth anything.</p>
+  <div class="tw"><table>
+    <thead><tr><th>No.</th><th>Level</th><th>Rule</th></tr></thead>
+    <tbody>
+    <tr><td class="id">6.1</td><td class="lv must">MUST</td><td>A defect, once found, is published, not quietly fixed first.</td></tr>
+    <tr><td class="id">6.2</td><td class="lv must">MUST</td><td>An argument that would help but cannot be checked is left out.</td></tr>
+    <tr><td class="id">6.3</td><td class="lv must">MUST</td><td>Checks are named, with their count, so the claim can be audited.</td></tr>
+    <tr><td class="id">6.4</td><td class="lv must">MUST</td><td>A sample says it is a sample, across the masthead, in a box that cannot be missed.</td></tr>
+    <tr><td class="id">6.5</td><td class="lv should">SHOULD</td><td>A chronicle, the dated record of every change and why, is linked from column B.</td></tr>
+    <tr><td class="id">6.6</td><td class="lv must">MUST</td><td>A feature that would fail toward a false positive is left out. The page would rather say nothing than say something untrue.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>7 · Renderings and controls</h2>
+  <div class="tw"><table>
+    <thead><tr><th>No.</th><th>Level</th><th>Rule</th></tr></thead>
+    <tbody>
+    <tr><td class="id">7.1</td><td class="lv must">MUST</td><td>One breakpoint. Above it, all three columns show, the two unselected ones dimmed and selectable by a click anywhere in them. Below it, one column at a time with A, B, C acting as tabs. There is no separate mobile site.</td></tr>
+    <tr><td class="id">7.2</td><td class="lv must">MUST</td><td>Printed, the page becomes one document in the order A, B, C, each column starting on a fresh page, every folded answer opened, controls and the masthead picture left out.</td></tr>
+    <tr><td class="id">7.3</td><td class="lv must">MUST</td><td>With scripts off, all three columns still render and read, on a phone and on a desktop.</td></tr>
+    <tr><td class="id">7.4</td><td class="lv must">MUST</td><td>The control strip carries the column tabs, a search box that searches this page only and indexes it at load, Save as PDF and Dark. A round Top button appears after about a screen of scrolling.</td></tr>
+    <tr><td class="id">7.5</td><td class="lv should">SHOULD</td><td>Phone view is hidden unless the address carries <code>?dev</code>. It is shown to every reader only where the layout is the subject, as on the class.</td></tr>
+    <tr><td class="id">7.6</td><td class="lv must">MUST</td><td>A real tab set for assistive technology, with spoken labels on the Top and Back buttons.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>8 · Construction</h2>
+  <div class="tw"><table>
+    <thead><tr><th>No.</th><th>Level</th><th>Rule</th></tr></thead>
+    <tbody>
+    <tr><td class="id">8.1</td><td class="lv must">MUST</td><td>Plain static files: one HTML page plus the shared scripts. No framework, no build step, no dependencies except web fonts with system fallbacks.</td></tr>
+    <tr><td class="id">8.2</td><td class="lv must">MUST</td><td>Nothing to attack: no database, login, forms, server code, plugins, cookies or analytics. The page stores nothing for its readers.</td></tr>
+    <tr><td class="id">8.3</td><td class="lv must">MUST</td><td>Each shared script is the identical file on every site. It is changed in the template first, then copied out. A page missing a script loses that one control and still works.</td></tr>
+    <tr><td class="id">8.4</td><td class="lv must">MUST</td><td>All internal links are relative, so the folder can move to any static host unchanged.</td></tr>
+    <tr><td class="id">8.5</td><td class="lv should">SHOULD</td><td>A page of 35–100 KB. Hosted on GitHub Pages under the subject's own domain, published by commit and push.</td></tr>
+    <tr><td class="id">8.6</td><td class="lv must">MUST</td><td>The code is permissively licensed (MIT) and the words are reserved to their author.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>9 · Typography and color</h2>
+  <div class="tw"><table>
+    <thead><tr><th>No.</th><th>Level</th><th>Rule</th></tr></thead>
+    <tbody>
+    <tr><td class="id">9.1</td><td class="lv must">MUST</td><td>Column colors, left to right like a traffic signal getting harder: A green, B yellow, C red. They are fixed for good, in line with international traffic signals, and the name GYRO depends on them. Color rides on the furniture only (keys, column rules, labels, numerals). Body text stays black, so a reader who cannot see color, or who prints, loses nothing.</td></tr>
+    <tr><td class="id">9.2</td><td class="lv must">MUST</td><td>Light and dark themes throughout Info, both defined from the same set of color tokens. Never on the austere index view (rule 0.2). Numerals stay red on a white disc in both.</td></tr>
+    <tr><td class="id">9.1a</td><td class="lv must">MUST</td><td>The meaning of the name appears once on every site, unobtrusively, in the footer beside the format's name: <i>(Green, Yellow, Red, and sometimes Orange)</i>. The four are the format's only colors, used the same way throughout.</td></tr>
+    <tr><td class="id">9.2a</td><td class="lv must">MUST</td><td>Orange is the color of the build. On a reader's page it appears exactly once: the footer link <span class="v">built by Auto-Gyro</span>, which leads to the public Auto-Gyro page explaining how a GYRO site is built. Everything else in orange belongs to the build pages; the working admin page itself stays unlinked.</td></tr>
+    <tr><td class="id">9.3</td><td class="lv should">SHOULD</td><td>Body 17 px, line height 1.62, about sixty characters to the line; figure captions 22 px.</td></tr>
+    <tr><td class="id">9.4</td><td class="lv must">MUST</td><td>American spelling throughout, except text quoted from a source.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>10 · Optional parts</h2>
+  <div class="tw"><table>
+    <thead><tr><th>No.</th><th>Level</th><th>Rule</th></tr></thead>
+    <tbody>
+    <tr><td class="id">10.1</td><td class="lv may">MAY</td><td><b>Running record.</b> The current issue lives at <code>/index.html</code> and a permanent dated copy at <code>/YYYY-MM-DD/index.html</code>. Dated copies are never edited again; a correction is a later issue. Each series gets its own folder.</td></tr>
+    <tr><td class="id">10.2</td><td class="lv may">MAY</td><td><b>Family.</b> An instance under another GYRO site ends, below the footer, with a card headed <span class="v">↑ One level up</span>, naming the site above in that site's own words.</td></tr>
+    <tr><td class="id">10.3</td><td class="lv may">MAY</td><td><b>The admin page (Page D).</b> An unlinked, noindex setup sheet, styled in orange, that writes blocks of text to paste into the file. It holds nothing and has no login. Normal readers never see it.</td></tr>
+    <tr><td class="id">10.4</td><td class="lv may">MAY</td><td><b>Archiving.</b> Pages sent to the Wayback Machine, success counted only when a capture dated today can be confirmed.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>11 · What arrives built, and what the author brings</h2>
+  <div class="two">
+    <div class="box">
+      <h3 style="margin-top:0">Arrives built, the same everywhere</h3>
+      <ul>
+        <li>The control strip: tabs, search, Save as PDF, Dark, Phone view</li>
+        <li>The threshold and its mark</li>
+        <li>Column heads, keys and colors</li>
+        <li>The source-card shape and its six-part order</li>
+        <li>The Internal links block and its fixed wording</li>
+        <li>Numerals and both ways back</li>
+        <li>The three renderings: wide, phone, print</li>
+        <li>Running-record conventions, favicon, share card, domain and hosting setup</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-top:0">What the author brings</h3>
+      <ul>
+        <li>A name</li>
+        <li>A one-paragraph standfirst</li>
+        <li>The answers in A</li>
+        <li>Which sources go in B, and why each is cited</li>
+        <li>The sections in C, including what went wrong</li>
+        <li>A picture</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>12 · Disagreements found while compiling</h2>
+  <p>The sources this definition was drawn from contradict each other in these places. Each needs a decision; the rule above follows the live class page unless noted.</p>
+  <ol class="issues">
+    <li><b>How many shared scripts.</b> Column C says four (phone-view, top-button, back-link, search); the README speaks of three; <code>cite-back.js</code>, added 14 October, makes five. Rule 8.1 is worded so it does not depend on the count.</li>
+    <li><b>How many checks.</b> The README says 60, the team-of-one table says 66, the Quality assurance section says 68. Rule 6.3 requires that the count be stated, so the page currently fails its own rule until these agree.</li>
+    <li><b>Internal links: one card or two, or three.</b> The 14 September decision was one card. Column C now says two. Column A says two cards plus a third that links the chronicle. Rule 3.2 follows column C; whether the chronicle card belongs inside the block is open.</li>
+    <li><b>The license defect.</b> Column A says the license arrangement on Page F "gives away more than it should" and calls it a live defect; the project log records the MIT defect closed on 26 September, and the footer now reads <i>code MIT · words reserved</i>. If it is closed, column A is out of date.</li>
+    <li><b>Column B's name.</b> The class page labels it <i>Sources</i>; the 26 September color note calls it <i>References</i>. Rule 1.5 needs one word.</li>
+    <li><b>The rename is not yet on the sites.</b> Every live page, the threshold caption, the README, the folders and gyro-sites.online itself still say 3Col or Three Columns. This document uses GYRO throughout, including in quoted fixed wording such as the threshold caption, which is now ahead of the pages it governs.</li>
+    <li><b>Starting state of the index.</b> Rule 0.4 assumes both boxes start unchecked. If either should start checked, say which.</li>
+    <li><b>Scripts off and printing.</b> Rule 7.3 says all three columns render with scripts off, and rule 7.2 says print carries everything. With Info unchecked, neither holds unless print and the scripts-off view ignore the boxes. This draft has print show both parts.</li>
+    <li><b>Is 1.6 a rule at all.</b> "Usually it is a single page" is stated as a fact about instances, not as a requirement. It is listed here as SHOULD; it could as easily be dropped.</li>
+  </ol>
+</section>
+
+<footer>GYRO Format Definition · version 0.21 · 17 October 2026 · drawn from gyro-sites.online, its README and the Three Columns project log. Not yet published on any site.</footer>
+</main>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>East Bench Pivot Farm · Hay and Beef, East of Worland (a demonstration)</title>
-<meta name="description" content="A demonstration of the Three Columns format for a Washakie County farm: the farm is invented; the county, the crops, the water and the rules are real, and sourced.">
+<meta name="description" content="A demonstration of the GYRO format for a Washakie County farm: the farm is invented; the county, the crops, the water and the rules are real, and sourced.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -13,7 +13,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <noscript><style>
 /* No JavaScript: nothing can switch columns, so every column still switched on
    shows, undimmed, on every screen. The three display checkboxes below the
@@ -80,7 +80,7 @@ main{display:grid;gap:0 34px;padding:30px 0 10px;
 .col + .col{border-left:1px solid var(--rule);padding-left:34px;}
 .colhead{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
   text-transform:uppercase;color:var(--ink-mid);padding-bottom:9px;
-  border-bottom:2px solid var(--ink);margin-bottom:20px;
+  border-bottom:4px solid var(--ink);margin-bottom:20px;
   position:sticky;top:52px;background:var(--paper);}
 .colhead b{color:var(--gold);font-weight:700;
   display:inline-block;border:1px solid var(--rule);border-radius:6px;
@@ -151,7 +151,7 @@ details .body{padding:0 0 14px 1.5em;}
   font-size:14px;color:var(--ink-mid);}
 
 /* ---- Column B links block: Internal links (most recent content change), then External links.
-        Same headings and captions on every Three Columns site, so a reader knows where to look. ---- */
+        Same headings and captions on every GYRO site, so a reader knows where to look. ---- */
 .colbsh{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.16em;
   text-transform:uppercase;color:var(--ink-mid);margin:26px 0 0;}
 .colbsh:first-of-type{margin-top:18px;}
@@ -254,8 +254,8 @@ header{position:relative;}
 .threshold .mark{width:max-content;}  /* the mark is absolutely positioned, so it cannot size itself from the icon:
      without this its box is the padding alone and the icon overflows to one side,
      leaving the gap centered on the rule but the icon not centered in the gap. */  /* explicit, or the page's own svg rules can shrink it to nothing in the flex row */
-.threshold .cap{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
-  font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+.threshold .cap{font-family:"Source Serif 4",Georgia,serif; font-style:italic;
+  font-size:16px; letter-spacing:0; text-transform:none;
   color:var(--ink-mid); margin:15px auto 0; max-width:30rem; line-height:1.5}
 
 .expand{margin:0 0 6px}
@@ -344,7 +344,7 @@ body:has(#ck-c:not(:checked)) #cC:has(:target){display:block!important;}
   --col-a:#59925d; --col-b:#D9B45C; --col-c:#d66055;}}
 
 /* the spine: each column's own left edge, in its own color */
-#cA,#cB,#cC{border-left-style:solid; border-left-width:2px; padding-left:30px;}
+#cA,#cB,#cC{border-left-style:solid; border-left-width:4px; padding-left:30px;}
 #cA{border-left-color:var(--col-a);}
 /* inside a column, anything that was accent-colored takes that column's color:
    the source cards, the + before an answer, the arrow before a link, hovers, focus rings. */
@@ -484,10 +484,114 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
   .threshold .mark svg rect:nth-of-type(2){fill:#9a9a9a;}
   .threshold .mark svg rect:nth-of-type(3){fill:#6f6f6f;}
 }
+
+/* ===================== GYRO: Intro, Info, and the austere index ===================== */
+.gyro-in{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none;}
+.gyro-index{background:#fff;color:#000;border-bottom:1px solid #000;
+  padding:28px max(16px,env(safe-area-inset-right,0px)) 26px max(16px,env(safe-area-inset-left,0px));
+  font-family:"Source Serif 4",Georgia,serif;}
+.gyro-ix{max-width:1508px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px 28px;flex-wrap:wrap;}
+.gyro-ixtext{min-width:0;flex:1 1 16rem;}
+.gyro-thumb{display:block;flex:0 0 auto;width:clamp(150px,18vw,220px);line-height:0;border:1px solid #000;}
+.gyro-thumb img{display:block;width:100%;height:auto;}
+.gyro-thumb:focus-visible,.gyro-thumb:hover{outline:2px solid #000;outline-offset:3px;}
+/* the same picture heads Intro, so with Intro on the index drops its copy */
+#g-intro:checked ~ .gyro-index .gyro-thumb{display:none;}
+@media (max-width:640px){.gyro-thumb{width:100%;max-width:340px;}}
+@media print{.gyro-thumb{display:none;}}
+.gyro-title{margin:0;font-size:clamp(26px,3.6vw,38px);font-weight:600;line-height:1.15;color:#000;}
+.gyro-boxes{margin:16px 0 0;display:flex;gap:28px;flex-wrap:wrap;}
+.gyro-boxes label{display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+  font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:16px;letter-spacing:.04em;color:#000;}
+.gbox{width:20px;height:20px;border:2px solid #000;background:#fff;display:inline-block;position:relative;flex:none;}
+#g-intro:checked ~ .gyro-index label[for="g-intro"] .gbox::after,
+#g-info:checked ~ .gyro-index label[for="g-info"] .gbox::after{
+  content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;
+  border:solid #000;border-width:0 2.5px 2.5px 0;transform:rotate(45deg);}
+#g-intro:focus-visible ~ .gyro-index label[for="g-intro"] .gbox,
+#g-info:focus-visible ~ .gyro-index label[for="g-info"] .gbox{outline:2px solid #000;outline-offset:3px;}
+
+.gyro-intro,.gyro-info{display:none;}
+#g-intro:checked ~ .gyro-intro{display:block;}
+#g-info:checked ~ .gyro-info{display:block;}
+/* the threshold divides Intro from Info, so it shows only when both are on the page */
+#g-intro:not(:checked) ~ .gyro-info .threshold{display:none;}
+/* the control strip sticks for the whole of Info, not just its own short block */
+.navwrap{position:sticky;top:0;z-index:20;background:var(--paper);}
+.navwrap nav{position:static;margin-top:0;}
+
+/* Dark belongs to Info. With Info off, the page cannot be dark, whatever was chosen. */
+:root:has(#g-info:not(:checked)){
+  --paper:#FCFAF5; --card:#F5F1E8; --ink:#1E1B16; --ink-mid:#4A443A;
+  --rule:#DCD5C6; --accent:#4C7A4E; --accentb:#B4372C; --gold:#8A6A15; --dead:#8A8177;
+  --col-a:#4C7A4E; --col-b:#D8AC45; --col-c:#B4372C;
+  --on-a:#FCFAF5; --on-b:#1E1B16; --on-c:#FCFAF5; color-scheme:light;}
+body:has(#g-info:not(:checked)){background:#fff;}
+
+/* paper carries everything, in order: the index line, Intro, then Info */
+@media print{
+  .gyro-intro,.gyro-info{display:block !important;}
+  #g-intro:not(:checked) ~ .gyro-info .threshold{display:block !important;}
+  .gyro-boxes{display:none;}
+  .navwrap{position:static;}
+}
+
+/* Technical Colophon: the last thing in column C, the polar opposite of the first answer in A */
+.colophon{display:grid;grid-template-columns:max-content 1fr;gap:4px 16px;margin:10px 0 0;
+  font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.5;color:var(--ink-mid);}
+.colophon dt{color:var(--ink);font-weight:500;}
+.colophon dd{margin:0;min-width:0;overflow-wrap:anywhere;}
+.colophon code{font-size:inherit;}
+.colophon a{color:inherit;border-bottom:0;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px;}
+.colophon a:hover{color:var(--ink);}
+@media (max-width:640px){.colophon{grid-template-columns:1fr;gap:0;}.colophon dd{margin-bottom:8px;}}
+
+.gyro-gloss{font-style:italic;}
+
+/* the one orange on a reader's page: the link to how the site was built */
+:root{--col-o:#b45309;}
+:root[data-theme="dark"]{--col-o:#f0913a;}
+footer a.autogyro{color:var(--col-o);border-bottom:1px solid var(--col-o);font-weight:600;}
+footer a.autogyro:hover,footer a.autogyro:focus-visible{border-bottom-width:2px;}
+@media print{footer a.autogyro{color:#000;border-bottom-color:#000;}}
+
+/* stacked (phone, small tablet): one column at a time, and the colored stripe down its left edge
+   is often the only cue to which column you are in, so it stays, and widens to 6px */
+@media (max-width:1100px){
+  #cA,#cB,#cC{border-left-style:solid; border-left-width:6px; padding-left:14px;}
+  #cA{border-left-color:var(--col-a);}
+  #cB{border-left-color:var(--col-b);}
+  #cC{border-left-color:var(--col-c);}
+}
+@media print{#cA,#cB,#cC{border-left:0; padding-left:0;}}
 </style>
 </head>
 <body>
 
+<!-- ===================== GYRO index ==========================================
+     The page opens starkly austere: the site's title and exactly two checkboxes,
+     Intro then Info. White ground, black type, no Dark mode, in every setting.
+     Intro shows the part above the threshold, Info the part below; independent.
+     Plain CSS checkboxes: no script is needed for any of it.
+     ========================================================================== -->
+<input class="gyro-in" type="checkbox" id="g-intro">
+<input class="gyro-in" type="checkbox" id="g-info">
+<div class="gyro-index">
+  <div class="gyro-ix">
+    <div class="gyro-ixtext">
+      <p class="gyro-title">East Bench Pivot Farm</p>
+      <div class="gyro-boxes">
+        <label for="g-intro"><span class="gbox" aria-hidden="true"></span>Intro</label>
+        <label for="g-info"><span class="gbox" aria-hidden="true"></span>Info</label>
+      </div>
+    </div>
+    <a class="gyro-thumb" href="masthead-pivot.svg" target="_blank" rel="noopener" title="Open the full-size picture">
+      <img src="masthead-pivot.svg" width="680" height="440" alt="An illustration: a center-pivot irrigation system watering a green alfalfa field, with the snow-capped Bighorn Mountains behind it. Opens full size.">
+    </a>
+  </div>
+</div>
+
+<div class="gyro-intro">
 <div class="wrap">
 <header>
   <!-- the stencil: this page is a sample (Walter's lettering, painted behind the header text) -->
@@ -511,7 +615,17 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
       <figcaption>A sample illustration: the pivot on the east bench, the Bighorns behind.</figcaption>
     </figure>
   </header>
+</div>
+</div>
 
+<div class="gyro-info">
+<div class="wrap">
+<div class="threshold" role="separator" aria-label="The threshold: Intro above it, Info below it, in the GYRO format">
+  <div class="bar"><div class="mark"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22"><rect x="1.5" y="4" width="6" height="16" rx="1.4"></rect><rect x="9" y="4" width="6" height="16" rx="1.4"></rect><rect x="16.5" y="4" width="6" height="16" rx="1.4"></rect></svg></div></div>
+  <p class="cap">Below is standard on every GYRO site</p>
+</div>
+</div>
+<div class="wrap navwrap">
 <nav role="tablist" aria-label="Columns">
   <button role="tab" id="tA" aria-controls="cA" aria-selected="true"><span class="key">A</span>Plain answers</button>
   <button role="tab" id="tB" aria-controls="cB" aria-selected="false"><span class="key">B</span>Sources</button>
@@ -522,13 +636,7 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
   <button class="util" id="theme">Dark</button>
 </nav>
 </div>
-
 <div class="wrap">
-<div class="threshold" role="separator" aria-label="Below this line, the page is in the Three Columns format">
-  <div class="bar"><div class="mark"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22"><rect x="1.5" y="4" width="6" height="16" rx="1.4"></rect><rect x="9" y="4" width="6" height="16" rx="1.4"></rect><rect x="16.5" y="4" width="6" height="16" rx="1.4"></rect></svg></div></div>
-  <p class="cap">Everything below is the same on every 3Col site</p>
-</div>
-
 <div class="expand">
   <!-- ===================================================================
        DISPLAY DEFAULTS FOR THIS SITE.  This is the setting, and it is the
@@ -633,7 +741,7 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
   <div class="colhead"><b>A</b><span class="nm"> &nbsp;Plain answers</span><label class="sw" for="ck-a" title="Show or hide this column"></label></div>
 
   <details id="sell"><summary>What do you sell?</summary><div class="body">
-    <p>Alfalfa hay, and beef by the share. That is all we sell to the public.</p>
+    <p><b>Alfalfa hay, and beef by the share.</b> That is all we sell to the public.</p>
     <ul>
       <li><b>Hay</b> &mdash; alfalfa, in small squares you can lift by hand, and in 3x4 large squares by the ton. Certified weed-free when you ask for it.</li>
       <li><b>Beef</b> &mdash; a quarter, a half or a whole steer, once a year in the fall. You buy a share of the live animal, and the processor cuts it to your order.</li>
@@ -642,16 +750,17 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
   </div></details>
 
   <details id="hayprice"><summary>What does hay cost?</summary><div class="body">
-    <p>By the ton for large squares, by the bale for small ones. This season&rsquo;s price for good alfalfa in 3x4 large squares is <b>$285 a ton</b> at the stack &mdash; a sample figure for this demonstration, set inside the range in the state&rsquo;s own hay report: $270 to $300 a ton on 3 September 2026<span class="fn" data-ref="r2">2</span>.</p>
+    <p><b>By the ton for large squares, by the bale for small ones.</b> This season&rsquo;s price for good alfalfa in 3x4 large squares is <b>$285 a ton</b> at the stack &mdash; a sample figure for this demonstration, set inside the range in the state&rsquo;s own hay report: $270 to $300 a ton on 3 September 2026<span class="fn" data-ref="r2">2</span>.</p>
     <p>Small squares are priced by the bale. Delivery is extra; ask when you call.</p>
   </div></details>
 
   <details id="weedfree"><summary>Is your hay certified weed-free? Why does it matter?</summary><div class="body">
-    <p>Yes, when you ask for it. On the Bighorn National Forest, and every national forest in the region, you may not bring hay, straw or grain onto the forest unless it is certified weed-free and every bale carries the tag or twine that proves it<span class="fn" data-ref="r3">3</span>. Hunters, outfitters and anyone packing horses into the mountains need it.</p>
+    <p><b>Yes, when you ask for it.</b> On the Bighorn National Forest, and every national forest in the region, you may not bring hay, straw or grain onto the forest unless it is certified weed-free and every bale carries the tag or twine that proves it<span class="fn" data-ref="r3">3</span>. Hunters, outfitters and anyone packing horses into the mountains need it.</p>
     <p>Certified means the county Weed and Pest district inspected the field<span class="fn" data-ref="r4">4</span>. The paperwork comes with the hay; keep it with the bales.</p>
   </div></details>
 
   <details id="beef"><summary>How does buying a quarter of beef work?</summary><div class="body">
+    <p><b>You buy a share of the steer before it is butchered, in four steps.</b></p>
     <ol>
       <li>You reserve a quarter, a half or a whole steer before it goes to the processor. You are buying a share of the live animal<span class="fn" data-ref="r7">7</span>.</li>
       <li>We haul it to a custom-exempt processor in the Basin, and you tell the processor how you want it cut and wrapped.</li>
@@ -662,25 +771,27 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
   </div></details>
 
   <details id="steak"><summary>Why can&rsquo;t I just buy a steak from you?</summary><div class="body">
-    <p>Because Wyoming law does not allow it from a farm like ours. Meat from a custom-exempt plant may not be sold to stores or to anyone else; packaged cuts for sale have to come from an inspected plant<span class="fn" data-ref="r5">5</span>. What the law does allow is selling a share of the animal before it is butchered<span class="fn" data-ref="r7">7</span>, which is why we do it that way.</p>
+    <p><b>Because Wyoming law does not allow it from a farm like ours.</b> Meat from a custom-exempt plant may not be sold to stores or to anyone else; packaged cuts for sale have to come from an inspected plant<span class="fn" data-ref="r5">5</span>. What the law does allow is selling a share of the animal before it is butchered<span class="fn" data-ref="r7">7</span>, which is why we do it that way.</p>
   </div></details>
 
   <details id="where"><summary>Where are you, and when can I come?</summary><div class="body">
-    <p>East of Worland, on the bench above the river, by appointment. Call or text first and we will send directions; we are often in the field.</p>
+    <p><b>East of Worland, on the bench above the river, by appointment.</b> Call or text first and we will send directions; we are often in the field.</p>
     <p>Call or text <b class="phone">(307) 555-0142</b>. (A made-up number, from the 555-0100 to 555-0199 range set aside for examples like this one.)</p>
   </div></details>
 
   <details id="deliver"><summary>Do you deliver?</summary><div class="body">
-    <p>Hay, yes: large squares by the truckload, anywhere in Washakie County. Small squares are loaded at the farm. Beef is picked up at the processor.</p>
+    <p><b>Hay, yes: large squares by the truckload, anywhere in Washakie County.</b> Small squares are loaded at the farm. Beef is picked up at the processor.</p>
   </div></details>
 
   <details id="facebook"><summary>Why a website, and not just Facebook?</summary><div class="body">
-    <p>We are on Facebook too. This page is the one that is always here and always right: no login to read it, nothing to scroll past, this season&rsquo;s price and what is available in one place. And it belongs to the farm, the way the pivot does. Column C has the detail.</p>
-    <p>If you have a Facebook account, you may as well keep it, and add a link to this, your own Three Columns site, as well.</p>
+    <p><b>We are on Facebook too.</b> It is good at reaching people who were not looking for us. But a post sinks. Last spring&rsquo;s hay price is not corrected on Facebook, it is buried, and nobody can tell which post is still true.</p>
+    <p><b>This page holds still.</b> This season&rsquo;s price, what is available and how to reach us are always in the same place. No login to read it, nothing to scroll past.</p>
+    <p><b>This page is ours.</b> On Facebook the farm wears Facebook&rsquo;s name and colors and lives under Facebook&rsquo;s rules, which Facebook can change. Here the name, the look, the words and the address all belong to the farm, the way the pivot does.</p>
+    <p>So our Facebook page points here, from its Website field, where the link stays put instead of sinking. Column C has the detail.</p>
   </div></details>
 
   <details id="who"><summary>Who are you?</summary><div class="body">
-    <p>A family farm: two generations on the same irrigated ground east of Worland. Hay, beef, beets and barley, and one center pivot, which replaced years of flood irrigation from the ditch.</p>
+    <p><b>A family farm: two generations on the same irrigated ground east of Worland.</b> Hay, beef, beets and barley, and one center pivot, which replaced years of flood irrigation from the ditch.</p>
   </div></details>
 </section>
 
@@ -843,11 +954,11 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
 
   <article class="ref" id="r16">
     <span class="rnum">16</span><span class="rkind">Format · how this page is built</span>
-    <div class="rtitle">Three Columns</div>
-    <div class="rmeta">threecolumns.online · an AI automation tool for generating ultralight one-topic websites</div>
+    <div class="rtitle">GYRO</div>
+    <div class="rmeta">gyro-sites.online · the GYRO website format, formerly Three Columns · an AI automation tool for generating ultralight one-topic websites</div>
     <div class="rprev">The format this page is built in: plain answers first, every source previewed in the middle, the full detail last. One page that works on any device, prints properly, and belongs to its owner.</div>
     <div class="rwhy"><b>Why it is cited:</b> column C&rsquo;s &ldquo;About this page&rdquo; says what the farm gets; this is the whole description.</div>
-    <a class="rlink" href="https://threecolumns.online/">threecolumns.online</a>
+    <a class="rlink" href="https://gyro-sites.online/">gyro-sites.online</a>
   </article>
 
   <div id="deadnote" hidden></div>
@@ -883,14 +994,25 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
   <p>The pilot program that would pay for the first dozen pages like this one is proposed at washakie-ai.online<span class="fn" data-ref="r15">15</span>.</p>
 
   <h2 id="about">About this page</h2>
-  <p>It is built in the Three Columns format<span class="fn" data-ref="r16">16</span>: plain answers first, every source previewed in the middle, the detail last. It is a handful of plain files the farm owns outright &mdash; no monthly fee to a web company, no login for anyone who reads it, nothing to keep up but the words. It works on a phone in the pickup, and it prints properly for the kitchen table.</p>
-  <div class="note"><strong>Like the best tool on the place:</strong> simple, rugged, and yours.</div>
+  <p>It is built in the GYRO format<span class="fn" data-ref="r16">16</span>: plain answers first, every source previewed in the middle, the detail last. It is a handful of plain files the farm owns outright &mdash; no monthly fee to a web company, no login for anyone who reads it, nothing to keep up but the words. It works on a phone in the pickup, and it prints properly for the kitchen table.</p>
+  <div class="note"><strong>Like the best tool on the place:</strong> simple, rugged, and we, the farmers, own it.</div>
 
-  <h2 id="wrong">What went wrong</h2>
-  <p>The format asks every page to record at least one thing that went wrong. Here it is:</p>
-  <ul>
-    <li><b>Last year&rsquo;s third cutting was rained on in the windrow.</b> It was baled anyway, tested well below the rest, and sold as feeder hay at a lower price, labeled for what it was &mdash; not mixed in with the good hay.</li>
-  </ul>
+  <h2 id="colophon">Technical Colophon</h2>
+  <dl class="colophon">
+    <dt>Format</dt><dd>GYRO, definition v0.21, 18 Oct 2026</dd>
+    <dt>Page</dt><dd>one <a href="https://en.wikipedia.org/wiki/HTML" target="_blank" rel="noopener">HTML</a> file, 74 KB; <a href="https://en.wikipedia.org/wiki/HTML5" target="_blank" rel="noopener">HTML5</a>, <a href="https://en.wikipedia.org/wiki/CSS" target="_blank" rel="noopener">CSS</a> incl. <code>:has()</code>; no <a href="https://en.wikipedia.org/wiki/Software_framework" target="_blank" rel="noopener">framework</a>, no build step</dd>
+    <dt>Scripts</dt><dd><a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank" rel="noopener">JavaScript</a>: phone-view.js, top-button.js, back-link.js, cite-back.js; identical to template</dd>
+    <dt>Fonts</dt><dd><a href="https://en.wikipedia.org/wiki/Source_Serif" target="_blank" rel="noopener">Source Serif 4</a>, <a href="https://en.wikipedia.org/wiki/IBM_Plex" target="_blank" rel="noopener">IBM Plex Mono</a> via <a href="https://en.wikipedia.org/wiki/Google_Fonts" target="_blank" rel="noopener">Google Fonts</a>; system fallbacks</dd>
+    <dt>Hosting</dt><dd><a href="https://en.wikipedia.org/wiki/GitHub_Pages" target="_blank" rel="noopener">GitHub Pages</a>, repository FB-Decipherer/threecolumns, path /sites/east-bench-farm/</dd>
+    <dt>TLS</dt><dd><a href="https://en.wikipedia.org/wiki/Transport_Layer_Security" target="_blank" rel="noopener">TLS</a> certificate issued automatically by GitHub Pages</dd>
+    <dt>Domain, DNS</dt><dd><a href="https://en.wikipedia.org/wiki/Cloudflare" target="_blank" rel="noopener">Cloudflare</a> <a href="https://en.wikipedia.org/wiki/Domain_name_registrar" target="_blank" rel="noopener">Registrar</a>; <a href="https://en.wikipedia.org/wiki/Domain_Name_System" target="_blank" rel="noopener">DNS</a> records written through Cloudflare <a href="https://en.wikipedia.org/wiki/API" target="_blank" rel="noopener">API</a> v4</dd>
+    <dt>Publishing</dt><dd><a href="https://en.wikipedia.org/wiki/Git" target="_blank" rel="noopener">git</a>; <a href="https://en.wikipedia.org/wiki/GitHub" target="_blank" rel="noopener">GitHub</a> Desktop; GitHub CLI (gh) for repository setup; version not recorded</dd>
+    <dt>Built with</dt><dd><a href="https://en.wikipedia.org/wiki/Claude_(language_model)" target="_blank" rel="noopener">Claude</a> (<a href="https://en.wikipedia.org/wiki/Anthropic" target="_blank" rel="noopener">Anthropic</a>), working through <a href="https://en.wikipedia.org/wiki/Model_Context_Protocol" target="_blank" rel="noopener">MCP</a> connectors to the builder&rsquo;s computer and browser; MCP version not recorded</dd>
+    <dt>Checked with</dt><dd><a href="https://en.wikipedia.org/wiki/Playwright_(software)" target="_blank" rel="noopener">Playwright</a> 1.56.0, <a href="https://en.wikipedia.org/wiki/Chromium_(web_browser)" target="_blank" rel="noopener">Chromium</a> (Playwright build 1194); 1440 and 390 px, light and dark</dd>
+    <dt>Collected</dt><dd>nothing: no <a href="https://en.wikipedia.org/wiki/Web_analytics" target="_blank" rel="noopener">analytics</a>, no <a href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank" rel="noopener">cookies</a>, no stored data</dd>
+    <dt>License</dt><dd>template <a href="https://en.wikipedia.org/wiki/MIT_License" target="_blank" rel="noopener">MIT</a>; words reserved</dd>
+    <dt>Last changed</dt><dd>18 Oct 2026</dd>
+  </dl>
 </section>
 
 </main>
@@ -900,7 +1022,9 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
   East Bench Pivot Farm &middot; an invented farm, for a demonstration<br>
   Washakie County &middot; Wyoming<br>
   No analytics, no trackers, no cookies. This page sets nothing and stores nothing for its readers.<br>
-  &copy; 2026 Walter Wilkinson &middot; code MIT &middot; <a href="../../legal.html">words reserved</a>
+  &copy; 2026 Walter Wilkinson, creator of the GYRO website format <span class="gyro-gloss">(Green, Yellow, Red, and sometimes Orange)</span>.<br>
+  The underlying template is free for reuse, under the MIT license. View details: <a href="../../legal.html">license and copyright</a><br>
+  <a class="autogyro" href="../../auto-gyro.html">built by Auto-Gyro</a>
 </footer>
 <nav class="uplevel" aria-label="One level up">
   <a href="https://washakie-ai.online/">
@@ -1039,5 +1163,25 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
 <script src="top-button.js" defer></script>
 <script src="back-link.js" defer></script>
 <script src="cite-back.js" defer></script>
+</div>
+
+<script>
+/* A link that lands inside Intro or Info switches that part on, so a reader who
+   follows somebody's link straight to a source card is not shown a blank page. */
+(function(){
+  function open(){
+    var h = location.hash.slice(1); if(!h) return;
+    var t = document.getElementById(h); if(!t) return;
+    var parts = [['gyro-intro','g-intro'],['gyro-info','g-info']];
+    for (var i=0;i<parts.length;i++){
+      var box = document.querySelector('.'+parts[i][0]);
+      if (box && box.contains(t)) document.getElementById(parts[i][1]).checked = true;
+    }
+    if (t.scrollIntoView) t.scrollIntoView();
+  }
+  window.addEventListener('hashchange', open);
+  document.addEventListener('DOMContentLoaded', open);
+})();
+</script>
 </body>
 </html>
