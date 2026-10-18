@@ -1,4 +1,4 @@
-# Three Columns
+# GYRO
 
 A website format for one topic at a time, built on three depths: **plain answers**,
 **previewed sources**, and **full technical detail** — so one topic serves two readers
@@ -51,7 +51,7 @@ so nothing in it can become an old version.
 | `top-button.js` | the round up-arrow button that returns to the top, once the reader has scrolled about a screen down |
 | `back-link.js` | the Back button on a source card, returning to the numeral that opened it |
 | `search.js` | the search box in the navigation bar: builds its index from the page itself at load, so it never goes stale, and finds words inside folded answers that a browser’s find bar can miss |
-| `masthead-system.svg` | the picture at the head of the page: a block diagram of one 3Col page, divided at the threshold into what is site-unique above and the 3Col standard below |
+| `masthead-system.svg` | the picture at the head of the page: a block diagram of one GYRO page, divided at the threshold into what is site-unique above and the GYRO standard below |
 | `social.png` `apple-touch-icon.png` | the share card and the home-screen icon |
 | `sites/` | sample sites in the format, one folder each, not indexed. `sites/east-bench-farm/` is a sample page for an invented Washakie County farm, made for washakie-ai.online |
 | `favicon.svg` `robots.txt` `sitemap.xml` `404.html` | the usual furniture |
