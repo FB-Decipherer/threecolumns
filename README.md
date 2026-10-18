@@ -1,4 +1,4 @@
-# GYRO
+# GYRO Pages
 
 A website format for one topic at a time, built on three depths: **plain answers**,
 **previewed sources**, and **full technical detail** — so one topic serves two readers
