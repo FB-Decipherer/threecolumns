@@ -1,4 +1,4 @@
-<title>GYRO Pages Format Definition</title>
+<title>GYR-O Pages Format Definition</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600&family=Source+Code+Pro:wght@400;600&display=swap">
 <style>
@@ -79,17 +79,17 @@ footer { border-top:1px solid var(--rule); padding-top:14px; font-size:.9rem; co
 
 <main>
 <header>
-  <h1>GYRO Pages Format Definition</h1>
-  <p class="meta">Version 0.23, working draft · 18 October 2026 · Walter Wilkinson · Worland · Washakie County · Wyoming</p>
-  <p class="caption">What a page has to do to be a GYRO page, what it may do, and what its author brings. Compiled from gyro-sites.online, the README and the project log; where those disagree, the disagreement is listed at the end rather than settled here.</p>
+  <h1>GYR-O Pages Format Definition</h1>
+  <p class="meta">Version 0.25, working draft · 19 October 2026 · Walter Wilkinson · Worland · Washakie County · Wyoming</p>
+  <p class="caption">What a page has to do to be a GYR-O page, what it may do, and what its author brings. Compiled from gyro-sites.online, the README and the project log; where those disagree, the disagreement is listed at the end rather than settled here.</p>
 </header>
 
-<p class="defn">GYRO Pages is a page format for a single-topic website. Every page presents its topic at three depths, in three columns: A, plain answers; B, the sources; C, how it works. Every source sits in the middle column as a previewed card, and everything below a marked threshold follows the same standard on every GYRO site.</p>
+<p class="defn">GYR-O Pages is a page format for a single-topic website. Every page presents its topic at three depths, in three columns: A, plain answers; B, the sources; C, how it works. Every source sits in the middle column as a previewed card, and everything below a marked threshold follows the same standard on every GYR-O site.</p>
 
 <section>
   <h2>How to read this</h2>
-  <p><b>MUST</b> marks what makes a page GYRO; a page missing one is not a GYRO page. <b>SHOULD</b> is the default, departed from only for a reason the page states in column C. <b>MAY</b> is optional. Each rule has a number so a site can be audited against it line by line.</p>
-  <p><b>The name.</b> The format is called GYRO Pages. GYRO, always in capitals, is an acronym read off the color scheme: <b>G</b>reen, <b>Y</b>ellow, <b>R</b>ed for the three columns readers see, and <b>O</b>range for the admin page, which only the builder ever sees. Where the format is named, it is GYRO Pages; used as a description, plain GYRO is enough: a GYRO site, the GYRO standard.</p>
+  <p><b>MUST</b> marks what makes a page GYR-O; a page missing one is not a GYR-O page. <b>SHOULD</b> is the default, departed from only for a reason the page states in column C. <b>MAY</b> is optional. Each rule has a number so a site can be audited against it line by line.</p>
+  <p><b>The name.</b> The format is called GYR-O Pages. GYR-O, always in capitals and always with its hyphen, is read off the color scheme: <b>G</b>reen, <b>Y</b>ellow, <b>R</b>ed for the three columns readers see, then the hyphen, then <b>O</b>range for the build and its admin page, which only the builder ever sees. The hyphen is the &ldquo;sometimes&rdquo;: GYR-O = Green &middot; Yellow &middot; Red &middot; and sometimes Orange. It also makes the name its own; a plain &ldquo;gyro&rdquo; is a sandwich and an instrument. Where the format is named, it is GYR-O Pages; used as a description, plain GYR-O is enough: a GYR-O site, the GYR-O standard.</p>
   <p>The class is gyro-sites.online. Every other site is an instance. A rule that proves itself on an instance is written back into the class and the template, so the next site starts with it.</p>
   <div class="keys">
     <span class="key"><span class="sw a"></span>A · Plain answers</span>
@@ -101,14 +101,14 @@ footer { border-top:1px solid var(--rule); padding-top:14px; font-size:.9rem; co
 
 <section>
   <h2>0 · The index page</h2>
-  <p>The threshold (rule 1.4) divides every GYRO page into two named parts: <b>Intro</b> above it, <b>Info</b> below it. The front page, <code>index.html</code>, is built from that division.</p>
-  <div class="demo" role="group" aria-label="Working example of a GYRO index page">
+  <p>The threshold (rule 1.4) divides every GYR-O page into two named parts: <b>Intro</b> above it, <b>Info</b> below it. The front page, <code>index.html</code>, is built from that division.</p>
+  <div class="demo" role="group" aria-label="Working example of a GYR-O index page">
     <p class="t">East Bench Farm</p>
     <input type="checkbox" id="d-intro"><label for="d-intro">Intro</label>
     <input type="checkbox" id="d-info"><label for="d-info">Info</label>
     <div class="part p-intro"><b>Intro</b> · what this site's subject needs: name, standfirst, picture.</div>
     <div class="thr"></div>
-    <div class="part p-info"><b>Info</b> · the GYRO standard: control strip, then columns A, B and C.</div>
+    <div class="part p-info"><b>Info</b> · the GYR-O standard: control strip, then columns A, B and C.</div>
   </div>
   <p class="caption">Working example. Tick either box, or both. No script runs here.</p>
   <div class="tw"><table>
@@ -131,8 +131,8 @@ footer { border-top:1px solid var(--rule); padding-top:14px; font-size:.9rem; co
     <tr><td class="id">1.1</td><td class="lv must">MUST</td><td>One topic per site. A topic may run as a standing page or as a running series, never as a mixed bag.</td></tr>
     <tr><td class="id">1.2</td><td class="lv must">MUST</td><td>Three columns at three depths, always in the order A, B, C: A plain answers for the newcomer; B every source, previewed, for the checker; C full detail for the specialist. A is always leftmost and C always rightmost.</td></tr>
     <tr><td class="id">1.3</td><td class="lv must">MUST</td><td>The columns are defined by depth, not by geometry. They are side by side where they fit, stacked on a phone, and given their own pages where one column holds more than a column can (as at worland-dog-law.online). Stacked, paged or side by side, they are still called columns.</td></tr>
-    <tr><td class="id">1.4</td><td class="lv must">MUST</td><td>The threshold divides the page. Above it is <b>Intro</b>: whatever the subject needs, such as name, standfirst, picture. Below it is <b>Info</b>: the GYRO standard. It is drawn as a double rule, the only doubled line in the family, with the GYRO mark knocking a gap in it and the caption, in italics, <span class="v"><i>Below is standard on every GYRO site</i></span>. Standard, not identical: the structure is the same everywhere, the content is each site's own.</td></tr>
-    <tr><td class="id">1.5</td><td class="lv must">MUST</td><td>Every color, heading, caption and control below the threshold is the same on every GYRO site. A reader who has used one site already knows where to look on the next: <i>the same colors, the same places, on every site</i>. Stacked on a phone, each column keeps a 6px stripe of its color down its left edge, often the only cue to where the reader is.</td></tr>
+    <tr><td class="id">1.4</td><td class="lv must">MUST</td><td>The threshold divides the page. Above it is <b>Intro</b>: whatever the subject needs, such as name, standfirst, picture. Below it is <b>Info</b>: the GYR-O standard. It is drawn as a double rule, the only doubled line in the family, with the GYR-O mark knocking a gap in it and the caption, in italics, <span class="v"><i>The page layout below is standard on every GYR-O site</i></span>. Standard, not identical: the structure is the same everywhere, the content is each site's own.</td></tr>
+    <tr><td class="id">1.5</td><td class="lv must">MUST</td><td>Every color, heading, caption and control below the threshold is the same on every GYR-O site. A reader who has used one site already knows where to look on the next: <i>the same colors, the same places, on every site</i>. Stacked on a phone, each column keeps a 6px stripe of its color down its left edge, often the only cue to where the reader is.</td></tr>
     <tr><td class="id">1.5a</td><td class="lv must">MUST</td><td>Position carries meaning. Every standard element has a standard place, and the page reads from the plainest point, the top of column A, to the most technical, the foot of column C.</td></tr>
     <tr><td class="id">1.6</td><td class="lv should">SHOULD</td><td>A single page. Paged form is used only when a column outgrows a column (rule 1.3).</td></tr>
     </tbody>
@@ -257,10 +257,10 @@ footer { border-top:1px solid var(--rule); padding-top:14px; font-size:.9rem; co
   <div class="tw"><table>
     <thead><tr><th>No.</th><th>Level</th><th>Rule</th></tr></thead>
     <tbody>
-    <tr><td class="id">9.1</td><td class="lv must">MUST</td><td>Column colors, left to right like a traffic signal getting harder: A green, B yellow, C red. They are fixed for good, in line with international traffic signals, and the name GYRO depends on them. Color rides on the furniture only (keys, column rules, labels, numerals). Body text stays black, so a reader who cannot see color, or who prints, loses nothing.</td></tr>
+    <tr><td class="id">9.1</td><td class="lv must">MUST</td><td>Column colors, left to right like a traffic signal getting harder: A green, B yellow, C red. They are fixed for good, in line with international traffic signals, and the name GYR-O depends on them. Color rides on the furniture only (keys, column rules, labels, numerals). Body text stays black, so a reader who cannot see color, or who prints, loses nothing.</td></tr>
     <tr><td class="id">9.2</td><td class="lv must">MUST</td><td>Light and dark themes throughout Info, both defined from the same set of color tokens. Never on the austere index view (rule 0.2). Numerals stay red on a white disc in both.</td></tr>
-    <tr><td class="id">9.1a</td><td class="lv must">MUST</td><td>The meaning of the name appears on every site, on a line of its own in the footer, above the copyright line and a little larger than it: <i>GYRO = Green · Yellow · Red · and sometimes Orange</i>, each word led by a small swatch of its color and its first letter in bold. The four are the format&rsquo;s only colors, used the same way throughout.</td></tr>
-    <tr><td class="id">9.2a</td><td class="lv must">MUST</td><td>Orange is the color of the build. On a reader's page it appears exactly once: the footer link <span class="v">built by Auto-Gyro</span>, which leads to the public Auto-Gyro page explaining how a GYRO site is built. Everything else in orange belongs to the build pages; the working admin page itself stays unlinked.</td></tr>
+    <tr><td class="id">9.1a</td><td class="lv must">MUST</td><td>The meaning of the name appears on every site, on a line of its own in the footer, above the copyright line and a little larger than it: <i>GYR-O = Green · Yellow · Red · and sometimes Orange</i>, each word led by a small swatch of its color and its first letter in bold. The four are the format&rsquo;s only colors, used the same way throughout.</td></tr>
+    <tr><td class="id">9.2a</td><td class="lv must">MUST</td><td>Orange is the color of the build. On a reader's page it appears exactly once: the footer link <span class="v">built by Auto-Gyro</span>, which leads to the public Auto-Gyro page explaining how a GYR-O site is built. Everything else in orange belongs to the build pages; the working admin page itself stays unlinked.</td></tr>
     <tr><td class="id">9.3</td><td class="lv should">SHOULD</td><td>Body 17 px, line height 1.62, about sixty characters to the line; figure captions 22 px.</td></tr>
     <tr><td class="id">9.4</td><td class="lv must">MUST</td><td>American spelling throughout, except text quoted from a source.</td></tr>
     </tbody>
@@ -273,7 +273,7 @@ footer { border-top:1px solid var(--rule); padding-top:14px; font-size:.9rem; co
     <thead><tr><th>No.</th><th>Level</th><th>Rule</th></tr></thead>
     <tbody>
     <tr><td class="id">10.1</td><td class="lv may">MAY</td><td><b>Running record.</b> The current issue lives at <code>/index.html</code> and a permanent dated copy at <code>/YYYY-MM-DD/index.html</code>. Dated copies are never edited again; a correction is a later issue. Each series gets its own folder.</td></tr>
-    <tr><td class="id">10.2</td><td class="lv may">MAY</td><td><b>Family.</b> An instance under another GYRO site ends, below the footer, with a card headed <span class="v">↑ One level up</span>, naming the site above in that site's own words.</td></tr>
+    <tr><td class="id">10.2</td><td class="lv may">MAY</td><td><b>Family.</b> An instance under another GYR-O site ends, below the footer, with a card headed <span class="v">↑ One level up</span>, naming the site above in that site's own words.</td></tr>
     <tr><td class="id">10.3</td><td class="lv may">MAY</td><td><b>The admin page (Page D).</b> An unlinked, noindex setup sheet, styled in orange, that writes blocks of text to paste into the file. It holds nothing and has no login. Normal readers never see it.</td></tr>
     <tr><td class="id">10.4</td><td class="lv may">MAY</td><td><b>Archiving.</b> Pages sent to the Wayback Machine, success counted only when a capture dated today can be confirmed.</td></tr>
     </tbody>
@@ -319,12 +319,12 @@ footer { border-top:1px solid var(--rule); padding-top:14px; font-size:.9rem; co
     <li><b>Internal links: one card or two, or three.</b> The 14 September decision was one card. Column C now says two. Column A says two cards plus a third that links the chronicle. Rule 3.2 follows column C; whether the chronicle card belongs inside the block is open.</li>
     <li><b>The license defect.</b> Column A says the license arrangement on Page F "gives away more than it should" and calls it a live defect; the project log records the MIT defect closed on 26 September, and the footer now reads <i>code MIT · words reserved</i>. If it is closed, column A is out of date.</li>
     <li><b>Column B's name.</b> The class page labels it <i>Sources</i>; the 26 September color note calls it <i>References</i>. Rule 1.5 needs one word.</li>
-    <li><b>The rename is on the sites, but not everywhere.</b> Since 18 October every live page, the threshold caption and the README say GYRO, and the format is named GYRO Pages. Still old: the folder and repository names, and the share picture, which reads Three Columns.</li>
+    <li><b>The rename is on the sites, but not everywhere.</b> Since 18 October every live page, the threshold caption and the README say GYR-O, and the format is named GYR-O Pages. Still old: the folder and repository names, and the share picture, which reads Three Columns.</li>
     <li><b>Starting state of the index.</b> Rule 0.4 assumes both boxes start unchecked. If either should start checked, say which.</li>
     <li><b>Scripts off and printing.</b> Rule 7.3 says all three columns render with scripts off, and rule 7.2 says print carries everything. With Info unchecked, neither holds unless print and the scripts-off view ignore the boxes. This draft has print show both parts.</li>
     <li><b>Is 1.6 a rule at all.</b> "Usually it is a single page" is stated as a fact about instances, not as a requirement. It is listed here as SHOULD; it could as easily be dropped.</li>
   </ol>
 </section>
 
-<footer>GYRO Pages Format Definition · version 0.23 · 18 October 2026 · drawn from gyro-sites.online, its README and the Three Columns project log. Not yet published on any site.</footer>
+<footer>GYR-O Pages Format Definition · version 0.25 · 19 October 2026 · drawn from gyro-sites.online, its README and the Three Columns project log. Not yet published on any site.</footer>
 </main>
