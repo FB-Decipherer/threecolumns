@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GYR-O Pages · Every Site</title>
+<meta name="description" content="Every GYR-O site on one page: tick Intro, Info or both, then open it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--ink:#000;--mid:#4a4a4a;--rule:#000;
+  --g:#4c7a4e;--y:#c9a227;--r:#b4372c;--o:#d2691e;}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font-family:"Source Serif 4",Georgia,serif;
+  padding:28px max(16px,env(safe-area-inset-right,0px)) 48px max(16px,env(safe-area-inset-left,0px));}
+.wrap{max-width:1100px;margin:0 auto}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 6px}
+.eyebrow a{color:inherit}
+h1{font-size:clamp(28px,4.4vw,42px);font-weight:600;line-height:1.12;margin:0}
+.cap{font-size:22px;line-height:1.4;color:var(--mid);margin:10px 0 22px;max-width:44rem}
+
+table{width:100%;border-collapse:collapse;border-top:3px double var(--rule);border-bottom:3px double var(--rule)}
+th{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule)}
+th.box{text-align:center;width:6.5rem}
+td{padding:14px 12px;border-bottom:1px solid #d0d0d0;vertical-align:middle}
+tr:last-child td{border-bottom:0}
+.name a{color:var(--ink);font-size:22px;font-weight:600;line-height:1.2;text-decoration:none;
+  border-bottom:1.5px solid transparent}
+.name a:hover,.name a:focus-visible{border-bottom-color:var(--ink);outline:none}
+.name .addr{display:block;font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:13px;color:var(--mid);margin-top:4px;overflow-wrap:anywhere}
+td.box{text-align:center}
+.thumb{display:block;line-height:0;border:1px solid #000;width:180px;height:126px;margin-left:auto;background:#f4f4f4;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.thumb:hover,.thumb:focus-visible{outline:2px solid #000;outline-offset:3px}
+
+/* the checkbox, drawn exactly as on every site's own index strip */
+.ck{display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+  font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:16px;letter-spacing:.04em}
+.ck input{position:absolute;opacity:0;width:1px;height:1px}
+.gbox{width:22px;height:22px;border:2px solid #000;background:#fff;display:inline-block;position:relative;flex:none}
+.ck input:checked + .gbox::after{content:"";position:absolute;left:5px;top:1px;width:6px;height:11px;
+  border:solid #000;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.ck input:focus-visible + .gbox{outline:2px solid #000;outline-offset:3px}
+.ck .lbl{display:none}
+.ck.off{cursor:default}
+.ck.off .gbox{border-color:#bdbdbd;background:repeating-linear-gradient(135deg,#fff 0 4px,#eee 4px 6px)}
+
+.key{font-size:15px;color:var(--mid);margin:22px 0 0;line-height:1.6}
+.key a{color:inherit;text-underline-offset:2px}
+.sw{display:inline-block;width:.8em;height:.8em;border-radius:2px;vertical-align:-.06em;margin:0 .3em 0 .55em}
+
+/* phone: each row becomes a card; the checkboxes carry their own words */
+@media (max-width:640px){
+  table,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  tr{display:grid;grid-template-columns:1fr auto;grid-template-areas:"name name" "b1 thumb" "b2 thumb";
+     gap:10px 14px;padding:16px 0;border-bottom:1px solid #d0d0d0;align-items:center}
+  tr:last-child{border-bottom:0}
+  td{padding:0;border:0}
+  td.name{grid-area:name}
+  td.box{display:inline-block;width:auto;text-align:left}
+  td.b1{grid-area:b1;align-self:end}
+  td.b2{grid-area:b2;align-self:start}
+  td.pic{grid-area:thumb}
+  .thumb{width:130px;height:92px}
+  .ck .lbl{display:inline}
+}
+@media print{.thumb{border-color:#000}}
+</style>
+</head>
+<body>
+<p class="pdf-dl" style="margin:0 auto;padding:8px 16px 0;max-width:1508px;text-align:right;font:15px/1.4 'IBM Plex Mono',ui-monospace,Menlo,monospace"><a href="Every-GYR-O-Site.pdf" download style="color:inherit;text-underline-offset:2px">Download this page as a PDF</a></p><style>@media print{.pdf-dl{display:none!important}}</style>
+<div class="wrap">
+  <p class="eyebrow"><a href="../">GYR-O Pages</a> &middot; every site</p>
+  <h1>Every GYR-O site</h1>
+  <p class="cap">Tick Intro, Info or both, then click the name or the picture. The site opens with the same boxes ticked. Tick neither and it opens at its own index, where the same two boxes wait.</p>
+
+  <table>
+    <thead><tr><th>Site</th><th class="box">Intro</th><th class="box">Info</th><th><span class="vh" style="position:absolute;left:-9999px">Picture</span></th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <p class="key">A hatched box means that site has not yet been given the Intro/Info index; it opens as it always has.</p>
+  <p class="key"><a href="../">&larr; GYR-O Pages, the website format</a></p>
+  <p class="key" style="font-size:1.2em">GYR-O&nbsp;=<span class="sw" style="background:var(--g)"></span><b>G</b>reen &middot;<span class="sw" style="background:var(--y)"></span><b>Y</b>ellow &middot;<span class="sw" style="background:var(--r)"></span><b>R</b>ed &middot; <span style="white-space:nowrap">and sometimes<span class="sw" style="background:var(--o)"></span><a href="../auto-gyro.html"><b>O</b>range</a></span></p>
+  <p class="key">&copy; 2026 Walter Wilkinson, creator of the GYR-O website format. The underlying template is free for reuse, under the MIT license. View details: <a href="../legal.html">license and copyright</a></p>
+</div>
+
+<noscript><style>.ck{display:none}</style></noscript>
+<script>
+/* One line per site. ix:true means the site has the Intro/Info index. */
+var SITES = [
+  {n:"GYR-O Pages", u:"https://gyro-sites.online/", img:"../masthead-system.svg", ix:true},
+  {n:"Grass-Roots AI for Washakie County", u:"https://washakie-ai.online/", img:"https://washakie-ai.online/masthead-map.svg", ix:true},
+  {n:"Anna", u:"https://washakie-ai.online/d/anna/", img:"https://washakie-ai.online/d/anna/portrait.png", ix:true},
+  {n:"East Bench Pivot Farm", u:"https://gyro-sites.online/sites/east-bench-farm/", img:"east-bench-farm/masthead-pivot.svg", ix:true},
+  {n:"Cottonwood Draw Farms", u:"https://gyro-sites.online/sites/cottonwood-draw-farms/", img:"cottonwood-draw-farms/masthead-harvest.svg", ix:true},
+  {n:"Ruby Calder", u:"https://gyro-sites.online/sites/ruby-calder/", img:"ruby-calder/portrait.svg", ix:true},
+  {n:"Bighorn Basin Tree Service", u:"https://gyro-sites.online/sites/bighorn-tree-service/", img:"bighorn-tree-service/masthead-tree.svg", ix:false},
+  {n:"Worland Dog Laws", u:"https://worland-dog-law.online/", img:"https://worland-dog-law.online/social.png", ix:false},
+  {n:"Baconian Ciphers", u:"https://baconian-ciphers.online/", img:"https://baconian-ciphers.online/strand-biliteral.jpg", ix:false}
+];
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");}
+function box(i,part,on){
+  var label = part==="intro" ? "Intro" : "Info";
+  if(!on) return '<span class="ck off" title="This site has no Intro/Info index yet"><span class="gbox" aria-hidden="true"></span><span class="lbl">'+label+'</span></span>';
+  return '<label class="ck"><input type="checkbox" data-i="'+i+'" data-p="'+part+'" aria-label="'+label+'"><span class="gbox" aria-hidden="true"></span><span class="lbl">'+label+'</span></label>';
+}
+var rows = SITES.map(function(s,i){
+  var addr = s.u.replace(/^https:\/\//,"").replace(/\/$/,"");
+  return '<tr>'+
+    '<td class="name"><a data-i="'+i+'" href="'+esc(s.u)+'">'+esc(s.n)+'</a><span class="addr">'+esc(addr)+'</span></td>'+
+    '<td class="box b1">'+box(i,"intro",s.ix)+'</td>'+
+    '<td class="box b2">'+box(i,"info",s.ix)+'</td>'+
+    '<td class="pic"><a class="thumb" data-i="'+i+'" href="'+esc(s.u)+'" tabindex="-1"><img src="'+esc(s.img)+'" alt="" loading="lazy" decoding="async"></a></td>'+
+  '</tr>';
+}).join("");
+document.getElementById("rows").innerHTML = rows;
+
+function hashFor(i){
+  var parts=[];
+  ["intro","info"].forEach(function(p){
+    var c=document.querySelector('input[data-i="'+i+'"][data-p="'+p+'"]');
+    if(c&&c.checked) parts.push(p);
+  });
+  return parts.length ? "#"+parts.join("+") : "";
+}
+function refresh(i){
+  document.querySelectorAll('a[data-i="'+i+'"]').forEach(function(a){ a.href = SITES[i].u + hashFor(i); });
+}
+document.addEventListener("change",function(e){ var i=e.target.getAttribute("data-i"); if(i!==null) refresh(i); });
+SITES.forEach(function(_,i){ refresh(i); });
+</script>
+<noscript>
+  <ul style="font-size:20px;line-height:1.6">
+    <li><a href="https://gyro-sites.online/">GYR-O Pages</a></li>
+    <li><a href="https://washakie-ai.online/">Grass-Roots AI for Washakie County</a></li>
+    <li><a href="https://washakie-ai.online/d/anna/">Anna</a></li>
+    <li><a href="east-bench-farm/">East Bench Pivot Farm</a></li>
+    <li><a href="cottonwood-draw-farms/">Cottonwood Draw Farms</a></li>
+    <li><a href="ruby-calder/">Ruby Calder</a></li>
+    <li><a href="bighorn-tree-service/">Bighorn Basin Tree Service</a></li>
+    <li><a href="https://worland-dog-law.online/">Worland Dog Laws</a></li>
+    <li><a href="https://baconian-ciphers.online/">Baconian Ciphers</a></li>
+  </ul>
+</noscript>
+</body>
+</html>

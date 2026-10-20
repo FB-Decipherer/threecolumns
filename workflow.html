@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="How every GYR-O site is kept: one task, one site, one log."><link rel="icon" href="favicon.svg">
+<title>GYR-O Pages Workflow</title>
+<meta name="format-detection" content="telephone=no,address=no,email=no,url=no,date=no">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+:root{
+  --ground:#EEF1F4; --surface:#FFFFFF; --ink:#1B2430; --ink-mid:#5C6673; --rule:#D6DCE3;
+  --cloud:#2E5FD9; --cloud-soft:#E5ECFC; --frame-tint:#F5F8FF;
+  --folder:#A6690E; --folder-soft:#F8ECD6;
+  --ok:#2E7D4F; --title:#000000;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"Source Sans 3","Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#12161B; --surface:#1B2129; --ink:#E7EBEF; --ink-mid:#9CA7B3; --rule:#323B45;
+    --cloud:#84A8F7; --cloud-soft:#1D2740; --frame-tint:#161C2A;
+    --folder:#E3AC55; --folder-soft:#332813;
+    --ok:#7BC79A; --title:#F4F6F8;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#12161B; --surface:#1B2129; --ink:#E7EBEF; --ink-mid:#9CA7B3; --rule:#323B45;
+  --cloud:#84A8F7; --cloud-soft:#1D2740; --frame-tint:#161C2A;
+  --folder:#E3AC55; --folder-soft:#332813;
+  --ok:#7BC79A; --title:#F4F6F8;
+}
+*{box-sizing:border-box}
+body{background:var(--ground); color:var(--ink); font-family:var(--sans); margin:0;
+  padding-inline:16px; padding-block:28px 56px;}
+.wrap{max-width:60rem; margin:0 auto; display:grid; gap:26px;}
+h1{font-family:var(--serif); font-weight:700; font-size:clamp(26px,5vw,38px); line-height:1.15; text-wrap:balance; margin:0;}
+.cap{font-size:22px; line-height:1.45; color:var(--ink-mid); margin:0;}
+.legend{display:grid; gap:6px; margin:4px 0 0; padding:0; list-style:none;}
+.legend li{display:flex; gap:12px; align-items:baseline; font-size:22px; line-height:1.4; color:var(--ink-mid);}
+.legend b{color:var(--ink);}
+.sw{flex:none; width:34px; height:20px; border-radius:6px; transform:translateY(3px);}
+.sw-you{background:var(--cloud-soft); border:1.5px solid var(--cloud);}
+.sw-claude{background:var(--folder-soft); border:1.5px solid var(--folder);}
+.eyebrow{font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--cloud); margin:0;}
+.eyebrow a{color:inherit;}
+a{color:var(--cloud); text-decoration:underline; text-underline-offset:2px;}
+a:hover{opacity:.75}
+a:focus-visible{outline:2px solid var(--cloud); outline-offset:2px; border-radius:2px;}
+.frame{border:1.5px dashed var(--cloud); border-radius:16px; padding:32px 18px 20px; position:relative; background:var(--frame-tint);}
+.frame-tab{position:absolute; top:-14px; left:18px; background:var(--cloud); color:#fff; font-size:12.5px; font-weight:700; letter-spacing:.03em; padding:5px 14px; border-radius:999px;}
+.frame-tab i{font-style:normal; font-weight:600; opacity:.85; font-size:11px;}
+.lanes{display:grid; grid-template-columns:1fr; gap:16px;}
+.lane{background:var(--surface); border:1px solid var(--rule); border-radius:12px; padding:16px; display:grid; gap:8px; align-content:start;}
+.lane-head{padding-bottom:10px; margin-bottom:2px; border-bottom:1px solid var(--rule); display:grid; gap:5px;}
+.lane-title{font-family:var(--sans); font-size:17px; font-weight:700; line-height:1.2; color:var(--title); margin:0 0 2px; overflow-wrap:anywhere; min-height:2.4em;}
+.lane-title a{color:var(--cloud); text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:3px;}
+.lane-title a:hover{color:var(--ink); text-decoration-color:var(--ink); opacity:1;}
+.lane-title .ext{font-size:.78em; margin-left:.3em; vertical-align:.1em; text-decoration:none; display:inline-block;}
+.vh{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+.src{margin-top:9px; padding:9px 11px; background:var(--ground); border:1px solid var(--rule);
+  border-left:3px solid var(--rule); border-radius:8px; display:grid; gap:6px;}
+.src-label{font-family:var(--sans); font-size:11.5px; font-weight:700; letter-spacing:.01em; color:var(--ink);}
+.src .lane-links{margin-top:1px; gap:10px;}
+.src .desktop{white-space:nowrap;}
+.lane-path{font-family:var(--mono); font-size:12px; color:var(--ink-mid); line-height:1.45;
+  word-break:normal; overflow-wrap:break-word; min-height:4.4em; text-decoration:none;}
+.lane-path a, .lane-path a:hover, .lane-path a:visited, .lane-path a:active{
+  color:inherit !important; text-decoration:none !important; border:0 !important;
+  pointer-events:none; cursor:text; background:none !important;}
+.lane-path b{color:var(--ink); font-weight:600;}
+.lane-links{display:flex; gap:12px; flex-wrap:wrap; font-size:11.5px; font-weight:600;}
+.lane-links a{color:var(--cloud);}
+.step{display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start;}
+.num{width:24px; height:24px; border-radius:50%; background:var(--ink); color:var(--ground); font-family:var(--mono); font-size:11.5px; font-weight:600; display:flex; align-items:center; justify-content:center; flex:none;}
+.step-body{display:grid; gap:4px; min-width:0;}
+.step-label{font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-mid);}
+.pill{position:relative; background:var(--cloud-soft); border:1px solid var(--cloud); border-radius:10px; padding:8px 11px; font-family:var(--mono); font-size:12px; line-height:1.5; color:var(--ink);}
+.file-row{border-radius:10px; padding:8px 11px; font-family:var(--mono); font-size:12px; display:flex; gap:8px; align-items:center; flex-wrap:wrap; line-height:1.4;}
+.file-row.log{background:var(--folder-soft); border:1px solid var(--folder); color:var(--ink);}
+.file-row.site{background:var(--ground); border:1px solid var(--rule); color:var(--ink-mid);}
+.file-row.site a{font-weight:600;}
+.who{display:block; flex-basis:100%; font-family:var(--sans); font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--cloud); margin-bottom:4px;}
+.file-row.log .who{color:var(--folder); margin-bottom:2px;}
+.rule-vert{width:1.5px; background:var(--rule); height:12px; margin-left:11.25px;}
+.pill:has(.copy) .who{padding-right:60px;}
+.copy{position:absolute; top:6px; right:6px; font-family:var(--sans); font-size:10px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--cloud); background:var(--surface); border:1px solid var(--cloud); border-radius:999px; padding:3px 9px; cursor:pointer; line-height:1.2;}
+.copy:hover{background:var(--cloud); color:#fff;}
+.copy:focus-visible{outline:2px solid var(--cloud); outline-offset:2px;}
+footer{display:grid; gap:10px;}
+footer .key{font-size:15px; color:var(--ink-mid); margin:0;}
+@media (min-width:560px){ .lanes{grid-template-columns:repeat(2,1fr);} }
+@media (min-width:1040px){ .lanes{grid-template-columns:repeat(4,1fr);} }
+@media print{ body{background:#fff} .copy{display:none} .lane{break-inside:avoid} }
+</style>
+</head><body>
+<p class="pdf-dl" style="margin:0 auto;padding:8px 16px 0;max-width:1508px;text-align:right;font:15px/1.4 'IBM Plex Mono',ui-monospace,Menlo,monospace"><a href="GYR-O-Pages-Workflow.pdf" download style="color:inherit;text-underline-offset:2px">Download this page as a PDF</a></p><style>@media print{.pdf-dl{display:none!important}}</style>
+<div class="wrap">
+  <header style="display:grid; gap:8px;">
+    <p class="eyebrow"><a href="auto-gyro.html">Auto-Gyro</a> &middot; How a GYR-O site is kept</p>
+    <h1>One task, one site, one log</h1>
+    <ul class="legend" aria-label="Color key">
+      <li><span class="sw sw-you" aria-hidden="true"></span><span><b>Blue</b> &mdash; what the site&rsquo;s owner does: the plain-English prompts typed to Claude.</span></li>
+      <li><span class="sw sw-claude" aria-hidden="true"></span><span><b>Orange</b> &mdash; what Claude does: reads and updates the site&rsquo;s own log, so nothing depends on the AI remembering.</span></li>
+    </ul>
+    <p class="cap">Four live GYR-O sites, all kept the same way. Each work session starts empty. Everything it needs to pick up where the last one left off lives in one file, a log kept in that site&rsquo;s own folder, not in the AI&rsquo;s memory and not in the chat. Each site&rsquo;s name opens the live page; under it is the repository that holds its source. The prompts are real, and each has a <b>Copy</b> button.</p>
+  </header>
+  <figure style="margin:0; display:grid; gap:12px;">
+    <div class="frame">
+      <span class="frame-tab">GYR-O Pages <i>&mdash; one project, four sites</i></span>
+      <div class="lanes">
+        <div class="lane">
+          <div class="lane-head">
+            <h2 class="lane-title"><a href="https://washakie-ai.online/" target="_blank" rel="noopener">washakie-ai.online<span class="ext" aria-hidden="true">&#8599;</span><span class="vh"> &mdash; open the live site</span></a></h2>
+            <div class="src">
+              <span class="src-label">Source files</span>
+              <div class="lane-links"><a href="https://github.com/FB-Decipherer/washakie-ai" target="_blank" rel="noopener">Repository on GitHub &#8599;</a></div>
+            </div>
+          </div>
+          <div class="step"><span class="num">1</span><div class="step-body">
+            <span class="step-label">Task opens</span>
+            <div class="pill" data-copy="Resume washakie-ai.online — read the rehydration log."><span class="who">Enter prompt</span>&ldquo;Resume washakie-ai.online &mdash; read the rehydration log.&rdquo;<button class="copy" type="button">Copy</button></div>
+            <div class="file-row log"><span class="who">Claude reads</span>claude/rehydration-PROJECT-LOG.md</div>
+          </div></div>
+          <div class="rule-vert" aria-hidden="true"></div>
+          <div class="step"><span class="num">2</span><div class="step-body">
+            <span class="step-label">Work happens here</span>
+            <div class="pill"><span class="who">Enter more prompts</span>Claude carries them out on these files.</div>
+            <div class="file-row site">
+                <a href="https://washakie-ai.online/" target="_blank" rel="noopener">index.html</a> &middot;
+                <a href="https://washakie-ai.online/setup.html" target="_blank" rel="noopener">setup.html</a> &middot;
+                <a href="https://washakie-ai.online/setup-preview.html" target="_blank" rel="noopener">setup-preview.html</a>
+            </div>
+          </div></div>
+          <div class="rule-vert" aria-hidden="true"></div>
+          <div class="step"><span class="num">3</span><div class="step-body">
+            <span class="step-label">Session ends</span>
+            <div class="pill" data-copy="Close out — update the rehydration log."><span class="who">Enter prompt</span>&ldquo;Close out &mdash; update the rehydration log.&rdquo;<button class="copy" type="button">Copy</button></div>
+            <div class="file-row log"><span class="who">Claude updates</span>claude/rehydration-PROJECT-LOG.md</div>
+          </div></div>
+        </div>
+        <div class="lane">
+          <div class="lane-head">
+            <h2 class="lane-title"><a href="https://gyro-sites.online/" target="_blank" rel="noopener">gyro-sites.online<span class="ext" aria-hidden="true">&#8599;</span><span class="vh"> &mdash; open the live site</span></a></h2>
+            <div class="src">
+              <span class="src-label">Source files</span>
+              <div class="lane-links"><a href="https://github.com/FB-Decipherer/threecolumns" target="_blank" rel="noopener">Repository on GitHub &#8599;</a></div>
+            </div>
+          </div>
+          <div class="step"><span class="num">1</span><div class="step-body">
+            <span class="step-label">Task opens</span>
+            <div class="pill" data-copy="Resume gyro-sites.online — read the rehydration log."><span class="who">Enter prompt</span>&ldquo;Resume gyro-sites.online &mdash; read the rehydration log.&rdquo;<button class="copy" type="button">Copy</button></div>
+            <div class="file-row log"><span class="who">Claude reads</span>claude/rehydration-PROJECT-LOG.md</div>
+          </div></div>
+          <div class="rule-vert" aria-hidden="true"></div>
+          <div class="step"><span class="num">2</span><div class="step-body">
+            <span class="step-label">Work happens here</span>
+            <div class="pill"><span class="who">Enter more prompts</span>Claude carries them out on these files.</div>
+            <div class="file-row site">
+                <a href="https://gyro-sites.online/" target="_blank" rel="noopener">index.html</a> &middot;
+                <a href="https://gyro-sites.online/auto-gyro.html" target="_blank" rel="noopener">auto-gyro.html</a> &middot;
+                <a href="https://gyro-sites.online/source-cards.html" target="_blank" rel="noopener">source-cards.html</a>
+            </div>
+          </div></div>
+          <div class="rule-vert" aria-hidden="true"></div>
+          <div class="step"><span class="num">3</span><div class="step-body">
+            <span class="step-label">Session ends</span>
+            <div class="pill" data-copy="Close out — update the rehydration log."><span class="who">Enter prompt</span>&ldquo;Close out &mdash; update the rehydration log.&rdquo;<button class="copy" type="button">Copy</button></div>
+            <div class="file-row log"><span class="who">Claude updates</span>claude/rehydration-PROJECT-LOG.md</div>
+          </div></div>
+        </div>
+        <div class="lane">
+          <div class="lane-head">
+            <h2 class="lane-title"><a href="https://worland-dog-law.online/" target="_blank" rel="noopener">worland-dog-law.online<span class="ext" aria-hidden="true">&#8599;</span><span class="vh"> &mdash; open the live site</span></a></h2>
+            <div class="src">
+              <span class="src-label">Source files</span>
+              <div class="lane-links"><a href="https://github.com/FB-Decipherer/worland-wy-dog-laws" target="_blank" rel="noopener">Repository on GitHub &#8599;</a></div>
+            </div>
+          </div>
+          <div class="step"><span class="num">1</span><div class="step-body">
+            <span class="step-label">Task opens</span>
+            <div class="pill" data-copy="Resume worland-dog-law.online — read the rehydration log."><span class="who">Enter prompt</span>&ldquo;Resume worland-dog-law.online &mdash; read the rehydration log.&rdquo;<button class="copy" type="button">Copy</button></div>
+            <div class="file-row log"><span class="who">Claude reads</span>claude/rehydration-PROJECT-LOG.md</div>
+          </div></div>
+          <div class="rule-vert" aria-hidden="true"></div>
+          <div class="step"><span class="num">2</span><div class="step-body">
+            <span class="step-label">Work happens here</span>
+            <div class="pill"><span class="who">Enter more prompts</span>Claude carries them out on these files.</div>
+            <div class="file-row site">
+                <a href="https://worland-dog-law.online/" target="_blank" rel="noopener">index.html</a> &middot;
+                <a href="https://worland-dog-law.online/ordinances.html" target="_blank" rel="noopener">ordinances.html</a> &middot;
+                <a href="https://worland-dog-law.online/audit.html" target="_blank" rel="noopener">audit.html</a>
+            </div>
+          </div></div>
+          <div class="rule-vert" aria-hidden="true"></div>
+          <div class="step"><span class="num">3</span><div class="step-body">
+            <span class="step-label">Session ends</span>
+            <div class="pill" data-copy="Close out — update the rehydration log."><span class="who">Enter prompt</span>&ldquo;Close out &mdash; update the rehydration log.&rdquo;<button class="copy" type="button">Copy</button></div>
+            <div class="file-row log"><span class="who">Claude updates</span>claude/rehydration-PROJECT-LOG.md</div>
+          </div></div>
+        </div>
+        <div class="lane">
+          <div class="lane-head">
+            <h2 class="lane-title"><a href="https://baconian-ciphers.online/" target="_blank" rel="noopener">baconian-ciphers.online<span class="ext" aria-hidden="true">&#8599;</span><span class="vh"> &mdash; open the live site</span></a></h2>
+            <div class="src">
+              <span class="src-label">Source files</span>
+              <div class="lane-links"><a href="https://github.com/FB-Decipherer/baconian-ciphers" target="_blank" rel="noopener">Repository on GitHub &#8599;</a></div>
+            </div>
+          </div>
+          <div class="step"><span class="num">1</span><div class="step-body">
+            <span class="step-label">Task opens</span>
+            <div class="pill" data-copy="Resume baconian-ciphers.online — read the rehydration log."><span class="who">Enter prompt</span>&ldquo;Resume baconian-ciphers.online &mdash; read the rehydration log.&rdquo;<button class="copy" type="button">Copy</button></div>
+            <div class="file-row log"><span class="who">Claude reads</span>claude/rehydration-PROJECT-LOG.md</div>
+          </div></div>
+          <div class="rule-vert" aria-hidden="true"></div>
+          <div class="step"><span class="num">2</span><div class="step-body">
+            <span class="step-label">Work happens here</span>
+            <div class="pill"><span class="who">Enter more prompts</span>Claude carries them out on these files.</div>
+            <div class="file-row site">
+                <a href="https://baconian-ciphers.online/" target="_blank" rel="noopener">index.html</a> &middot;
+                <a href="https://baconian-ciphers.online/biliteral/" target="_blank" rel="noopener">biliteral/</a> &middot;
+                <a href="https://baconian-ciphers.online/word-cipher/" target="_blank" rel="noopener">word-cipher/</a> &middot;
+                <a href="https://baconian-ciphers.online/three-columns/" target="_blank" rel="noopener">three-columns/</a>
+            </div>
+          </div></div>
+          <div class="rule-vert" aria-hidden="true"></div>
+          <div class="step"><span class="num">3</span><div class="step-body">
+            <span class="step-label">Session ends</span>
+            <div class="pill" data-copy="Close out — update the rehydration log."><span class="who">Enter prompt</span>&ldquo;Close out &mdash; update the rehydration log.&rdquo;<button class="copy" type="button">Copy</button></div>
+            <div class="file-row log"><span class="who">Claude updates</span>claude/rehydration-PROJECT-LOG.md</div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+    <figcaption class="cap">Each lane is headed by the site itself; click the name to open it. The log is private on purpose: it stays on the owner&rsquo;s computer and never goes up with the published pages. Nothing here happens on its own. The log is written only when the owner asks for the close-out in step 3, so closing the window does not do it.</figcaption>
+  </figure>
+  <footer><p class="cap">A new site joins as one more lane exactly like these.</p><p class="key"><a href="auto-gyro.html">&larr; Back to Auto-Gyro</a> &middot; <a href="./">GYR-O Pages, the website format</a></p><p class="key">GYR-O &nbsp;=&nbsp; Green &middot; Yellow &middot; Red &middot; and sometimes <a href="auto-gyro.html">Orange</a></p><p class="key">&copy; 2026 Walter Wilkinson, creator of the GYR-O website format.</p></footer>
+</div>
+<script>
+document.addEventListener("click",function(e){
+  var b=e.target.closest(".copy"); if(!b) return;
+  var t=b.closest(".pill").getAttribute("data-copy")||"";
+  var ok=function(){b.textContent="Copied";setTimeout(function(){b.textContent="Copy";},1400);};
+  var fb=function(){
+    var ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand("copy");ok();}catch(err){b.textContent="Failed";setTimeout(function(){b.textContent="Copy";},1400);}
+    document.body.removeChild(ta);
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb);}else{fb();}
+});
+</script>
+</body></html>

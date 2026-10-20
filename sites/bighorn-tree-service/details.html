@@ -660,7 +660,7 @@ footer a.autogyro:hover,footer a.autogyro:focus-visible{border-bottom-width:2px;
   <button role="tab" id="tC" aria-controls="cC" aria-selected="false"><span class="key">C</span>How it works</button>
   <span class="spacer"></span>
   <button class="util" id="phoneview" type="button" hidden>Phone view</button>
-  <button class="util" id="pdf">Save as PDF</button>
+  <button class="util" id="pdf" title="Bighorn-Basin-Tree-Service-Details.pdf">Download PDF</button>
   <button class="util" id="theme">Dark</button>
 </nav>
 </div>
@@ -1184,7 +1184,8 @@ footer a.autogyro:hover,footer a.autogyro:focus-visible{border-bottom-width:2px;
     });
   });
 
-  document.getElementById('pdf').addEventListener('click', function(){ window.print(); });
+  function gyroPdf(n){var a=document.createElement('a');a.href=n;a.download=n;document.body.appendChild(a);a.click();a.remove();}
+  document.getElementById('pdf').addEventListener('click', function(){ gyroPdf('Bighorn-Basin-Tree-Service-Details.pdf'); });
   // print: open every folded answer first, and fold them again after, so paper misses nothing
   var unfolded = [];
   window.addEventListener('beforeprint', function(){
