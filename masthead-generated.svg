@@ -83,7 +83,7 @@ text{font-family:"Source Serif 4",Georgia,serif;fill:var(--ink)}
   <path d="M28,96 L82,46 L118,84 L146,62 L210,96 Z" fill="var(--rule)"/>
   <circle cx="186" cy="36" r="11" fill="var(--rule)"/>
   <text x="0" y="140" class="t" style="fill:var(--mid)">The picture, and its caption at 22&#8239;px</text>
-  <text x="0" y="156" class="tiny">&#8212; often the only line a scanner reads</text>
+  <text x="0" y="156" class="tiny">&#8212; often the only line a reader skimming the page reads</text>
 </g>
 
 <text x="52" y="232" class="tiny">Everything inside this band changes from site to site. Nothing else does.</text>
