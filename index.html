@@ -529,10 +529,98 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
   .threshold .mark svg rect:nth-of-type(2){fill:#9a9a9a;}
   .threshold .mark svg rect:nth-of-type(3){fill:#6f6f6f;}
 }
+
+/* ===================== GYR-O: Intro, Info, and the austere index ===================== */
+.gyro-in{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none;}
+.gyro-index{background:#fff;color:#000;border-bottom:1px solid #000;
+  padding:28px max(16px,env(safe-area-inset-right,0px)) 26px max(16px,env(safe-area-inset-left,0px));
+  font-family:"Source Serif 4",Georgia,serif;}
+.gyro-ix{max-width:1508px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px 28px;flex-wrap:wrap;}
+.gyro-ixtext{min-width:0;flex:1 1 16rem;}
+.gyro-thumb{display:block;flex:0 0 auto;width:clamp(150px,18vw,220px);line-height:0;border:1px solid #000;}
+.gyro-thumb img{display:block;width:100%;height:auto;}
+.gyro-thumb:focus-visible,.gyro-thumb:hover{outline:2px solid #000;outline-offset:3px;}
+/* the same picture heads Intro, so with Intro on the index drops its copy */
+#g-intro:checked ~ .gyro-index .gyro-thumb{display:none;}
+@media (max-width:640px){.gyro-thumb{width:100%;max-width:340px;}}
+@media print{.gyro-thumb{display:none;}}
+.gyro-title{margin:0;font-size:clamp(26px,3.6vw,38px);font-weight:600;line-height:1.15;color:#000;}
+.gyro-boxes{margin:16px 0 0;display:flex;gap:28px;flex-wrap:wrap;}
+.gyro-boxes label{display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+  font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:16px;letter-spacing:.04em;color:#000;}
+.gbox{width:20px;height:20px;border:2px solid #000;background:#fff;display:inline-block;position:relative;flex:none;}
+#g-intro:checked ~ .gyro-index label[for="g-intro"] .gbox::after,
+#g-info:checked ~ .gyro-index label[for="g-info"] .gbox::after{
+  content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;
+  border:solid #000;border-width:0 2.5px 2.5px 0;transform:rotate(45deg);}
+#g-intro:focus-visible ~ .gyro-index label[for="g-intro"] .gbox,
+#g-info:focus-visible ~ .gyro-index label[for="g-info"] .gbox{outline:2px solid #000;outline-offset:3px;}
+
+.gyro-intro,.gyro-info{display:none;}
+#g-intro:checked ~ .gyro-intro{display:block;}
+#g-info:checked ~ .gyro-info{display:block;}
+/* the threshold divides Intro from Info, so it shows only when both are on the page */
+#g-intro:not(:checked) ~ .gyro-info .threshold{display:none;}
+/* the control strip sticks for the whole of Info, not just its own short block */
+.navwrap{position:sticky;top:0;z-index:20;background:var(--paper);}
+.navwrap nav{position:static;margin-top:0;}
+
+/* Dark belongs to Info. With Info off, the page cannot be dark, whatever was chosen. */
+:root:has(#g-info:not(:checked)){
+  --paper:#FCFAF5; --card:#F5F1E8; --ink:#1E1B16; --ink-mid:#4A443A;
+  --rule:#DCD5C6; --accent:#4C7A4E; --accentb:#B4372C; --gold:#8A6A15; --dead:#8A8177;
+  --col-a:#4C7A4E; --col-b:#D8AC45; --col-c:#B4372C;
+  --on-a:#FCFAF5; --on-b:#1E1B16; --on-c:#FCFAF5; color-scheme:light;}
+body:has(#g-info:not(:checked)){background:#fff;}
+
+/* paper carries everything, in order: the index line, Intro, then Info */
+@media print{
+  .gyro-intro,.gyro-info{display:block !important;}
+  #g-intro:not(:checked) ~ .gyro-info .threshold{display:block !important;}
+  .gyro-boxes{display:none;}
+  .navwrap{position:static;}
+}
+
+/* Technical Colophon: the last thing in column C, the polar opposite of the first answer in A */
+.colophon{display:grid;grid-template-columns:max-content 1fr;gap:4px 16px;margin:10px 0 0;
+  font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.5;color:var(--ink-mid);}
+.colophon dt{color:var(--ink);font-weight:500;}
+.colophon dd{margin:0;min-width:0;overflow-wrap:anywhere;}
+.colophon code{font-size:inherit;}
+.colophon a{color:inherit;border-bottom:0;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px;}
+.colophon a:hover{color:var(--ink);}
+@media (max-width:640px){.colophon{grid-template-columns:1fr;gap:0;}.colophon dd{margin-bottom:8px;}}
+
+.gyro-gloss{font-style:italic;}
+
+/* the one orange on a reader's page: the link to how the site was built */
+:root{--col-o:#b45309;}
+:root[data-theme="dark"]{--col-o:#f0913a;}
+footer a.autogyro{color:var(--col-o);border-bottom:1px solid var(--col-o);font-weight:600;}
+footer a.autogyro:hover,footer a.autogyro:focus-visible{border-bottom-width:2px;}
+@media print{footer a.autogyro{color:#000;border-bottom-color:#000;}}
+
 </style>
 </head>
 <body>
+<input class="gyro-in" type="checkbox" id="g-intro">
+<input class="gyro-in" type="checkbox" id="g-info">
+<div class="gyro-index">
+  <div class="gyro-ix">
+    <div class="gyro-ixtext">
+      <p class="gyro-title">GYR-O Pages</p>
+      <div class="gyro-boxes">
+        <label for="g-intro"><span class="gbox" aria-hidden="true"></span>Intro</label>
+        <label for="g-info"><span class="gbox" aria-hidden="true"></span>Info</label>
+      </div>
+    </div>
+    <a class="gyro-thumb" href="masthead-system.html" target="_blank" rel="noopener" title="Open the full-size picture">
+      <img src="masthead-system.svg" width="1000" height="878" alt="Block diagram of one GYR-O page. A dashed band at the top, labeled SITE-UNIQUE, holds the masthead: the GYR-O mark and eyebrow, the title, the What this is label and standfirst, the attributes line, and the picture slot with its 22 pixel caption. Below it a strip of standard controls. Then the threshold, a double rule with the GYR-O mark knocking a gap in it, captioned The page layout below is standard on every GYR-O site. Below the threshold, labeled 3COL STANDARD, are the three switches that turn each column on or off, then the columns themselves: A Plain answers in green, widening downward from plain to more detailed; B Sources in gold, holding Internal links and External links with the six-part source card, in one register that does not deepen; and C How it works in red, widening downward from assumed know-how to more technical. Red numerals in A and C reach across to the source cards in B. A bottom strip gives the three renderings, the meaning of the three colors, and the size of the whole thing. Opens full size.">
+    </a>
+  </div>
+</div>
 
+<div class="gyro-intro">
 <div class="wrap">
 <header>
     <div class="masthead-text">
@@ -560,6 +648,17 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
     </figure>
   </header>
 
+</div>
+</div>
+
+<div class="gyro-info">
+<div class="wrap">
+<div class="threshold" role="separator" aria-label="The threshold: Intro above it, Info below it, in the GYR-O format">
+  <div class="bar"><div class="mark"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22"><rect x="1.5" y="4" width="6" height="16" rx="1.4"></rect><rect x="9" y="4" width="6" height="16" rx="1.4"></rect><rect x="16.5" y="4" width="6" height="16" rx="1.4"></rect></svg></div></div>
+  <p class="cap">The page layout below is standard on every GYR-O site</p>
+</div>
+</div>
+<div class="wrap navwrap">
 <nav role="tablist" aria-label="Columns">
   <button role="tab" id="tA" aria-controls="cA" aria-selected="true"><span class="key">A</span>Plain answers</button>
   <button role="tab" id="tB" aria-controls="cB" aria-selected="false"><span class="key">B</span>Sources</button>
@@ -576,12 +675,7 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
   <button class="util" id="theme">Dark</button>
 </nav>
 </div>
-
 <div class="wrap">
-<div class="threshold" role="separator" aria-label="Below this line, the page is in the GYR-O format">
-  <div class="bar"><div class="mark"><svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22"><rect x="1.5" y="4" width="6" height="16" rx="1.4"></rect><rect x="9" y="4" width="6" height="16" rx="1.4"></rect><rect x="16.5" y="4" width="6" height="16" rx="1.4"></rect></svg></div></div>
-  <p class="cap">The page layout below is standard on every GYR-O site</p>
-</div>
 
 <div class="expand">
   <!-- ===================================================================
@@ -687,6 +781,7 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
   <div class="colhead"><b>A</b><span class="nm"> &nbsp;Plain answers</span><label class="sw" for="ck-a" title="Show or hide this column"></label></div>
 
   <details><summary>What is GYR-O Pages?</summary><div class="body">
+    <p><b>Every GYR-O page comes in two parts: Intro and Info.</b> <b>Intro</b>, above the double line, is whatever this subject needs &mdash; its name, a picture, a paragraph &mdash; and it differs from site to site. <b>Info</b>, below the line, is the standard layout, the same on every GYR-O site: three columns of plain answers, sources and technical detail. A reader who has used one already knows where to look on the next.</p>
     <p>A way of building a single-topic website so that one topic serves two readers at once: the newcomer who knows nothing about it, and the reader who already knows the subject well. Neither is watered down for the other, and neither has to wade through the other.</p>
     <p>Its second idea is about footnotes. Instead of being buried at the foot of a page, tucked behind a link, or scattered wherever they fall, every reference is gathered into one column of its own &mdash; centered in the layout, given the same visual weight as the writing, and always in the same place.</p>
     <p>They are three columns wherever they will fit as three columns. On a wide screen you see all three at once. On a phone they stack, and you read one at a time. Printed, they become one document. And where one column holds more than any column can &mdash; an entire municipal code, say &mdash; it is given its own page, as at <a href="https://worland-dog-law.online">worland-dog-law.online</a><span class="fn" data-ref="r6">6</span>. Stacked, paged or side by side, it is the same three. Usually it is a single page — no system to log into, no monthly bill, nothing that can be switched off.</p>
@@ -761,7 +856,9 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
   </div></details>
 
   <details><summary>What does it cost — and what if the free hosting ends?</summary><div class="body">
-    <p><b>Free, without a name of your own.</b> The hosting is free<span class="fn" data-ref="r3">3</span>, the security certificate is free<span class="fn" data-ref="r4">4</span>, and an address like <span class="mono">yourname.github.io/site</span> costs nothing and never lapses. <b>About a dollar a month buys your own name instead</b> &mdash; and that is the part you actually own, because a name you rent can be moved anywhere and a free address cannot.</p>
+    <p><b>Free, without a name of your own.</b> The hosting is free<span class="fn" data-ref="r3">3</span>, the security certificate is free<span class="fn" data-ref="r4">4</span>, and an address like <span class="mono">yourname.github.io/site</span> costs nothing and never lapses. <b>A little more each year buys your own name instead</b> &mdash; and that is the part you actually own, because a name you rent can be moved anywhere and a free address cannot.</p>
+    <p><b>Or share a name.</b> A group can buy one name together &mdash; a farm cooperative, say, with <span class="mono">washakiefarms.online</span> &mdash; and every member&rsquo;s site lives under it free, at an address like <span class="mono">eastbench.washakiefarms.online</span>, with one index page listing them all.</p>
+    <p><b>Think of license plates.</b> Everyone gets one; a vanity plate costs a little extra each year, and it is up to you. A name of your own runs roughly $11 a year for a <span class="mono">.com</span> and up to about $28 a year for a <span class="mono">.online</span> once its cheap first year is over.</p>
     <p><b>The honest answer to the second half.</b> Nobody has promised free hosting forever, and you should distrust anyone who says otherwise. What protects you is not a promise — it is that your site is a handful of plain files. If the host ever changed its terms you could move the whole thing somewhere else in an afternoon, unchanged, and keep your address. There is nothing to export, nothing to convert, and nothing held hostage.</p>
     <p>That is the real answer to lock-in, and it is stronger than "forever" because it does not depend on anyone's goodwill.</p>
   </div></details>
@@ -881,6 +978,10 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
 <!-- ================= B ================= -->
 <section class="col dim" id="cB" role="tabpanel" aria-labelledby="tB">
   <div class="colhead"><b>B</b><span class="nm"> &nbsp;Sources</span><label class="sw" for="ck-b" title="Show or hide this column"></label></div>
+  <h3 class="colbsh" id="colbread">How to read a card</h3>
+  <p class="colbcap">Every card below reads the same way, top to bottom. Parts 4 and 5 are the ones a bare footnote never gives you.</p>
+  <ol class="cardkey" style="margin:0 0 6px;padding-left:1.5em;font-size:15.5px;line-height:1.45;color:var(--ink-mid)"><li><b>Number and kind</b> &mdash; what sort of thing it is</li><li><b>Title</b> &mdash; what it is called</li><li><b>Provenance</b> &mdash; who made it, when, under what license</li><li><b>Preview</b> &mdash; what you would find if you went there</li><li><b>Why it is cited</b> &mdash; what it is doing on this page</li><li><b>The link</b> &mdash; last, and only last</li></ol>
+  <p class="colbcap" style="margin-top:2px">An article, a photograph, a map, a book, a dataset and a film, each carded: <a href="source-cards.html">see every kind at work &rarr;</a></p>
   <h3 class="colbsh" id="colbint">Internal links</h3>
   <p class="colbcap">The two most recent content changes, and the record behind them.</p>
   <a class="bcard" href="#absolute" data-open="absolute">
@@ -1130,15 +1231,8 @@ body:has(#ck-c:not(:checked)) #cC .colhead b{margin-right:0;}
   <p>Column B opens with two blocks built exactly alike: a heading, a caption line, then the content. <b>Internal links</b>, captioned <i>The two most recent content changes.</i>, holds two cards, newest first &mdash; each a date and what changed, linked to the place on the page where it changed. Two rather than one because a single line reads as thin, and three begins to look like a log. <b>External links</b>, captioned <i>Every reference to some other website.</i>, holds the source cards, one for every other site the page mentions.</p>
   <p>The headings and captions are word for word the same on every site that carries them, and External always sits below Internal, in one column. A reader who has used one GYR-O site already knows where to look on the next. On a site in page form they head the page that is column B, as on worland-dog-law.online&rsquo;s Ordinance Text page<span class="fn" data-ref="r6">6</span>, where External links is a plain list.</p>
 
-  <h2>The anatomy of a source card</h2>
-  <p>Fixed order, every time, so a reader learns the shape once:</p>
-<pre>1  number and kind      what sort of thing this is
-2  title                what it is called
-3  provenance           who made it, when, under what license
-4  preview              what you would find if you went there
-5  why it is cited      what it is doing in THIS page
-6  the link             last, and only last</pre>
-  <p>Items 4 and 5 do the work, and are the two a bare footnote never supplies. Item 5 is the honest one: it forces the writer to say what the source actually supports, which is where padded citation lists fall apart.</p>
+  <h2>Citations and the way back</h2>
+  <p>The six parts of a source card are listed at the top of column B, where a reader meets them. Items 4 and 5 do the work. Item 5 is the honest one: it forces the writer to say what the source actually supports, which is where padded citation lists fall apart.</p>
   <p><b>Numerals</b> &mdash; the small red numbers that follow a claim, each one a link to the card that supports it &mdash; belong in columns A and C, never in the header. A name in the header may still be a plain link.</p>
   <p>Arriving at a card from a numeral adds one control at its foot, below the link: a <b>Back</b> button, pointing the way you came &mdash; <span class="mono">&larr; Back</span> to column A, <span class="mono">Back &rarr;</span> to column C. It returns you to the very numeral you clicked, outlines it in gold for a moment so the eye finds it, and then goes away. It is a way back, not something the card says; the link is still the last thing the card tells you.</p>
 
@@ -1480,5 +1574,25 @@ project manager         nobody to coordinate with</pre>
 <script src="back-link.js" defer></script>
 <script src="cite-back.js" defer></script>
 <script src="search.js" defer></script>
+</div>
+
+<script>
+/* A link that lands inside Intro or Info switches that part on, so a reader who
+   follows somebody's link straight to a source card is not shown a blank page. */
+(function(){
+  function open(){
+    var h = location.hash.slice(1); if(!h) return;
+    var t = document.getElementById(h); if(!t) return;
+    var parts = [['gyro-intro','g-intro'],['gyro-info','g-info']];
+    for (var i=0;i<parts.length;i++){
+      var box = document.querySelector('.'+parts[i][0]);
+      if (box && box.contains(t)) document.getElementById(parts[i][1]).checked = true;
+    }
+    if (t.scrollIntoView) t.scrollIntoView();
+  }
+  window.addEventListener('hashchange', open);
+  document.addEventListener('DOMContentLoaded', open);
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Source Cards, by Kind · GYR-O Pages</title>
+<meta name="description" content="A working demonstration of the GYR-O source card: six real sources about Washakie County, from an encyclopedia article to a river gauge, each previewed in the way that suits what it is.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FCFAF5; --card:#F5F1E8; --ink:#1E1B16; --ink-mid:#4A443A;
+  --rule:#DCD5C6; --accent:#4C7A4E; --accentb:#B4372C; --gold:#8A6A15; --dead:#8A8177;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#15130F; --card:#1E1B16; --ink:#F2EDE3; --ink-mid:#B7AF9F;
+    --rule:#38332A; --accent:#7FA981; --accentb:#D2695C; --gold:#D9B45C; --dead:#6B655B;
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.62;}
+.wrap{max-width:760px;margin:0 auto;padding:30px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));}
+a{color:inherit;text-decoration-color:var(--rule);text-underline-offset:3px;}
+a:hover{text-decoration-color:var(--accent);}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-mid);display:flex;align-items:center;gap:9px;}
+.eyebrow svg{flex:none;}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.12;margin:12px 0 10px;font-weight:600;}
+.standfirst{font-size:19px;margin:0 0 10px;}
+.lede{color:var(--ink-mid);margin:0 0 26px;}
+h2{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gold);margin:30px 0 4px;}
+.cap{font-size:15.5px;color:var(--ink-mid);margin:2px 0 12px;}
+.cardkey{margin:0 0 6px;padding-left:1.5em;font-size:15.5px;line-height:1.45;color:var(--ink-mid);}
+.cardkey b{color:var(--ink);}
+
+/* ---------- the card, exactly as on every GYR-O site ---------- */
+.ref{border:1px solid var(--rule);border-radius:9px;padding:15px 16px;margin-bottom:15px;background:var(--card);}
+.rnum{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;line-height:1;color:#B4372C;vertical-align:middle;
+  display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
+  background:#FFFFFF;border:1px solid var(--rule);border-radius:999px;}
+.rkind{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-mid);display:inline;margin-left:.7em;}
+.rtitle{font-size:17px;font-weight:600;margin-top:7px;line-height:1.3;}
+.rmeta{font-size:13.5px;color:var(--ink-mid);margin-top:4px;font-style:italic;}
+.rprev{font-size:14.5px;margin-top:9px;}
+.rprev::after{content:"";display:block;clear:both;}
+.rwhy{font-size:14.5px;margin-top:7px;color:var(--ink-mid);}
+.rwhy b{color:var(--ink);font-weight:600;}
+.rlink{display:block;margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+  padding:8px 11px;border:1px solid var(--rule);border-radius:6px;background:var(--paper);
+  overflow-wrap:anywhere;text-decoration:none;}
+.rlink:hover{border-color:var(--accent);}
+.rlink::before{content:"→ ";color:var(--accent);}
+.rshot{float:left;width:112px;height:auto;margin:3px 14px 7px 0;border:1px solid var(--rule);border-radius:3px;background:#FFFFFF;}
+.rfacts{font-family:"IBM Plex Mono",monospace;font-size:13.5px;font-weight:500;color:var(--ink);}
+@media (max-width:640px){.rshot{float:none;display:block;width:100%;max-width:200px;margin:0 0 10px;}}
+
+/* the note under each card that says what this demo is showing */
+.shows{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-mid);margin:-6px 0 22px 4px;}
+.shows b{color:var(--accent);font-weight:500;}
+
+footer{border-top:1px solid var(--rule);margin-top:34px;padding:20px 0 40px;text-align:center;
+  font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-mid);line-height:1.8;}
+.gyro-key{display:inline-block;font-size:1.2em;margin:.4em 0;color:var(--ink);}
+.sw{display:inline-block;width:.8em;height:.8em;border-radius:2px;vertical-align:-.06em;margin:0 .3em 0 .55em;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+@media print{
+  :root{--paper:#fff;--card:#fff;}
+  .ref{break-inside:avoid;}
+  .rlink::after{content:"";}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="1.5" y="4" width="6" height="16" rx="1.4" fill="#4C7A4E"/><rect x="9" y="4" width="6" height="16" rx="1.4" fill="#D8AC45"/><rect x="16.5" y="4" width="6" height="16" rx="1.4" fill="#B4372C"/></svg>
+    <span>GYR-O Pages &middot; a working demonstration</span>
+  </div>
+  <h1>Source Cards, by Kind</h1>
+  <p class="standfirst">Six real sources about Washakie County &mdash; an article, a photograph, a map, a book, a dataset and a film &mdash; each carded the way every GYR-O site cards its sources.</p>
+  <p class="lede">The shape never changes, so a reader learns it once. What changes is part 4, the preview: prose for an article, a small picture for a photograph or a map, the first page and a page count for a book, row and column counts for a dataset, a still and a running time for a film. Every picture here was fetched once and stored with this page, so it works offline and tells no other server who is reading. Each one is public domain or openly licensed, as its provenance line says.</p>
+</header>
+
+<h2>How to read a card</h2>
+<p class="cap">Every card below reads the same way, top to bottom. Parts 4 and 5 are the ones a bare footnote never gives you.</p>
+<ol class="cardkey">
+  <li><b>Number and kind</b> &mdash; what sort of thing it is</li>
+  <li><b>Title</b> &mdash; what it is called</li>
+  <li><b>Provenance</b> &mdash; who made it, when, under what license</li>
+  <li><b>Preview</b> &mdash; what you would find if you went there</li>
+  <li><b>Why it is cited</b> &mdash; what it is doing on this page</li>
+  <li><b>The link</b> &mdash; last, and only last</li>
+</ol>
+
+<h2>The cards</h2>
+<p class="cap">Each is followed by a one-line note saying which kind of preview it demonstrates.</p>
+
+<article class="ref" id="r1">
+  <span class="rnum">1</span><span class="rkind">Reference &middot; an encyclopedia article</span>
+  <div class="rtitle">Washakie County, Wyoming</div>
+  <div class="rmeta">Wikipedia &middot; edited continuously &middot; text under CC BY-SA 4.0</div>
+  <div class="rprev">The county&rsquo;s general article. It records that the county was authorized on 21 February 1911 as Hanover County, carved from Big Horn County, and organized in 1913; that it is named for Chief Washakie of the Shoshone; that Worland is the county seat; that it covers 2,243 square miles; and that the 2020 census counted 7,685 people. Sections follow on history, geography, demographics, politics and the Wyoming Boys&rsquo; School.</div>
+  <div class="rwhy"><b>Why it is cited:</b> as the plain starting point, and as the ordinary case: a page of prose is previewed in prose.</div>
+  <a class="rlink" href="https://en.wikipedia.org/wiki/Washakie_County,_Wyoming">en.wikipedia.org/wiki/Washakie_County,_Wyoming</a>
+</article>
+<p class="shows"><b>Prose</b> &middot; the preview is sentences</p>
+
+<article class="ref" id="r2">
+  <span class="rnum">2</span><span class="rkind">Photograph &middot; a portrait</span>
+  <div class="rtitle">Washakie (Shoots-the-Buffalo-Running), a Shoshoni chief, half-length, seated, holding pipe</div>
+  <div class="rmeta">U.S. National Archives, NARA ID 530875 &middot; photographer not recorded &middot; public domain</div>
+  <div class="rprev"><img class="rshot" src="shots/demo/portrait.jpg" width="250" height="381" alt="" loading="lazy" decoding="async">A seated half-length portrait of the chief the county is named for, holding a pipe, in a studio photograph held by the National Archives. The original scan is 1,971 by 3,000 pixels.</div>
+  <div class="rwhy"><b>Why it is cited:</b> because a name on a map is easier to care about with a face beside it, and because a photograph is the clearest case for a picture in the preview.</div>
+  <a class="rlink" href="https://commons.wikimedia.org/wiki/File:Washakie_(Shoots-the-Buffalo-Running),_a_Shoshoni_chief,_half-length,_seated,_holding_pipe_-_NARA_-_530875.jpg">commons.wikimedia.org &middot; NARA 530875</a>
+</article>
+<p class="shows"><b>Image</b> &middot; a thumbnail, stored with the page</p>
+
+<article class="ref" id="r3">
+  <span class="rnum">3</span><span class="rkind">Map &middot; a scanned plate</span>
+  <div class="rtitle">Sanborn Fire Insurance Map from Cheyenne, Laramie County, Wyoming, 1886, Plate 1</div>
+  <div class="rmeta">Sanborn Map Company, June 1886 &middot; Library of Congress scan, via Wikimedia Commons &middot; public domain</div>
+  <div class="rprev"><img class="rshot" src="shots/demo/sanborn.jpg" width="250" height="296" alt="" loading="lazy" decoding="async">The first plate of the 1886 Sanborn atlas of Cheyenne, drawn so fire insurers could price each building by its size, materials and neighbors. The full scan is 6,510 by 7,707 pixels.</div>
+  <div class="rwhy"><b>Why it is cited:</b> to show a map in the preview: the thumbnail tells you at a glance that this link leads to a drawing to read, not an article.</div>
+  <a class="rlink" href="https://commons.wikimedia.org/wiki/File:Sanborn_Fire_Insurance_Map_from_Cheyenne,_Laramie_County,_Wyoming,_1886,_Plate_0001.jpg">commons.wikimedia.org &middot; Sanborn, Cheyenne 1886, plate 1</a>
+</article>
+<p class="shows"><b>Scan</b> &middot; a thumbnail of the plate itself</p>
+
+<article class="ref" id="r4">
+  <span class="rnum">4</span><span class="rkind">Book &middot; a government report, as PDF</span>
+  <div class="rtitle">Geology and Water Resources of the Bighorn Basin, Wyoming</div>
+  <div class="rmeta">Cassius A. Fisher &middot; U.S. Geological Survey &middot; Internet Archive scan, via Wikimedia Commons &middot; public domain</div>
+  <div class="rprev"><img class="rshot" src="shots/demo/fisher-title.jpg" width="250" height="330" alt="" loading="lazy" decoding="async"><span class="rfacts">PDF &middot; 134 pages &middot; 9.8 MB</span><br>The federal survey of the basin Worland sits in: its rocks, its rivers and, above all, its water, which is the question every farm on the Bighorn still asks. The picture is the title page; the scan&rsquo;s first page is a black cover, which would tell you nothing.</div>
+  <div class="rwhy"><b>Why it is cited:</b> because a reader deserves to know before clicking that the link opens a 134-page, 10-megabyte book, not a web page.</div>
+  <a class="rlink" href="https://commons.wikimedia.org/wiki/File:Geology_and_water_resources_of_the_Bighorn_Basin,_Wyoming_(IA_geologywaterreso00fish).pdf">commons.wikimedia.org &middot; Fisher, Bighorn Basin (PDF)</a>
+</article>
+<p class="shows"><b>PDF</b> &middot; the title page, the page count and the size</p>
+
+<article class="ref" id="r5">
+  <span class="rnum">5</span><span class="rkind">Data &middot; a river gauge</span>
+  <div class="rtitle">Bighorn River at Worland, Wyoming: daily mean discharge</div>
+  <div class="rmeta">U.S. Geological Survey, National Water Information System, site 06268600 &middot; public domain</div>
+  <div class="rprev"><span class="rfacts">Tab-separated text &middot; 2,935 rows &middot; 5 columns</span><br>One row per day: the gauge, the date, the river&rsquo;s mean flow in cubic feet per second, and a code saying whether the figure is approved. The record runs in two stretches, from 1 July 1965 to 3 October 1969 and from 1 October 2014 to 10 July 2018, with nothing in between; 250 of the days are marked as estimates.</div>
+  <div class="rwhy"><b>Why it is cited:</b> because a dataset is previewed by its shape: how many rows, what each row holds, and the span of dates, which a sentence of prose would hide.</div>
+  <a class="rlink" href="https://waterservices.usgs.gov/nwis/dv/?format=rdb&amp;sites=06268600&amp;parameterCd=00060&amp;siteStatus=all&amp;startDT=1900-01-01">waterservices.usgs.gov &middot; site 06268600, daily values</a>
+</article>
+<p class="shows"><b>Data</b> &middot; rows, columns and the span, counted once</p>
+
+<article class="ref" id="r6">
+  <span class="rnum">6</span><span class="rkind">Film &middot; a documentary</span>
+  <div class="rtitle">Washakie: Last Chief of the Eastern Shoshone</div>
+  <div class="rmeta">Wyoming PBS, 2017 &middot; via Wikimedia Commons &middot; CC BY 3.0</div>
+  <div class="rprev"><img class="rshot" src="shots/demo/pbs-poster.jpg" width="250" height="141" alt="" loading="lazy" decoding="async"><span class="rfacts">Video &middot; 57 min 39 s &middot; 1280 &times; 720</span><br>Wyoming PBS&rsquo;s documentary on the chief&rsquo;s life, published under a license that allows reuse with credit. The still is the film&rsquo;s own poster frame.</div>
+  <div class="rwhy"><b>Why it is cited:</b> because nobody should click into an hour of video expecting a paragraph; the running time is the most useful thing a film card can say.</div>
+  <a class="rlink" href="https://commons.wikimedia.org/wiki/File:Washakie_-_Last_Chief_of_the_Eastern_Shoshone.webm">commons.wikimedia.org &middot; Wyoming PBS, Washakie</a>
+</article>
+<p class="shows"><b>Film</b> &middot; a still and the running time</p>
+
+<footer>
+  Source Cards, by Kind &middot; a working demonstration of the GYR-O source card<br>
+  No analytics, no trackers, no cookies. This page sets nothing and stores nothing for its readers.<br>
+  <span class="gyro-key">GYR-O&nbsp;=<span class="sw" aria-hidden="true" style="background:#4c7a4e"></span><b>G</b>reen &middot;<span class="sw" aria-hidden="true" style="background:#c9a227"></span><b>Y</b>ellow &middot;<span class="sw" aria-hidden="true" style="background:#b4372c"></span><b>R</b>ed &middot; <span style="white-space:nowrap">and sometimes<span class="sw" aria-hidden="true" style="background:#d2691e"></span><a href="auto-gyro.html"><b>O</b>range</a></span></span><br>
+  &copy; 2026 Walter Wilkinson, creator of the GYR-O website format. The underlying template is free for reuse, under the MIT license. View details: <a href="legal.html">license and copyright</a><br>
+  <a href="index.html">&uarr; gyro-sites.online</a>
+</footer>
+</div>
+</body>
+</html>
