@@ -105,7 +105,7 @@ footer { border-top:1px solid var(--rule); padding-top:14px; font-size:.9rem; co
   <p>The threshold (rule 1.4) divides every GYR-O page into two named parts: <b>Intro</b> above it, <b>Info</b> below it. The front page, <code>index.html</code>, is built from that division.</p>
   <div class="demo" role="group" aria-label="Working example of a GYR-O index page">
     <p class="t">East Bench Farm</p>
-    <input type="checkbox" id="d-intro"><label for="d-intro">Intro</label>
+    <input type="checkbox" id="d-intro" checked><label for="d-intro">Intro</label>
     <input type="checkbox" id="d-info"><label for="d-info">Info</label>
     <div class="part p-intro"><b>Intro</b> · what this site's subject needs: name, standfirst, picture.</div>
     <div class="thr"></div>
@@ -118,7 +118,7 @@ footer { border-top:1px solid var(--rule); padding-top:14px; font-size:.9rem; co
     <tr><td class="id">0.1</td><td class="lv must">MUST</td><td>The index page shows the site's title, exactly two checkboxes and the site's picture as a thumbnail, nothing else. The checkboxes are labeled <span class="v">Intro</span> then <span class="v">Info</span>, in that order. The thumbnail opens the picture full size; it steps aside when Intro is on, since the same picture heads Intro.</td></tr>
     <tr><td class="id">0.2</td><td class="lv must">MUST</td><td>Starkly, jarringly austere: white background, black type, and no Dark mode on <code>index.html</code>, whatever the reader's system setting. Dark mode belongs everywhere in Info (rules 7.4 and 9.2).</td></tr>
     <tr><td class="id">0.3</td><td class="lv must">MUST</td><td>Checking Intro shows everything above the threshold; unchecking it hides it. Info does the same for everything below. The two are independent, and both may show at once.</td></tr>
-    <tr><td class="id">0.4</td><td class="lv should">SHOULD</td><td>Both boxes are unchecked on load, so the first view is the title and two words.</td></tr>
+    <tr><td class="id">0.4</td><td class="lv must">MUST</td><td>On load, Intro is checked and Info is not, so the first view is the site itself, with the GYR-O detail one click away. A link may set the boxes for the reader: <code>#intro</code>, <code>#info</code>, <code>#intro+info</code> or <code>#none</code>.</td></tr>
     <tr><td class="id">0.5</td><td class="lv must">MUST</td><td>The checkboxes work with scripts off. They are plain CSS checkboxes, as on <code>masthead-system.html</code>.</td></tr>
     </tbody>
   </table></div>

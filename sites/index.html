@@ -77,7 +77,7 @@ td.box{text-align:center}
 <div class="wrap">
   <p class="eyebrow"><a href="../">GYR-O Pages</a> &middot; every site</p>
   <h1>Every GYR-O site</h1>
-  <p class="cap">Tick Intro, Info or both, then click the name or the picture. The site opens with the same boxes ticked. Tick neither and it opens at its own index, where the same two boxes wait.</p>
+  <p class="cap">Intro is ticked to start, as on every site. Tick Info as well, or instead, then click the name or the picture: the site opens with the same boxes ticked.</p>
 
   <table>
     <thead><tr><th>Site</th><th class="box">Intro</th><th class="box">Info</th><th><span class="vh" style="position:absolute;left:-9999px">Picture</span></th></tr></thead>
@@ -108,7 +108,7 @@ function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g
 function box(i,part,on){
   var label = part==="intro" ? "Intro" : "Info";
   if(!on) return '<span class="ck off" title="This site has no Intro/Info index yet"><span class="gbox" aria-hidden="true"></span><span class="lbl">'+label+'</span></span>';
-  return '<label class="ck"><input type="checkbox" data-i="'+i+'" data-p="'+part+'" aria-label="'+label+'"><span class="gbox" aria-hidden="true"></span><span class="lbl">'+label+'</span></label>';
+  return '<label class="ck"><input type="checkbox" data-i="'+i+'" data-p="'+part+'" aria-label="'+label+'"'+(part==="intro"?" checked":"")+'><span class="gbox" aria-hidden="true"></span><span class="lbl">'+label+'</span></label>';
 }
 var rows = SITES.map(function(s,i){
   var addr = s.u.replace(/^https:\/\//,"").replace(/\/$/,"");
@@ -127,7 +127,7 @@ function hashFor(i){
     var c=document.querySelector('input[data-i="'+i+'"][data-p="'+p+'"]');
     if(c&&c.checked) parts.push(p);
   });
-  return parts.length ? "#"+parts.join("+") : "";
+  return parts.length ? "#"+parts.join("+") : "#none";
 }
 function refresh(i){
   document.querySelectorAll('a[data-i="'+i+'"]').forEach(function(a){ a.href = SITES[i].u + hashFor(i); });
