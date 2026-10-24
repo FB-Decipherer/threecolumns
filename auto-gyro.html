@@ -58,6 +58,28 @@ footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:14px;font-si
 @keyframes hover{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 @media (prefers-reduced-motion:reduce){.rotor,.prop,.craft{animation:none}}
 @media print{.rotor,.prop,.craft{animation:none} figure{break-inside:avoid}}
+
+/* Start here: the two things a new site needs, and nothing else */
+.start{margin:36px 0 8px;border:2px solid var(--orange);border-radius:10px;padding:18px 18px 16px}
+.start h2{margin:0 0 4px;color:var(--orange)}
+.start .sub{color:var(--mid);margin:0 0 14px}
+.start label{display:block;font-weight:600;margin:14px 0 4px}
+.start .hint{font-size:15px;color:var(--mid);margin:0 0 6px}
+.start textarea,.start input{width:100%;font:inherit;font-size:18px;padding:10px 12px;border:1.5px solid var(--ink);border-radius:6px;background:#fff;color:var(--ink)}
+.start textarea{min-height:5.2em;resize:vertical}
+.start textarea:focus,.start input:focus{outline:2px solid var(--orange);outline-offset:2px}
+.namebox{display:flex;align-items:stretch}
+.namebox input{border-radius:6px 0 0 6px;min-width:0}
+.namebox span{display:flex;align-items:center;padding:0 12px;border:1.5px solid var(--ink);border-left:0;border-radius:0 6px 6px 0;font-family:"IBM Plex Mono",monospace;font-size:16px;background:#fff7ef}
+.preview{font-family:"IBM Plex Mono",monospace;font-size:16px;margin:8px 0 0;color:var(--orange);overflow-wrap:anywhere}
+.err{color:#9b1c1c;font-size:15px;margin:6px 0 0;min-height:0}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.actions button,.actions a{font:600 16px "Source Serif 4",Georgia,serif;padding:12px 18px;min-height:48px;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+.actions button{background:var(--orange);color:#fff;border:2px solid var(--orange)}
+.actions a{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+.actions button:focus-visible,.actions a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.done{font-size:15px;color:var(--mid);margin:10px 0 0}
+@media print{.start{display:none}}
 @media (max-width:520px){body{font-size:17px} .lede{font-size:19px} figcaption{font-size:19px}}
 </style>
 </head>
@@ -119,6 +141,26 @@ footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:14px;font-si
   <li><div><b>It is yours from then on.</b><p>To change a line, edit it and publish. The words, the look and the address all belong to you.</p></div></li>
 </ol>
 
+<section class="start" id="start" aria-labelledby="start-h">
+  <h2 id="start-h">Start here</h2>
+  <p class="sub">Steps 1 and 2 above, and nothing else. This page sends nothing and keeps nothing: it writes a short message for you to pass to the person who builds the site.</p>
+  <label for="what">1. What is the site for?</label>
+  <p class="hint">One sentence, in your own words. For example: &ldquo;Hay and beef by the share from our farm east of Worland, by appointment.&rdquo;</p>
+  <textarea id="what" maxlength="300"></textarea>
+  <p class="err" id="what-err" role="alert"></p>
+  <label for="name">2. The name you would like</label>
+  <p class="hint">A few plain words joined by hyphens. Letters, numbers and hyphens only; the .online is added for you.</p>
+  <div class="namebox"><input id="name" type="text" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="50"><span>.online</span></div>
+  <p class="preview" id="preview" aria-live="polite"></p>
+  <p class="err" id="name-err" role="alert"></p>
+  <div class="actions">
+    <button type="button" id="copy">Copy the message</button>
+    <a id="mail" href="mailto:washakie.ai.online@gmail.com">Email it to GYR-O Pages</a>
+  </div>
+  <p class="done" id="done" aria-live="polite"></p>
+  <p class="hint" style="margin-top:12px">Whether the name is free is checked when the site is set up; if it is taken, you are offered the nearest free one before anything is bought.</p>
+</section>
+
 <p class="more">Once a site is up, it is kept the same way every time: <a href="workflow.html">one task, one site, one log</a>, shown on the four live GYR-O sites.</p>
 
 <h2>Why orange, and why an autogyro</h2>
@@ -130,9 +172,35 @@ footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:14px;font-si
 </figure>
 
 <footer>
-  <a href="index.html">GYR-O Pages, the website format</a><br>
+  <a href="index.html">GYR-O Pages, the website format</a> &middot; for the site keeper: <a href="setup.html">the technical setup sheet</a><br>
   &copy; 2026 Walter Wilkinson, creator of the GYR-O website format <i>(Green, Yellow, Red, and sometimes Orange)</i>.
 </footer>
 </div>
+<script>
+(function(){
+  var what=document.getElementById('what'), name=document.getElementById('name'),
+      prev=document.getElementById('preview'), we=document.getElementById('what-err'),
+      ne=document.getElementById('name-err'), done=document.getElementById('done'),
+      mail=document.getElementById('mail'), copy=document.getElementById('copy');
+  if(!what) return;
+  function clean(v){ return v.toLowerCase().trim().replace(/\.online$/,'').replace(/[\s_]+/g,'-').replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-').replace(/^-|-$/g,''); }
+  function msg(){ return 'New GYR-O site\n\nWhat it is for: '+what.value.trim()+'\nName: '+clean(name.value)+'.online\n'; }
+  function show(){ var c=clean(name.value); prev.textContent = c ? c+'.online' : ''; ne.textContent=''; done.textContent='';
+    mail.href='mailto:washakie.ai.online@gmail.com?subject='+encodeURIComponent('New GYR-O site: '+(c?c+'.online':''))+'&body='+encodeURIComponent(msg()); }
+  function check(){ var ok=true, c=clean(name.value);
+    we.textContent=''; ne.textContent='';
+    if(what.value.trim().length<10){ we.textContent='Write one sentence first: what is the site for?'; ok=false; }
+    if(c.length<3){ ne.textContent='Choose a name of at least three letters.'; ok=false; }
+    else if(c.length>40){ ne.textContent='Keep the name to 40 characters or fewer.'; ok=false; }
+    return ok; }
+  name.addEventListener('input',show); what.addEventListener('input',function(){we.textContent='';show();});
+  copy.addEventListener('click',function(){ if(!check()) return;
+    var t=msg(), ok=function(){done.textContent='Copied. Paste it into an email or a text to the person setting up your site.';};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fallback(t);ok();});} else {fallback(t);ok();} });
+  function fallback(t){ var ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} ta.remove(); }
+  mail.addEventListener('click',function(e){ if(!check()){ e.preventDefault(); } });
+  show();
+})();
+</script>
 </body>
 </html>
