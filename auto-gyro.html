@@ -71,7 +71,12 @@ footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:14px;font-si
 .namebox{display:flex;align-items:stretch}
 .namebox input{border-radius:6px 0 0 6px;min-width:0}
 .namebox span{display:flex;align-items:center;padding:0 12px;border:1.5px solid var(--ink);border-left:0;border-radius:0 6px 6px 0;font-family:"IBM Plex Mono",monospace;font-size:16px;background:#fff7ef}
-.addr{margin:10px 0 0;padding:8px 12px;border:1.5px dashed var(--orange);border-radius:8px}
+.addr{margin:16px 0 0;padding:10px 12px 10px 14px;border:1.5px dashed var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.addr-t{min-width:0;flex:1 1 14rem}
+.preview.empty{color:var(--mid,#6b645a)}
+.create{flex:none;background:var(--orange);color:#fff;font:600 18px "Source Serif 4",Georgia,serif;padding:12px 30px;min-height:48px;border-radius:7px;text-decoration:none;display:inline-flex;align-items:center}
+.create:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.linkbtn{font:inherit;color:var(--orange);background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
 .addr-l{font-size:14px;font-weight:600;margin:0}
 .preview{font-family:"IBM Plex Mono",monospace;font-size:17px;margin:2px 0 0;color:var(--orange);overflow-wrap:anywhere}
 .kind{border:0;margin:16px 0 0;padding:0}
@@ -161,8 +166,6 @@ footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:14px;font-si
   <label for="name">2. The name you would like</label>
   <p class="hint">A few plain words joined by hyphens. Letters, numbers and hyphens only; the rest of the address is added for you.</p>
   <div class="namebox"><input id="name" type="text" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="50"><span id="suffix">.gyro-sites.online</span></div>
-  <div class="addr" id="addr" hidden><p class="addr-l">The web address your site will appear at</p>
-  <p class="preview" id="preview" aria-live="polite"></p></div>
   <p class="err" id="name-err" role="alert"></p>
   <fieldset class="kind">
     <legend>3. Which kind of name?</legend>
@@ -172,10 +175,10 @@ footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:14px;font-si
     <label><input type="radio" name="kind" value="own"> <b>Your own name</b><span class="hint"> <code>your-name.online</code>. About $11&ndash;$28 a year, bought in your own account, and yours outright: words, pictures and address.</span></label>
   </fieldset>
   <p class="err" id="coop-err" role="alert"></p>
-  <div class="actions">
-    <button type="button" id="copy">Copy the message</button>
-    <a id="mail" href="mailto:washakie.ai.online@gmail.com">Email it to the Site Builder</a>
-  </div>
+  <div class="addr" id="addr"><div class="addr-t"><p class="addr-l">The web address your site will appear at</p>
+  <p class="preview" id="preview" aria-live="polite"></p></div>
+  <a id="mail" class="create" href="mailto:washakie.ai.online@gmail.com">Create</a></div>
+  <p class="hint" style="margin-top:8px">Create opens your email with the request already written to the Site Builder; press Send. No email on this device? <button type="button" id="copy" class="linkbtn">Copy the message</button> and paste it into a text instead.</p>
   <p class="done" id="done" aria-live="polite"></p>
   <p class="hint" style="margin-top:12px">Whether the name is free is checked when the site is set up; if it is taken, you are offered the nearest free one before anything is bought. You can move from a shared name to your own later; the site comes with you.</p>
 </section>
@@ -210,7 +213,7 @@ footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:14px;font-si
   function label(){ var k=kind(); return k==='own' ? 'Own name (to buy, yours outright)' : k==='coop' ? 'Free, under the cooperative ' + (coopDomain()||'(not given)') : 'Free, under gyro-sites.online'; }
   function addr(){ return clean(name.value)+tail(); }
   function msg(){ return 'New GYR-O site\n\nWhat it is for: '+what.value.trim()+'\nAddress: '+addr()+'\nKind of name: '+label()+'\n'; }
-  function show(){ var c=clean(name.value); coopbox.hidden = kind()!=='coop'; suffix.textContent=tail(); prev.textContent = c ? addr() : ''; document.getElementById('addr').hidden = !c; ne.textContent=''; ce.textContent=''; done.textContent='';
+  function show(){ var c=clean(name.value); coopbox.hidden = kind()!=='coop'; suffix.textContent=tail(); prev.textContent = c ? addr() : 'your-name'+tail(); prev.className = c ? 'preview' : 'preview empty'; ne.textContent=''; ce.textContent=''; done.textContent='';
     mail.href='mailto:washakie.ai.online@gmail.com?subject='+encodeURIComponent('New GYR-O site: '+(c?addr():''))+'&body='+encodeURIComponent(msg()); }
   function check(){ var ok=true, c=clean(name.value);
     we.textContent=''; ne.textContent='';
