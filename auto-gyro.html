@@ -71,7 +71,17 @@ footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:14px;font-si
 .namebox{display:flex;align-items:stretch}
 .namebox input{border-radius:6px 0 0 6px;min-width:0}
 .namebox span{display:flex;align-items:center;padding:0 12px;border:1.5px solid var(--ink);border-left:0;border-radius:0 6px 6px 0;font-family:"IBM Plex Mono",monospace;font-size:16px;background:#fff7ef}
-.preview{font-family:"IBM Plex Mono",monospace;font-size:16px;margin:8px 0 0;color:var(--orange);overflow-wrap:anywhere}
+.addr{margin:10px 0 0;padding:8px 12px;border:1.5px dashed var(--orange);border-radius:8px}
+.addr-l{font-size:14px;font-weight:600;margin:0}
+.preview{font-family:"IBM Plex Mono",monospace;font-size:17px;margin:2px 0 0;color:var(--orange);overflow-wrap:anywhere}
+.kind{border:0;margin:16px 0 0;padding:0}
+.kind legend{font-weight:600;padding:0;margin:0 0 6px}
+.kind>label{display:block;font-weight:400;margin:8px 0;padding:10px 12px;border:1.5px solid #d8d2c8;border-radius:8px;cursor:pointer}
+.kind>label:has(input:checked){border-color:var(--orange);background:#fff7ef}
+.kind input[type=radio]{accent-color:var(--orange);width:auto;height:auto;display:inline-block;margin:0 6px 0 0;padding:0;border:0;box-shadow:none;vertical-align:-2px}
+#suffix{white-space:nowrap}
+.kind .hint{display:block;margin:4px 0 0 1.6em;font-size:15px}
+.coopbox{margin:0 0 6px 1.6em}
 .err{color:#9b1c1c;font-size:15px;margin:6px 0 0;min-height:0}
 .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
 .actions button,.actions a{font:600 16px "Source Serif 4",Georgia,serif;padding:12px 18px;min-height:48px;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
@@ -135,7 +145,7 @@ footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:14px;font-si
 <ol class="steps">
   <li><div><b>You say what the site is for.</b><p>One sentence, the first line of everything. If it is not clear yet, you are asked a few plain questions until it is.</p></div></li>
   <li><div><b>The site gets its name.</b><p>A few words of plain English ending in <code>.online</code>, that read like what the site is: <code>worland-dog-laws.online</code>.</p></div></li>
-  <li class="yours"><div><b>You buy the name.</b><p>The only step that costs money, so the only step that stays yours: a few dollars, in your own account.</p></div></li>
+  <li class="yours"><div><b>You choose how to hold the name.</b><p>Free, as part of a shared name: <code>your-farm.gyro-sites.online</code>, or under your cooperative&rsquo;s name if you belong to one. Or your own: about $11&ndash;$28 a year, bought in your own account, and yours outright. The only step that can cost money, so it stays yours.</p></div></li>
   <li><div><b>Auto-Gyro does the rest.</b><p>The pages, the hosting, the address and the padlock in the browser bar are set up for you. No server, nothing to log in to, nothing to update.</p></div></li>
   <li><div><b>Your answers go in.</b><p>Seven plain answers to the questions your readers ask, your sources in the middle, the detail last. An AI drafts them with you; you decide what they say.</p></div></li>
   <li><div><b>It is yours from then on.</b><p>To change a line, edit it and publish. The words, the look and the address all belong to you.</p></div></li>
@@ -143,22 +153,31 @@ footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:14px;font-si
 
 <section class="start" id="start" aria-labelledby="start-h">
   <h2 id="start-h">Start here</h2>
-  <p class="sub">Steps 1 and 2 above, and nothing else. This page sends nothing and keeps nothing: it writes a short message for you to pass to the person who builds the site.</p>
+  <p class="sub">Steps 1 and 2 above, and nothing else. This page sends nothing and keeps nothing: it writes a short message for you to send to the Site Builder, the person who sets up your site.</p>
   <label for="what">1. What is the site for?</label>
   <p class="hint">One sentence, in your own words. For example: &ldquo;Hay and beef by the share from our farm east of Worland, by appointment.&rdquo;</p>
   <textarea id="what" maxlength="300"></textarea>
   <p class="err" id="what-err" role="alert"></p>
   <label for="name">2. The name you would like</label>
-  <p class="hint">A few plain words joined by hyphens. Letters, numbers and hyphens only; the .online is added for you.</p>
-  <div class="namebox"><input id="name" type="text" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="50"><span>.online</span></div>
-  <p class="preview" id="preview" aria-live="polite"></p>
+  <p class="hint">A few plain words joined by hyphens. Letters, numbers and hyphens only; the rest of the address is added for you.</p>
+  <div class="namebox"><input id="name" type="text" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="50"><span id="suffix">.gyro-sites.online</span></div>
+  <div class="addr" id="addr" hidden><p class="addr-l">The web address your site will appear at</p>
+  <p class="preview" id="preview" aria-live="polite"></p></div>
   <p class="err" id="name-err" role="alert"></p>
+  <fieldset class="kind">
+    <legend>3. Which kind of name?</legend>
+    <label><input type="radio" name="kind" value="free" checked> <b>Free, under GYR-O Pages</b><span class="hint"> <code>your-name.gyro-sites.online</code>. The shared name is held by GYR-O Pages; your words and pictures are still yours.</span></label>
+    <label><input type="radio" name="kind" value="coop"> <b>Free, under your cooperative&rsquo;s name</b><span class="hint"> <code>your-name.your-coop.online</code>. The shared name is held by the cooperative.</span></label>
+    <div id="coopbox" class="coopbox" hidden><label for="coop" style="margin-top:6px">The cooperative&rsquo;s address</label><input id="coop" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="for example: washakie-growers.online"></div>
+    <label><input type="radio" name="kind" value="own"> <b>Your own name</b><span class="hint"> <code>your-name.online</code>. About $11&ndash;$28 a year, bought in your own account, and yours outright: words, pictures and address.</span></label>
+  </fieldset>
+  <p class="err" id="coop-err" role="alert"></p>
   <div class="actions">
     <button type="button" id="copy">Copy the message</button>
-    <a id="mail" href="mailto:washakie.ai.online@gmail.com">Email it to GYR-O Pages</a>
+    <a id="mail" href="mailto:washakie.ai.online@gmail.com">Email it to the Site Builder</a>
   </div>
   <p class="done" id="done" aria-live="polite"></p>
-  <p class="hint" style="margin-top:12px">Whether the name is free is checked when the site is set up; if it is taken, you are offered the nearest free one before anything is bought.</p>
+  <p class="hint" style="margin-top:12px">Whether the name is free is checked when the site is set up; if it is taken, you are offered the nearest free one before anything is bought. You can move from a shared name to your own later; the site comes with you.</p>
 </section>
 
 <p class="more">Once a site is up, it is kept the same way every time: <a href="workflow.html">one task, one site, one log</a>, shown on the four live GYR-O sites.</p>
@@ -172,7 +191,7 @@ footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:14px;font-si
 </figure>
 
 <footer>
-  <a href="index.html">GYR-O Pages, the website format</a> &middot; for the site keeper: <a href="setup.html">the technical setup sheet</a><br>
+  <a href="index.html">GYR-O Pages, the website format</a> &middot; for the Site Builder: <a href="setup.html">the technical setup sheet</a><br>
   &copy; 2026 Walter Wilkinson, creator of the GYR-O website format <i>(Green, Yellow, Red, and sometimes Orange)</i>.
 </footer>
 </div>
@@ -184,18 +203,33 @@ footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:14px;font-si
       mail=document.getElementById('mail'), copy=document.getElementById('copy');
   if(!what) return;
   function clean(v){ return v.toLowerCase().trim().replace(/\.online$/,'').replace(/[\s_]+/g,'-').replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-').replace(/^-|-$/g,''); }
-  function msg(){ return 'New GYR-O site\n\nWhat it is for: '+what.value.trim()+'\nName: '+clean(name.value)+'.online\n'; }
-  function show(){ var c=clean(name.value); prev.textContent = c ? c+'.online' : ''; ne.textContent=''; done.textContent='';
-    mail.href='mailto:washakie.ai.online@gmail.com?subject='+encodeURIComponent('New GYR-O site: '+(c?c+'.online':''))+'&body='+encodeURIComponent(msg()); }
+  var coop=document.getElementById('coop'), coopbox=document.getElementById('coopbox'), ce=document.getElementById('coop-err'), suffix=document.getElementById('suffix');
+  function kind(){ var k=document.querySelector('input[name=kind]:checked'); return k?k.value:'free'; }
+  function coopDomain(){ return coop.value.toLowerCase().trim().replace(/^https?:\/\//,'').replace(/\/.*$/,'').replace(/[^a-z0-9.-]/g,''); }
+  function tail(){ var k=kind(); return k==='own' ? '.online' : k==='coop' ? '.'+(coopDomain()||'your-coop.online') : '.gyro-sites.online'; }
+  function label(){ var k=kind(); return k==='own' ? 'Own name (to buy, yours outright)' : k==='coop' ? 'Free, under the cooperative ' + (coopDomain()||'(not given)') : 'Free, under gyro-sites.online'; }
+  function addr(){ return clean(name.value)+tail(); }
+  function msg(){ return 'New GYR-O site\n\nWhat it is for: '+what.value.trim()+'\nAddress: '+addr()+'\nKind of name: '+label()+'\n'; }
+  function show(){ var c=clean(name.value); coopbox.hidden = kind()!=='coop'; suffix.textContent=tail(); prev.textContent = c ? addr() : ''; document.getElementById('addr').hidden = !c; ne.textContent=''; ce.textContent=''; done.textContent='';
+    mail.href='mailto:washakie.ai.online@gmail.com?subject='+encodeURIComponent('New GYR-O site: '+(c?addr():''))+'&body='+encodeURIComponent(msg()); }
   function check(){ var ok=true, c=clean(name.value);
     we.textContent=''; ne.textContent='';
     if(what.value.trim().length<10){ we.textContent='Write one sentence first: what is the site for?'; ok=false; }
     if(c.length<3){ ne.textContent='Choose a name of at least three letters.'; ok=false; }
     else if(c.length>40){ ne.textContent='Keep the name to 40 characters or fewer.'; ok=false; }
+    ce.textContent='';
+    if(kind()==='coop' && !/^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(coopDomain())){ ce.textContent='Type the cooperative\u2019s address, for example washakie-growers.online.'; ok=false; }
     return ok; }
-  name.addEventListener('input',show); what.addEventListener('input',function(){we.textContent='';show();});
+  // Correct the name in place as it is typed: lowercase, spaces become hyphens, anything else is dropped.
+  function tidy(final){ var v=name.value, pos=name.selectionStart, before=v.slice(0,pos);
+    function fix(x){ x=x.toLowerCase().replace(/[\s_]+/g,'-').replace(/[^a-z0-9.-]/g,'').replace(/-+/g,'-').replace(/^[-.]/,''); return final ? x.replace(/\.online$/,'').replace(/\./g,'-').replace(/-+/g,'-').replace(/-$/,'') : x; }
+    var nv=fix(v); if(nv!==v){ var np=fix(before).length; name.value=nv; try{ name.setSelectionRange(np,np); }catch(e){} } }
+  name.addEventListener('input',function(){ tidy(false); show(); });
+  name.addEventListener('blur',function(){ tidy(true); show(); });
+  coop.addEventListener('input',show);
+  [].forEach.call(document.querySelectorAll('input[name=kind]'),function(r){r.addEventListener('change',show);}); what.addEventListener('input',function(){we.textContent='';show();});
   copy.addEventListener('click',function(){ if(!check()) return;
-    var t=msg(), ok=function(){done.textContent='Copied. Paste it into an email or a text to the person setting up your site.';};
+    var t=msg(), ok=function(){done.textContent='Copied. Paste it into an email or a text to the Site Builder.';};
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fallback(t);ok();});} else {fallback(t);ok();} });
   function fallback(t){ var ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} ta.remove(); }
   mail.addEventListener('click',function(e){ if(!check()){ e.preventDefault(); } });
