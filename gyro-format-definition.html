@@ -81,7 +81,7 @@ footer { border-top:1px solid var(--rule); padding-top:14px; font-size:.9rem; co
 <main>
 <header>
   <h1>GYR-O Pages Format Definition</h1>
-  <p class="meta">Version 0.26, working draft · 19 October 2026 · Walter Wilkinson · Worland · Washakie County · Wyoming</p>
+  <p class="meta">Version 0.27, working draft · 28 October 2026 · Walter Wilkinson · Worland · Washakie County · Wyoming</p>
   <p class="caption">What a page has to do to be a GYR-O page, what it may do, and what its author brings. Compiled from gyro-sites.online, the README and the project log; where those disagree, the disagreement is listed at the end rather than settled here.</p>
 </header>
 
@@ -254,7 +254,20 @@ footer { border-top:1px solid var(--rule); padding-top:14px; font-size:.9rem; co
 </section>
 
 <section>
-  <h2>9 · Typography and color</h2>
+  <h2>9 · Color, and why it is there</h2>
+  <p>Color is the most visible thing on a GYR-O page, and the name is read off it, so the reason for it has to be stated, not left for the reader to guess.</p>
+  <h3>Why a color code at all</h3>
+  <p>A Harvard and MIT study showed people about 400 published charts and infographics for one second each, then tested which ones they recognized when they came round again. Those with seven or more colors were recognized more often than those with two to six, and both more often than those in a single color or in grays. The difference held after pictures were taken out of the count.<sup>[1]</sup></p>
+  <p>The study counted colors; it did not test which colors. Nothing in it favors one palette over another. The working premise of this format follows from that, and is stated as a premise, not a finding: <b>a color code helps because it is consistent, not because of the particular colors chosen. Any code will do, provided it never changes.</b> Two limits on the evidence: the study measured whether a picture was recognized again, not how much of its content was remembered or understood; and its readers saw each picture for one second, not for the length of a reading.</p>
+  <h3>Why these colors</h3>
+  <p>Since any code will do, GYR-O borrows the one nearly every reader already knows, the traffic signal, so there is nothing new to learn. Read left to right, the signal becomes a scale of effort: <b>green</b>, go, for the newcomer in column A; <b>yellow</b>, slow down and check, for the sources in column B; <b>red</b>, stop here only if you mean it, for the specialist in column C. Orange stands apart from the signal and belongs to the build.</p>
+  <p>There is a precedent at the busiest spot on a computer screen. When Apple rebuilt its operating system as Mac OS X, the Aqua interface it introduced at Macworld in January 2000 put three buttons in red, yellow and green at the upper left of every window, for close, minimize and zoom.<sup>[2]</sup> Macworld described them in 2001 as "resembling the lights on a traffic signal."<sup>[3]</sup> The convention was borrowed, not invented, and that is its strength: it may be the most often seen color code in daily computer use, and nobody has to be taught it. GYR-O runs the signal the other way, green first, so a page starts at <i>go</i>.</p>
+  <ol style="font-size:.92rem;color:var(--muted);margin:4px 0 14px;padding-left:1.6em">
+    <li>Borkin, Vo, Bylinskii, Isola, Sunkavalli, Oliva and Pfister, <i>What Makes a Visualization Memorable?</i>, IEEE, 2013, section 7.2 and figure 4. <a href="https://vcg.seas.harvard.edu/files/pfister/files/infovis_borkin-128-camera_ready_0.pdf">vcg.seas.harvard.edu</a> · summary: <a href="https://seas.harvard.edu/news/2013/10/what-makes-data-visualization-memorable">Harvard SEAS, October 2013</a>. 393 target images after filtering; 261 participants; about 87 responses per image.</li>
+    <li><i>Aqua (user interface)</i>, Wikipedia. <a href="https://en.wikipedia.org/wiki/Aqua_(user_interface)">en.wikipedia.org</a></li>
+    <li>Henry Bortman, <i>Watch the Traffic Lights</i>, Macworld, 31 May 2001. <a href="https://www.macworld.com/article/151675/osx_traffic.html">macworld.com</a>. Cited for the traffic-signal description only: the same article says yellow zooms and green minimizes, which is the wrong way round.</li>
+  </ol>
+  <h3>The rules</h3>
   <div class="tw"><table>
     <thead><tr><th>No.</th><th>Level</th><th>Rule</th></tr></thead>
     <tbody>
@@ -264,6 +277,7 @@ footer { border-top:1px solid var(--rule); padding-top:14px; font-size:.9rem; co
     <tr><td class="id">9.2a</td><td class="lv must">MUST</td><td>Orange is the color of the build. On a reader's page it appears exactly once: the footer link <span class="v">built by Auto-Gyro</span>, which leads to the public Auto-Gyro page explaining how a GYR-O site is built. Everything else in orange belongs to the build pages; the working admin page itself stays unlinked.</td></tr>
     <tr><td class="id">9.3</td><td class="lv should">SHOULD</td><td>Body 17 px, line height 1.62, about sixty characters to the line; figure captions 22 px.</td></tr>
     <tr><td class="id">9.4</td><td class="lv must">MUST</td><td>American spelling throughout, except text quoted from a source.</td></tr>
+        <tr><td class="id">9.5</td><td class="lv must">MUST</td><td>Every site explains its colors. The class site carries a folded answer in column A, <span class="v">Why the colors?</span>, saying in plain words what this section says, with its sources in column B, and so does any site whose subject is the format itself. On every page of every GYR-O site, the word <i>GYR-O</i> in the footer key (rule 9.1a) links to that answer. A site whose topic is something else does not repeat it in its own column A, which keeps to its one topic (rule 1.1).</td></tr>
     </tbody>
   </table></div>
 </section>
@@ -327,5 +341,5 @@ footer { border-top:1px solid var(--rule); padding-top:14px; font-size:.9rem; co
   </ol>
 </section>
 
-<footer>GYR-O Pages Format Definition · version 0.26 · 19 October 2026 · drawn from gyro-sites.online, its README and the Three Columns project log. Not yet published on any site.</footer>
+<footer>GYR-O Pages Format Definition · version 0.27 · 28 October 2026 · drawn from gyro-sites.online, its README and the Three Columns project log. Not yet published on any site.</footer>
 </main>
