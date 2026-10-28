@@ -195,6 +195,7 @@ details .body{padding:0 0 14px 1.5em;}
 .bcard .t{display:block;font-weight:600;font-size:16px;line-height:1.3;}
 .bcard .d{display:block;font-size:14.5px;color:var(--ink-mid);margin-top:6px;}
 details[id],h2[id]{scroll-margin-top:100px;}
+@media (max-width:640px){details[id],h2[id]{scroll-margin-top:200px;}} /* the phone control strip is taller */
 details.flash > summary{color:var(--accentb);}
 h2.flash{color:var(--accentb);}
 
@@ -788,6 +789,7 @@ footer a.autogyro:hover,footer a.autogyro:focus-visible{border-bottom-width:2px;
     <p>A way of building a single-topic website so that one topic serves two readers at once: the newcomer who knows nothing about it, and the reader who already knows the subject well. Neither is watered down for the other, and neither has to wade through the other.</p>
     <p>Its second idea is about footnotes. Instead of being buried at the foot of a page, tucked behind a link, or scattered wherever they fall, every reference is gathered into one column of its own &mdash; centered in the layout, given the same visual weight as the writing, and always in the same place.</p>
     <p>They are three columns wherever they will fit as three columns. On a wide screen you see all three at once. On a phone they stack, and you read one at a time. Printed, they become one document. And where one column holds more than any column can &mdash; an entire municipal code, say &mdash; it is given its own page, as at <a href="https://worland-dog-law.online">worland-dog-law.online</a><span class="fn" data-ref="r6">6</span>. Stacked, paged or side by side, it is the same three. Usually it is a single page — no system to log into, no monthly bill, nothing that can be switched off.</p>
+    <p><b>It is written down as a formal specification</b>, the <a href="#spec">GYR-O Pages Format Definition</a>: numbered rules, each marked MUST, SHOULD or MAY in the manner of internet standards, against which any GYR-O site can be checked.</p>
   </div></details>
 
   <details><summary>Who is it for?</summary><div class="body">
@@ -1000,13 +1002,13 @@ footer a.autogyro:hover,footer a.autogyro:focus-visible{border-bottom-width:2px;
   <p class="colbcap" style="margin-top:2px">An article, a photograph, a map, a book, a dataset and a film, each carded: <a href="source-cards.html">see every kind at work &rarr;</a></p>
   <h3 class="colbsh" id="colbint">Internal links</h3>
   <p class="colbcap">The two most recent content changes, and the record behind them.</p>
+  <a class="bcard" href="#spec" data-open="spec">
+    <span class="t">28 October 2026 &mdash; the formal specification, and the standards it rests on</span>
+    <span class="d">The format is written down as numbered rules marked MUST, SHOULD or MAY, in the senses fixed by the internet&rsquo;s own RFC&nbsp;2119 and RFC&nbsp;8174. Column C now says so, links the Format Definition, and names each outside standard a rule depends on.</span>
+  </a>
   <a class="bcard" href="#colors" data-open="colors">
     <span class="t">28 October 2026 &mdash; why the colors</span>
     <span class="d">The most visible thing on the page, now explained: a consistent color code helps readers, a Harvard and MIT study suggests any code would do, and GYR-O borrows the traffic signal because nobody has to learn it, as Apple did in 2000.</span>
-  </a>
-  <a class="bcard" href="#green-first" data-open="green-first">
-    <span class="t">27 October 2026 &mdash; why the green column comes first</span>
-    <span class="d">The standard positions explained from the newcomer&rsquo;s side: the Plain Answers hold the most prominent place, AI researches and writes them from one sentence, and the owner checks the facts. What the industry calls a pillar page, and what Google said in May 2026.</span>
   </a>
   <a class="bcard" href="chronicle.html">
     <span class="t">Chronicle &mdash; what has been happening, and why</span>
@@ -1269,6 +1271,33 @@ footer a.autogyro:hover,footer a.autogyro:focus-visible{border-bottom-width:2px;
     <a class="rlink" href="https://www.macworld.com/article/151675/osx_traffic.html">macworld.com &middot; Watch the Traffic Lights</a>
   </article>
 
+  <article class="ref" id="r29">
+    <span class="rnum">29</span><span class="rkind">Standard &middot; requirement language</span>
+    <div class="rtitle">Key words for use in RFCs to Indicate Requirement Levels (RFC 2119)</div>
+    <div class="rmeta">S. Bradner &middot; Internet Engineering Task Force &middot; March 1997 &middot; Best Current Practice 14</div>
+    <div class="rprev">A two-page document that fixes the meaning of MUST, MUST NOT, SHOULD, SHOULD NOT and MAY, and their synonyms, as used in internet standards: an absolute requirement, a strong default that may be departed from for good reason, and a truly optional item.</div>
+    <div class="rwhy"><b>Why it is cited:</b> the Format Definition uses these three words in exactly these senses, so its levels mean what they mean in any internet standard rather than whatever the author intended that day.</div>
+    <a class="rlink" href="https://www.rfc-editor.org/bcp/bcp14">rfc-editor.org &middot; BCP 14, RFC 2119 and RFC 8174</a>
+  </article>
+
+  <article class="ref" id="r30">
+    <span class="rnum">30</span><span class="rkind">Standard &middot; requirement language</span>
+    <div class="rtitle">Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words (RFC 8174)</div>
+    <div class="rmeta">B. Leiba &middot; Internet Engineering Task Force &middot; May 2017 &middot; updates RFC 2119, part of Best Current Practice 14</div>
+    <div class="rprev">A short update saying the key words carry their special meaning only when written in capitals; in lower case they are ordinary English. It also gives the paragraph a document should include to say it follows these conventions.</div>
+    <div class="rwhy"><b>Why it is cited:</b> it is why the Definition writes MUST, SHOULD and MAY in capitals, and why a lower-case &ldquo;should&rdquo; elsewhere on these pages is not a rule.</div>
+    <a class="rlink" href="https://www.rfc-editor.org/rfc/rfc8174">rfc-editor.org/rfc/rfc8174</a>
+  </article>
+
+  <article class="ref" id="r31">
+    <span class="rnum">31</span><span class="rkind">Standard &middot; HTML</span>
+    <div class="rtitle">HTML Living Standard: the details element</div>
+    <div class="rmeta">WHATWG &middot; HTML Standard, edition for web developers, section 4.11.1</div>
+    <div class="rprev">The browser&rsquo;s own disclosure widget: a summary line that shows or hides further information or controls, with no script needed.</div>
+    <div class="rwhy"><b>Why it is cited:</b> every plain answer on a GYR-O page is one of these (rule 2.2), which is why the answers open without scripts and why the browser&rsquo;s own find can search inside them.</div>
+    <a class="rlink" href="https://html.spec.whatwg.org/dev/interactive-elements.html#the-details-element">html.spec.whatwg.org &middot; the details element</a>
+  </article>
+
   <div id="deadnote" hidden></div>
 </section>
 
@@ -1281,6 +1310,10 @@ footer a.autogyro:hover,footer a.autogyro:focus-visible{border-bottom-width:2px;
   <p>One HTML file and four small scripts. No framework, no build step, no dependencies except two web fonts, and those fall back to system faces if they fail to load. A typical page is 35&ndash;100&nbsp;KB and has finished rendering before a loading spinner would have appeared. Words are drafted here first in plain text &mdash; CommonMark, the precisely specified form of Markdown<span class="fn" data-ref="r7">7</span> &mdash; so they outlive whatever tool made them.</p>
   <p>The scripts are <span class="mono">phone-view.js</span>, <span class="mono">top-button.js</span>, <span class="mono">back-link.js</span> and <span class="mono">search.js</span>. Each adds one control and what that control needs, nothing more, so a page missing one of them loses that control and still works. Wherever a site carries one, it is the identical file &mdash; changed once, in the template new sites are made from, and then copied out &mdash; so no copy drifts from the others.</p>
   <p>Three columns wide, three buttons narrow, one document printed. The same markup serves all three — nothing is duplicated, because duplicated content is content that will drift.</p>
+
+  <h2 id="spec">The formal specification</h2>
+  <p>The format is written down, rule by rule, in the <a href="gyro-format-definition.html">GYR-O Pages Format Definition</a>, version 0.27, a working draft, also kept as a <a href="GYR-O-Pages-Format-Definition.pdf">PDF</a>. It is a requirements specification in the style the internet&rsquo;s own standards use. Each rule carries one of three levels, MUST, SHOULD or MAY, in the senses the Internet Engineering Task Force defined in RFC&nbsp;2119<span class="fn" data-ref="r29">29</span> and narrowed in RFC&nbsp;8174 to the words in capitals only<span class="fn" data-ref="r30">30</span>. Each rule is numbered, so any GYR-O site can be audited against it line by line, and the places where the format&rsquo;s own documents still disagree are listed at the end rather than settled quietly.</p>
+  <p>Where a rule rests on an outside standard, the standard is named and carded. The words are drafted in CommonMark<span class="fn" data-ref="r7">7</span>. Answers fold with the HTML standard&rsquo;s own <span class="mono">&lt;details&gt;</span> element<span class="fn" data-ref="r31">31</span>. The column buttons follow the W3C&rsquo;s WAI-ARIA pattern for tabs<span class="fn" data-ref="r8">8</span>. Pages are served over HTTPS with certificates from Let&rsquo;s Encrypt<span class="fn" data-ref="r4">4</span>, what crawlers may read is set by the Robots Exclusion Protocol<span class="fn" data-ref="r16">16</span>, and search follows Google Search Essentials<span class="fn" data-ref="r10">10</span>. The Definition says what a page must do; it does not claim that every page already does all of it. Where one falls short, that is published as a defect, which is itself rule 6.1.</p>
 
   <h2>Why the sources sit in the middle</h2>
   <p>Position carries meaning. A source column on the far right reads as an appendix; at the foot of the page it reads as an afterthought and goes unread. Between the plain answers and the technical detail it reads as what it is: the common evidence both other columns rest on.</p>
@@ -1643,6 +1676,9 @@ project manager         nobody to coordinate with</pre>
       if (box && box.contains(t)) document.getElementById(parts[i][1]).checked = true;
     }
     if (t.tagName === 'DETAILS') t.open = true;  /* a link to an answer opens it */
+    /* on a phone only one column shows: bring the target's column forward */
+    var col = t.closest && t.closest('section.col');
+    if (col && !col.classList.contains('active')) { var tb = document.getElementById(col.getAttribute('aria-labelledby')); if (tb) tb.click(); }
     if (t.scrollIntoView) t.scrollIntoView();
   }
   window.addEventListener('hashchange', open);
