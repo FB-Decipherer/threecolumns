@@ -37,9 +37,6 @@
 .col{opacity:1!important}
 @media (max-width:1100px){.col{display:block!important}}
 
-/* Wikipedia links: a light dotted underline, so they read as Wikipedia at a glance. Source-card buttons (.rlink) keep their box. 7 Nov 2026. */
-a[href*="wikipedia.org"]:not(.rlink){text-decoration:none;border-bottom:1px dotted rgba(110,104,94,.5);}
-a[href*="wikipedia.org"]:not(.rlink):hover{border-bottom-color:var(--accentb,#B4372C);}
 </style></noscript>
 <style>
 :root{
@@ -608,6 +605,12 @@ footer a.autogyro{color:var(--col-o);border-bottom:1px solid var(--col-o);font-w
 footer a.autogyro:hover,footer a.autogyro:focus-visible{border-bottom-width:2px;}
 @media print{footer a.autogyro{color:#000;border-bottom-color:#000;}}
 
+/* Wikipedia links: a light dotted underline, so they read as Wikipedia at a glance. Source-card buttons (.rlink) keep their box. 7 Nov 2026. */
+a[href*="wikipedia.org"]:not(.rlink){text-decoration:none;border-bottom:1px dotted rgba(110,104,94,.5);}
+a[href*="wikipedia.org"]:not(.rlink):hover{border-bottom-color:var(--accentb,#B4372C);}
+.infoi{display:inline-flex;align-items:center;justify-content:center;color:var(--ink-mid);padding:5px;border-radius:50%;text-decoration:none;border:0 !important;box-shadow:none !important;background:none;flex:0 0 auto}
+.infoi:hover,.infoi:focus-visible{color:var(--accent)}
+@media print{.infoi{display:none !important}}
 </style>
 </head>
 <body>
@@ -678,6 +681,7 @@ footer a.autogyro:hover,footer a.autogyro:focus-visible{border-bottom-width:2px;
     <div class="sr-out" id="searchout" hidden></div>
     <div class="sr-only" id="searchstatus" role="status" aria-live="polite"></div>
   </div>
+  <a class="infoi" href="https://gyro-index.online/" title="GYR-O Index: all sites and help" aria-label="GYR-O Index: all sites and help"><svg viewBox="0 0 16 16" width="17" height="17" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="4.7" r="1" fill="currentColor"/><path d="M8 7.3v4.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a>
   <button class="util" id="phoneview" type="button" data-public hidden>Phone view</button>
   <button class="util" id="pdf" title="GYR-O-Pages.pdf">Download PDF</button>
   <button class="util" id="theme">Dark</button>

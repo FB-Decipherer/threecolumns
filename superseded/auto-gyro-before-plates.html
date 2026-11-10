@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Auto-Gyro · how a GYR-O site is built</title>
+<meta name="description" content="Auto-Gyro is how a GYR-O website gets built: say what it is for, name it, and it goes up.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* Auto-Gyro: the orange page. Deliberately single-theme, like the GYR-O index:
+   white ground, black type, and orange, which appears on a reader's page nowhere else. */
+:root{
+  --paper:#ffffff; --ink:#000000; --mid:#3d3d3d; --rule:#000000;
+  --orange:#b45309;        /* text and rules: 5.0:1 on white */
+  --orange-fill:#e8862e;   /* the drawing only */
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif;font-size:18px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));}
+.wrap{max-width:46rem;margin:0 auto;padding-block:32px 56px}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:13px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--orange);margin:0}
+h1{font-size:clamp(34px,6vw,52px);line-height:1.08;margin:6px 0 0;font-weight:600;letter-spacing:-.01em}
+h1 .o{color:var(--orange)}
+.lede{font-size:21px;line-height:1.45;color:var(--mid);margin:12px 0 0;max-width:36ch}
+figure{margin:28px 0 8px;border-top:3px double var(--ink);border-bottom:3px double var(--ink);padding:18px 0 10px}
+figure svg{display:block;width:100%;height:auto;max-width:640px;margin:0 auto}
+figure img{display:block;width:100%;height:auto;max-width:555px;margin:0 auto}
+figcaption{font-size:22px;line-height:1.35;color:var(--mid);text-align:center;font-style:italic;margin-top:6px}
+h2{font-size:24px;line-height:1.2;margin:40px 0 10px;font-weight:600}
+ol.steps{list-style:none;counter-reset:s;margin:0;padding:0;display:grid;gap:18px}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:2.4rem 1fr;gap:0 12px;align-items:start}
+ol.steps li::before{content:counter(s);font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:15px;
+  width:2.1rem;height:2.1rem;border:2px solid var(--orange);color:var(--orange);border-radius:50%;
+  display:grid;place-items:center;margin-top:2px}
+ol.steps b{display:block}
+ol.steps p{margin:2px 0 0;color:var(--mid)}
+.yours{border-left:4px solid var(--orange);padding-left:14px}
+p{margin:0 0 12px;max-width:62ch}
+code{font-family:"IBM Plex Mono",monospace;font-size:.9em}
+a{color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover,a:focus-visible{color:var(--orange)}
+a:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:14px;font-size:15px;color:var(--mid)}
+
+/* the whirl: a four-blade rotor seen from the side (a flattened disc), and a nose propeller */
+.rotor{animation:spin .8s linear infinite;transform-origin:0 0}
+.prop{animation:flick .12s linear infinite;transform-origin:0 0}
+.craft{animation:hover 4s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes flick{0%{transform:scaleY(1)}50%{transform:scaleY(-1)}100%{transform:scaleY(1)}}
+@keyframes hover{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@media (prefers-reduced-motion:reduce){.rotor,.prop,.craft{animation:none}}
+@media print{.rotor,.prop,.craft{animation:none} figure{break-inside:avoid}}
+
+/* Start here: the two things a new site needs, and nothing else */
+.start{margin:36px 0 8px;border:2px solid var(--orange);border-radius:10px;padding:18px 18px 16px}
+.start h2{margin:0 0 4px;color:var(--orange)}
+.start .sub{color:var(--mid);margin:0 0 14px}
+.start label{display:block;font-weight:600;margin:14px 0 4px}
+.start .hint{font-size:15px;color:var(--mid);margin:0 0 6px}
+.start textarea,.start input{width:100%;font:inherit;font-size:18px;padding:10px 12px;border:1.5px solid var(--ink);border-radius:6px;background:#fff;color:var(--ink)}
+.start textarea{min-height:5.2em;resize:vertical}
+.start textarea:focus,.start input:focus{outline:2px solid var(--orange);outline-offset:2px}
+.namebox{display:flex;align-items:stretch}
+.namebox input{border-radius:6px 0 0 6px;min-width:0}
+.namebox span{display:flex;align-items:center;padding:0 12px;border:1.5px solid var(--ink);border-left:0;border-radius:0 6px 6px 0;font-family:"IBM Plex Mono",monospace;font-size:16px;background:#fff7ef}
+.addr{margin:16px 0 0;padding:10px 12px 10px 14px;border:1.5px dashed var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.addr-t{min-width:0;flex:1 1 14rem}
+.preview.empty{color:var(--mid,#6b645a)}
+.create{flex:none;background:var(--orange);color:#fff;font:600 18px "Source Serif 4",Georgia,serif;padding:12px 30px;min-height:48px;border-radius:7px;text-decoration:none;display:inline-flex;align-items:center}
+.create:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.linkbtn{font:inherit;color:var(--orange);background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.addr-l{font-size:14px;font-weight:600;margin:0}
+.preview{font-family:"IBM Plex Mono",monospace;font-size:17px;margin:2px 0 0;color:var(--orange);overflow-wrap:anywhere}
+.kind{border:0;margin:16px 0 0;padding:0}
+.kind legend{font-weight:600;padding:0;margin:0 0 6px}
+.kind>label{display:block;font-weight:400;margin:8px 0;padding:10px 12px;border:1.5px solid #d8d2c8;border-radius:8px;cursor:pointer}
+.kind>label:has(input:checked){border-color:var(--orange);background:#fff7ef}
+.kind input[type=radio]{accent-color:var(--orange);width:auto;height:auto;display:inline-block;margin:0 6px 0 0;padding:0;border:0;box-shadow:none;vertical-align:-2px}
+#suffix{white-space:nowrap}
+.kind .hint{display:block;margin:4px 0 0 1.6em;font-size:15px}
+.coopbox{margin:0 0 6px 1.6em}
+.err{color:#9b1c1c;font-size:15px;margin:6px 0 0;min-height:0}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.actions button,.actions a{font:600 16px "Source Serif 4",Georgia,serif;padding:12px 18px;min-height:48px;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+.actions button{background:var(--orange);color:#fff;border:2px solid var(--orange)}
+.actions a{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+.actions button:focus-visible,.actions a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.done{font-size:15px;color:var(--mid);margin:10px 0 0}
+@media print{.start{display:none}}
+@media (max-width:520px){body{font-size:17px} .lede{font-size:19px} figcaption{font-size:19px}}
+
+/* Wikipedia links: a light dotted underline, so they read as Wikipedia at a glance. Source-card buttons (.rlink) keep their box. 7 Nov 2026. */
+a[href*="wikipedia.org"]:not(.rlink){text-decoration:none;border-bottom:1px dotted rgba(110,104,94,.5);}
+a[href*="wikipedia.org"]:not(.rlink):hover{border-bottom-color:var(--accentb,#B4372C);}
+</style>
+</head>
+<body>
+<p class="pdf-dl" style="margin:0 auto;padding:8px 16px 0;max-width:1508px;text-align:right;font:15px/1.4 'IBM Plex Mono',ui-monospace,Menlo,monospace"><a href="Auto-Gyro.pdf" download style="color:inherit;text-underline-offset:2px">Download this page as a PDF</a></p><style>@media print{.pdf-dl{display:none!important}}</style>
+<div class="wrap">
+
+<p class="eyebrow">GYR-O Pages · the build</p>
+<h1>Auto-<span class="o">Gyro</span></h1>
+<p class="lede">How a GYR-O website gets built, from one sentence to a working address.</p>
+<p class="idea"><b>The main idea: you never have to know what is under the hood.</b> Domain names, hosting, security certificates, code, publishing: Auto-Gyro handles all of it, the way you drive a car without knowing how the engine works. You say what the site is for and decide what it says; everything technical happens out of sight.</p>
+<style>.idea{font-size:20px;line-height:1.5;margin:14px 0 4px;max-width:62ch;border-left:5px solid var(--orange-fill);padding-left:14px}</style>
+
+<figure>
+  <svg viewBox="0 0 640 300" role="img" aria-labelledby="ag-t">
+    <title id="ag-t">A drawing of an autogyro in flight, its rotor turning above a small open-cockpit fuselage.</title>
+    <!-- ground line -->
+    <line x1="20" y1="282" x2="620" y2="282" stroke="#000" stroke-width="1.5" stroke-dasharray="2 6"/>
+    <g class="craft">
+      <!-- rotor: a disc seen edge-on, so the blades sweep an ellipse -->
+      <g transform="translate(330 62) scale(1 0.13)">
+        <ellipse cx="0" cy="0" rx="230" ry="230" fill="none" stroke="#000" stroke-width="5" stroke-dasharray="3 22" opacity=".35"/>
+        <g class="rotor">
+          <rect x="0" y="-10" width="230" height="20" rx="8" fill="#000"/>
+          <rect x="-230" y="-10" width="230" height="20" rx="8" fill="#000"/>
+          <rect x="-10" y="0" width="20" height="230" rx="8" fill="#000"/>
+          <rect x="-10" y="-230" width="20" height="230" rx="8" fill="#000"/>
+        </g>
+      </g>
+      <!-- hub and pylon -->
+      <circle cx="330" cy="62" r="7" fill="#000"/>
+      <path d="M330 66 L314 132 M330 66 L346 132" stroke="#000" stroke-width="5" stroke-linecap="round"/>
+      <!-- fuselage -->
+      <path d="M200 150 C 230 126, 380 120, 450 140 L 540 152 L 548 140 L 560 140 L 556 160 L 450 166 C 380 178, 250 180, 200 168 Z"
+            fill="var(--orange-fill)" stroke="#000" stroke-width="3" stroke-linejoin="round"/>
+      <!-- cockpit -->
+      <path d="M300 136 C 310 118, 340 116, 352 132" fill="#fff" stroke="#000" stroke-width="3"/>
+      <!-- stub wing -->
+      <path d="M262 160 L 402 160 L 392 172 L 270 172 Z" fill="#000"/>
+      <!-- tail fin -->
+      <path d="M520 150 L 548 112 L 562 112 L 556 152 Z" fill="var(--orange-fill)" stroke="#000" stroke-width="3" stroke-linejoin="round"/>
+      <!-- nose and propeller -->
+      <circle cx="198" cy="159" r="10" fill="#000"/>
+      <g transform="translate(190 159)"><g class="prop"><rect x="-4" y="-46" width="8" height="92" rx="4" fill="#000" opacity=".7"/></g></g>
+      <!-- undercarriage -->
+      <path d="M290 172 L 272 226 M290 172 L 314 226 M380 168 L 392 226" stroke="#000" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="272" cy="232" r="13" fill="#fff" stroke="#000" stroke-width="5"/>
+      <circle cx="392" cy="232" r="13" fill="#fff" stroke="#000" stroke-width="5"/>
+    </g>
+  </svg>
+  <figcaption>An autogyro: the passing air turns the rotor, and the rotor keeps it up.</figcaption>
+</figure>
+
+<h2>What happens</h2>
+<ol class="steps">
+  <li><div><b>You say what the site is for.</b><p>One sentence, the first line of everything. If it is not clear yet, you are asked a few plain questions until it is.</p></div></li>
+  <li><div><b>The site gets its name.</b><p>A few words of plain English ending in <code>.online</code>, that read like what the site is: <code>worland-dog-laws.online</code>.</p></div></li>
+  <li class="yours"><div><b>You choose how to hold the name.</b><p>Free, as part of a shared name: <code>your-farm.gyro-sites.online</code>, or under your cooperative&rsquo;s name if you belong to one. Or your own: about $11&ndash;$28 a year, bought in your own account, and yours outright. The only step that can cost money, so it stays yours.</p></div></li>
+  <li><div><b>Auto-Gyro does the rest.</b><p>The pages, the hosting, the address and the padlock in the browser bar are set up for you. No server, nothing to log in to, nothing to update.</p></div></li>
+  <li><div><b>Your answers go in.</b><p>Seven plain answers to the questions your readers ask, your sources in the middle, the detail last. An AI drafts them with you; you decide what they say.</p></div></li>
+  <li><div><b>It is yours from then on.</b><p>To change a line, edit it and publish. The words, the look and the address all belong to you.</p></div></li>
+</ol>
+
+<section class="start" id="start" aria-labelledby="start-h">
+  <h2 id="start-h">Start here</h2>
+  <p class="sub">Steps 1 and 2 above, and nothing else. This page sends nothing and keeps nothing: it writes a short message for you to send to the Site Builder, the person who sets up your site.</p>
+  <label for="what">1. What is the site for?</label>
+  <p class="hint">One sentence, in your own words. For example: &ldquo;Hay and beef by the share from our farm east of Worland, by appointment.&rdquo;</p>
+  <textarea id="what" maxlength="300"></textarea>
+  <p class="err" id="what-err" role="alert"></p>
+  <label for="name">2. The name you would like</label>
+  <p class="hint">A few plain words joined by hyphens. Letters, numbers and hyphens only; the rest of the address is added for you.</p>
+  <div class="namebox"><input id="name" type="text" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="50"><span id="suffix">.gyro-sites.online</span></div>
+  <p class="err" id="name-err" role="alert"></p>
+  <fieldset class="kind">
+    <legend>3. Which kind of name?</legend>
+    <label><input type="radio" name="kind" value="free" checked> <b>Free, under GYR-O Pages</b><span class="hint"> <code>your-name.gyro-sites.online</code>. The shared name is held by GYR-O Pages; your words and pictures are still yours.</span></label>
+    <label><input type="radio" name="kind" value="coop"> <b>Free, under your cooperative&rsquo;s name</b><span class="hint"> <code>your-name.your-coop.online</code>. The shared name is held by the cooperative.</span></label>
+    <div id="coopbox" class="coopbox" hidden><label for="coop" style="margin-top:6px">The cooperative&rsquo;s address</label><input id="coop" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="for example: washakie-growers.online"></div>
+    <label><input type="radio" name="kind" value="own"> <b>Your own name</b><span class="hint"> <code>your-name.online</code>. About $11&ndash;$28 a year, bought in your own account, and yours outright: words, pictures and address.</span></label>
+  </fieldset>
+  <p class="err" id="coop-err" role="alert"></p>
+  <div class="addr" id="addr"><div class="addr-t"><p class="addr-l">The web address your site will appear at</p>
+  <p class="preview" id="preview" aria-live="polite"></p></div>
+  <a id="mail" class="create" href="mailto:washakie.ai.online@gmail.com">Create</a></div>
+  <p class="hint" style="margin-top:8px">Create opens your email with the request already written to the Site Builder; press Send. No email on this device? <button type="button" id="copy" class="linkbtn">Copy the message</button> and paste it into a text instead.</p>
+  <p class="done" id="done" aria-live="polite"></p>
+  <p class="hint" style="margin-top:12px">Whether the name is free is checked when the site is set up; if it is taken, you are offered the nearest free one before anything is bought. You can move from a shared name to your own later; the site comes with you.</p>
+</section>
+
+<p class="more">Once a site is up, it is kept the same way every time: <a href="workflow.html">one task, one site, one log</a>, shown on the four live GYR-O sites.</p>
+
+<style>
+/* Owner's Manual, styled after a 1960s automobile owner's manual: aged paper, two-color print, line art */
+.om{--paper:#f2e7cf;--ink2:#1d1a16;--spot:#1f6f78;--red:#b4372c;
+  position:relative;background:var(--paper);color:var(--ink2);margin:38px 0 12px;padding:10px 26px 22px;
+  border:3px double var(--ink2);box-shadow:0 0 0 6px var(--paper),0 0 0 7px var(--ink2);
+  background-image:radial-gradient(rgba(29,26,22,.07) 1px,transparent 1.2px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.10'/%3E%3C/svg%3E");
+  background-size:6px 6px,auto}
+.om .tab{position:absolute;top:-3px;right:22px;background:var(--spot);color:var(--paper);
+  font:700 12px/1 Futura,"Century Gothic","Avenir Next",Helvetica,sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:9px 12px 10px;border-radius:0 0 6px 6px}
+.om-k{font:700 12px/1.2 Futura,"Century Gothic","Avenir Next",Helvetica,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--spot);margin:18px 0 0}
+.om h2{font-family:Futura,"Century Gothic","Avenir Next",Helvetica,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(20px,3.2vw,27px);margin:4px 0 6px;color:var(--ink2)}
+.om h3{font-family:Futura,"Century Gothic","Avenir Next",Helvetica,sans-serif;font-size:15.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin:22px 0 6px;color:var(--ink2);display:flex;align-items:center;gap:10px}
+.om h3::after{content:"";flex:1;border-top:2px solid var(--spot)}
+.om h3 .num{display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;background:var(--spot);color:var(--paper);font-size:13px;letter-spacing:0}
+.om p{font-family:Georgia,"Times New Roman",serif}
+.om-fig{margin:10px 0 4px}
+.om-fig img{display:block;width:100%;height:auto}
+.om-spec{border-collapse:collapse;width:100%;margin:8px 0 6px;font-size:16px;border:2px solid var(--ink2)}
+.om-spec th{text-align:left;font:700 12.5px Futura,"Century Gothic","Avenir Next",Helvetica,sans-serif;letter-spacing:.1em;text-transform:uppercase;width:34%;padding:7px 10px;vertical-align:top;border-bottom:1px solid var(--ink2);background:rgba(31,111,120,.12)}
+.om-spec td{padding:7px 10px;border-bottom:1px solid var(--ink2)}
+.om-gauge{margin:16px auto 6px;max-width:300px}
+.om-gauge svg{width:100%;height:auto}
+.om-gauge figcaption,.om-fig figcaption{font-size:22px;line-height:1.3;text-align:center;font-style:italic}
+.om-warn{border:3px solid var(--red);border-radius:10px;padding:10px 14px;margin:18px 0 0;background:rgba(180,55,44,.06)}
+.om-warn b,.om-note b{font:700 13px Futura,"Century Gothic","Avenir Next",Helvetica,sans-serif;letter-spacing:.16em;margin-right:8px}
+.om-warn b{color:var(--red)}
+.om-note{font-size:15.5px;border:1.5px solid var(--spot);border-radius:10px;padding:8px 12px;margin:14px 0 0}
+.om-note b{color:var(--spot)}
+.om .folio{text-align:center;font:12px Futura,"Century Gothic","Avenir Next",Helvetica,sans-serif;letter-spacing:.3em;margin:18px 0 0}
+@media (max-width:560px){.om{padding:8px 14px 16px}.om-spec th{width:42%}.om .tab{right:10px}}
+@media print{.om{background:#fff;box-shadow:none;border:2px solid #000;break-inside:auto}.om-spec tr,.om-warn,.om-note,.om-gauge,.om-fig{break-inside:avoid}.om-gauge figcaption,.om-fig figcaption{font-size:11pt}}
+</style>
+<section class="om" aria-labelledby="om-h">
+<span class="tab" aria-hidden="true">Section 1</span>
+<p class="om-k">Owner&rsquo;s Manual &middot; Section 1</p>
+<h2 id="om-h">Operation and Fuel Requirements</h2>
+<figure class="om-fig"><img src="shots/manual-car-1960s.svg" width="640" height="250" alt="A 1960s-style line drawing of a long sedan with tail fins and its hood raised, with callouts: 1 engine, 2 road test, 3 fuel."></figure>
+
+<h3><span class="num">1</span>Engine compartment</h3>
+<p>No owner-serviceable parts inside. Domain registration, hosting, security certificates, code and publishing are factory-installed and maintained by Auto-Gyro. The owner is not required to open the hood at any time.</p>
+
+<h3><span class="num">2</span>Pre-delivery inspection and road test</h3>
+<p>On completion of generation, the vehicle is released to the owner for a road test (&ldquo;Test Drive&rdquo;). Operate every control: open each answer, follow each source card, switch Intro and Info on and off, and read the page as a first-time visitor would. Report any condition requiring adjustment; it is corrected before the vehicle is accepted.</p>
+
+<h3><span class="num">3</span>Fuel</h3>
+<table class="om-spec">
+<tr><th>Fuel type</th><td>Attention</td></tr>
+<tr><th>Tank capacity</th><td>One tank per operator per day</td></tr>
+<tr><th>Refueling</th><td>Overnight; not available during operation</td></tr>
+<tr><th>Principal consumers</th><td>Forced detours, expired logins, forgotten passwords, dead links, hunting for the place you left</td></tr>
+</table>
+<figure class="om-gauge">
+<svg viewBox="0 0 260 170" role="img" aria-labelledby="g-t"><title id="g-t">A 1960s dashboard fuel gauge in a chrome bezel, marked E, 1/2 and F, labeled Attention, with the needle near empty in the red zone.</title>
+<defs><linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f4ee"/><stop offset=".5" stop-color="#9c978f"/><stop offset="1" stop-color="#e9e5dc"/></linearGradient></defs>
+<path d="M14 140 A116 116 0 0 1 246 140 Z" fill="url(#chrome)" stroke="#1d1a16" stroke-width="2"/>
+<path d="M26 140 A104 104 0 0 1 234 140 Z" fill="#1d1a16"/>
+<path d="M40 140 A90 90 0 0 1 220 140" fill="none" stroke="#f2e7cf" stroke-width="3"/>
+<path d="M40 140 A90 90 0 0 1 60 84" fill="none" stroke="#b4372c" stroke-width="10"/>
+<g stroke="#f2e7cf" stroke-width="3"><line x1="40" y1="140" x2="54" y2="140"/><line x1="130" y1="50" x2="130" y2="64"/><line x1="220" y1="140" x2="206" y2="140"/><line x1="66" y1="76" x2="76" y2="86"/><line x1="194" y1="76" x2="184" y2="86"/></g>
+<g font-family="Futura,'Century Gothic','Avenir Next',Helvetica,sans-serif" font-weight="700" fill="#f2e7cf" text-anchor="middle">
+<text x="58" y="132" font-size="15">E</text><text x="130" y="80" font-size="12">1/2</text><text x="202" y="132" font-size="15">F</text>
+<text x="130" y="104" font-size="11" letter-spacing="3">ATTENTION</text></g>
+<line x1="130" y1="140" x2="62" y2="104" stroke="#f2e7cf" stroke-width="4" stroke-linecap="round"/>
+<circle cx="130" cy="140" r="10" fill="url(#chrome)" stroke="#1d1a16" stroke-width="1.5"/>
+<rect x="14" y="140" width="232" height="10" fill="url(#chrome)" stroke="#1d1a16" stroke-width="2"/>
+<text x="130" y="166" text-anchor="middle" font-family="Futura,'Century Gothic','Avenir Next',Helvetica,sans-serif" font-size="10" letter-spacing="3" fill="#1d1a16">FIG. 2 · FUEL GAUGE</text>
+</svg>
+<figcaption>Low fuel: one tank of attention a day, and every forced detour burns some.</figcaption>
+</figure>
+
+<p class="om-warn"><b>WARNING</b> Operating on an empty tank halts progress for the remainder of the day. Exasperation drains the tank fastest. Auto-Gyro is designed to minimize consumption: the information comes to the reader, sources are previewed before departure, and no trip is taken that a card can answer.</p>
+
+<p class="om-note"><b>NOTE</b> The fuel tank is an analogy, not a measurement. The research claim that self-control runs down over a day (&ldquo;ego depletion&rdquo;) failed a large multi-laboratory replication in 2016. What is well established is the cost of each interruption: returning to an interrupted task takes time, and work left unfinished stays on the mind. See <a href="https://interruption-science.online">interruption-science.online</a>.</p>
+<p class="folio">&mdash; 1 &mdash;</p>
+</section>
+
+<h2>Why orange, and why an autogyro</h2>
+<p>GYR-O stands for its colors: green, yellow and red for the three columns every reader sees, and sometimes orange. Orange is the color of the build. On a finished site it appears once, in the &ldquo;built by Auto-Gyro&rdquo; link that brought you here.</p>
+<p>An autogyro flies on a rotor that the passing air keeps turning, which is close to how a GYR-O site stays up: no engine room, almost no cost. The name also tips its hat to W.&nbsp;C. Fields, who drops in by autogyro in the 1933 screwball comedy <i>International House</i>.</p>
+<figure>
+  <img src="shots/fields-autogyro.jpg" width="555" height="418" loading="lazy" alt="W. C. Fields in a top hat, seated in an open autogyro, in International House (1933).">
+  <figcaption>W.&nbsp;C. Fields arrives by autogyro in <i>International House</i> (Paramount, 1933).</figcaption>
+</figure>
+
+<footer>
+  <a href="index.html">GYR-O Pages, the website format</a> &middot; for the Site Builder: <a href="setup.html">the technical setup sheet</a><br>
+  &copy; 2026 Walter Wilkinson, creator of the GYR-O website format <i>(Green, Yellow, Red, and sometimes Orange)</i>.
+</footer>
+</div>
+<script>
+(function(){
+  var what=document.getElementById('what'), name=document.getElementById('name'),
+      prev=document.getElementById('preview'), we=document.getElementById('what-err'),
+      ne=document.getElementById('name-err'), done=document.getElementById('done'),
+      mail=document.getElementById('mail'), copy=document.getElementById('copy');
+  if(!what) return;
+  function clean(v){ return v.toLowerCase().trim().replace(/\.online$/,'').replace(/[\s_]+/g,'-').replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-').replace(/^-|-$/g,''); }
+  var coop=document.getElementById('coop'), coopbox=document.getElementById('coopbox'), ce=document.getElementById('coop-err'), suffix=document.getElementById('suffix');
+  function kind(){ var k=document.querySelector('input[name=kind]:checked'); return k?k.value:'free'; }
+  function coopDomain(){ return coop.value.toLowerCase().trim().replace(/^https?:\/\//,'').replace(/\/.*$/,'').replace(/[^a-z0-9.-]/g,''); }
+  function tail(){ var k=kind(); return k==='own' ? '.online' : k==='coop' ? '.'+(coopDomain()||'your-coop.online') : '.gyro-sites.online'; }
+  function label(){ var k=kind(); return k==='own' ? 'Own name (to buy, yours outright)' : k==='coop' ? 'Free, under the cooperative ' + (coopDomain()||'(not given)') : 'Free, under gyro-sites.online'; }
+  function addr(){ return clean(name.value)+tail(); }
+  function msg(){ return 'New GYR-O site\n\nWhat it is for: '+what.value.trim()+'\nAddress: '+addr()+'\nKind of name: '+label()+'\n'; }
+  function show(){ var c=clean(name.value); coopbox.hidden = kind()!=='coop'; suffix.textContent=tail(); prev.textContent = c ? addr() : 'your-name'+tail(); prev.className = c ? 'preview' : 'preview empty'; ne.textContent=''; ce.textContent=''; done.textContent='';
+    mail.href='mailto:washakie.ai.online@gmail.com?subject='+encodeURIComponent('New GYR-O site: '+(c?addr():''))+'&body='+encodeURIComponent(msg()); }
+  function check(){ var ok=true, c=clean(name.value);
+    we.textContent=''; ne.textContent='';
+    if(what.value.trim().length<10){ we.textContent='Write one sentence first: what is the site for?'; ok=false; }
+    if(c.length<3){ ne.textContent='Choose a name of at least three letters.'; ok=false; }
+    else if(c.length>40){ ne.textContent='Keep the name to 40 characters or fewer.'; ok=false; }
+    ce.textContent='';
+    if(kind()==='coop' && !/^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(coopDomain())){ ce.textContent='Type the cooperative\u2019s address, for example washakie-growers.online.'; ok=false; }
+    return ok; }
+  // Correct the name in place as it is typed: lowercase, spaces become hyphens, anything else is dropped.
+  function tidy(final){ var v=name.value, pos=name.selectionStart, before=v.slice(0,pos);
+    function fix(x){ x=x.toLowerCase().replace(/[\s_]+/g,'-').replace(/[^a-z0-9.-]/g,'').replace(/-+/g,'-').replace(/^[-.]/,''); return final ? x.replace(/\.online$/,'').replace(/\./g,'-').replace(/-+/g,'-').replace(/-$/,'') : x; }
+    var nv=fix(v); if(nv!==v){ var np=fix(before).length; name.value=nv; try{ name.setSelectionRange(np,np); }catch(e){} } }
+  name.addEventListener('input',function(){ tidy(false); show(); });
+  name.addEventListener('blur',function(){ tidy(true); show(); });
+  coop.addEventListener('input',show);
+  [].forEach.call(document.querySelectorAll('input[name=kind]'),function(r){r.addEventListener('change',show);}); what.addEventListener('input',function(){we.textContent='';show();});
+  copy.addEventListener('click',function(){ if(!check()) return;
+    var t=msg(), ok=function(){done.textContent='Copied. Paste it into an email or a text to the Site Builder.';};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fallback(t);ok();});} else {fallback(t);ok();} });
+  function fallback(t){ var ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} ta.remove(); }
+  mail.addEventListener('click',function(e){ if(!check()){ e.preventDefault(); } });
+  show();
+})();
+</script>
+</body>
+</html>
