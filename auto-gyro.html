@@ -109,6 +109,8 @@ a[href*="wikipedia.org"]:not(.rlink):hover{border-bottom-color:var(--accentb,#B4
 <p class="eyebrow">GYR-O Pages · the build</p>
 <h1>Auto-<span class="o">Gyro</span></h1>
 <p class="lede">How a GYR-O website gets built, from one sentence to a working address.</p>
+<p class="idea"><b>The main idea: you never have to know what is under the hood.</b> Domain names, hosting, security certificates, code, publishing: Auto-Gyro handles all of it, the way you drive a car without knowing how the engine works. You say what the site is for and decide what it says; everything technical happens out of sight.</p>
+<style>.idea{font-size:20px;line-height:1.5;margin:14px 0 4px;max-width:62ch;border-left:5px solid var(--orange-fill);padding-left:14px}</style>
 
 <figure>
   <svg viewBox="0 0 640 300" role="img" aria-labelledby="ag-t">
@@ -188,6 +190,83 @@ a[href*="wikipedia.org"]:not(.rlink):hover{border-bottom-color:var(--accentb,#B4
 </section>
 
 <p class="more">Once a site is up, it is kept the same way every time: <a href="workflow.html">one task, one site, one log</a>, shown on the four live GYR-O sites.</p>
+
+<style>
+/* Owner's Manual, styled after a 1960s automobile owner's manual: aged paper, two-color print, line art */
+.om{--paper:#f2e7cf;--ink2:#1d1a16;--spot:#1f6f78;--red:#b4372c;
+  position:relative;background:var(--paper);color:var(--ink2);margin:38px 0 12px;padding:10px 26px 22px;
+  border:3px double var(--ink2);box-shadow:0 0 0 6px var(--paper),0 0 0 7px var(--ink2);
+  background-image:radial-gradient(rgba(29,26,22,.07) 1px,transparent 1.2px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.10'/%3E%3C/svg%3E");
+  background-size:6px 6px,auto}
+.om .tab{position:absolute;top:-3px;right:22px;background:var(--spot);color:var(--paper);
+  font:700 12px/1 Futura,"Century Gothic","Avenir Next",Helvetica,sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:9px 12px 10px;border-radius:0 0 6px 6px}
+.om-k{font:700 12px/1.2 Futura,"Century Gothic","Avenir Next",Helvetica,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--spot);margin:18px 0 0}
+.om h2{font-family:Futura,"Century Gothic","Avenir Next",Helvetica,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(20px,3.2vw,27px);margin:4px 0 6px;color:var(--ink2)}
+.om h3{font-family:Futura,"Century Gothic","Avenir Next",Helvetica,sans-serif;font-size:15.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin:22px 0 6px;color:var(--ink2);display:flex;align-items:center;gap:10px}
+.om h3::after{content:"";flex:1;border-top:2px solid var(--spot)}
+.om h3 .num{display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;background:var(--spot);color:var(--paper);font-size:13px;letter-spacing:0}
+.om p{font-family:Georgia,"Times New Roman",serif}
+.om-fig{margin:10px 0 4px}
+.om-fig img{display:block;width:100%;height:auto}
+.om-spec{border-collapse:collapse;width:100%;margin:8px 0 6px;font-size:16px;border:2px solid var(--ink2)}
+.om-spec th{text-align:left;font:700 12.5px Futura,"Century Gothic","Avenir Next",Helvetica,sans-serif;letter-spacing:.1em;text-transform:uppercase;width:34%;padding:7px 10px;vertical-align:top;border-bottom:1px solid var(--ink2);background:rgba(31,111,120,.12)}
+.om-spec td{padding:7px 10px;border-bottom:1px solid var(--ink2)}
+.om-gauge{margin:16px auto 6px;max-width:300px}
+.om-gauge svg{width:100%;height:auto}
+.om-gauge figcaption,.om-fig figcaption{font-size:22px;line-height:1.3;text-align:center;font-style:italic}
+.om-warn{border:3px solid var(--red);border-radius:10px;padding:10px 14px;margin:18px 0 0;background:rgba(180,55,44,.06)}
+.om-warn b,.om-note b{font:700 13px Futura,"Century Gothic","Avenir Next",Helvetica,sans-serif;letter-spacing:.16em;margin-right:8px}
+.om-warn b{color:var(--red)}
+.om-note{font-size:15.5px;border:1.5px solid var(--spot);border-radius:10px;padding:8px 12px;margin:14px 0 0}
+.om-note b{color:var(--spot)}
+.om .folio{text-align:center;font:12px Futura,"Century Gothic","Avenir Next",Helvetica,sans-serif;letter-spacing:.3em;margin:18px 0 0}
+@media (max-width:560px){.om{padding:8px 14px 16px}.om-spec th{width:42%}.om .tab{right:10px}}
+@media print{.om{background:#fff;box-shadow:none;border:2px solid #000;break-inside:auto}.om-spec tr,.om-warn,.om-note,.om-gauge,.om-fig{break-inside:avoid}.om-gauge figcaption,.om-fig figcaption{font-size:11pt}}
+</style>
+<section class="om" aria-labelledby="om-h">
+<span class="tab" aria-hidden="true">Section 1</span>
+<p class="om-k">Owner&rsquo;s Manual &middot; Section 1</p>
+<h2 id="om-h">Operation and Fuel Requirements</h2>
+<figure class="om-fig"><img src="shots/manual-car-1960s.svg" width="640" height="250" alt="A 1960s-style line drawing of a long sedan with tail fins and its hood raised, with callouts: 1 engine, 2 road test, 3 fuel."></figure>
+
+<h3><span class="num">1</span>Engine compartment</h3>
+<p>No owner-serviceable parts inside. Domain registration, hosting, security certificates, code and publishing are factory-installed and maintained by Auto-Gyro. The owner is not required to open the hood at any time.</p>
+
+<h3><span class="num">2</span>Pre-delivery inspection and road test</h3>
+<p>On completion of generation, the vehicle is released to the owner for a road test (&ldquo;Test Drive&rdquo;). Operate every control: open each answer, follow each source card, switch Intro and Info on and off, and read the page as a first-time visitor would. Report any condition requiring adjustment; it is corrected before the vehicle is accepted.</p>
+
+<h3><span class="num">3</span>Fuel</h3>
+<table class="om-spec">
+<tr><th>Fuel type</th><td>Attention</td></tr>
+<tr><th>Tank capacity</th><td>One tank per operator per day</td></tr>
+<tr><th>Refueling</th><td>Overnight; not available during operation</td></tr>
+<tr><th>Principal consumers</th><td>Forced detours, expired logins, forgotten passwords, dead links, hunting for the place you left</td></tr>
+</table>
+<figure class="om-gauge">
+<svg viewBox="0 0 260 170" role="img" aria-labelledby="g-t"><title id="g-t">A 1960s dashboard fuel gauge in a chrome bezel, marked E, 1/2 and F, labeled Attention, with the needle near empty in the red zone.</title>
+<defs><linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f4ee"/><stop offset=".5" stop-color="#9c978f"/><stop offset="1" stop-color="#e9e5dc"/></linearGradient></defs>
+<path d="M14 140 A116 116 0 0 1 246 140 Z" fill="url(#chrome)" stroke="#1d1a16" stroke-width="2"/>
+<path d="M26 140 A104 104 0 0 1 234 140 Z" fill="#1d1a16"/>
+<path d="M40 140 A90 90 0 0 1 220 140" fill="none" stroke="#f2e7cf" stroke-width="3"/>
+<path d="M40 140 A90 90 0 0 1 60 84" fill="none" stroke="#b4372c" stroke-width="10"/>
+<g stroke="#f2e7cf" stroke-width="3"><line x1="40" y1="140" x2="54" y2="140"/><line x1="130" y1="50" x2="130" y2="64"/><line x1="220" y1="140" x2="206" y2="140"/><line x1="66" y1="76" x2="76" y2="86"/><line x1="194" y1="76" x2="184" y2="86"/></g>
+<g font-family="Futura,'Century Gothic','Avenir Next',Helvetica,sans-serif" font-weight="700" fill="#f2e7cf" text-anchor="middle">
+<text x="58" y="132" font-size="15">E</text><text x="130" y="80" font-size="12">1/2</text><text x="202" y="132" font-size="15">F</text>
+<text x="130" y="104" font-size="11" letter-spacing="3">ATTENTION</text></g>
+<line x1="130" y1="140" x2="62" y2="104" stroke="#f2e7cf" stroke-width="4" stroke-linecap="round"/>
+<circle cx="130" cy="140" r="10" fill="url(#chrome)" stroke="#1d1a16" stroke-width="1.5"/>
+<rect x="14" y="140" width="232" height="10" fill="url(#chrome)" stroke="#1d1a16" stroke-width="2"/>
+<text x="130" y="166" text-anchor="middle" font-family="Futura,'Century Gothic','Avenir Next',Helvetica,sans-serif" font-size="10" letter-spacing="3" fill="#1d1a16">FIG. 2 · FUEL GAUGE</text>
+</svg>
+<figcaption>Low fuel: one tank of attention a day, and every forced detour burns some.</figcaption>
+</figure>
+
+<p class="om-warn"><b>WARNING</b> Operating on an empty tank halts progress for the remainder of the day. Exasperation drains the tank fastest. Auto-Gyro is designed to minimize consumption: the information comes to the reader, sources are previewed before departure, and no trip is taken that a card can answer.</p>
+
+<p class="om-note"><b>NOTE</b> The fuel tank is an analogy, not a measurement. The research claim that self-control runs down over a day (&ldquo;ego depletion&rdquo;) failed a large multi-laboratory replication in 2016. What is well established is the cost of each interruption: returning to an interrupted task takes time, and work left unfinished stays on the mind. See <a href="https://interruption-science.online">interruption-science.online</a>.</p>
+<p class="folio">&mdash; 1 &mdash;</p>
+</section>
 
 <h2>Why orange, and why an autogyro</h2>
 <p>GYR-O stands for its colors: green, yellow and red for the three columns every reader sees, and sometimes orange. Orange is the color of the build. On a finished site it appears once, in the &ldquo;built by Auto-Gyro&rdquo; link that brought you here.</p>
