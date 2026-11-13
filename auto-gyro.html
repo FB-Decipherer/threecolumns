@@ -14,8 +14,8 @@
    white ground, black type, and orange, which appears on a reader's page nowhere else. */
 :root{
   --paper:#ffffff; --ink:#000000; --mid:#3d3d3d; --rule:#000000;
-  --orange:#b45309;        /* text and rules: 5.0:1 on white */
-  --orange-fill:#e8862e;   /* the drawing only */
+  --orange:#c2410c;        /* text and rules: 5.2:1 on white */
+  --orange-fill:#f26b1d;   /* bands, buttons and the drawing: black type on it */
   color-scheme:light;
 }
 *{box-sizing:border-box}
@@ -100,15 +100,33 @@ footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:14px;font-si
 /* Wikipedia links: a light dotted underline, so they read as Wikipedia at a glance. Source-card buttons (.rlink) keep their box. 7 Nov 2026. */
 a[href*="wikipedia.org"]:not(.rlink){text-decoration:none;border-bottom:1px dotted rgba(110,104,94,.5);}
 a[href*="wikipedia.org"]:not(.rlink):hover{border-bottom-color:var(--accentb,#B4372C);}
+
+/* 12 Nov 2026: the Orange Page, made assertively orange: a full-width orange band, orange rules and filled orange buttons */
+body{overflow-x:hidden;border-top:0}
+.wrap{padding-top:0}
+.oband{background:var(--orange-fill);color:#000;margin:0 calc(50% - 50vw) 0;padding:30px calc(50vw - 50%) 28px;border-bottom:4px solid #000}
+.oband .eyebrow{color:#000}
+.oband h1 .o{color:#fff}
+.oband .lede{color:#000}
+figure{border-top-color:var(--orange-fill);border-bottom-color:var(--orange-fill)}
+ol.steps li::before{background:var(--orange-fill);border-color:var(--orange-fill);color:#000;font-weight:600}
+.yours{border-left:6px solid var(--orange-fill)}
+.start{border:3px solid var(--orange-fill);background:#fff3e8}
+.create,.actions button{background:var(--orange-fill);color:#000;border-color:var(--orange-fill)}
+footer{border-top:4px solid var(--orange-fill)}
+h2{border-bottom:2px solid var(--orange-fill);padding-bottom:4px}
+@media print{.oband{background:none;border-bottom:3px solid #000}.oband h1 .o{color:#000}}
 </style>
 </head>
 <body>
 <p class="pdf-dl" style="margin:0 auto;padding:8px 16px 0;max-width:1508px;text-align:right;font:15px/1.4 'IBM Plex Mono',ui-monospace,Menlo,monospace"><a href="Auto-Gyro.pdf" download style="color:inherit;text-underline-offset:2px">Download this page as a PDF</a></p><style>@media print{.pdf-dl{display:none!important}}</style>
 <div class="wrap">
 
+<header class="oband">
 <p class="eyebrow">GYR-O Pages · the build</p>
 <h1>Auto-<span class="o">Gyro</span></h1>
 <p class="lede">How a GYR-O website gets built, from one sentence to a working address.</p>
+</header>
 <p class="idea"><b>The main idea: you never have to know what is under the hood.</b> Domain names, hosting, security certificates, code, publishing: Auto-Gyro handles all of it, the way you drive a car without knowing how the engine works. You say what the site is for and decide what it says; everything technical happens out of sight.</p>
 <style>.idea{font-size:20px;line-height:1.5;margin:14px 0 4px;max-width:62ch;border-left:5px solid var(--orange-fill);padding-left:14px}</style>
 
